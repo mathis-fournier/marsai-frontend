@@ -1,18 +1,21 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.tsx'
-import Footer from './components/Footer.tsx'
-import Header from './components/Header.tsx'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import "./index.css";
+import App from "./App.tsx";
+import Footer from "./components/Footer.tsx";
+import Header from "./components/Header.tsx";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Agenda from "./components/Agenda.tsx";
 
-createRoot(document.getElementById('root')!).render(
+createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <BrowserRouter>
       <Header />
-        <Routes>
-          <Route path='/' element={<App />} />
-          {/* 
+      <Routes>
+        <Route path="/" element={<App />} />
+        <Route path="/agenda" element={<Agenda />} />
+
+        {/* 
           <Route path='/movies' element={<Movies />} />
           <Route path='/movies/:id' element={<MovieDetails />} />
           <Route path='/agenda' element={<Agenda />} />
@@ -21,7 +24,6 @@ createRoot(document.getElementById('root')!).render(
           <Route path='/submit' element={<Submit />} />
           <Route path='/jury' element={<Jury />} />
           <Route path='/jury-members' element={<JuryMembers />} />
-          <Route path='/book' element={<Booking />} />
           <Route path='dashboard' element={<Dashboard />} />
           <Route path='dashboard/movies' element={<DashboardMovies />} />
           <Route path='dashboard/jury' element={<DashboardJury />} />
@@ -29,8 +31,8 @@ createRoot(document.getElementById('root')!).render(
           <Route path='dashboard/events' element={<DashboardEvents />} />
           <Route path='dashboard/config' element={<DashboardConfig />} />
           */}
-        </Routes>
+      </Routes>
       <Footer />
     </BrowserRouter>
   </StrictMode>,
-)
+);
