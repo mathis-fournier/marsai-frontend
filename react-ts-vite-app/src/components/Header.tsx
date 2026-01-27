@@ -1,9 +1,10 @@
-import NavBar from './NavBar'
+import NavBar from "./NavBar"
 
 function Header() {
   return (
-    <div className="text-center bg-gray-900 text-white">
-        <NavBar />    
+    <div className="text-center bg-purple-900/90 text-white">
+        <NavBar />
+        <hr />
     </div>
   )
 }
