@@ -1,16 +1,8 @@
 import { useEffect, useState } from "react";
-import EventGrid from "../components/EventGrid";
-
-// On définit l'interface ici aussi ou on l'exporte depuis EventGrid
-interface Event {
-  id: string | number;
-  title: string;
-  description?: string;
-  imageUrl?: string;
-}
+import EventGrid, {type EventItem} from "../components/EventGrid";
 
 function Agenda() {
-  const [data, setData] = useState<Event[]>([]); // Initialisé avec un tableau vide
+  const [data, setData] = useState<EventItem[]>([]); // Initialisé avec un tableau vide
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -35,14 +27,14 @@ function Agenda() {
   };
 
   if (isLoading)
-    return <div className="p-10 text-center text-slate-500">Chargement...</div>;
+    return <div className="p-10 text-center text-[var(--color-black)]">Chargement...</div>;
   if (error)
-    return <div className="p-10 text-center text-red-500">Erreur: {error}</div>;
+    return <div className="p-10 text-center text-[var(--color-black)]">Erreur: {error}</div>;
 
   return (
     <main>
       <header className="max-w-7xl mx-auto px-6 pt-10">
-        <h1 className="text-3xl font-bold text-slate-900">Notre Agenda</h1>
+        <h1 className="text-3xl font-bold text-[var(--color-black)]">Notre Agenda</h1>
       </header>
 
       <EventGrid

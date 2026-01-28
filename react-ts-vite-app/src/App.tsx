@@ -1,4 +1,4 @@
-import Festival from './components/Festival'
+import Festival from './pages/Festival'
 import HeroBanner from './components/HeroBanner'
 
 function App() {

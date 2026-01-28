@@ -1,13 +1,13 @@
 import React from "react";
 
-interface EventItem {
+
+export interface EventItem {
   id: string | number;
   title: string;
   description?: string;
   imageUrl?: string;
 }
-
-interface EventGridProps {
+export interface EventGridProps {
   events: EventItem[];
   onActionClick?: (id: string | number) => void;
   actionLabel?: string;
@@ -49,7 +49,7 @@ const EventGrid: React.FC<EventGridProps> = ({
             </div>
 
             <div className="p-5">
-              <h3 className="text-xl font-bold text-slate-900">
+              <h3 className="text-xl font-bold text-black">
                 {event.title}
               </h3>
               <p className="mt-2 text-slate-600 line-clamp-2">
