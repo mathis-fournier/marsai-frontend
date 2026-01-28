@@ -2,7 +2,7 @@ import NavBar from "./NavBar"
 
 function Header() {
   return (
-    <div className="text-center bg-[var(--color-primary)] text-white">
+    <div className="text-center bg-[var(--color-brand)] text-white">
         <NavBar />
         <hr />
     </div>

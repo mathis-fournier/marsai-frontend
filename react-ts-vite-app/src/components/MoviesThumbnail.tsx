@@ -31,13 +31,13 @@ function MoviesThumbnail() {
 
   return (
     <div className="max-w-7xl mx-auto p-6">
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="flex flex-col justify-center items-center lg:flex-row gap-6">
         {data.map((m) => (
           <div
             key={m.id}
             className="group overflow-hidden rounded-xl border border-[var(--color-white)] bg-[var(--color-white)] shadow-sm transition-all hover:shadow-md"
           >
-            <div className="h-48 bg-slate-100 flex items-center justify-center">
+            <div className="w-110 h-70 bg-slate-100 flex items-center justify-center">
               {m.cover_image ? (
                 <img
                   src={m.cover_image}
