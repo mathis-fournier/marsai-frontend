@@ -2,11 +2,7 @@ import { NavLink } from "react-router-dom"
 
 function NavBar() {
   return (
-<<<<<<< Updated upstream
-    <div className="p-5 flex justify-between items-center text-(--color-white)">
-=======
     <div className="p-5 flex justify-between items-center text-(--color-white) bg-[var(--color-brand)]">
->>>>>>> Stashed changes
         <NavLink to={"/"}><h2 className="text-2xl bg-[var(--color-primary)] p-2 rounded-xl">Mars A.I.</h2></NavLink>
         <NavLink to={"/galery"}><h2 className="text-2xl p-2">Galerie</h2></NavLink>
         <NavLink to={"/agenda"}><h2 className="text-2xl p-2">Agenda</h2></NavLink>
