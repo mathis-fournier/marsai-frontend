@@ -22,10 +22,6 @@ function Agenda() {
       });
   }, []);
 
-  const handleDetailsClick = (id: string | number) => {
-    console.log("ID :", id);
-  };
-
   if (isLoading)
     return (
       <div className="p-10 text-center text-[var(--color-black)]">
