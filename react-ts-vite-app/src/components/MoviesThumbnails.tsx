@@ -37,7 +37,7 @@ function MoviesThumbnails() {
             key={m.id}
             className="group overflow-hidden rounded-xl border border-[var(--color-white)] bg-[var(--color-white)] shadow-sm transition-all hover:shadow-md"
           >
-            <div className="w-110 h-60 bg-[var(--color-white)] flex items-center justify-center">
+            <div className="md:w-110 md:h-60 bg-[var(--color-white)] flex items-center justify-center">
               {m.cover_image ? (
                 <img
                   src={m.cover_image}

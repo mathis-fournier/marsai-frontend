@@ -4,7 +4,7 @@ import NewsletterSubscribe from './NewsletterSubscribe'
 function Footer() {
     return (
 
-        <div className="bg-[var(--color-brand)] text-white">
+        <div className="bg-[var(--color-primary)] text-white">
             <div className="p-10 text-center flex flex-col items-center gap-10 md:gap-0 lg:flex-row md:justify-around">
                 <div className="text-left">
                     <NavLink to={"/"}><p className="text-3xl bg-blue-500 p-2 rounded-tr-2xl">MarsAI</p></NavLink>
