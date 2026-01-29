@@ -2,8 +2,13 @@
 
 @theme {
   --color-brand: #364153;
+<<<<<<< Updated upstream
   --color-primary: #aa0fff;
   --color-secondary: #ff9010;
+=======
+  --color-primary: #0069a8;
+  --color-secondary: #f0b100;
+>>>>>>> Stashed changes
   --color-black: #000000;
   --color-white: #ffffff;
 }
