@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import type { Movie } from "../types-interfaces/Movie";
 
-function MoviesThumbnail() {
+function MoviesThumbnails() {
 
     // Initialisation des états
     const [data, setData] = useState<Movie[]>([]);
@@ -30,14 +30,14 @@ function MoviesThumbnail() {
     return <div className="p-10 text-center text-[var(--color-black)]">Erreur: {error}</div>;
 
   return (
-    <div className="max-w-7xl mx-auto p-6">
-      <div className="flex flex-col justify-center items-center lg:flex-row gap-6">
+    <div className="max-w-4xl mx-auto p-6">
+      <div className="flex flex-col sm:grid sm:grid-cols-2 md:flex-row justify-center items-center gap-6">
         {data.map((m) => (
           <div
             key={m.id}
             className="group overflow-hidden rounded-xl border border-[var(--color-white)] bg-[var(--color-white)] shadow-sm transition-all hover:shadow-md"
           >
-            <div className="w-110 h-70 bg-slate-100 flex items-center justify-center">
+            <div className="w-110 h-60 bg-[var(--color-white)] flex items-center justify-center">
               {m.cover_image ? (
                 <img
                   src={m.cover_image}
@@ -50,10 +50,10 @@ function MoviesThumbnail() {
             </div>
 
             <div className="p-5">
-              <h3 className="text-xl font-bold text-[var(--color-black)]">
+              <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-[var(--color-black)]">
                 {m.english_title}
               </h3>
-              <p className="mt-2 text-[var(--color-black)] line-clamp-2">
+              <p className="mt-2 text-[var(--color-black)] line-clamp-2 md:text-lg ">
                 {m.english_synopsis || "Aucun synopsis trouvé."}
               </p>
 
@@ -65,4 +65,4 @@ function MoviesThumbnail() {
   )
 }
 
-export default MoviesThumbnail
+export default MoviesThumbnails
