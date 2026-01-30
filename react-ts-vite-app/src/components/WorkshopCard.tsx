@@ -1,9 +1,16 @@
+interface WorkshopCardProps {
+  title: string;
+  description?: string;
+  remainingSeats?: number;
+  link?: string;
+}
+
 export default function WorkshopCard({
   title,
-  description,
-  remainingSeats,
+  description = "Aucune description fournie.",
+  remainingSeats = 0,
   link = "#",
-}) {
+}: WorkshopCardProps) {
   return (
     <a
       href={link}

@@ -20,7 +20,7 @@ function Festival() {
                     <p className="text-white  md:text-2xl">Découvrez une sélection d'œuvres pionnières qui explorent les nouvelles frontières de l'imaginaire assisté par l'Intelligence Artificielle.</p>
                     <h2 className="p-5 text-center text-white text-xl md:text-2xl font-bold mb-4 my-4">Aperçu sélection</h2>
                     <MoviesThumbnails />
-                    <NavLink to={"/submit"}><h2 className="text-xl text-white bg-[var(--color-brand)] text-center w-40 flex m-auto p-2 rounded-xl">Voir tous les films</h2></NavLink>
+                    <NavLink to={"/submit"}><h2 className="text-xl text-white bg-[var(--color-primary)] text-center w-40 flex m-auto p-2 rounded-xl">Voir tous les films</h2></NavLink>
 
                 </div>
                 <div className='my-10  bg-[var(--color-brand)] p-1 rounded-2xl'>
@@ -50,7 +50,7 @@ function Festival() {
                         </p>
 
                     </div>
-                    <NavLink to={"/submit"}><h2 className="text-xl my-8 text-white bg-[var(--color-brand)] text-center w-40 m-auto p-2 rounded-xl">Participer</h2></NavLink>
+                    <NavLink to={"/submit"}><h2 className="text-xl my-8 text-white bg-[var(--color-primary)] text-center w-40 m-auto p-2 rounded-xl">Participer</h2></NavLink>
                 </div>
                 <div className='my-10  bg-[var(--color-brand)] p-1 rounded-2xl'>
                     <h2 className="text-2xl font-bold mb-4 text-[var(--color-white)]">▶ DEUX JOURNÉES DE CONFÉRENCES GRATUITES<hr /></h2>
@@ -67,17 +67,17 @@ function Festival() {
                     </div>
                 </div>
                 <h2 className="text-2xl font-bold mb-4 text-[var(--color-white)]">▶ MARS A.I. NIGHT<hr /></h2>
-
+                        <p className="text-[var(--color-white)] w-full font-bold text-center text-2xl md:text-4xl">Le 13 juin</p>
+                        <p className="text-[var(--color-white)] w-full font-bold text-center text-xl md:text-2xl/24">À partir de 19h</p>
                 <div className='h-120 bg-img'>
-                    <div className='flex-col my-10 m-auto rounded-2xl border-black box-border shadow-white w-80 h-80 p-5 flex justify-center items-center'>
-                        <p className="text-[var(--color-white)] w-full font-bold text-center text-2xl md:text-4xl">13 juin</p>
-                        <p className="text-[var(--color-white)] w-full font-bold text-center text-xl md:text-2xl">À partir de 19h</p>
-                        <p className="text-[var(--color-white)] w-full font-bold text-center text-xl md:text-2xl">Une expérience immersive sonore et visuelle.</p>
+                    <div className='flex-col m-auto rounded-2xl border-black box-border shadow-white w-80 p-5 flex justify-start-safe items-center  bg-black/50 h-120'>
+                <h2 className='text-white text-3xl font-bold text-center'>Soirée Électro</h2>
+                <p className="text-[var(--color-white)] my-4 w-full text-center text-xl md:text-2xl">Une expérience immersive sonore et visuelle.</p>
                     </div>
                 </div>
-                <NavLink to={"/submit"}><h2 className="text-lg my-8 text-white bg-[var(--color-brand)] text-center w-40 m-auto p-2 rounded-xl"> Obtenir mon pass</h2></NavLink>
+                <NavLink to={"/submit"}><h2 className="text-lg my-8 text-white bg-[var(--color-primary)] text-center w-40 m-auto p-2 rounded-xl"> Obtenir mon pass</h2></NavLink>
 
-                <h2 className="text-3xl font-bold mb-4 text-white p-5">▶ LE LIEU<hr /></h2>
+                <h2 className="text-2xl font-bold mb-4 text-white p-1">▶ LE LIEU<hr /></h2>
                 <div className='flex flex-col md:flex-row md:justify-around '>
                     <div className='flex flex-col md:flex-rows md:justify-around justify-center p-5 my-10 m-auto w-60 h-60 rounded-2xl border-black shadow-lg/50 shadow-white bg-gradient-to-b from-[#e5a50a] to-[#c64600]'>
                         <h3 className='text-2xl text-white'>LA PLATEFORME</h3><br />
@@ -95,7 +95,7 @@ function Festival() {
                 
                 </div>
 
-                    <h2 className="text-3xl font-bold mb-4 text-white p-5">▶ PARTENAIRES & SPONSORS<hr /></h2>
+                    <h2 className="text-2xl font-bold mb-4 text-white p-1">▶ PARTENAIRES & SPONSORS<hr /></h2>
                     <img src="/partners.png" alt="Partenaires Marsai" className="p-10 w-200 m-auto my-10" />
             </div>
             <img src="/chiffres.png" alt="les chiffres" className='m-auto w-300'/>
