@@ -4,7 +4,7 @@ import MoviesThumbnails from '../components/MoviesThumbnails'
 function Festival() {
     return (
         <>
-            <div className='bg-[var(--color-brand)] md:max-w-[75%] mx-auto px-6 pt-10 rounded-4xl shadow-lg/50 shadow-black mb-10'>
+            <div className='bg-[var(--color-brand)] md:max-w-[75%] mx-auto px-6 pt-10 md:rounded-4xl shadow-lg/50 shadow-black mb-10'>
                 <div className=' bg-[var(--color-brand)] p-1'>
                     <h2 className="text-2xl text-[var(--color-white)] font-bold mb-4 my-4">▶ LE PROJET MARS AI<hr /></h2>
                     <p className="mb-4 my-4 text-[var(--color-white)] md:text-xl">Un événement hybride unique en France, réunissant la fine fleur de l'IA générative et de la création cinématographique.</p>
