@@ -17,7 +17,7 @@ function Header() {
                     <NavLink to={"/agenda"}><h2 className="text-lg md:text-3xl p-2 rounded-lg">Agenda</h2></NavLink>
                     <NavLink to={"/jury"}><h2 className="text-lg md:text-3xl p-2 rounded-lg">Jury</h2></NavLink>
                     <NavLink to={"/submit"}><h2 className="text-lg md:text-3xl p-2 rounded-lg">Soumettre un film</h2></NavLink>
-                    <NavLink to="/profile"><h2 className="text-lg md:text-3xl p-2 rounded-lg">Profil</h2></NavLink>
+                    <NavLink to="/login"><h2 className="text-lg md:text-3xl p-2 rounded-lg">Connexion</h2></NavLink>
                 </div>
 
                 <div className="flex items-center">
@@ -36,7 +36,7 @@ function Header() {
                 <NavLink to={"/agenda"}><h2 className="text-lg md:text-3xl p-2 rounded-lg">Agenda</h2></NavLink>
                 <NavLink to={"/jury"}><h2 className="text-lg md:text-3xl p-2 rounded-lg">Jury</h2></NavLink>
                 <NavLink to={"/submit"}><h2 className="text-lg md:text-3xl p-2 rounded-lg">Soumettre un film</h2></NavLink>
-                <NavLink to="/profile"><h2 className="text-lg md:text-3xl p-2 rounded-lg">Profil</h2></NavLink>
+                <NavLink to="/login"><h2 className="text-lg md:text-3xl p-2 rounded-lg">Connexion</h2></NavLink>
             </div>
         </>
     );
