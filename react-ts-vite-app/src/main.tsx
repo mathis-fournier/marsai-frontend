@@ -6,6 +6,7 @@ import Footer from "./components/Footer.tsx";
 import Header from "./components/Header.tsx";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Agenda from "./components/Agenda.tsx";
+import SubmitMovie from "./pages/SubmitMovie.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -14,6 +15,7 @@ createRoot(document.getElementById("root")!).render(
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/agenda" element={<Agenda />} />
+        <Route path="/submit" element={<SubmitMovie />} />
 
         {/* 
           <Route path='/movies' element={<Movies />} />
