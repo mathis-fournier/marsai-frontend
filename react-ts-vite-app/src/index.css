@@ -1,1 +1,22 @@
 @import "tailwindcss";
+
+@theme {
+  --color-brand: #364153;
+  --color-primary: #0069a8;
+  --color-secondary: #8C0CDB;
+
+  --color-black: #000000;
+  --color-white: #ffffff;
+}
+
+.bg-pattern{
+    background-image: url('/temple.svg');
+    background-size: 15%;
+}
+
+.bg-img {
+  background-image: url('/marsai.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}

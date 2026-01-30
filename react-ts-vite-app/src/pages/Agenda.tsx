@@ -1,16 +1,10 @@
 import { useEffect, useState } from "react";
-import EventGrid from "../components/EventGrid";
-
-// On définit l'interface ici aussi ou on l'exporte depuis EventGrid
-interface Event {
-  id: string | number;
-  title: string;
-  description?: string;
-  imageUrl?: string;
-}
+import EventGrid, { type EventItem } from "../components/EventGrid";
+import Acces from "../components/Acces";
+import Workshop from "../components/Workshop";
 
 function Agenda() {
-  const [data, setData] = useState<Event[]>([]); // Initialisé avec un tableau vide
+  const [data, setData] = useState<EventItem[]>([]); // Initialisé avec un tableau vide
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -30,28 +24,42 @@ function Agenda() {
       });
   }, []);
 
-  const handleDetailsClick = (id: string | number) => {
-    console.log("ID sélectionné :", id);
-  };
-
   if (isLoading)
-    return <div className="p-10 text-center text-slate-500">Chargement...</div>;
+    return (
+      <div className="p-10 text-center text-[var(--color-black)]">
+        Chargement...
+      </div>
+    );
   if (error)
-    return <div className="p-10 text-center text-red-500">Erreur: {error}</div>;
+    return (
+      <div className="p-10 text-center text-[var(--color-black)]">
+        Erreur: {error}
+      </div>
+    );
 
   return (
-    <main>
-      <header className="max-w-7xl mx-auto px-6 pt-10">
-        <h1 className="text-3xl font-bold text-slate-900">Notre Agenda</h1>
-      </header>
+    <>
+      <main>
+        <header className="max-w-full mx-auto px-6 pt-10">
+          <h1 className="text-4xl font-bold text-[var(--color-black)] mb-[3%]">
+            13 JUIN 2026
+            <p className="font-bold text-blue-600">MARSEILLE</p>
+          </h1>
 
-      <EventGrid
-        events={data}
-        onActionClick={handleDetailsClick}
-        actionLabel="Voir les détails"
-        emptyMessage="Aucun événement n'est prévu pour le moment."
-      />
-    </main>
+          <h2 className="font-bold text-xl text-[var(--color-black)] underline decoration-sky-600 decoration-3">
+            PROGRAMME DES CONFERENCES
+          </h2>
+        </header>
+
+        <EventGrid
+          events={data}
+          emptyMessage="Aucun événement n'est prévu pour le moment."
+        />
+      </main>
+      <Acces></Acces>
+
+      <Workshop></Workshop>
+    </>
   );
 }
 
