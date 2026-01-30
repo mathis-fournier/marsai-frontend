@@ -11,9 +11,9 @@ function Footer() {
                     <p className="my-4 md:text-2xl">Une co-création de l’école du numérique La Plateforme et le Mobile Film Festival. Ensemble pour dessiner les nouveaux horizons du cinéma.</p>
                     <div className='flex justify-around gap-2 mt-5'>
                         <img className="w-10 md:w-20" src="facebook-logo.png" alt="logo facebook" />
-                        <img className="w-20 md:w-35" src="instagram-Logo.png" alt="logo instagram" />
+                        <img className="w-10 md:w-20" src="instagram-logo.png" alt="logo instagram" />
                         <img className="w-10 md:w-20" src="x-logo.png" alt="logo X" />
-                        <img className="w-10 md:w-20" src="youtube-logo.png" alt="logo youtube" />
+                        <img className="w-10 md:w-20" src="youtube-logo.svg" alt="logo youtube" />
                     </div>
                 </div>
                 <NewsletterSubscribe />
