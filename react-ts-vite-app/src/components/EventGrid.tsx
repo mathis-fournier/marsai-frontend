@@ -6,6 +6,7 @@ export interface EventItem {
   description?: string;
   start_at?: string;
   imageUrl?: string;
+  remainingSeats?: number;
 }
 
 export interface EventGridProps {
@@ -36,8 +37,9 @@ const EventGrid: React.FC<EventGridProps> = ({
             <div className="p-5">
               <h3 className="text-xl font-bold text-black">{event.title}</h3>
               <p className="mt-2 text-[var(--color-primary)] line-clamp-2">
-                {new Date(event.start_at).toString() ||
-                  "Aucune description fournie."}
+                {event.start_at
+                  ? new Date(event.start_at).toLocaleDateString()
+                  : "Date non spécifiée"}
               </p>
             </div>
           </div>

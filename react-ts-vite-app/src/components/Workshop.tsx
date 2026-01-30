@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import WorkshopCard from "./WorkshopCard";
-import type { Movie } from "../types-interfaces/Movie";
+import type { EventItem } from "./EventGrid";
 
 export default function Workshop() {
-  const [data, setData] = useState<Movie[]>([]);
+  const [data, setData] = useState<EventItem[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   useEffect(() => {
