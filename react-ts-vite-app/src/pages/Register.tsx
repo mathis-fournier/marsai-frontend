@@ -1,4 +1,3 @@
-import process from "process";
 import HeroBanner from "../components/HeroBanner";
 
 interface RegisterFormData {
@@ -27,7 +26,7 @@ function Register() {
             return;
         }
 
-        fetch(import.meta.env.VITE_API_URL + "/users", {
+        fetch(import.meta.env.VITE_API_URL + "/auth/register", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

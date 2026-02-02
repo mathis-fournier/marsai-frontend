@@ -9,6 +9,7 @@ import Agenda from "./pages/Agenda.tsx";
 import SubmitMovie from "./pages/SubmitMovie.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import Register from "./pages/Register.tsx";
+import Login from "./pages/Login.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -19,15 +20,14 @@ createRoot(document.getElementById("root")!).render(
         <Route path="/agenda" element={<Agenda />} />
         <Route path="/submit" element={<SubmitMovie />} />
         <Route path='/register' element={<Register />} />
+        <Route path='/login' element={<Login />} />
+        {/* <Route path='/jury' element={<JuryMembers />} />
+        <Route path='/jury/me' element={<JuryDashboard />} /> */}
         <Route path="*" element={<NotFound />} />
         {/* 
           <Route path='/movies' element={<Movies />} />
           <Route path='/movies/:id' element={<MovieDetails />} />
           <Route path='/agenda' element={<Agenda />} />
-          <Route path='/login' element={<Login />} />
-          <Route path='/submit' element={<Submit />} />
-          <Route path='/jury' element={<Jury />} />
-          <Route path='/jury-members' element={<JuryMembers />} />
           <Route path='dashboard' element={<Dashboard />} />
           <Route path='dashboard/movies' element={<DashboardMovies />} />
           <Route path='dashboard/jury' element={<DashboardJury />} />
