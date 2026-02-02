@@ -69,8 +69,8 @@ function Festival() {
                 <h2 className="text-2xl font-bold mb-4 text-[var(--color-white)]">▶ MARS A.I. NIGHT<hr /></h2>
                         <p className="text-[var(--color-white)] w-full font-bold text-center text-2xl md:text-4xl">Le 13 juin</p>
                         <p className="text-[var(--color-white)] w-full font-bold text-center text-xl md:text-2xl/24">À partir de 19h</p>
-                <div className='h-120 bg-img'>
-                    <div className='flex-col m-auto rounded-2xl border-black box-border shadow-white w-80 p-5 flex justify-start-safe items-center  bg-black/50 h-120'>
+                <div className='h-100 md:h-120 bg-img'>
+                    <div className='flex-col m-auto rounded-2xl border-black box-border shadow-white w-68 md:w-80 p-5 flex justify-start-safe items-center  bg-black/50 h-100 md:h-120'>
                 <h2 className='text-white text-3xl font-bold text-center'>Soirée Électro</h2>
                 <p className="text-[var(--color-white)] my-4 w-full text-center text-xl md:text-2xl">Une expérience immersive sonore et visuelle.</p>
                     </div>
