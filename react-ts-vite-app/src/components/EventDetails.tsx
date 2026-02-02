@@ -1,9 +1,18 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
+interface Event {
+  title: string;
+  description: string;
+  duration: number;
+  location: string;
+  status: string; // This is likely what's missing!
+  start_at: string;
+}
+
 export default function EventDetails() {
   const { id } = useParams();
-  const [data, setData] = useState();
+  const [data, setData] = useState<Event[]>([]);
 
   console.log(id);
   const navigate = useNavigate();
@@ -27,12 +36,12 @@ export default function EventDetails() {
   return (
     <>
       <button
-        className="p-3 m-3 border rounded border-slate-200"
+        className="p-3 m-3 border rounded border-slate-200 hover:border-blue-400 hover:shadow-md hover:text-blue-400"
         onClick={back}
       >
         Retour
       </button>
-      {data ? (
+      {data.length > 0 ? (
         <div className="m-3 w-auto text-center p-6 border border-slate-200 rounded-lg bg-white shadow-sm">
           <h1 className="text-4xl text-bold underline">{data[0].title}</h1>
           <p>{data[0].description}</p>
