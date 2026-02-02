@@ -8,6 +8,8 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Agenda from "./pages/Agenda.tsx";
 import SubmitMovie from "./pages/SubmitMovie.tsx";
 import EventDetails from "./components/EventDetails.tsx";
+import NotFound from "./pages/NotFound.tsx";
+import Register from "./pages/Register.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -20,12 +22,13 @@ createRoot(document.getElementById("root")!).render(
 
         <Route path="/event/:id" element={<EventDetails />} />
 
+        <Route path='/register' element={<Register />} />
+        <Route path="*" element={<NotFound />} />
         {/* 
           <Route path='/movies' element={<Movies />} />
           <Route path='/movies/:id' element={<MovieDetails />} />
           <Route path='/agenda' element={<Agenda />} />
           <Route path='/login' element={<Login />} />
-          <Route path='/register' element={<Register />} />
           <Route path='/submit' element={<Submit />} />
           <Route path='/jury' element={<Jury />} />
           <Route path='/jury-members' element={<JuryMembers />} />
