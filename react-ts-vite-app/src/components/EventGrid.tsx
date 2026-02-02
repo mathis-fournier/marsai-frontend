@@ -1,52 +1,68 @@
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export interface EventItem {
   id: string | number;
   title: string;
-  description?: string;
-  start_at?: string;
   imageUrl?: string;
-  remainingSeats?: number;
+  start_at?: string;
 }
 
-export interface EventGridProps {
-  events: EventItem[];
+interface EventGridProps {
+  events?: EventItem[];
   emptyMessage?: string;
 }
 
-const EventGrid: React.FC<EventGridProps> = ({
-  events,
-  emptyMessage = "Aucun événement disponible pour le moment.",
-}) => {
-  if (!events || events.length === 0) {
-    return (
-      <div className="flex w-full justify-center items-center p-12 text-slate-500">
-        <p>{emptyMessage}</p>
-      </div>
-    );
-  }
+export default function EventGrid({
+  events = [],
+  emptyMessage = "Aucun événement disponible.",
+}: EventGridProps) {
+  const navigate = useNavigate();
+  const [query, setQuery] = useState("");
+
+  const filtered = events.filter((e) =>
+    e.title.toLowerCase().includes(query.toLowerCase()),
+  );
 
   return (
-    <div className="w-auto p-6">
-      <div className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1 2xl:grid-cols-1 gap-6">
-        {events.map((event) => (
-          <div
-            key={event.id}
-            className="group overflow-hidden rounded-xl border border-slate-200 bg-slate-100 shadow-sm transition-all hover:border-slate-400"
-          >
-            <div className="p-5">
-              <h3 className="text-xl font-bold text-black">{event.title}</h3>
-              <p className="mt-2 text-[var(--color-primary)] line-clamp-2">
-                {event.start_at
-                  ? new Date(event.start_at).toLocaleDateString()
-                  : "Date non spécifiée"}
-              </p>
+    <div className="max-w-7xl mx-auto p-6">
+      <input
+        type="text"
+        placeholder="Search"
+        className="w-full p-3 border rounded-md outline-none focus:ring-2 focus:ring-blue-500 mb-6"
+        onChange={(e) => setQuery(e.target.value)}
+      />
+
+      {!filtered.length ? (
+        <div className="text-center p-12 text-slate-500">{emptyMessage}</div>
+      ) : (
+        <div className="grid grid-cols-1 gap-6">
+          {filtered.map((event) => (
+            <div
+              key={event.id}
+              onClick={() => navigate(`/event/${event.id}`)}
+              className="group cursor-pointer overflow-hidden rounded-xl border bg-white shadow-sm hover:border-blue-400 transition-all"
+            >
+              {event.imageUrl && (
+                <img
+                  src={event.imageUrl}
+                  className="h-48 w-full object-cover group-hover:scale-105 transition-transform"
+                />
+              )}
+              <div className="p-5">
+                <h3 className="text-lg font-bold group-hover:text-blue-600">
+                  {event.title}
+                </h3>
+                <p className="mt-2 text-sm text-slate-600">
+                  {event.start_at
+                    ? new Date(event.start_at).toLocaleDateString("fr-FR")
+                    : "Date non spécifiée"}
+                </p>
+              </div>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      )}
     </div>
   );
-};
-
-export default EventGrid;
+}

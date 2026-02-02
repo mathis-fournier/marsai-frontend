@@ -4,7 +4,7 @@ import Acces from "../components/Acces";
 import Workshop from "../components/Workshop";
 
 function Agenda() {
-  const [data, setData] = useState<EventItem[]>([]); // Initialisé avec un tableau vide
+  const [data, setData] = useState<EventItem[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -46,7 +46,7 @@ function Agenda() {
             <p className="font-bold text-blue-600">MARSEILLE</p>
           </h1>
 
-          <h2 className="font-bold text-xl text-[var(--color-black)] underline decoration-sky-600 decoration-3">
+          <h2 className="font-bold text-xl text-[var(--color-black)] underline decoration-sky-600 decoration-3 mb-6">
             PROGRAMME DES CONFERENCES
           </h2>
         </header>
