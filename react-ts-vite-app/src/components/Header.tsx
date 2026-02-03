@@ -1,8 +1,10 @@
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
+import { useAuth } from "../context/AuthContext";
 
 function Header() {
     const [isOpen, setIsOpen] = useState(false);
+    const { user, logout } = useAuth();
 
     return (
         <>
@@ -17,7 +19,16 @@ function Header() {
                     <NavLink to={"/agenda"}><h2 className="text-lg md:text-3xl p-2 rounded-lg">Agenda</h2></NavLink>
                     <NavLink to={"/jury"}><h2 className="text-lg md:text-3xl p-2 rounded-lg">Jury</h2></NavLink>
                     <NavLink to={"/submit"}><h2 className="text-lg md:text-3xl p-2 rounded-lg">Soumettre un film</h2></NavLink>
-                    <NavLink to="/login"><h2 className="text-lg md:text-3xl p-2 rounded-lg">Connexion</h2></NavLink>
+                    {user ? (
+                        <>
+                            <NavLink to={"/jury/me"}></NavLink>
+                            <button onClick={logout} className="text-lg md:text-3xl p-2 rounded-lg bg-red-500 hover:bg-red-700">Déconnexion</button>
+                        </>
+                    ) : (<>
+                        <NavLink to="/login"><h2 className="text-lg md:text-3xl p-2 rounded-lg">Connexion</h2></NavLink>
+                        <NavLink to="/register"><h2 className="text-lg md:text-3xl p-2 rounded-lg">Inscription</h2></NavLink>
+                    </>
+                    )}
                 </div>
 
                 <div className="flex items-center">
@@ -36,7 +47,14 @@ function Header() {
                 <NavLink to={"/agenda"}><h2 className="text-lg md:text-3xl p-2 rounded-lg">Agenda</h2></NavLink>
                 <NavLink to={"/jury"}><h2 className="text-lg md:text-3xl p-2 rounded-lg">Jury</h2></NavLink>
                 <NavLink to={"/submit"}><h2 className="text-lg md:text-3xl p-2 rounded-lg">Soumettre un film</h2></NavLink>
-                <NavLink to="/login"><h2 className="text-lg md:text-3xl p-2 rounded-lg">Connexion</h2></NavLink>
+                {user ? (
+                    <>
+                        <NavLink to={"/jury/me"}><p className="text-lg md:text-3xl">Bienvenue, {user.firstname}</p></NavLink>
+                        <button onClick={logout} className="text-lg md:text-3xl p-2 rounded-lg bg-red-500 hover:bg-red-700">Déconnexion</button>
+                    </>
+                ) : (
+                    <NavLink to="/login"><h2 className="text-lg md:text-3xl p-2 rounded-lg">Connexion</h2></NavLink>
+                )}
             </div>
         </>
     );
