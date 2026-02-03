@@ -15,20 +15,29 @@ function Header() {
 
                 {/* Desktop Navigation */}
                 <div className="hidden md:flex flex-row items-center justify-around gap-15 md:gap-10 text-left">
-                    <NavLink to={"/galery"}><h2 className="text-lg md:text-3xl p-2 rounded-lg">Galerie</h2></NavLink>
-                    <NavLink to={"/agenda"}><h2 className="text-lg md:text-3xl p-2 rounded-lg">Agenda</h2></NavLink>
-                    <NavLink to={"/jury"}><h2 className="text-lg md:text-3xl p-2 rounded-lg">Jury</h2></NavLink>
-                    <NavLink to={"/submit"}><h2 className="text-lg md:text-3xl p-2 rounded-lg">Soumettre un film</h2></NavLink>
+                    <NavLink to={"/galery"}><h2 className="text-lg md:text-xl p-2 rounded-lg">Galerie</h2></NavLink>
+                    <NavLink to={"/agenda"}><h2 className="text-lg md:text-xl p-2 rounded-lg">Agenda</h2></NavLink>
+                    <NavLink to={"/jury"}><h2 className="text-lg md:text-xl p-2 rounded-lg">Jury</h2></NavLink>
+                    <NavLink to={"/submit"}><h2 className="text-lg md:text-xl p-2 rounded-lg">Soumettre un film</h2></NavLink>
                     {user ? (
-                        <>
-                            <NavLink to={"/jury/me"}></NavLink>
-                            <button onClick={logout} className="text-lg md:text-3xl p-2 rounded-lg bg-red-500 hover:bg-red-700">Déconnexion</button>
-                        </>
-                    ) : (<>
-                        <NavLink to="/login"><h2 className="text-lg md:text-3xl p-2 rounded-lg">Connexion</h2></NavLink>
-                        <NavLink to="/register"><h2 className="text-lg md:text-3xl p-2 rounded-lg">Inscription</h2></NavLink>
-                    </>
-                    )}
+                        user.role === "JURY" ? (
+                            <>
+                                <NavLink to={"/jury/me"}><h2 className="text-lg md:text-xl p-2 rounded-lg">Espace Jury</h2></NavLink>
+                                <button onClick={logout} className="text-lg md:text-xl p-2 rounded-lg bg-red-500 hover:bg-red-700">Déconnexion</button>
+                            </>
+                        ) : user.role === "ADMIN" ? (
+                            <>
+                                <NavLink to={"/dashboard"}><h2 className="text-lg md:text-xl p-2 rounded-lg">Espace Admin</h2></NavLink>
+                                <button onClick={logout} className="text-lg md:text-xl p-2 rounded-lg bg-red-500 hover:bg-red-700">Déconnexion</button>
+                            </>
+                        )
+                            : ( // User is not logged in
+                                <>
+                                    <NavLink to="/login"><h2 className="text-lg md:text-xl p-2 rounded-lg">Connexion</h2></NavLink>
+                                    <NavLink to="/register"><h2 className="text-lg md:text-xl p-2 rounded-lg">Inscription</h2></NavLink>
+                                </>
+                            ))
+                        : null}
                 </div>
 
                 <div className="flex items-center">
@@ -43,18 +52,27 @@ function Header() {
 
             {/* Mobile Navigation (toggled by hamburger) */}
             <div className={`${isOpen ? 'flex' : 'hidden'} md:hidden flex-col p-5 bg-[var(--color-brand)] text-[var(--color-white)] items-start justify-around gap-1 md:gap-10 text-left`}>
-                <NavLink to={"/galery"}><h2 className="text-lg md:text-3xl p-2 rounded-lg">Galerie</h2></NavLink>
-                <NavLink to={"/agenda"}><h2 className="text-lg md:text-3xl p-2 rounded-lg">Agenda</h2></NavLink>
-                <NavLink to={"/jury"}><h2 className="text-lg md:text-3xl p-2 rounded-lg">Jury</h2></NavLink>
-                <NavLink to={"/submit"}><h2 className="text-lg md:text-3xl p-2 rounded-lg">Soumettre un film</h2></NavLink>
+                <NavLink to={"/galery"}><h2 className="text-lg md:text-xl p-2 rounded-lg">Galerie</h2></NavLink>
+                <NavLink to={"/agenda"}><h2 className="text-lg md:text-xl p-2 rounded-lg">Agenda</h2></NavLink>
+                <NavLink to={"/jury"}><h2 className="text-lg md:text-xl p-2 rounded-lg">Jury</h2></NavLink>
+                <NavLink to={"/submit"}><h2 className="text-lg md:text-xl p-2 rounded-lg">Soumettre un film</h2></NavLink>
                 {user ? (
+                    user.role === "JURY" ? (
+                        <>
+                            <NavLink to={"/jury/me"}><h2 className="text-lg md:text-xl p-2 rounded-lg">Espace Jury</h2></NavLink>
+                            <button onClick={logout} className="text-lg md:text-xl p-2 rounded-lg bg-red-500 hover:bg-red-700">Déconnexion</button>
+                        </>
+                    ) : user.role === "ADMIN" ? (
+                        <>
+                            <NavLink to={"/dashboard"}><h2 className="text-lg md:text-xl p-2 rounded-lg">Espace Admin</h2></NavLink>
+                            <button onClick={logout} className="text-lg md:text-xl p-2 rounded-lg bg-red-500 hover:bg-red-700">Déconnexion</button>
+                        </>
+                    ) : (
                     <>
-                        <NavLink to={"/jury/me"}><p className="text-lg md:text-3xl">Bienvenue, {user.firstname}</p></NavLink>
-                        <button onClick={logout} className="text-lg md:text-3xl p-2 rounded-lg bg-red-500 hover:bg-red-700">Déconnexion</button>
+                        <NavLink to="/login"><h2 className="text-lg md:text-xl p-2 rounded-lg">Connexion</h2></NavLink>
+                        <NavLink to="/register"><h2 className="text-lg md:text-xl p-2 rounded-lg">Inscription</h2></NavLink>
                     </>
-                ) : (
-                    <NavLink to="/login"><h2 className="text-lg md:text-3xl p-2 rounded-lg">Connexion</h2></NavLink>
-                )}
+                )) : null}
             </div>
         </>
     );
