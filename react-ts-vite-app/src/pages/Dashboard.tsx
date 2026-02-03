@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import DashboardGlobal from "../components/Dashboard/DashboardGlobal";
 import DashboardMovies from "../components/Dashboard/DashboardMovies";
+import UserDashboard from "../components/Dashboard/UserDahboard";
 
 export default function Dashboard() {
   const [data, setData] = useState([]);
@@ -22,6 +23,7 @@ export default function Dashboard() {
   }, []);
   return (
     <>
+    <UserDashboard />
       <DashboardGlobal />
       <DashboardMovies movies={data} isLoading={isLoading} />
     </>
