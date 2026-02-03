@@ -19,25 +19,22 @@ function Header() {
                     <NavLink to={"/agenda"}><h2 className="text-lg md:text-xl p-2 rounded-lg">Agenda</h2></NavLink>
                     <NavLink to={"/jury"}><h2 className="text-lg md:text-xl p-2 rounded-lg">Jury</h2></NavLink>
                     <NavLink to={"/submit"}><h2 className="text-lg md:text-xl p-2 rounded-lg">Soumettre un film</h2></NavLink>
-                    {user ? (
-                        user.role === "JURY" ? (
-                            <>
-                                <NavLink to={"/jury/me"}><h2 className="text-lg md:text-xl p-2 rounded-lg">Espace Jury</h2></NavLink>
-                                <button onClick={logout} className="text-lg md:text-xl p-2 rounded-lg bg-red-500 hover:bg-red-700">Déconnexion</button>
-                            </>
-                        ) : user.role === "ADMIN" ? (
-                            <>
-                                <NavLink to={"/dashboard"}><h2 className="text-lg md:text-xl p-2 rounded-lg">Espace Admin</h2></NavLink>
-                                <button onClick={logout} className="text-lg md:text-xl p-2 rounded-lg bg-red-500 hover:bg-red-700">Déconnexion</button>
-                            </>
-                        )
-                            : ( // User is not logged in
-                                <>
-                                    <NavLink to="/login"><h2 className="text-lg md:text-xl p-2 rounded-lg">Connexion</h2></NavLink>
-                                    <NavLink to="/register"><h2 className="text-lg md:text-xl p-2 rounded-lg">Inscription</h2></NavLink>
-                                </>
-                            ))
-                        : null}
+                    {user && user.role === "JURY" ? (
+                        <>
+                            <NavLink to={"/jury/me"}><h2 className="text-lg md:text-xl p-2 rounded-lg">Espace Jury</h2></NavLink>
+                            <button onClick={logout} className="text-lg md:text-xl p-2 rounded-lg bg-red-500 hover:bg-red-700">Déconnexion</button>
+                        </>
+                    ) : user && user.role === "ADMIN" ? (
+                        <>
+                            <NavLink to={"/dashboard"}><h2 className="text-lg md:text-xl p-2 rounded-lg">Espace Admin</h2></NavLink>
+                            <button onClick={logout} className="text-lg md:text-xl p-2 rounded-lg bg-red-500 hover:bg-red-700">Déconnexion</button>
+                        </>
+                    ) : (
+                        <>
+                            <NavLink to="/login"><h2 className="text-lg md:text-xl p-2 rounded-lg">Connexion</h2></NavLink>
+                            <NavLink to="/register"><h2 className="text-lg md:text-xl p-2 rounded-lg">Inscription</h2></NavLink>
+                        </>
+                    )}
                 </div>
 
                 <div className="flex items-center">
@@ -56,23 +53,23 @@ function Header() {
                 <NavLink to={"/agenda"}><h2 className="text-lg md:text-xl p-2 rounded-lg">Agenda</h2></NavLink>
                 <NavLink to={"/jury"}><h2 className="text-lg md:text-xl p-2 rounded-lg">Jury</h2></NavLink>
                 <NavLink to={"/submit"}><h2 className="text-lg md:text-xl p-2 rounded-lg">Soumettre un film</h2></NavLink>
-                {user ? (
-                    user.role === "JURY" ? (
-                        <>
-                            <NavLink to={"/jury/me"}><h2 className="text-lg md:text-xl p-2 rounded-lg">Espace Jury</h2></NavLink>
-                            <button onClick={logout} className="text-lg md:text-xl p-2 rounded-lg bg-red-500 hover:bg-red-700">Déconnexion</button>
-                        </>
-                    ) : user.role === "ADMIN" ? (
-                        <>
-                            <NavLink to={"/dashboard"}><h2 className="text-lg md:text-xl p-2 rounded-lg">Espace Admin</h2></NavLink>
-                            <button onClick={logout} className="text-lg md:text-xl p-2 rounded-lg bg-red-500 hover:bg-red-700">Déconnexion</button>
-                        </>
-                    ) : (
+                {user && user.role === "JURY" ? (
+                    <>
+                        <NavLink to={"/jury/me"}><h2 className="text-lg md:text-xl p-2 rounded-lg">Espace Jury</h2></NavLink>
+                        <button onClick={logout} className="text-lg md:text-xl p-2 rounded-lg bg-red-500 hover:bg-red-700">Déconnexion</button>
+                    </>
+                ) : user && user.role === "ADMIN" ? (
+                    <>
+                        <NavLink to={"/dashboard"}><h2 className="text-lg md:text-xl p-2 rounded-lg">Espace Admin</h2></NavLink>
+                        <button onClick={logout} className="text-lg md:text-xl p-2 rounded-lg bg-red-500 hover:bg-red-700">Déconnexion</button>
+                    </>
+                ) : (
                     <>
                         <NavLink to="/login"><h2 className="text-lg md:text-xl p-2 rounded-lg">Connexion</h2></NavLink>
                         <NavLink to="/register"><h2 className="text-lg md:text-xl p-2 rounded-lg">Inscription</h2></NavLink>
                     </>
-                )) : null}
+
+                )}
             </div>
         </>
     );

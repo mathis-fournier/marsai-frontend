@@ -17,20 +17,6 @@ import { AuthProvider } from "./context/AuthContext.tsx";
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <BrowserRouter>
-      <Header />
-      <Routes>
-        <Route path="/" element={<App />} />
-        <Route path="/agenda" element={<Agenda />} />
-        <Route path="/submit" element={<SubmitMovie />} />
-
-        <Route path="/event/:id" element={<EventDetails />} />
-
-        <Route path='/register' element={<Register />} />
-        <Route path="*" element={<NotFound />} />
-        {/* 
-          <Route path='/movies' element={<Movies />} />
-          <Route path='/movies/:id' element={<MovieDetails />} />
-          <Route path='/agenda' element={<Agenda />} />
       <AuthProvider>
         <Header />
         <HeroBanner />
