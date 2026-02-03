@@ -5,8 +5,10 @@ function App() {
 
   return (
     <>
+      <HeroBanner />
       <Festival />
     </>
   )
+
 }
 export default App
