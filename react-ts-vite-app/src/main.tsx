@@ -23,7 +23,7 @@ createRoot(document.getElementById("root")!).render(
           <Route path="/" element={<App />} />
           <Route path="/agenda" element={<Agenda />} />
           <Route path="/submit" element={<SubmitMovie />} />
-          <Route path="/event/:id" element={<EventDetails />} />
+          {/* <Route path="/event/:id" element={<EventDetails />} /> */}
           <Route path='/register' element={<Register />} />
           <Route path='/login' element={<Login />} />
           <Route path="*" element={<NotFound />} />
