@@ -11,6 +11,9 @@ import EventDetails from "./components/EventDetails.tsx";
 import Dashboard from "./pages/Dashboard.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import Register from "./pages/Register.tsx";
+import Login from "./pages/Login.tsx";
+import HeroBanner from "./components/HeroBanner.tsx";
+import { AuthProvider } from "./context/AuthContext.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -29,19 +32,33 @@ createRoot(document.getElementById("root")!).render(
           <Route path='/movies' element={<Movies />} />
           <Route path='/movies/:id' element={<MovieDetails />} />
           <Route path='/agenda' element={<Agenda />} />
+      <AuthProvider>
+        <Header />
+        <HeroBanner />
+
+        <Routes>
+          <Route path="/" element={<App />} />
+          <Route path="/agenda" element={<Agenda />} />
+          <Route path="/submit" element={<SubmitMovie />} />
+          <Route path='/register' element={<Register />} />
           <Route path='/login' element={<Login />} />
-          <Route path='/submit' element={<Submit />} />
-          <Route path='/jury' element={<Jury />} />
-          <Route path='/jury-members' element={<JuryMembers />} />
-          <Route path='dashboard' element={<Dashboard />} />
-          <Route path='dashboard/movies' element={<DashboardMovies />} />
-          <Route path='dashboard/jury' element={<DashboardJury />} />
-          <Route path='dashboard/results' element={<DashboardResults />} />
-          <Route path='dashboard/events' element={<DashboardEvents />} />
-          <Route path='dashboard/config' element={<DashboardConfig />} />
-          */}
-      </Routes>
-      <Footer />
+          {/* <Route path='/jury' element={<JuryMembers />} />
+          <Route path='/jury/me' element={<JuryDashboard />} /> */}
+          <Route path="*" element={<NotFound />} />
+          {/* 
+            <Route path='/movies' element={<Movies />} />
+            <Route path='/movies/:id' element={<MovieDetails />} />
+            <Route path='dashboard' element={<Dashboard />} />
+            <Route path='/agenda' element={<Agenda />} />
+            <Route path='dashboard/movies' element={<DashboardMovies />} />
+            <Route path='dashboard/jury' element={<DashboardJury />} />
+            <Route path='dashboard/results' element={<DashboardResults />} />
+            <Route path='dashboard/events' element={<DashboardEvents />} />
+            <Route path='dashboard/config' element={<DashboardConfig />} />
+            */}
+        </Routes>
+        <Footer />
+      </AuthProvider>
     </BrowserRouter>
   </StrictMode>,
 );
