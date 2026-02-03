@@ -10,9 +10,9 @@ export default function Dashboard() {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-const { user }  = useAuth();
+const { user, token }  = useAuth();
   
-  if (!user || (user.role !== "ADMIN")) {
+  if (!user || !token || (user.role !== "ADMIN")) {
     return (
       <AccessDenied />
     )
