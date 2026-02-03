@@ -8,7 +8,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Agenda from "./pages/Agenda.tsx";
 import SubmitMovie from "./pages/SubmitMovie.tsx";
 import EventDetails from "./components/EventDetails.tsx";
-import NotFound from "./pages/NotFound.tsx";
+import NotFound from "./components/NotFound.tsx";
 import Register from "./pages/Register.tsx";
 import Login from "./pages/Login.tsx";
 import HeroBanner from "./components/HeroBanner.tsx";
@@ -20,7 +20,6 @@ createRoot(document.getElementById("root")!).render(
     <BrowserRouter>
       <AuthProvider>
         <Header />
-        <HeroBanner />
         <Routes>
           <Route path="/" element={<App />} />
           <Route path="/agenda" element={<Agenda />} />

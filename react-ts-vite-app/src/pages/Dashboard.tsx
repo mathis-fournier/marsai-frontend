@@ -2,10 +2,22 @@ import { useEffect, useState } from "react";
 import DashboardGlobal from "../components/Dashboard/DashboardGlobal";
 import DashboardMovies from "../components/Dashboard/DashboardMovies";
 import UserDashboard from "../components/Dashboard/UserDahboard";
+import { useAuth } from "../context/AuthContext";
+import AccessDenied from "../components/AccessDenied";
 
 export default function Dashboard() {
+
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+
+const { user, token }  = useAuth();
+  
+  if (!user || !token || (user.role !== "ADMIN")) {
+    return (
+      <AccessDenied />
+    )
+  }
+
   useEffect(() => {
     fetch(`${import.meta.env.VITE_API_URL}/movies/all`)
       .then((res) => {
@@ -21,6 +33,10 @@ export default function Dashboard() {
         console.log(err);
       });
   }, []);
+
+
+
+
   return (
     <>
     <UserDashboard />
