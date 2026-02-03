@@ -1,3 +1,5 @@
+import { useTranslation } from "react-i18next";
+
 interface WorkshopCardProps {
   title: string;
   description?: string;
@@ -7,10 +9,12 @@ interface WorkshopCardProps {
 
 export default function WorkshopCard({
   title,
-  description = "Aucune description fournie.",
+  description,
   remainingSeats = 0,
   link = "#",
 }: WorkshopCardProps) {
+  const { t } = useTranslation();
+
   return (
     <a
       href={link}
@@ -19,15 +23,14 @@ export default function WorkshopCard({
       <h5 className="mb-3 text-2xl font-bold tracking-tight text-white leading-8">
         {title}
       </h5>
-      <p className="text-white/80 mb-[5%]">{description}</p>
+      <p className="text-white/80 mb-[5%]">{description || t('workshop_card.no_description')}</p>
 
       <div className="flex items-center gap-4">
         <button className="bg-white hover:bg-slate-200 text-black rounded-xl font-bold font-mono tracking-widest p-3 transition-colors">
-          RESERVER MA PLACE
+          {t('workshop_card.book_button')}
         </button>
         <p className="text-white text-sm">
-          {remainingSeats} place{remainingSeats > 1 ? "s" : ""} restante
-          {remainingSeats > 1 ? "s" : ""}
+          {t('workshop_card.remaining_seats', { count: remainingSeats })}
         </p>
       </div>
     </a>

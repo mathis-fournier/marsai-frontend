@@ -1,4 +1,8 @@
+import { useTranslation } from "react-i18next";
+
 export default function DashboardMovieCard({ gridLayout, movie }: any) {
+  const { t } = useTranslation();
+
   return (
     <div
       onClick={() => console.log("test")}
@@ -13,7 +17,7 @@ export default function DashboardMovieCard({ gridLayout, movie }: any) {
       </div>
 
       <div className="font-semibold text-slate-800">{movie.english_title}</div>
-      <div className="hidden md:block text-slate-600">placeholder auteur</div>
+      <div className="hidden md:block text-slate-600">{t('dashboard_movie_card.author_placeholder')}</div>
       <div className="hidden md:block">
         {/* label validé / en attente / ect*/}
         <span className="px-2 py-1 bg-green-100 text-green-700 rounded-full text-xs">

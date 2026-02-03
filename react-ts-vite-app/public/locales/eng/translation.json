@@ -1,0 +1,291 @@
+{
+  "welcome": "Welcome to MarsAi",
+  "header": {
+    "gallery": "Gallery",
+    "agenda": "Agenda",
+    "jury": "Jury",
+    "submit": "Submit a film",
+    "jurySpace": "Jury area",
+    "adminSpace": "Admin area",
+    "login": "Login",
+    "register": "Register",
+    "logout": "Logout"
+  },
+  "footer": {
+    "description": "A co-creation of the digital school La Plateforme and the Mobile Film Festival. Together to draw the new horizons of cinema.",
+    "legal": "Legal notices",
+    "press": "Press",
+    "contact": "Contact",
+    "copyright": "© 2026 MarsAI. All rights reserved."
+  },
+  "newsletter": {
+    "title": "Stay connected",
+    "email_placeholder": "Your email",
+    "subscribe_button": "Subscribe"
+  },
+  "festival": {
+    "project": {
+      "title": "THE MARS AI PROJECT",
+      "description": "A unique hybrid event in France, bringing together the best of generative AI and cinematographic creation.",
+      "cards": {
+        "one_minute_title": "1 MINUTE",
+        "one_minute_description": "An ultra-short format to maximize creative impact.",
+        "free_title": "FREE",
+        "free_description": "Conferences and workshops accessible to all.",
+        "for_all_title": "FOR ALL",
+        "for_all_description": "Professionals, students, and the curious are welcome.",
+        "expertise_title": "EXPERTISE",
+        "expertise_description": "Meet the world leaders in AI, international experts."
+      }
+    },
+    "films": {
+      "title": "FILMS IN COMPETITION",
+      "description": "Discover a selection of pioneering works that explore the new frontiers of imagination assisted by Artificial Intelligence.",
+      "selection_preview": "Selection preview",
+      "see_all_button": "See all films"
+    },
+    "objectives": {
+      "title": "FESTIVAL OBJECTIVES",
+      "cards": {
+        "human_title": "THE HUMAN AT THE CENTER",
+        "human_description": "Promote innovation in the field of generative AI and cinematographic creation.",
+        "creative_challenge_title": "CREATIVE CHALLENGE",
+        "creative_challenge_description": "Foster exchange between creators, experts, and enthusiasts.",
+        "desirable_futures_title": "DESIRABLE FUTURES",
+        "desirable_futures_description": "Discover the new frontiers of imagination assisted by Artificial Intelligence."
+      }
+    },
+    "format": {
+      "title": "SELECTION FORMAT",
+      "subtitle": "The journey of a work",
+      "cards": {
+        "months_title": "2 MONTHS",
+        "months_subtitle": "CALL FOR PROJECTS",
+        "films_title": "50 FILMS",
+        "films_subtitle": "OFFICIAL SELECTION",
+        "web_title": "WEB AND NETWORKS",
+        "web_subtitle": "DIGITAL BROADCAST",
+        "festival_title": "FESTIVAL",
+        "festival_subtitle": "CINEMA ROOMS"
+      },
+      "participate_button": "Participate"
+    },
+    "conferences": {
+      "title": "TWO DAYS OF FREE CONFERENCES",
+      "description": "Immerse yourself in the heart of the latest advances in generative AI with world-renowned experts, live demonstrations, and interactive workshops.",
+      "list": {
+        "item1": "Engaged debates on ethics and the future",
+        "item2": "Confrontations of ideas between artists and technicians",
+        "item3": "Stimulating questions about creation"
+      },
+      "cards": {
+        "screenings_title": "SCREENINGS",
+        "screenings_description": "Films in and out of competition on a giant screen.",
+        "workshops_title": "WORKSHOPS",
+        "workshops_description": "Screenwriting, creation, and post-production with AI experts.",
+        "awards_title": "AWARDS CEREMONY",
+        "awards_description": "Renowned filmmakers, actors, and creators to reward excellence."
+      }
+    },
+    "night": {
+      "title": "MARS A.I. NIGHT",
+      "date": "June 13",
+      "time": "From 7 p.m.",
+      "subtitle": "Electro Party",
+      "description": "An immersive sound and visual experience.",
+      "get_pass_button": "Get my pass"
+    },
+    "location": {
+      "title": "THE VENUE",
+      "cards": {
+        "platform_title": "LA PLATEFORME",
+        "platform_subtitle": "(ex-Docks-des-Suds)",
+        "platform_description": "4,000 m² of modular spaces in the center of Marseille, at the heart of the digital ecosystem.",
+        "sugars_room_title": "SALLE DES SUCRES",
+        "sugars_room_description": "Future sanctuary for conferences and the Mars.A.I. awards ceremony. A majestic space combining heritage and technology.",
+        "plaza_room_title": "SALLE PLAZA",
+        "plaza_room_description": "The epicenter of the festival: reception, entertainment, workshops, and catering. The meeting point for all participants."
+      }
+    },
+    "partners": {
+      "title": "PARTNERS & SPONSORS"
+    }
+  },
+  "login": {
+    "title": "Login Information",
+    "email_label": "Email address",
+    "email_placeholder": "Email address...",
+    "password_label": "Password",
+    "password_placeholder": "Password...",
+    "login_button": "Login"
+  },
+  "register": {
+    "title": "Personal Information",
+    "subtitle": "This information will be displayed publicly on the platform.",
+    "firstname_label": "First name",
+    "firstname_placeholder": "Ex: John",
+    "lastname_label": "Last name",
+    "lastname_placeholder": "Ex: Doe",
+    "email_label": "Email address",
+    "email_placeholder": "Email address...",
+    "password_label": "Password",
+    "password_placeholder": "Password...",
+    "confirm_password_label": "Confirm password",
+    "confirm_password_placeholder": "Confirm password...",
+    "register_button": "Register",
+    "alert": {
+      "password_mismatch": "Passwords do not match.",
+      "success": "Registration successful!",
+      "error": "Error during registration.",
+      "network_error": "Network error during registration."
+    }
+  },
+  "submit_movie": {
+    "page_title": "Participate to the Festival",
+    "form_legend": "Submit a movie",
+    "title": "Movie Information",
+    "subtitle": "This information will be displayed publicly on the platform.",
+    "original_title_label": "Original Title",
+    "original_title_placeholder": "Ex: Le Réveil",
+    "english_title_label": "English Title",
+    "english_title_placeholder": "Ex: The Awakening",
+    "original_synopsis_label": "Original Synopsis",
+    "original_synopsis_placeholder": "Summary in the original language...",
+    "english_synopsis_label": "English Synopsis",
+    "english_synopsis_placeholder": "Summary in English...",
+    "cover_photo_label": "Movie Poster (Cover)",
+    "upload_file_label": "Upload a file",
+    "drag_and_drop_label": "or drag and drop",
+    "file_types_label": "PNG, JPG, GIF up to 10MB",
+    "file_selected_label": "File selected: {{fileName}}",
+    "technical_details_title": "Technical Details",
+    "technical_details_subtitle": "Links, duration, and creation tools.",
+    "youtube_url_label": "YouTube Link",
+    "duration_label": "Duration (seconds)",
+    "original_language_label": "Original Language",
+    "creative_process_label": "Creative Process",
+    "creative_process_placeholder": "How did you make this film?",
+    "ia_tools_label": "AI Tools Used",
+    "ia_tools_placeholder": "Midjourney, Runway, Pika...",
+    "options_title": "Options",
+    "options_subtitle": "Specific production characteristics.",
+    "hybrid_production_label": "Hybrid Production",
+    "hybrid_production_description": "Check if the film mixes AI and live action.",
+    "subs_included_label": "Subtitles Included",
+    "subs_included_description": "Does the video file already contain subtitles?",
+    "cancel_button": "Cancel",
+    "save_button": "Save movie",
+    "message": {
+      "sending": "Sending...",
+      "http_error": "HTTP Error: {{status}}",
+      "success": "Success! Movie added with ID: {{id}}",
+      "error": "Error: {{message}}"
+    }
+  },
+  "acces": {
+    "title": "ACCESS",
+    "public_transport_title": "Public transport",
+    "public_transport_description": "Tram T2 - Arenc Le Silo stop. Metro M2 - Désirée Clary station.",
+    "car_title": "Car",
+    "car_description": "A55 motorway - Exit 2. Indigo Quai Du Lazaret car park at 500m.",
+    "address_title": "Address",
+    "address_description": "12 Rue D'Uzes, 13002 Marseille."
+  },
+  "access_denied": {
+    "title": "Access denied",
+    "description": "You do not have the necessary permissions to access this page."
+  },
+  "not_found": {
+    "title": "Page Not Found",
+    "description": "The page you are looking for does not exist."
+  },
+  "dashboard": {
+    "error_status": "Error Status: {{status}}"
+  },
+  "dashboard_global": {
+    "title": "ADMIN MANAGEMENT",
+    "subtitle": "OVERVIEW",
+    "description": "Detailed analysis of progress and performance indicators",
+    "card": {
+      "objective": "OBJECTIVE: {{count}}",
+      "films_evaluated": "{{count}} FILMS EVALUATED BY THE JURY",
+      "completed": "{{percentage}}% completed",
+      "active_accounts": "{{count}} ACTIVE DIRECTOR ACCOUNTS",
+      "today": "+{{count}} today"
+    }
+  },
+  "dashboard_movies": {
+    "loading": "Loading movies...",
+    "title": "Admin Management",
+    "subtitle": "SUBMITTED FILMS",
+    "description": "Manage all submissions and manage features.",
+    "search_placeholder": "Search for a film..."
+  },
+  "user_dashboard": {
+    "title": "User Area",
+    "table": {
+      "name": "Name",
+      "firstname": "First name",
+      "email": "Email",
+      "role": "Role",
+      "action": "Action"
+    },
+    "button": {
+      "promote_jury": "Promote Jury",
+      "promote_admin": "Promote Admin",
+      "delete": "Delete account"
+    }
+  },
+  "dashboard_movie_card": {
+    "author_placeholder": "author placeholder"
+  },
+  "hero_banner": {
+    "title_part1": "IMAGINE",
+    "title_part2": "DESIRABLE",
+    "title_part3": "FUTURES",
+    "subtitle": "The international festival of 60-second short films made by AI.",
+    "participate_button": "Participate",
+    "learn_more_button": "Learn more"
+  },
+  "movies_thumbnails": {
+    "loading": "Loading...",
+    "error": "Error: {{error}}",
+    "error_status": "Error Status: {{status}}",
+    "image_placeholder": "Movie image",
+    "no_synopsis": "No synopsis found."
+  },
+  "workshop": {
+    "loading": "Loading...",
+    "error": "Error: {{error}}",
+    "error_status": "Error Status: {{status}}",
+    "title": "WORKSHOPS",
+    "subtitle": "CREATIVE AI",
+    "description": "Discover our intensive training courses to master the new tools of artificial intelligence."
+  },
+  "workshop_card": {
+    "no_description": "No description provided.",
+    "book_button": "BOOK MY SEAT",
+    "remaining_seats_one": "{{count}} seat remaining",
+    "remaining_seats_other": "{{count}} seats remaining"
+  },
+  "event_grid": {
+    "search_placeholder": "Search",
+    "empty_message": "No events available.",
+    "no_date": "Date not specified"
+  },
+  "event_details": {
+    "error_status": "Error Status: {{status}}",
+    "back_button": "Back",
+    "start_at": "Start at: {{date}}",
+    "unavailable": "Event unavailable"
+  },
+  "agenda": {
+    "loading": "Loading...",
+    "error": "Error: {{error}}",
+    "error_status": "Error Status: {{status}}",
+    "date": "JUNE 13, 2026",
+    "location": "MARSEILLE",
+    "program_title": "CONFERENCE PROGRAM",
+    "no_events": "No events are scheduled for the moment."
+  }
+}

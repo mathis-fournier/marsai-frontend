@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 export interface EventItem {
   id: string | number;
@@ -15,8 +16,9 @@ interface EventGridProps {
 
 export default function EventGrid({
   events = [],
-  emptyMessage = "Aucun événement disponible.",
+  emptyMessage,
 }: EventGridProps) {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const [query, setQuery] = useState("");
 
@@ -24,17 +26,19 @@ export default function EventGrid({
     e.title.toLowerCase().includes(query.toLowerCase()),
   );
 
+  const finalEmptyMessage = emptyMessage || t('event_grid.empty_message');
+
   return (
     <div className=" mx-auto p-6">
       <input
         type="text"
-        placeholder="Search"
+        placeholder={t('event_grid.search_placeholder')}
         className="w-full p-3 border rounded-md outline-none focus:ring-2 focus:ring-blue-500 mb-6"
         onChange={(e) => setQuery(e.target.value)}
       />
 
       {!filtered.length ? (
-        <div className="text-center p-12 text-slate-500">{emptyMessage}</div>
+        <div className="text-center p-12 text-slate-500">{finalEmptyMessage}</div>
       ) : (
         <div className="grid grid-cols-1 gap-6">
           {filtered.map((event) => (
@@ -56,7 +60,7 @@ export default function EventGrid({
                 <p className="mt-2 text-sm text-slate-600">
                   {event.start_at
                     ? new Date(event.start_at).toLocaleDateString("fr-FR")
-                    : "Date non spécifiée"}
+                    : t('event_grid.no_date')}
                 </p>
               </div>
             </div>

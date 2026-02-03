@@ -1,11 +1,15 @@
+import { useTranslation } from "react-i18next";
+
 export default function DashboardGlobal() {
+  const { t } = useTranslation();
+
   return (
     <>
       <div className="w-auto p-6 bg-[var(--color-bg2)]">
-        <h2 className="text-blue-400 text-2xl font-mono">ADMIN MANAGEMENT</h2>
-        <h1 className="text-4xl font-bold">VUE D'ENSEMBLE</h1>
+        <h2 className="text-blue-400 text-2xl font-mono">{t('dashboard_global.title')}</h2>
+        <h1 className="text-4xl font-bold">{t('dashboard_global.subtitle')}</h1>
         <p className="italic">
-          Analyse détaillée de la progression et des indicateurs de performance
+          {t('dashboard_global.description')}
         </p>
       </div>
 
@@ -20,14 +24,14 @@ export default function DashboardGlobal() {
               alt="placeholderlogo"
             />
             <p className="bg-slate-200 font-bold text-xs ml-auto text-blue-500 p-2 rounded-full">
-              OBJECTIF : 600
+              {t('dashboard_global.card.objective', { count: 600 })}
             </p>
           </div>
           <div>
-            <p className="font-mono">432 FILMS EVALUES PAR LE JURY</p>
+            <p className="font-mono">{t('dashboard_global.card.films_evaluated', { count: 432 })}</p>
           </div>
           <div className="mt-6">
-            <p>x% complété</p>
+            <p>{t('dashboard_global.card.completed', { percentage: 'x' })}</p>
             <p className="overflow-hidden text-clip text-xs text-blue-400 bg-blue-400 rounded-full">
               ---------------|----------------------------
             </p>
@@ -43,14 +47,14 @@ export default function DashboardGlobal() {
               alt="placeholderlogo"
             />
             <p className="bg-slate-200 font-bold text-xs ml-auto text-blue-500 p-2 rounded-full">
-              OBJECTIF : 600
+              {t('dashboard_global.card.objective', { count: 600 })}
             </p>
           </div>
           <div>
-            <p className="font-mono">432 FILMS EVALUES PAR LE JURY</p>
+            <p className="font-mono">{t('dashboard_global.card.films_evaluated', { count: 432 })}</p>
           </div>
           <div className="mt-6">
-            <p>x% complété</p>
+            <p>{t('dashboard_global.card.completed', { percentage: 'x' })}</p>
             <p className="overflow-hidden text-clip text-xs text-blue-400 bg-blue-400 rounded-full">
               ---------------|----------------------------
             </p>
@@ -66,14 +70,14 @@ export default function DashboardGlobal() {
               alt="placeholderlogo"
             />
             <p className="bg-slate-200 font-bold text-xs ml-auto text-blue-500 p-2 rounded-full">
-              OBJECTIF : 600
+              {t('dashboard_global.card.objective', { count: 600 })}
             </p>
           </div>
           <div>
-            <p className="font-mono">432 FILMS EVALUES PAR LE JURY</p>
+            <p className="font-mono">{t('dashboard_global.card.films_evaluated', { count: 432 })}</p>
           </div>
           <div className="mt-6">
-            <p>x% complété</p>
+            <p>{t('dashboard_global.card.completed', { percentage: 'x' })}</p>
             <p className="overflow-hidden text-clip text-xs text-blue-400 bg-blue-400 rounded-full">
               ---------------|----------------------------
             </p>
@@ -89,14 +93,14 @@ export default function DashboardGlobal() {
               alt="placeholderlogo"
             />
             <p className="bg-slate-200 font-bold text-xs ml-auto text-blue-500 p-2 rounded-full">
-              OBJECTIF : 600
+              {t('dashboard_global.card.objective', { count: 600 })}
             </p>
           </div>
           <div>
-            <p className="font-mono">432 FILMS EVALUES PAR LE JURY</p>
+            <p className="font-mono">{t('dashboard_global.card.films_evaluated', { count: 432 })}</p>
           </div>
           <div className="mt-6">
-            <p>x% complété</p>
+            <p>{t('dashboard_global.card.completed', { percentage: 'x' })}</p>
             <p className="overflow-hidden text-clip text-xs text-blue-400 bg-blue-400 rounded-full">
               ---------------|----------------------------
             </p>
@@ -114,14 +118,14 @@ export default function DashboardGlobal() {
               alt="placeholderlogo"
             />
             <p className="bg-slate-200 font-bold text-xs ml-auto text-blue-500 p-2 rounded-full">
-              OBJECTIF : 600
+              {t('dashboard_global.card.objective', { count: 600 })}
             </p>
           </div>
           <div>
-            <p className="font-mono">123 COMPTES REALISATEUR ACTIF</p>
+            <p className="font-mono">{t('dashboard_global.card.active_accounts', { count: 123 })}</p>
           </div>
           <div className="mt-6">
-            <p>+x aujourd'hui</p>
+            <p>{t('dashboard_global.card.today', { count: 'x' })}</p>
           </div>
         </div>
       </div>
