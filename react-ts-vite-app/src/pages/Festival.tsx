@@ -36,18 +36,18 @@ function Festival() {
                     <h2 className="text-2xl font-bold mb-4 text-[var(--color-white)]">▶ FORMAT DE LA SÉLÉCTION<hr /></h2>
                     <h2 className="p-5 text-center text-white text-xl md:text-2xl font-bold mb-4 my-4">Le parcours d'une oeuvre</h2>
                     <div className='grid grid-cols-2 md:flex md:flex-row md:justify-around justify-center items-center gap-5 mt-5'>
-                        <p className="flex flex-col w-35 h-35 sm:w-50 sm:h-50 border border-black shadow-lg/50 shadow-white bg-gradient-to-b from-[#e5a50a] to-[#c64600] rounded-4xl justify-center items-center text-center text-xl">📅<span className="font-bold text-center text-xl">2 MOIS</span><div className="text-sm text-[var(--color-black)]">APPEL A PROJETS</div>
+                        <div className="flex flex-col w-35 h-35 sm:w-50 sm:h-50 border border-black shadow-lg/50 shadow-white bg-gradient-to-b from-[#e5a50a] to-[#c64600] rounded-4xl justify-center items-center text-center text-xl">📅<span className="font-bold text-center text-xl">2 MOIS</span><div className="text-sm text-[var(--color-black)]">APPEL A PROJETS</div>
                             {/* <span className="text-sm/8">Promouvoir l'innovation dans le domaine de l'IA générative et de la création cinématographique.</span> */}
-                        </p>
-                        <p className="flex flex-col w-35 h-35 sm:w-50 sm:h-50 border border-black shadow-lg/50 shadow-white bg-gradient-to-b from-[#e5a50a] to-[#c64600] rounded-4xl justify-center items-center text-center text-xl">🎥<span className="font-bold text-center text-xl">50 FILMS</span><div className="text-sm text-[var(--color-black)]">SÉLECTION OFFICIELLE</div>
+                        </div>
+                        <div className="flex flex-col w-35 h-35 sm:w-50 sm:h-50 border border-black shadow-lg/50 shadow-white bg-gradient-to-b from-[#e5a50a] to-[#c64600] rounded-4xl justify-center items-center text-center text-xl">🎥<span className="font-bold text-center text-xl">50 FILMS</span><div className="text-sm text-[var(--color-black)]">SÉLECTION OFFICIELLE</div>
                             {/* <span className="text-sm/8">Favoriser l'échange entre créateurs, experts et passionnés.</span> */}
-                        </p>
-                        <p className="flex flex-col w-35 h-35 sm:w-50 sm:h-50 border border-black shadow-lg/50 shadow-white bg-gradient-to-b from-[#e5a50a] to-[#c64600] rounded-4xl justify-center items-center text-center text-xl">🌐<span className="font-bold text-center text-xl">WEB ET RESEAUX</span><div className="text-sm text-[var(--color-black)]">DIFFUSION DIGITALE</div>
+                        </div>
+                        <div className="flex flex-col w-35 h-35 sm:w-50 sm:h-50 border border-black shadow-lg/50 shadow-white bg-gradient-to-b from-[#e5a50a] to-[#c64600] rounded-4xl justify-center items-center text-center text-xl">🌐<span className="font-bold text-center text-xl">WEB ET RESEAUX</span><div className="text-sm text-[var(--color-black)]">DIFFUSION DIGITALE</div>
                             {/* <span className="text-sm/8">Découvrir les nouvelles frontières de l'imaginaire assisté par l'Intelligence Artificielle.</span> */}
-                        </p>
-                        <p className="flex flex-col w-35 h-35 sm:w-50 sm:h-50 border border-black shadow-lg/50 shadow-white bg-gradient-to-b from-[#e5a50a] to-[#c64600] rounded-4xl justify-center items-center text-center text-xl">🎊<span className="font-bold text-center text-xl">FESTIVAL</span><div className="text-sm text-[var(--color-black)]">SALLES DE CINÉMA</div>
+                        </div>
+                        <div className="flex flex-col w-35 h-35 sm:w-50 sm:h-50 border border-black shadow-lg/50 shadow-white bg-gradient-to-b from-[#e5a50a] to-[#c64600] rounded-4xl justify-center items-center text-center text-xl">🎊<span className="font-bold text-center text-xl">FESTIVAL</span><div className="text-sm text-[var(--color-black)]">SALLES DE CINÉMA</div>
                             {/* <span className="text-sm/8">Découvrir les nouvelles frontières de l'imaginaire assisté par l'Intelligence Artificielle.</span> */}
-                        </p>
+                        </div>
 
                     </div>
                     <NavLink to={"/submit"}><h2 className="text-xl my-8 text-white bg-[var(--color-primary)] text-center w-40 m-auto p-2 rounded-xl">Participer</h2></NavLink>
@@ -61,9 +61,9 @@ function Festival() {
                         <li className="text-left">Interrogations stimulantes sur la création</li>
                     </ul>
                     <div className='grid grid-cols-2 md:flex md:flex-rows md:justify-around justify-center items-center gap-5 mt-5'>
-                        <p className="flex flex-col w-35 h-35 sm:w-50 sm:h-50 border border-black shadow-lg/50 shadow-white bg-gradient-to-b from-[#e5a50a] to-[#c64600] rounded-4xl justify-center items-center text-center text-xl">🎬<span className="font-bold text-center text-xl">PROJECTIONS</span><div className="text-sm text-[var(--color-black)]"></div><span className="text-sm">Films en compétition et hors-compétition sur écran géant.</span></p>
-                        <p className="flex flex-col w-35 h-35 sm:w-50 sm:h-50 border border-black shadow-lg/50 shadow-white bg-gradient-to-b from-[#e5a50a] to-[#c64600] rounded-4xl justify-center items-center text-center text-xl">👨‍🏫<span className="font-bold text-center text-xl">WORKSHOPS</span><div className="text-sm text-[var(--color-black)]"></div><span className="text-sm">Scénario, création et post-prod avec des experts de l'IA.</span></p>
-                        <p className="flex flex-col w-70 h-35 sm:w-50 sm:h-50 border border-black shadow-lg/50 shadow-white bg-gradient-to-b from-[#e5a50a] to-[#c64600] rounded-4xl justify-center items-center text-center text-xl">🏆<span className="font-bold text-center text-xl">REMISE DES PRIX</span><div className="text-sm text-[var(--color-black)]"></div><span className="text-sm">Cinéastes, acteurs et créateurs renommés pour récompenser l'excellence.</span></p>
+                        <div className="flex flex-col w-35 h-35 sm:w-50 sm:h-50 border border-black shadow-lg/50 shadow-white bg-gradient-to-b from-[#e5a50a] to-[#c64600] rounded-4xl justify-center items-center text-center text-xl">🎬<span className="font-bold text-center text-xl">PROJECTIONS</span><div className="text-sm text-[var(--color-black)]"></div><span className="text-sm">Films en compétition et hors-compétition sur écran géant.</span></div>
+                        <div className="flex flex-col w-35 h-35 sm:w-50 sm:h-50 border border-black shadow-lg/50 shadow-white bg-gradient-to-b from-[#e5a50a] to-[#c64600] rounded-4xl justify-center items-center text-center text-xl">👨‍🏫<span className="font-bold text-center text-xl">WORKSHOPS</span><div className="text-sm text-[var(--color-black)]"></div><span className="text-sm">Scénario, création et post-prod avec des experts de l'IA.</span></div>
+                        <div className="flex flex-col w-70 h-35 sm:w-50 sm:h-50 border border-black shadow-lg/50 shadow-white bg-gradient-to-b from-[#e5a50a] to-[#c64600] rounded-4xl justify-center items-center text-center text-xl">🏆<span className="font-bold text-center text-xl">REMISE DES PRIX</span><div className="text-sm text-[var(--color-black)]"></div><span className="text-sm">Cinéastes, acteurs et créateurs renommés pour récompenser l'excellence.</span></div>
                     </div>
                 </div>
                 <h2 className="text-2xl font-bold mb-4 text-[var(--color-white)]">▶ MARS A.I. NIGHT<hr /></h2>
