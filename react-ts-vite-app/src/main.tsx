@@ -8,7 +8,6 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Agenda from "./pages/Agenda.tsx";
 import SubmitMovie from "./pages/SubmitMovie.tsx";
 import EventDetails from "./components/EventDetails.tsx";
-import Dashboard from "./pages/Dashboard.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import Register from "./pages/Register.tsx";
 import Login from "./pages/Login.tsx";
@@ -25,7 +24,7 @@ createRoot(document.getElementById("root")!).render(
         <Route path="/submit" element={<SubmitMovie />} />
 
         <Route path="/event/:id" element={<EventDetails />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+
         <Route path='/register' element={<Register />} />
         <Route path="*" element={<NotFound />} />
         {/* 
