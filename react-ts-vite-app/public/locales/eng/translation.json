@@ -21,7 +21,9 @@
   "newsletter": {
     "title": "Stay connected",
     "email_placeholder": "Your email",
-    "subscribe_button": "Subscribe"
+    "subscribe_button": "Subscribe",
+    "success_message": "Thank you for subscribing to our newsletter!",
+    "error_message": "An error occurred while subscribing. Please try again later." 
   },
   "festival": {
     "project": {
@@ -228,11 +230,13 @@
       "firstname": "First name",
       "email": "Email",
       "role": "Role",
-      "action": "Action"
+      "action": "Action",
+      "no_role": "No role assigned"
+
     },
     "button": {
       "promote_jury": "Promote Jury",
-      "promote_admin": "Promote Admin",
+      "promote_admin": "Promote Admin",       
       "delete": "Delete account"
     }
   },

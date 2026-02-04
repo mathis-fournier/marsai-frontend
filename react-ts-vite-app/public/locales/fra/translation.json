@@ -228,7 +228,8 @@
       "firstname": "Prénom",
       "email": "Email",
       "role": "Rôle",
-      "action": "Action"
+      "action": "Action",
+      "no_role": "Aucun rôle attribué"
     },
     "button": {
       "promote_jury": "Promouvoir Jury",

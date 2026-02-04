@@ -127,7 +127,7 @@ function UserDashboard() {
                                     <td className="py-3 px-4">{user.lastname}</td>
                                     <td className="py-3 px-4">{user.firstname}</td>
                                     <td className="py-3 px-4">{user.email}</td>
-                                    <td className="py-3 px-4">{user.role}</td>
+                                    <td className="py-3 px-4">{user.role ? user.role : t('user_dashboard.table.no_role')}</td>
                                     <td className="py-3 px-4">
                                         <button className="bg-yellow-200 hover:bg-yellow-700 text-black w-34 font-bold py-1 px-2 rounded" onClick={() => promoteToJury(user.id)}>{t('user_dashboard.button.promote_jury')}</button>
                                         <button className="bg-yellow-500 hover:bg-yellow-700 text-black w-34 font-bold py-1 px-2 rounded ml-2" onClick={() => promoteToAdmin(user.id)}>{t('user_dashboard.button.promote_admin')}</button>

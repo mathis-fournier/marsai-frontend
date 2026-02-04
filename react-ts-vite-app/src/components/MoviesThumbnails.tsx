@@ -3,27 +3,28 @@ import type { Movie } from "../types-interfaces/Movie";
 import { useTranslation } from "react-i18next";
 
 function MoviesThumbnails() {
-    const { t } = useTranslation();
-    // Initialisation des états
-    const [data, setData] = useState<Movie[]>([]);
-    const [isLoading, setIsLoading] = useState(true);
-    const [error, setError] = useState<string | null>(null);
-  
-    useEffect(() => {
-      fetch(`${import.meta.env.VITE_API_URL}/movies/best`)
-        .then((res) => {
-          if (!res.ok) throw new Error(t('movies_thumbnails.error_status', { status: res.status }));
-          return res.json();
-        })
-        .then((data) => {
-          setData(data);
-          setIsLoading(false);
-        })
-        .catch((err) => {
-          setError(err.message);
-          setIsLoading(false);
-        });
-    }, []);
+  const { t } = useTranslation();
+
+  // Initialisation des états
+  const [data, setData] = useState<Movie[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    fetch(`${import.meta.env.VITE_API_URL}/movies/best`)
+      .then((res) => {
+        if (!res.ok) throw new Error(t('movies_thumbnails.error_status', { status: res.status }));
+        return res.json();
+      })
+      .then((data) => {
+        setData(data);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        setError(err.message);
+        setIsLoading(false);
+      });
+  }, []);
 
   if (isLoading)
     return <div className="p-10 text-center text-[var(--color-black)]">{t('movies_thumbnails.loading')}</div>;
@@ -38,6 +39,7 @@ function MoviesThumbnails() {
             key={m.id}
             className="group overflow-hidden rounded-xl border border-[var(--color-white)] bg-[var(--color-white)] shadow-sm transition-all hover:shadow-md"
           >
+
             <div className="md:w-110 md:h-60 bg-[var(--color-white)] flex items-center justify-center">
               {m.cover_image ? (
                 <img
