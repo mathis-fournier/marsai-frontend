@@ -232,9 +232,9 @@
       "no_role": "Aucun rôle attribué"
     },
     "button": {
-      "promote_jury": "Promouvoir Jury",
-      "promote_admin": "Promouvoir Admin",
-      "delete": "Supprimer compte"
+      "promote_jury": "Jury",
+      "promote_admin": "Admin",
+      "delete": "Supprimer"
     }
   },
   "dashboard_movie_card": {

@@ -235,9 +235,9 @@
 
     },
     "button": {
-      "promote_jury": "Promote Jury",
-      "promote_admin": "Promote Admin",       
-      "delete": "Delete account"
+      "promote_jury": "Jury",
+      "promote_admin": "Admin",       
+      "delete": "Delete"
     }
   },
   "dashboard_movie_card": {

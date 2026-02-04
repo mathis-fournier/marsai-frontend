@@ -106,12 +106,12 @@ function UserDashboard() {
     }, [token]);
 
     return (
-        <div className='xl:p-25'>
+        <div className=''>
 
-            <div className='bg-brand2 md:max-w-[75%] mx-auto lg:px-6 lg:pt-10 md:rounded-4xl shadow-lg/50 shadow-black mb-10'>
-                <h1 className='text-4xl text-center xl:mt-10 text-white'>{t('user_dashboard.title')}</h1>
+            <div className='bg-brand2 md:max-w-[95%] mx-auto xl:px-6 lg:pt-10 md:rounded-4xl shadow-lg/50 shadow-black mb-10'>
+                <h1 className='p-5 text-4xl text-center xl:mt-10 text-white'>{t('user_dashboard.title')}</h1>
                 <div className="overflow-x-auto">
-                    <table className='min-w-full text-white mt-10 mb-10 text-center'>
+                    <table className='min-w-full text-white mt-10 mb-10 text-center mobile-vertical-table'>
                         <thead className="bg-gray-700">
                             <tr>
                                 <th className="py-3 lg:px-4">{t('user_dashboard.table.name')}</th>
@@ -124,15 +124,14 @@ function UserDashboard() {
                         <tbody className="bg-gray-800">
                             {users.map(user => (
                                 <tr key={user.id} className="border-b border-gray-700">
-                                    <td className="py-3 px-4">{user.lastname}</td>
-                                    <td className="py-3 px-4">{user.firstname}</td>
-                                    <td className="py-3 px-4">{user.email}</td>
-                                    <td className="py-3 px-4">{user.role ? user.role : t('user_dashboard.table.no_role')}</td>
-                                    <td className="py-3 px-4">
-                                        <button className="bg-yellow-200 hover:bg-yellow-700 text-black w-34 font-bold py-1 px-2 rounded" onClick={() => promoteToJury(user.id)}>{t('user_dashboard.button.promote_jury')}</button>
-                                        <button className="bg-yellow-500 hover:bg-yellow-700 text-black w-34 font-bold py-1 px-2 rounded ml-2" onClick={() => promoteToAdmin(user.id)}>{t('user_dashboard.button.promote_admin')}</button>
-                                        <button className="bg-red-500 hover:bg-red-700 text-black w-34 font-bold py-1 px-2 rounded ml-2" onClick={() => deleteUser(user.id)}>{t('user_dashboard.button.delete')}</button>
-
+                                    <td className="py-3 px-4" data-label={t('user_dashboard.table.name')}>{user.lastname}</td>
+                                    <td className="py-3 px-4" data-label={t('user_dashboard.table.firstname')}>{user.firstname}</td>
+                                    <td className="py-3 px-4" data-label={t('user_dashboard.table.email')}>{user.email}</td>
+                                    <td className="py-3 px-4" data-label={t('user_dashboard.table.role')}>{user.role ? user.role : t('user_dashboard.table.no_role')}</td>
+                                    <td className="py-3 px-4 action-cell">
+                                        <button className="bg-yellow-200 hover:bg-yellow-700 text-black font-bold py-1 px-2 rounded" onClick={() => promoteToJury(user.id)}>{t('user_dashboard.button.promote_jury')}</button>
+                                        <button className="bg-yellow-500 hover:bg-yellow-700 text-black font-bold py-1 px-2 rounded ml-2" onClick={() => promoteToAdmin(user.id)}>{t('user_dashboard.button.promote_admin')}</button>
+                                        <button className="bg-red-500 hover:bg-red-700 text-black font-bold py-1 px-2 rounded ml-2" onClick={() => deleteUser(user.id)}>{t('user_dashboard.button.delete')}</button>
                                     </td>
                                 </tr>
                             ))}
