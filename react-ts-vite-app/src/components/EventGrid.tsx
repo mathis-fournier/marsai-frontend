@@ -26,26 +26,28 @@ export default function EventGrid({
     e.title.toLowerCase().includes(query.toLowerCase()),
   );
 
-  const finalEmptyMessage = emptyMessage || t('event_grid.empty_message');
+  const finalEmptyMessage = emptyMessage || t("event_grid.empty_message");
 
   return (
     <div className=" mx-auto p-6">
       <input
         type="text"
-        placeholder={t('event_grid.search_placeholder')}
-        className="w-full p-3 border rounded-md outline-none focus:ring-2 focus:ring-blue-500 mb-6"
+        placeholder={t("event_grid.search_placeholder")}
+        className="w-full p-3 border border-[var(--color-border)] text-[var(--color-white)] rounded-md outline-none focus:ring-2 focus:ring-blue-500 mb-6"
         onChange={(e) => setQuery(e.target.value)}
       />
 
       {!filtered.length ? (
-        <div className="text-center p-12 text-slate-500">{finalEmptyMessage}</div>
+        <div className="text-center p-12 text-slate-500">
+          {finalEmptyMessage}
+        </div>
       ) : (
         <div className="grid grid-cols-1 gap-6">
           {filtered.map((event) => (
             <div
               key={event.id}
               onClick={() => navigate(`/event/${event.id}`)}
-              className="group cursor-pointer overflow-hidden rounded-xl border bg-white shadow-sm hover:border-blue-400 transition-all"
+              className="group cursor-pointer overflow-hidden rounded-xl border border-[var(--color-border)] bg-brand2 text-[var(--color-white)] shadow-sm hover:border-[var(--color-hover)] transition-all"
             >
               {event.imageUrl && (
                 <img
@@ -57,10 +59,10 @@ export default function EventGrid({
                 <h3 className="text-lg font-bold group-hover:text-blue-600">
                   {event.title}
                 </h3>
-                <p className="mt-2 text-sm text-slate-600">
+                <p className="mt-2 text-[var(--color-text)]">
                   {event.start_at
                     ? new Date(event.start_at).toLocaleDateString("fr-FR")
-                    : t('event_grid.no_date')}
+                    : t("event_grid.no_date")}
                 </p>
               </div>
             </div>
