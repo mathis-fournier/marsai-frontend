@@ -209,6 +209,7 @@
     "card": {
       "objective": "OBJECTIF : {{count}}",
       "films_evaluated": "{{count}} FILMS EVALUES PAR LE JURY",
+      "films_submitted": "{{count}} FILMS SOUMIS",
       "completed": "{{percentage}}% complété",
       "active_accounts": "{{count}} COMPTES REALISATEUR ACTIF",
       "today": "+{{count}} aujourd'hui"
