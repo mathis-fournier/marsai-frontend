@@ -14,14 +14,49 @@
   background-color: var(--color-brand);
 } 
 
-.bg-pattern{
-  background-image: url('/temple.svg');
-  background-size: 15%;
-}
 
-.bg-img {
-  background-image: url('/marsai.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
+@media (max-width: 768px) {
+    .mobile-vertical-table thead {
+        display: none;
+    }
+    .mobile-vertical-table tr {
+        display: block;
+        border-bottom: 2px solid #374151;
+        margin-bottom: 1rem;
+        padding-bottom: 1rem;
+    }
+    .mobile-vertical-table tr:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+    .mobile-vertical-table td {
+        display: block;
+        text-align: right;
+        position: relative;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+    }
+    .mobile-vertical-table td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+        width: 45%;
+        padding-left: 1rem;
+        font-weight: bold;
+        text-align: left;
+        white-space: nowrap;
+    }
+
+    .mobile-vertical-table .action-cell {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-end;
+      gap: 0.5rem;
+      padding-top: 1rem;
+    }
+
+    .mobile-vertical-table .action-cell::before {
+      display: none;
+    }
 }
