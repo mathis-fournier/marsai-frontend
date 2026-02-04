@@ -291,5 +291,18 @@
     "location": "MARSEILLE",
     "program_title": "CONFERENCE PROGRAM",
     "no_events": "No events are scheduled for the moment."
+  },
+  "galery": { 
+    "loading": "Loading...",
+    "error": "Error: {{error}}",
+    "error_status": "Error Status: {{status}}",
+    "title": "FILM GALLERY",
+    "subtitle": "DISCOVER THE 1-MINUTE FILMS CREATED WITH AI",
+    "description": "Explore the innovative creations of filmmakers who have embraced generative AI to push the boundaries of imagination.",
+    "search_placeholder": "Search for a film...",
+    "previous": "Previous",
+    "next": "Next",
+    "page": "Page"
+    
   }
 }

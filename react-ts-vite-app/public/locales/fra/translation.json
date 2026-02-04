@@ -288,5 +288,17 @@
     "location": "MARSEILLE",
     "program_title": "PROGRAMME DES CONFERENCES",
     "no_events": "Aucun événement n'est prévu pour le moment."
+  },
+  "galery": {
+    "loading": "Chargement...",
+    "error": "Erreur: {{error}}",
+    "error_status": "Erreur Status: {{status}}",
+    "title": "GALERIE DE FILMS",
+    "subtitle": "DECOUVREZ LES FILMS D'1 MINUTE REALISES AVEC L'IA",
+    "description": "Explorez les créations innovantes de cinéastes ayant adopté l'IA générative pour repousser les limites de l'imaginaire.",
+    "search_placeholder": "Rechercher un film...",
+    "previous": "Précédent",
+    "next": "Suivant",
+    "page": "Page"
   }
 }
