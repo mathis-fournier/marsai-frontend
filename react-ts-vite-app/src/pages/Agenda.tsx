@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import EventGrid, { type EventItem } from "../components/EventGrid";
 import Acces from "../components/Acces";
-import Workshop from "../components/Workshop";
 import { useTranslation } from "react-i18next";
 
 function Agenda() {
@@ -13,7 +12,8 @@ function Agenda() {
   useEffect(() => {
     fetch(`${import.meta.env.VITE_API_URL}/events/all`)
       .then((res) => {
-        if (!res.ok) throw new Error(t('agenda.error_status', { status: res.status }));
+        if (!res.ok)
+          throw new Error(t("agenda.error_status", { status: res.status }));
         return res.json();
       })
       .then((data) => {
@@ -29,13 +29,13 @@ function Agenda() {
   if (isLoading)
     return (
       <div className="p-10 text-center text-[var(--color-black)]">
-        {t('agenda.loading')}
+        {t("agenda.loading")}
       </div>
     );
   if (error)
     return (
       <div className="p-10 text-center text-[var(--color-black)]">
-        {t('agenda.error', { error: error })}
+        {t("agenda.error", { error: error })}
       </div>
     );
 
@@ -43,24 +43,21 @@ function Agenda() {
     <>
       <main>
         <header className="max-w-full mx-auto px-6 pt-10">
-          <h1 className="text-4xl font-bold text-[var(--color-black)] mb-[3%]">
-            {t('agenda.date')}
-            <p className="font-bold text-blue-600">{t('agenda.location')}</p>
+          <h1 className="text-4xl font-bold text-[var(--color-white)] mb-[3%]">
+            {t("agenda.date")}
+            <p className="font-bold text-[var(--color-secondary)]">
+              {t("agenda.location")}
+            </p>
           </h1>
 
-          <h2 className="font-bold text-xl text-[var(--color-black)] underline decoration-sky-600 decoration-3 mb-6">
-            {t('agenda.program_title')}
+          <h2 className="font-bold text-xl text-[var(--color-white)] underline decoration-[var(--color-secondary)] decoration-3 mb-6">
+            {t("agenda.program_title")}
           </h2>
         </header>
 
-        <EventGrid
-          events={data}
-          emptyMessage={t('agenda.no_events')}
-        />
+        <EventGrid events={data} emptyMessage={t("agenda.no_events")} />
+        <Acces></Acces>
       </main>
-      <Acces></Acces>
-
-      <Workshop></Workshop>
     </>
   );
 }

@@ -13,16 +13,11 @@ export default function Dashboard() {
 
   const { user, token } = useAuth();
 
-  if (!user || !token || (user.role !== "ADMIN")) {
-    return (
-      <AccessDenied />
-    )
-  }
-
   useEffect(() => {
     fetch(`${import.meta.env.VITE_API_URL}/movies`)
       .then((res) => {
-        if (!res.ok) throw new Error(t('dashboard.error_status', { status: res.status }));
+        if (!res.ok)
+          throw new Error(t("dashboard.error_status", { status: res.status }));
         return res.json();
       })
       .then((data) => {
@@ -35,9 +30,9 @@ export default function Dashboard() {
       });
   }, []);
 
-
-
-
+  if (!user || !token || user.role !== "ADMIN") {
+    return <AccessDenied />;
+  }
   return (
     <>
       <UserDashboard />

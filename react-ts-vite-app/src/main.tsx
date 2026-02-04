@@ -11,7 +11,7 @@ import EventDetails from "./components/EventDetails.tsx";
 import NotFound from "./components/NotFound.tsx";
 import Register from "./pages/Register.tsx";
 import Login from "./pages/Login.tsx";
-import './i18next';
+import "./i18next";
 import { AuthProvider } from "./context/AuthContext.tsx";
 import Dashboard from "./pages/Dashboard.tsx";
 
@@ -25,9 +25,9 @@ createRoot(document.getElementById("root")!).render(
           <Route path="/agenda" element={<Agenda />} />
           <Route path="/submit" element={<SubmitMovie />} />
           <Route path="/event/:id" element={<EventDetails />} />
-          <Route path='/register' element={<Register />} />
-          <Route path='/login' element={<Login />} />
-          <Route path='dashboard' element={<Dashboard />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="*" element={<NotFound />} />
           {/* 
             <Route path='/movies' element={<Movies />} />
