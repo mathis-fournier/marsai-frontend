@@ -56,7 +56,7 @@ export default function EventGrid({
                 />
               )}
               <div className="p-5">
-                <h3 className="text-lg font-bold group-hover:text-blue-600">
+                <h3 className="text-lg font-bold group-hover:text-[var(--color-secondary)]">
                   {event.title}
                 </h3>
                 <p className="mt-2 text-[var(--color-text)]">
