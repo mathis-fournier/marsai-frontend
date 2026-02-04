@@ -22,7 +22,6 @@ export default function Dashboard() {
       })
       .then((data) => {
         setData(data);
-        console.log(data);
         setIsLoading(false);
       })
       .catch((err) => {
@@ -30,9 +29,14 @@ export default function Dashboard() {
       });
   }, []);
 
-  if (!user || !token || user.role !== "ADMIN") {
-    return <AccessDenied />;
-  }
+
+
+  if (!user || !token || (user.role !== "ADMIN")) {
+    return (
+      <AccessDenied />
+    )
+  };
+
   return (
     <>
       <UserDashboard />

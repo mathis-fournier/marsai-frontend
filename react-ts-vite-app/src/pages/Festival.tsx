@@ -1,6 +1,6 @@
 import { Link, NavLink } from 'react-router-dom'
-import MoviesThumbnails from '../components/MoviesThumbnails'
 import { useTranslation } from 'react-i18next';
+import MoviesBest from '../components/MoviesBest';
 
 function Festival() {
     const { t } = useTranslation();
@@ -31,7 +31,7 @@ function Festival() {
                     <h2 className="text-2xl font-bold mb-4 text-[var(--color-white)]">▶ {t('festival.films.title')}<hr /></h2>
                     <p className="text-white  md:text-2xl">{t('festival.films.description')}</p>
                     <h2 className="p-5 text-center text-white text-xl md:text-2xl font-bold mb-4 my-4">{t('festival.films.selection_preview')}</h2>
-                    <MoviesThumbnails />
+                    <MoviesBest />
                     <NavLink to={"/galery"}><h2 className="text-xl text-white bg-[var(--color-secondary)] text-center w-40 flex m-auto p-2 rounded-xl">{t('festival.films.see_all_button')}</h2></NavLink>
 
                 </div>

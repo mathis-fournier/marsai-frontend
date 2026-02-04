@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import type { Movie } from "../types-interfaces/Movie";
 import { useTranslation } from "react-i18next";
 
-function MoviesThumbnails() {
+function MoviesBest() {
   const { t } = useTranslation();
 
   // Initialisation des états
@@ -68,4 +68,4 @@ function MoviesThumbnails() {
   )
 }
 
-export default MoviesThumbnails
+export default MoviesBest
