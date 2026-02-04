@@ -1,4 +1,4 @@
-import HeroBanner from "../components/HeroBanner";
+import { useTranslation } from 'react-i18next';
 
 interface RegisterFormData {
     email: string;
@@ -9,6 +9,7 @@ interface RegisterFormData {
 }
 
 function Register() {
+    const { t } = useTranslation();
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -22,7 +23,7 @@ function Register() {
         };
 
         if (formData.password !== formData.confirmPassword) {
-            alert("Les mots de passe ne correspondent pas.");
+            alert(t('register.alert.password_mismatch'));
             return;
         }
 
@@ -40,25 +41,25 @@ function Register() {
         })
             .then(response => {
                 if (response.ok) {
-                    alert("Inscription réussie !");
+                    alert(t('register.alert.success'));
                 } else {
-                    alert("Erreur lors de l'inscription.");
+                    alert(t('register.alert.error'));
                 }
             })
             .catch(error => {
                 console.error("Erreur réseau :", error);
-                alert("Erreur réseau lors de l'inscription.");
+                alert(t('register.alert.network_error'));
             });
     }
     return (
         <>
-            <form onSubmit={handleSubmit} className="bg-[var(--color-brand)] md:max-w-[75%] mx-auto px-6 pt-10 md:rounded-4xl shadow-lg/50 shadow-black mb-10">
+            <form onSubmit={handleSubmit} className="bg-[var(--color-brand2)] p-25 md:max-w-[75%] mx-auto px-6 my-10 pt-10 md:rounded-4xl shadow-lg/50 shadow-black mb-10">
                 <div className="space-y-12">
                     <div className="">
                         <h2 className="text-base/7 font-semibold text-white">
-                            Informations personnelles</h2>
+                            {t('register.title')}</h2>
                         <p className="mt-1 text-sm/6 text-gray-400">
-                            Ces informations seront affichées publiquement sur la plateforme.
+                            {t('register.subtitle')}
                         </p>
 
                         <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
@@ -67,7 +68,7 @@ function Register() {
                                     htmlFor="firstname"
                                     className="block text-sm/6 font-medium text-white"
                                 >
-                                    Prénom
+                                    {t('register.firstname_label')}
                                 </label>
                                 <div className="mt-2">
                                     <div className="flex items-center rounded-md bg-white/5 pl-3 outline-1 -outline-offset-1 outline-white/10 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-500">
@@ -76,7 +77,7 @@ function Register() {
                                             type="text"
                                             name="firstname"
                                             className="block min-w-0 grow bg-transparent py-1.5 pr-3 pl-1 text-base text-white placeholder:text-gray-300 focus:outline-none sm:text-sm/6"
-                                            placeholder="Ex: Jean"
+                                            placeholder={t('register.firstname_placeholder')}
                                             required
                                         />
                                     </div>
@@ -88,7 +89,7 @@ function Register() {
                                     htmlFor="lastname"
                                     className="block text-sm/6 font-medium text-white"
                                 >
-                                    Nom de famille
+                                    {t('register.lastname_label')}
                                 </label>
                                 <div className="mt-2">
                                     <div className="flex items-center rounded-md bg-white/5 pl-3 outline-1 -outline-offset-1 outline-white/10 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-500">
@@ -97,7 +98,7 @@ function Register() {
                                             type="text"
                                             name="lastname"
                                             className="block min-w-0 grow bg-transparent py-1.5 pr-3 pl-1 text-base text-white placeholder:text-gray-300 focus:outline-none sm:text-sm/6"
-                                            placeholder="Ex: Dupont"
+                                            placeholder={t('register.lastname_placeholder')}
                                             required
                                         />
                                     </div>
@@ -108,7 +109,7 @@ function Register() {
                                     htmlFor="email"
                                     className="block text-sm/6 font-medium text-white"
                                 >
-                                    Adresse e-mail
+                                    {t('register.email_label')}
                                 </label>
                                 <div className="mt-2">
                                     <div className="flex items-center rounded-md bg-white/5 pl-3 outline-1 -outline-offset-1 outline-white/10 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-500">
@@ -117,7 +118,7 @@ function Register() {
                                             type="email"
                                             name="email"
                                             className="block min-w-0 grow bg-transparent py-1.5 pr-3 pl-1 text-base text-white placeholder:text-gray-300 focus:outline-none sm:text-sm/6"
-                                            placeholder="Adresse e-mail..."
+                                            placeholder={t('register.email_placeholder')}
                                             required
                                         />
                                     </div>
@@ -128,7 +129,7 @@ function Register() {
                                     htmlFor="password"
                                     className="block text-sm/6 font-medium text-white"
                                 >
-                                    Mot de passe
+                                    {t('register.password_label')}
                                 </label>
                                 <div className="mt-2">
                                     <input
@@ -136,7 +137,7 @@ function Register() {
                                         type="password"
                                         name="password"
                                         className="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6"
-                                        placeholder="Mot de passe..."
+                                        placeholder={t('register.password_placeholder')}
                                         required
                                     />
                                 </div>
@@ -147,7 +148,7 @@ function Register() {
                                     htmlFor="confirm_password"
                                     className="block text-sm/6 font-medium text-white"
                                 >
-                                    Confirmer le mot de passe
+                                    {t('register.confirm_password_label')}
                                 </label>
                                 <div className="mt-2">
                                     <input
@@ -155,7 +156,7 @@ function Register() {
                                         type="password"
                                         name="confirm_password"
                                         className="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6"
-                                        placeholder="Confirmer le mot de passe..."
+                                        placeholder={t('register.confirm_password_placeholder')}
                                         required
                                     />
                                 </div>
@@ -167,8 +168,8 @@ function Register() {
                 <div className="p-4 mt-6 flex items-center justify-end gap-x-6">
                     <button
                         type="submit"
-                        className="rounded-md bg-[var(--color-primary)] px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
-                    >Inscription
+                        className="rounded-md bg-[var(--color-secondary)] px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+                    >{t('register.register_button')}
                     </button>
                 </div>
             </form>

@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import type { Movie } from "../types-interfaces/Movie";
+import { useTranslation } from "react-i18next";
 
 function MoviesThumbnails() {
-
+    const { t } = useTranslation();
     // Initialisation des états
     const [data, setData] = useState<Movie[]>([]);
     const [isLoading, setIsLoading] = useState(true);
@@ -11,7 +12,7 @@ function MoviesThumbnails() {
     useEffect(() => {
       fetch(`${import.meta.env.VITE_API_URL}/movies/best`)
         .then((res) => {
-          if (!res.ok) throw new Error(`Erreur Status: ${res.status}`);
+          if (!res.ok) throw new Error(t('movies_thumbnails.error_status', { status: res.status }));
           return res.json();
         })
         .then((data) => {
@@ -25,9 +26,9 @@ function MoviesThumbnails() {
     }, []);
 
   if (isLoading)
-    return <div className="p-10 text-center text-[var(--color-black)]">Chargement...</div>;
+    return <div className="p-10 text-center text-[var(--color-black)]">{t('movies_thumbnails.loading')}</div>;
   if (error)
-    return <div className="p-10 text-center text-[var(--color-black)]">Erreur: {error}</div>;
+    return <div className="p-10 text-center text-[var(--color-black)]">{t('movies_thumbnails.error', { error: error })}</div>;
 
   return (
     <div className="max-w-4xl mx-auto p-6">
@@ -45,7 +46,7 @@ function MoviesThumbnails() {
                   className="h-full w-full object-cover"
                 />
               ) : (
-                <span className="text-[var(--color-white)]">Image du film</span>
+                <span className="text-[var(--color-white)]">{t('movies_thumbnails.image_placeholder')}</span>
               )}
             </div>
 
@@ -54,7 +55,7 @@ function MoviesThumbnails() {
                 {m.english_title}
               </h3>
               <p className="mt-2 text-[var(--color-black)] line-clamp-2 md:text-lg ">
-                {m.english_synopsis || "Aucun synopsis trouvé."}
+                {m.english_synopsis || t('movies_thumbnails.no_synopsis')}
               </p>
 
             </div>

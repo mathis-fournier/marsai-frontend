@@ -11,7 +11,7 @@ import EventDetails from "./components/EventDetails.tsx";
 import NotFound from "./components/NotFound.tsx";
 import Register from "./pages/Register.tsx";
 import Login from "./pages/Login.tsx";
-import HeroBanner from "./components/HeroBanner.tsx";
+import './i18next';
 import { AuthProvider } from "./context/AuthContext.tsx";
 import Dashboard from "./pages/Dashboard.tsx";
 

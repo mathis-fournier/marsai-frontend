@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 interface Event {
   title: string;
@@ -13,13 +14,14 @@ interface Event {
 export default function EventDetails() {
   const { id } = useParams();
   const [data, setData] = useState<Event[]>([]);
+  const { t } = useTranslation();
 
   console.log(id);
   const navigate = useNavigate();
   useEffect(() => {
     fetch(`${import.meta.env.VITE_API_URL}/events/` + id)
       .then((res) => {
-        if (!res.ok) throw new Error(`Erreur Status: ${res.status}`);
+        if (!res.ok) throw new Error(t('event_details.error_status', { status: res.status }));
         return res.json();
       })
       .then((data) => {
@@ -39,7 +41,7 @@ export default function EventDetails() {
         className="p-3 m-3 border rounded border-slate-200 hover:border-blue-400 hover:shadow-md hover:text-blue-400"
         onClick={back}
       >
-        Retour
+        {t('event_details.back_button')}
       </button>
       {data.length > 0 ? (
         <div className="m-3 w-auto text-center p-6 border border-slate-200 rounded-lg bg-white shadow-sm">
@@ -48,10 +50,10 @@ export default function EventDetails() {
           <p>{data[0].duration}h</p>
           <p>{data[0].location}</p>
           <p>{data[0].status}</p>
-          <p>Start at: {data[0].start_at}</p>
+          <p>{t('event_details.start_at', { date: data[0].start_at })}</p>
         </div>
       ) : (
-        "event indisponible"
+        t('event_details.unavailable')
       )}
     </>
   );

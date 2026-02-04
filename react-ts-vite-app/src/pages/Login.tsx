@@ -1,4 +1,5 @@
 import { useAuth } from '../context/AuthContext';
+import { useTranslation } from 'react-i18next';
 
 interface LoginFormData {
     email: string;
@@ -7,6 +8,7 @@ interface LoginFormData {
 
 function Login() {
     const { login } = useAuth();
+    const { t } = useTranslation();
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -20,11 +22,11 @@ function Login() {
 
     return (
         <>
-            <form onSubmit={handleSubmit} className="bg-[var(--color-brand)] md:max-w-[75%] mx-auto px-6 pt-10 md:rounded-4xl shadow-lg/50 shadow-black mb-10">
+            <form onSubmit={handleSubmit} className="p-25 bg-[var(--color-brand2)] md:max-w-[75%] mx-auto px-6 my-10 md:rounded-4xl shadow-lg/50 shadow-black">
                 <div className="space-y-12">
                     <div className="">
                         <h2 className="text-base/7 font-semibold text-white">
-                            Informations de connexion</h2>
+                            {t('login.title')}</h2>
 
                         <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                             <div className="sm:col-span-6">
@@ -32,7 +34,7 @@ function Login() {
                                     htmlFor="email"
                                     className="block text-sm/6 font-medium text-white"
                                 >
-                                    Adresse e-mail
+                                    {t('login.email_label')}
                                 </label>
                                 <div className="mt-2">
                                     <div className="flex items-center rounded-md bg-white/5 pl-3 outline-1 -outline-offset-1 outline-white/10 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-500">
@@ -41,7 +43,7 @@ function Login() {
                                             type="email"
                                             name="email"
                                             className="block min-w-0 grow bg-transparent py-1.5 pr-3 pl-1 text-base text-white placeholder:text-gray-300 focus:outline-none sm:text-sm/6"
-                                            placeholder="Adresse e-mail..."
+                                            placeholder={t('login.email_placeholder')}
                                             required
                                         />
                                     </div>
@@ -52,7 +54,7 @@ function Login() {
                                     htmlFor="password"
                                     className="block text-sm/6 font-medium text-white"
                                 >
-                                    Mot de passe
+                                    {t('login.password_label')}
                                 </label>
                                 <div className="mt-2">
                                     <input
@@ -60,7 +62,7 @@ function Login() {
                                         type="password"
                                         name="password"
                                         className="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6"
-                                        placeholder="Mot de passe..."
+                                        placeholder={t('login.password_placeholder')}
                                         required
                                     />
                                 </div>
@@ -69,11 +71,11 @@ function Login() {
                     </div>
                 </div>
 
-                <div className="p-4 mt-6 flex items-center justify-end gap-x-6">
+                <div className="mt-6 flex items-center justify-end gap-x-6">
                     <button
                         type="submit"
-                        className="rounded-md bg-[var(--color-primary)] px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
-                    >Connexion
+                        className="rounded-md bg-[var(--color-secondary)] px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+                    >{t('login.login_button')}
                     </button>
                 </div>
             </form>

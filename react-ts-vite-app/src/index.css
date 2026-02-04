@@ -3,15 +3,20 @@
 @theme {
   --color-brand: #364153;
   --color-primary: #0069a8;
-  --color-secondary: #8C0CDB;
+  --color-secondary: #6366f1;
+  --color-brand2: #4b5563;
 
   --color-black: #000000;
   --color-white: #ffffff;
 }
 
+:root{
+  background-color: var(--color-brand);
+} 
+
 .bg-pattern{
-    background-image: url('/temple.svg');
-    background-size: 15%;
+  background-image: url('/temple.svg');
+  background-size: 15%;
 }
 
 .bg-img {
