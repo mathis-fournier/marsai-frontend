@@ -123,86 +123,99 @@ function UserDashboard() {
   }, [token]);
 
   return (
-    <div className="pt-6">
-      <div className="bg-brand2 md:max-w-[95%] mx-auto xl:px-6 lg:pt-10 md:rounded-4xl shadow-lg/50 shadow-black mb-10">
-        <h1 className="p-5 text-4xl text-center xl:mt-10 text-white">
+    <>
+      {" "}
+      <div className="w-auto p-6 bg-[var(--color-brand)]">
+        <h2 className="text-[var(--color-secondary)] text-2xl font-mono uppercase">
           {t("user_dashboard.title")}
+        </h2>
+        <h1 className="text-4xl text-[var(--color-white)] font-bold">
+          {t("user_dashboard.subtitle")}
         </h1>
-        <div className="overflow-x-auto">
-          <table className="min-w-full text-white  mb-10 text-center mobile-vertical-table">
-            <thead className="bg-gray-700">
-              <tr>
-                <th className="py-3 lg:px-4">
-                  {t("user_dashboard.table.name")}
-                </th>
-                <th className="py-3 lg:px-4">
-                  {t("user_dashboard.table.firstname")}
-                </th>
-                <th className="py-3 lg:px-4">
-                  {t("user_dashboard.table.email")}
-                </th>
-                <th className="py-3 lg:px-4">
-                  {t("user_dashboard.table.role")}
-                </th>
-                <th className="py-3 lg:px-4">
-                  {t("user_dashboard.table.action")}
-                </th>
-              </tr>
-            </thead>
-            <tbody className="bg-gray-800">
-              {users.map((user) => (
-                <tr key={user.id} className="border-b border-gray-700">
-                  <td
-                    className="py-3 px-4"
-                    data-label={t("user_dashboard.table.name")}
-                  >
-                    {user.lastname}
-                  </td>
-                  <td
-                    className="py-3 px-4"
-                    data-label={t("user_dashboard.table.firstname")}
-                  >
-                    {user.firstname}
-                  </td>
-                  <td
-                    className="py-3 px-4"
-                    data-label={t("user_dashboard.table.email")}
-                  >
-                    {user.email}
-                  </td>
-                  <td
-                    className="py-3 px-4"
-                    data-label={t("user_dashboard.table.role")}
-                  >
-                    {user.role ? user.role : t("user_dashboard.table.no_role")}
-                  </td>
-                  <td className="py-3 px-4 action-cell">
-                    <button
-                      className="bg-yellow-200 hover:bg-yellow-700 text-black font-bold py-1 px-2 rounded"
-                      onClick={() => promoteToJury(user.id)}
-                    >
-                      {t("user_dashboard.button.promote_jury")}
-                    </button>
-                    <button
-                      className="bg-yellow-500 hover:bg-yellow-700 text-black font-bold py-1 px-2 rounded ml-2"
-                      onClick={() => promoteToAdmin(user.id)}
-                    >
-                      {t("user_dashboard.button.promote_admin")}
-                    </button>
-                    <button
-                      className="bg-red-500 hover:bg-red-700 text-black font-bold py-1 px-2 rounded ml-2"
-                      onClick={() => deleteUser(user.id)}
-                    >
-                      {t("user_dashboard.button.delete")}
-                    </button>
-                  </td>
+        <p className="italic text-[var(--color-white)] opacity-80">
+          {t("user_dashboard.description")}
+        </p>
+      </div>
+      <div className="p-6">
+        <div className="bg-brand2 rounded-md shadow-lg/50 shadow-black">
+          <div className="">
+            <table className="min-w-full text-white mb-10 text-center mobile-vertical-table">
+              <thead className="bg-gray-700">
+                <tr>
+                  <th className="py-3 lg:px-4">
+                    {t("user_dashboard.table.name")}
+                  </th>
+                  <th className="py-3 lg:px-4">
+                    {t("user_dashboard.table.firstname")}
+                  </th>
+                  <th className="py-3 lg:px-4">
+                    {t("user_dashboard.table.email")}
+                  </th>
+                  <th className="py-3 lg:px-4">
+                    {t("user_dashboard.table.role")}
+                  </th>
+                  <th className="py-3 lg:px-4">
+                    {t("user_dashboard.table.action")}
+                  </th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody className="bg-gray-800">
+                {users.map((user) => (
+                  <tr key={user.id} className="border-b border-gray-700">
+                    <td
+                      className="py-3 px-4"
+                      data-label={t("user_dashboard.table.name")}
+                    >
+                      {user.lastname}
+                    </td>
+                    <td
+                      className="py-3 px-4"
+                      data-label={t("user_dashboard.table.firstname")}
+                    >
+                      {user.firstname}
+                    </td>
+                    <td
+                      className="py-3 px-4"
+                      data-label={t("user_dashboard.table.email")}
+                    >
+                      {user.email}
+                    </td>
+                    <td
+                      className="py-3 px-4"
+                      data-label={t("user_dashboard.table.role")}
+                    >
+                      {user.role
+                        ? user.role
+                        : t("user_dashboard.table.no_role")}
+                    </td>
+                    <td className="py-3 px-4 action-cell">
+                      <button
+                        className="bg-yellow-200 hover:bg-yellow-700 text-black font-bold py-1 px-2 rounded"
+                        onClick={() => promoteToJury(user.id)}
+                      >
+                        {t("user_dashboard.button.promote_jury")}
+                      </button>
+                      <button
+                        className="bg-yellow-500 hover:bg-yellow-700 text-black font-bold py-1 px-2 rounded ml-2"
+                        onClick={() => promoteToAdmin(user.id)}
+                      >
+                        {t("user_dashboard.button.promote_admin")}
+                      </button>
+                      <button
+                        className="bg-red-500 hover:bg-red-700 text-black font-bold py-1 px-2 rounded ml-2"
+                        onClick={() => deleteUser(user.id)}
+                      >
+                        {t("user_dashboard.button.delete")}
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

@@ -227,6 +227,9 @@
   },
   "user_dashboard": {
     "title": "User Area",
+    "subtitle": "REGISTERED USER LIST",
+    "description": "Manage all users and their roles.",
+
     "table": {
       "name": "Name",
       "firstname": "First name",
