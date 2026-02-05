@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import type { Movie } from "../types-interfaces/Movie";
+import { Link } from "react-router-dom";
 
 function Galery() {
     const { t } = useTranslation();
@@ -46,12 +47,12 @@ function Galery() {
     }
 
     return (
-        <div>
-            <h1 className="text-4xl font-bold text-center text-white my-10">{t('galery.title')}</h1>
+        <div className="p-10 font-bold">
+            <h1 className="text-center bg-linear-to-r from-secondary to-red-800 bg-clip-text text-transparent text-4xl  my-10">{t('galery.title')}</h1>
             <input
                 type="text"
                 placeholder={t('galery.search_placeholder')}
-                className="w-full max-w-md mx-auto block p-2 border text-white border-gray-300 rounded-md"
+                className="w-full max-w-md mx-auto block p-2 border text-white border-orange-500 rounded-md"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
             />
@@ -61,30 +62,32 @@ function Galery() {
                         movie.english_title.toLowerCase().includes(searchTerm.toLowerCase())
                     )
                     .map((movie: any) => (
-                        <div key={movie.id} className="bg-white rounded-lg shadow-md overflow-hidden">
-                            <div className="h-48 bg-gray-200 flex items-center justify-center">
-                                {movie.cover_image ? (
-                                    <img
-                                        src={movie.cover_image}
-                                        alt={movie.english_title}
-                                        className="h-full w-full object-cover"
-                                    />
-                                ) : (
-                                    <span className="text-gray-500">{t('galery.no_image')}</span>
-                                )}
+                        <Link to={`/galery/${movie.id}`} key={movie.id} className="block">
+                            <div className="bg-white rounded-lg shadow-md overflow-hidden">
+                                <div className="h-48 bg-gray-200 flex items-center justify-center">
+                                    {movie.cover_image ? (
+                                        <img
+                                            src={movie.cover_image}
+                                            alt={movie.english_title}
+                                            className="h-full w-full object-cover"
+                                        />
+                                    ) : (
+                                        <span className="text-gray-500">{t('galery.no_image')}</span>
+                                    )}
+                                </div>
+                                <div className="p-4">
+                                    <h2 className="text-lg font-semibold">{movie.english_title}</h2>
+                                    <p className="text-gray-600 mt-2 line-clamp-3">
+                                        {movie.english_synopsis || t('galery.no_synopsis')}
+                                    </p>
+                                </div>
                             </div>
-                            <div className="p-4">
-                                <h2 className="text-lg font-semibold">{movie.english_title}</h2>
-                                <p className="text-gray-600 mt-2 line-clamp-3">
-                                    {movie.english_synopsis || t('galery.no_synopsis')}
-                                </p>
-                            </div>
-                        </div>
+                        </Link>
                     ))}
             </div>
             <div className="flex justify-center items-center my-6 gap-4">
                 <button
-                    className="px-4 py-2 bg-blue-500 text-white rounded disabled:bg-gray-400"
+                    className="px-4 py-2 bg-[var(--color-brand)] hover:bg-[var(--color-secondary)] text-white rounded disabled:bg-gray-400"
                     onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
                     disabled={currentPage === 1}
                 >
@@ -92,7 +95,7 @@ function Galery() {
                 </button>
                 <span className="text-white">{t('galery.page')} {currentPage}</span>
                 <button
-                    className="px-4 py-2 bg-blue-500 text-white rounded disabled:bg-gray-400"
+                    className="px-4 py-2 bg-[var(--color-brand)] hover:bg-[var(--color-secondary)] text-white rounded disabled:bg-gray-400"
                     onClick={() => setCurrentPage((prev) => prev + 1)}
                     disabled={movies ? movies.length < 10 : true}
                 >
