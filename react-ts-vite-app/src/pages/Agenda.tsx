@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import EventGrid, { type EventItem } from "../components/EventGrid";
-import Acces from "../components/Acces";
+import Acces from "../components/Access";
 import { useTranslation } from "react-i18next";
 
 function Agenda() {
