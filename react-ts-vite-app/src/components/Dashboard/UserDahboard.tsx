@@ -190,13 +190,13 @@ function UserDashboard() {
                     </td>
                     <td className="py-3 px-4 action-cell">
                       <button
-                        className="bg-yellow-200 hover:bg-yellow-700 text-black font-bold py-1 px-2 rounded"
+                        className="bg-gray-100 hover:underline text-black font-bold py-1 px-2 rounded"
                         onClick={() => promoteToJury(user.id)}
                       >
                         {t("user_dashboard.button.promote_jury")}
                       </button>
                       <button
-                        className="bg-yellow-500 hover:bg-yellow-700 text-black font-bold py-1 px-2 rounded ml-2"
+                        className="bg-green-100 hover:bg-green-300 text-black font-bold py-1 px-2 rounded ml-2"
                         onClick={() => promoteToAdmin(user.id)}
                       >
                         {t("user_dashboard.button.promote_admin")}

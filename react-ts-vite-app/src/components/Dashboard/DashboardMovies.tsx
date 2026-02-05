@@ -1,7 +1,7 @@
 import DashboardMovieCard from "./DashboardMovieCard";
 import { useTranslation } from "react-i18next";
 
-export default function DashboardMovies({ movies, isLoading }) {
+export default function DashboardMovies({ movies, isLoading }: any) {
   const { t } = useTranslation();
   const gridLayout = "grid grid-cols-2 md:grid-cols-5 gap-4 items-center";
 

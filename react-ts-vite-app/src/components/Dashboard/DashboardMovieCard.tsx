@@ -2,6 +2,12 @@ import { useTranslation } from "react-i18next";
 
 export default function DashboardMovieCard({ gridLayout, movie }: any) {
   const { t } = useTranslation();
+  const statusStyles = {
+    Accepted: "bg-green-100 text-black",
+    Pending: "bg-gray-100 text-black",
+    Cancelled: "bg-red-100 text-black",
+    default: "bg-gray-100 text-black",
+  };
 
   return (
     <div
@@ -24,12 +30,19 @@ export default function DashboardMovieCard({ gridLayout, movie }: any) {
       </div>
       <div className="hidden md:block">
         {/* label validé / en attente / ect*/}
-        <span className="px-2 py-1 bg-green-100 text-green-700 rounded-full text-xs">
+        <span
+          className={`px-2 py-1 rounded-full text-xs ${statusStyles[movie.status as keyof typeof statusStyles] || statusStyles.default}`}
+        >
           {movie.status}
         </span>
       </div>
       <div className="cursor-select">
-        <input type="checkbox" name="" id="" />
+        <input
+          type="checkbox"
+          name=""
+          id=""
+          className="accent-[var(--color-secondary)]"
+        />
       </div>
     </div>
   );

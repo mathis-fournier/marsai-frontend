@@ -35,17 +35,20 @@ function Access() {
             <p>{t("acces.car_description")}</p>
           </div>
         </div>
-        <div className="flex items-center text-[var(--color-white)] gap-4">
+        <div className="flex text-[var(--color-white)] items-center gap-4">
+          <img
+            width="32"
+            height="32"
+            src="https://img.icons8.com/ios-filled/32/pin.png"
+            alt="tram"
+            className="shrink-0"
+          />
           <div>
-            <p className="font-bold">{t("acces.address_title")}</p>
+            <p className="font-bold ">{t("acces.address_title")}</p>
             <p>{t("acces.address_description")}</p>
-            <img
-              src="/map.png"
-              alt="google maps adresse"
-              className="rounded-xl w-[75%]"
-            />
           </div>
         </div>
+        <img src="map.png" alt="" className="rounded-md mt-6" />
       </section>
     </>
   );
