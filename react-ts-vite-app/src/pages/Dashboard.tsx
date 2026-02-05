@@ -29,19 +29,15 @@ export default function Dashboard() {
       });
   }, []);
 
-
-
-  if (!user || !token || (user.role !== "ADMIN")) {
-    return (
-      <AccessDenied />
-    )
-  };
+  if (!user || !token || user.role !== "ADMIN") {
+    return <AccessDenied />;
+  }
 
   return (
     <>
-      <UserDashboard />
       <DashboardGlobal />
       <DashboardMovies movies={data} isLoading={isLoading} />
+      <UserDashboard />
     </>
   );
 }

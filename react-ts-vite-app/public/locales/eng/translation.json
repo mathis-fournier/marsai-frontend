@@ -23,7 +23,7 @@
     "email_placeholder": "Your email",
     "subscribe_button": "Subscribe",
     "success_message": "Thank you for subscribing to our newsletter!",
-    "error_message": "An error occurred while subscribing. Please try again later." 
+    "error_message": "An error occurred while subscribing. Please try again later."
   },
   "festival": {
     "project": {
@@ -211,9 +211,11 @@
     "card": {
       "objective": "OBJECTIVE: {{count}}",
       "films_evaluated": "{{count}} FILMS EVALUATED BY THE JURY",
+      "films_submitted": "{{count}} FILMS SUBMITTED",
       "completed": "{{percentage}}% completed",
       "active_accounts": "{{count}} ACTIVE DIRECTOR ACCOUNTS",
-      "today": "+{{count}} today"
+      "today": "+{{count}} today",
+      "participants": "{{count}} SIGNED UP FOR AN EVENT"
     }
   },
   "dashboard_movies": {
@@ -225,6 +227,9 @@
   },
   "user_dashboard": {
     "title": "User Area",
+    "subtitle": "REGISTERED USER LIST",
+    "description": "Manage all users and their roles.",
+
     "table": {
       "name": "Name",
       "firstname": "First name",
@@ -232,11 +237,10 @@
       "role": "Role",
       "action": "Action",
       "no_role": "No role assigned"
-
     },
     "button": {
       "promote_jury": "Jury",
-      "promote_admin": "Admin",       
+      "promote_admin": "Admin",
       "delete": "Delete"
     }
   },
@@ -292,7 +296,7 @@
     "program_title": "CONFERENCE PROGRAM",
     "no_events": "No events are scheduled for the moment."
   },
-  "galery": { 
+  "galery": {
     "loading": "Loading...",
     "error": "Error: ",
     "error_status": "Error Status: ",
@@ -344,4 +348,5 @@
     "collaborator_details": "Details"
   },
   "close": "Close"
+  }
 }

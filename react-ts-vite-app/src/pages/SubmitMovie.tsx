@@ -56,7 +56,7 @@ export default function SubmitMovie() {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    setMessage(t('submit_movie.message.sending'));
+    setMessage(t("submit_movie.message.sending"));
 
     const data = new FormData();
 
@@ -67,7 +67,7 @@ export default function SubmitMovie() {
     if (file) {
       data.append("file", file);
     }
-
+    console.log("URL appelée :", `${import.meta.env.VITE_API_URL}/movies`);
     try {
       const response = await fetch(`${import.meta.env.VITE_API_URL}/movies`, {
         method: "POST",
@@ -75,20 +75,24 @@ export default function SubmitMovie() {
       });
 
       if (!response.ok) {
-        throw new Error(t('submit_movie.message.http_error', { status: response.status }));
+        throw new Error(
+          t("submit_movie.message.http_error", { status: response.status }),
+        );
       }
 
       const result = await response.json();
-      setMessage(t('submit_movie.message.success', { id: result.id }));
+      setMessage(t("submit_movie.message.success", { id: result.id }));
     } catch (error: any) {
       console.error(error);
-      setMessage(t('submit_movie.message.error', { message: error.message }));
+      setMessage(t("submit_movie.message.error", { message: error.message }));
     }
   };
 
   return (
     <div className="bg-brand2 md:max-w-[75%] mx-auto px-6 my-25 pt-10 md:rounded-4xl shadow-lg/50 shadow-black mb-10">
-      <h1 className="text-3xl text-center font-bold text-secondary">{t('submit_movie.page_title')}</h1>
+      <h1 className="text-3xl text-center font-bold text-secondary">
+        {t("submit_movie.page_title")}
+      </h1>
       <form onSubmit={handleSubmit} className="p-10 mx-auto max-w-2xl">
         <fieldset className="border border-white p-8 rounded-lg">
           {/* <legend className="p-5 text-sm/6 font-medium text-white"> */}
@@ -97,10 +101,10 @@ export default function SubmitMovie() {
           <div className="space-y-12">
             <div className="border-b border-white/10 pb-12">
               <h2 className="text-base/7 font-semibold text-white">
-                {t('submit_movie.title')}
+                {t("submit_movie.title")}
               </h2>
               <p className="mt-1 text-sm/6 text-white">
-                {t('submit_movie.subtitle')}
+                {t("submit_movie.subtitle")}
               </p>
 
               <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
@@ -109,7 +113,7 @@ export default function SubmitMovie() {
                     htmlFor="original_title"
                     className="block text-sm/6 font-medium text-white"
                   >
-                    {t('submit_movie.original_title_label')}
+                    {t("submit_movie.original_title_label")}
                   </label>
                   <div className="mt-2">
                     <div className="flex items-center rounded-md bg-white/5 pl-3 outline-1 -outline-offset-1 outline-white/10 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-500">
@@ -119,7 +123,9 @@ export default function SubmitMovie() {
                         name="original_title"
                         onChange={handleChange}
                         className="block min-w-0 grow bg-transparent py-1.5 pr-3 pl-1 text-base text-white placeholder:text-white focus:outline-none sm:text-sm/6"
-                        placeholder={t('submit_movie.original_title_placeholder')}
+                        placeholder={t(
+                          "submit_movie.original_title_placeholder",
+                        )}
                         required
                       />
                     </div>
@@ -131,7 +137,7 @@ export default function SubmitMovie() {
                     htmlFor="english_title"
                     className="block text-sm/6 font-medium text-white"
                   >
-                    {t('submit_movie.english_title_label')}
+                    {t("submit_movie.english_title_label")}
                   </label>
                   <div className="mt-2">
                     <div className="flex items-center rounded-md bg-white/5 pl-3 outline-1 -outline-offset-1 outline-white/10 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-500">
@@ -141,7 +147,9 @@ export default function SubmitMovie() {
                         name="english_title"
                         onChange={handleChange}
                         className="block min-w-0 grow bg-transparent py-1.5 pr-3 pl-1 text-base text-white placeholder:text-scondary focus:outline-none sm:text-sm/6"
-                        placeholder={t('submit_movie.english_title_placeholder')}
+                        placeholder={t(
+                          "submit_movie.english_title_placeholder",
+                        )}
                         required
                       />
                     </div>
@@ -153,7 +161,7 @@ export default function SubmitMovie() {
                     htmlFor="original_synopsis"
                     className="block text-sm/6 font-medium text-white"
                   >
-                    {t('submit_movie.original_synopsis_label')}
+                    {t("submit_movie.original_synopsis_label")}
                   </label>
                   <div className="mt-2">
                     <textarea
@@ -162,7 +170,9 @@ export default function SubmitMovie() {
                       rows={3}
                       onChange={handleChange}
                       className="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-scondary focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6"
-                      placeholder={t('submit_movie.original_synopsis_placeholder')}
+                      placeholder={t(
+                        "submit_movie.original_synopsis_placeholder",
+                      )}
                       required
                     ></textarea>
                   </div>
@@ -173,7 +183,7 @@ export default function SubmitMovie() {
                     htmlFor="english_synopsis"
                     className="block text-sm/6 font-medium text-white"
                   >
-                    {t('submit_movie.english_synopsis_label')}
+                    {t("submit_movie.english_synopsis_label")}
                   </label>
                   <div className="mt-2">
                     <textarea
@@ -182,7 +192,9 @@ export default function SubmitMovie() {
                       rows={3}
                       onChange={handleChange}
                       className="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-scondary focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6"
-                      placeholder={t('submit_movie.english_synopsis_placeholder')}
+                      placeholder={t(
+                        "submit_movie.english_synopsis_placeholder",
+                      )}
                       required
                     ></textarea>
                   </div>
@@ -193,7 +205,7 @@ export default function SubmitMovie() {
                     htmlFor="cover-photo"
                     className="block text-sm/6 font-medium text-white"
                   >
-                    {t('submit_movie.cover_photo_label')}
+                    {t("submit_movie.cover_photo_label")}
                   </label>
                   <div className="mt-2 flex justify-center rounded-lg border border-dashed border-white/25 px-6 py-10">
                     <div className="text-center">
@@ -214,7 +226,7 @@ export default function SubmitMovie() {
                           htmlFor="file-upload"
                           className="relative cursor-pointer rounded-md bg-transparent font-semibold text-indigo-400 focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-indigo-500 hover:text-indigo-300"
                         >
-                          <span>{t('submit_movie.upload_file_label')}</span>
+                          <span>{t("submit_movie.upload_file_label")}</span>
                           <input
                             id="file-upload"
                             name="file"
@@ -224,14 +236,18 @@ export default function SubmitMovie() {
                             className="sr-only"
                           />
                         </label>
-                        <p className="pl-1">{t('submit_movie.drag_and_drop_label')}</p>
+                        <p className="pl-1">
+                          {t("submit_movie.drag_and_drop_label")}
+                        </p>
                       </div>
                       <p className="text-xs/5 text-white">
-                        {t('submit_movie.file_types_label')}
+                        {t("submit_movie.file_types_label")}
                       </p>
                       {file && (
                         <p className="text-sm text-indigo-400 mt-2">
-                          {t('submit_movie.file_selected_label', { fileName: file.name })}
+                          {t("submit_movie.file_selected_label", {
+                            fileName: file.name,
+                          })}
                         </p>
                       )}
                     </div>
@@ -242,10 +258,10 @@ export default function SubmitMovie() {
 
             <div className="border-b border-white/10 pb-12">
               <h2 className="text-base/7 font-semibold text-white">
-                {t('submit_movie.technical_details_title')}
+                {t("submit_movie.technical_details_title")}
               </h2>
               <p className="mt-1 text-sm/6 text-white">
-                {t('submit_movie.technical_details_subtitle')}
+                {t("submit_movie.technical_details_subtitle")}
               </p>
 
               <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
@@ -254,7 +270,7 @@ export default function SubmitMovie() {
                     htmlFor="youtube_url"
                     className="block text-sm/6 font-medium text-white"
                   >
-                    {t('submit_movie.youtube_url_label')}
+                    {t("submit_movie.youtube_url_label")}
                   </label>
                   <div className="mt-2">
                     <input
@@ -273,7 +289,7 @@ export default function SubmitMovie() {
                     htmlFor="duration"
                     className="block text-sm/6 font-medium text-white"
                   >
-                    {t('submit_movie.duration_label')}
+                    {t("submit_movie.duration_label")}
                   </label>
                   <div className="mt-2">
                     <input
@@ -292,7 +308,7 @@ export default function SubmitMovie() {
                     htmlFor="original_language"
                     className="block text-sm/6 font-medium text-white"
                   >
-                    {t('submit_movie.original_language_label')}
+                    {t("submit_movie.original_language_label")}
                   </label>
                   <div className="mt-2 grid grid-cols-1">
                     <select
@@ -329,7 +345,7 @@ export default function SubmitMovie() {
                     htmlFor="creative_process"
                     className="block text-sm/6 font-medium text-white"
                   >
-                    {t('submit_movie.creative_process_label')}
+                    {t("submit_movie.creative_process_label")}
                   </label>
                   <div className="mt-2">
                     <textarea
@@ -338,7 +354,9 @@ export default function SubmitMovie() {
                       rows={2}
                       onChange={handleChange}
                       className="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-scondary focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6"
-                      placeholder={t('submit_movie.creative_process_placeholder')}
+                      placeholder={t(
+                        "submit_movie.creative_process_placeholder",
+                      )}
                       required
                     ></textarea>
                   </div>
@@ -349,7 +367,7 @@ export default function SubmitMovie() {
                     htmlFor="ia_tools"
                     className="block text-sm/6 font-medium text-white"
                   >
-                    {t('submit_movie.ia_tools_label')}
+                    {t("submit_movie.ia_tools_label")}
                   </label>
                   <div className="mt-2">
                     <input
@@ -358,7 +376,7 @@ export default function SubmitMovie() {
                       name="ia_tools"
                       onChange={handleChange}
                       className="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-scondary focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6"
-                      placeholder={t('submit_movie.ia_tools_placeholder')}
+                      placeholder={t("submit_movie.ia_tools_placeholder")}
                       required
                     />
                   </div>
@@ -367,9 +385,11 @@ export default function SubmitMovie() {
             </div>
 
             <div className="border-b border-white/10 pb-12">
-              <h2 className="text-base/7 font-semibold text-white">{t('submit_movie.options_title')}</h2>
+              <h2 className="text-base/7 font-semibold text-white">
+                {t("submit_movie.options_title")}
+              </h2>
               <p className="mt-1 text-sm/6 text-white">
-                {t('submit_movie.options_subtitle')}
+                {t("submit_movie.options_subtitle")}
               </p>
 
               <div className="mt-10 space-y-10">
@@ -406,10 +426,10 @@ export default function SubmitMovie() {
                           htmlFor="isHybrid"
                           className="font-medium text-white"
                         >
-                          {t('submit_movie.hybrid_production_label')}
+                          {t("submit_movie.hybrid_production_label")}
                         </label>
                         <p className="text-white">
-                          {t('submit_movie.hybrid_production_description')}
+                          {t("submit_movie.hybrid_production_description")}
                         </p>
                       </div>
                     </div>
@@ -445,10 +465,10 @@ export default function SubmitMovie() {
                           htmlFor="hasSubs"
                           className="font-medium text-white"
                         >
-                          {t('submit_movie.subs_included_label')}
+                          {t("submit_movie.subs_included_label")}
                         </label>
                         <p className="text-white">
-                          {t('submit_movie.subs_included_description')}
+                          {t("submit_movie.subs_included_description")}
                         </p>
                       </div>
                     </div>
@@ -460,18 +480,21 @@ export default function SubmitMovie() {
 
           <div className="mt-6 flex items-center justify-end gap-x-6">
             {message && <p className="text-sm text-secondary">{message}</p>}
-            <button type="button" className="text-sm/6 font-semibold text-white">
-              {t('submit_movie.cancel_button')}
+            <button
+              type="button"
+              className="text-sm/6 font-semibold text-white"
+            >
+              {t("submit_movie.cancel_button")}
             </button>
             <button
               type="submit"
               className="rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-indigo-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
             >
-              {t('submit_movie.save_button')}
+              {t("submit_movie.save_button")}
             </button>
           </div>
         </fieldset>
       </form>
-    </div >
+    </div>
   );
 }

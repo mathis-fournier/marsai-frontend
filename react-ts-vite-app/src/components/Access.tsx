@@ -40,10 +40,9 @@ function Access() {
             <p className="font-bold">{t("acces.address_title")}</p>
             <p>{t("acces.address_description")}</p>
             <img
-              src="https://media.discordapp.net/attachments/1466414132914946225/1466414146131329148/image.png?ex=697ca819&is=697b5699&hm=0cd1f16c998b8979fe44f7bc2ac117fe1351c912c3ec13d22cce369b147b71af&=&format=webp&quality=lossless&width=1482&height=639"
-              height="100px"
+              src="/map.png"
               alt="google maps adresse"
-              className="rounded-xl w-full"
+              className="rounded-xl w-[75%]"
             />
           </div>
         </div>
