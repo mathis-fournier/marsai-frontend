@@ -1,4 +1,4 @@
-import { Link, NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { useTranslation } from 'react-i18next';
 import MoviesBest from '../components/MoviesBest';
 
@@ -10,11 +10,11 @@ function Festival() {
             <div className='bg-brand2 md:max-w-[75%] mx-auto px-6 my-25 pt-10 md:rounded-4xl shadow-lg/50 shadow-black mb-10'>
                 <div className='bg-[var(--color-brand2)] m-auto p-10 font-bold'>
                     {/* <div className='w-50 m-auto text-center bg-white rounded-xl text-black'>Festival international du film IA</div> */}
-                    <h1 className='text-center text-secondary text-4xl '>{t('hero_banner.title_part1')} <span className='text-[var(--color-black)]' >{t('hero_banner.title_part2')}</span> {t('hero_banner.title_part3')}</h1>
+                    <h1 className='text-center bg-linear-to-r from-secondary to-red-800 bg-clip-text text-transparent text-4xl '>{t('hero_banner.title_part1')} <span>{t('hero_banner.title_part2')}</span> {t('hero_banner.title_part3')}</h1>
                     <p className='py-10 text-center text-black text-xl'>{t('hero_banner.subtitle')}</p>
                     <div className='flex justify-center mt-5'>
-                        <Link className='bg-[var(--color-brand)] hover:bg-secondary text-white text-sm md:text-xl p-5 rounded-xl m-auto block' to={'/submit'}>{t('hero_banner.participate_button')}</Link>
-                        <Link className='bg-[var(--color-brand)] hover:bg-secondary text-white text-sm md:text-xl p-5 rounded-xl m-auto block' to={'/'}>{t('hero_banner.learn_more_button')}</Link>
+                        <NavLink className='bg-[var(--color-brand)] hover:bg-secondary text-white text-sm md:text-xl p-5 rounded-xl m-auto block' to={'/submit'}>{t('hero_banner.participate_button')}</NavLink>
+                        <NavLink className='bg-[var(--color-brand)] hover:bg-secondary text-white text-sm md:text-xl p-5 rounded-xl m-auto block' to={'/'}>{t('hero_banner.learn_more_button')}</NavLink>
                     </div>
                 </div>
                 <div className=' bg-brand2 p-1'>
