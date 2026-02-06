@@ -61,34 +61,58 @@ function MovieDetails() {
       }
     };
 
-    const fetchMovieTags = async () => {
-      setIsLoading(true);
-      try {
-        const response = await fetch(
-          `${import.meta.env.VITE_API_URL}/movies/${id}/tags`,
-        );
-        if (!response.ok) {
-          throw new Error(
-            t("movie_details.error_status", { status: response.status }),
-          );
-        }
-        const data = await response.json();
-        setMovieTags(data);
-      } catch (err: any) {
-        setError(err.message);
-      } finally {
-        setIsLoading(false);
-      }
-    };
+    useEffect(() => {
+        const getMovieDetails = async () => {
+            setIsLoading(true);
+            try {
+                const response = await fetch(`${import.meta.env.VITE_API_URL}/movies/${id}`);
+                if (!response.ok) {
+                    throw new Error(t('movie_details.error_status', { status: response.status }));
+                }
+                const data = await response.json();
+                setMovieDetails(data);
+            } catch (err: any) {
+                setError(err.message);
+            } finally {
+                setIsLoading(false);
+            }
+        };
+        const getMovieCollaborators = async () => {
+            setIsLoading(true);
+            try {
+                const response = await fetch(`${import.meta.env.VITE_API_URL}/movies/${id}/collaborators`);
+                if (!response.ok) {
+                    throw new Error(t('movie_details.error_status', { status: response.status }));
+                }
+                const data = await response.json();
+                setMovieCollaborators(data);
+            } catch (err: any) {
+                setError(err.message);
+            } finally {
+                setIsLoading(false);
+            }
+        };
 
-    fetchMovieDetails();
-    fetchMovieCollaborators();
-    fetchMovieTags();
-  }, [id]);
+        const getMovieTags = async () => {
+            setIsLoading(true);
+            try {
+                const response = await fetch(`${import.meta.env.VITE_API_URL}/movies/${id}/tags`);
+                if (!response.ok) {
+                    throw new Error(t('movie_details.error_status', { status: response.status }));
+                }
+                const data = await response.json();
+                setMovieTags(data);
+            } catch (err: any) {
+                setError(err.message);
+            } finally {
+                setIsLoading(false);
+            }
+        };
 
-  if (isLoading) {
-    return <div>{t("loading")}</div>;
-  }
+        getMovieDetails();
+        getMovieCollaborators();
+        getMovieTags();
+    }, [id]);
 
   if (error) {
     return <div>{t("error", { error })}</div>;

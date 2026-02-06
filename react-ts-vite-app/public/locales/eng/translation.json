@@ -230,7 +230,6 @@
     "title": "User Area",
     "subtitle": "REGISTERED USER LIST",
     "description": "Manage all users and their roles.",
-
     "table": {
       "name": "Name",
       "firstname": "First name",
@@ -348,6 +347,11 @@
     "collaborator_LinkedIn": "LinkedIn",
     "collaborator_X": "X",
     "collaborator_details": "Details"
+  },
+  "subscribers_dashboard": {
+    "title": "NEWSLETTER'S SUBSCRIBERS",
+    "description": "Here you can see the actual subscribers",
+    "number": "Total amount of subscribers : {{count}}"
   },
   "close": "Close"
 }
