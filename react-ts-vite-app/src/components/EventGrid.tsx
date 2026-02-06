@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
@@ -33,7 +33,7 @@ export default function EventGrid({
       <input
         type="text"
         placeholder={t("event_grid.search_placeholder")}
-        className="w-full p-3 border border-[var(--color-border)] text-[var(--color-white)] rounded-md outline-none focus:ring-2 focus:ring-blue-500 mb-6"
+        className="w-full p-3 border border-border text-white rounded-md outline-none focus:ring-2 focus:ring-blue-500 mb-6"
         onChange={(e) => setQuery(e.target.value)}
       />
 
@@ -47,7 +47,7 @@ export default function EventGrid({
             <div
               key={event.id}
               onClick={() => navigate(`/event/${event.id}`)}
-              className="group cursor-pointer overflow-hidden rounded-xl border border-[var(--color-border)] bg-brand2 text-[var(--color-white)] shadow-sm hover:border-[var(--color-hover)] transition-all"
+              className="group cursor-pointer overflow-hidden rounded-xl border border-border bg-brand2 text-white shadow-sm hover:border-hover transition-all"
             >
               {event.imageUrl && (
                 <img
@@ -56,10 +56,10 @@ export default function EventGrid({
                 />
               )}
               <div className="p-5">
-                <h3 className="text-lg font-bold group-hover:text-[var(--color-secondary)]">
+                <h3 className="text-lg font-bold group-hover:text-secondary">
                   {event.title}
                 </h3>
-                <p className="mt-2 text-[var(--color-text)]">
+                <p className="mt-2 text-(--color-text)">
                   {event.start_at
                     ? new Date(event.start_at).toLocaleDateString("fr-FR")
                     : t("event_grid.no_date")}

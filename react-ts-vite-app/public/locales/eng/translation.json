@@ -211,11 +211,12 @@
     "card": {
       "objective": "OBJECTIVE: {{count}}",
       "films_evaluated": "{{count}} FILMS EVALUATED BY THE JURY",
-      "films_submitted": "{{count}} FILMS SUBMITTED",
+      "films_submitted": "Movies submitted",
       "completed": "{{percentage}}% completed",
-      "active_accounts": "{{count}} ACTIVE DIRECTOR ACCOUNTS",
+      "active_accounts": "Active directors account",
       "today": "+{{count}} today",
-      "participants": "{{count}} SIGNED UP FOR AN EVENT"
+      "participants": "Signed up for an event",
+      "rating_title": "Movies rated by a jury"
     }
   },
   "dashboard_movies": {
@@ -349,5 +350,4 @@
     "collaborator_details": "Details"
   },
   "close": "Close"
-  }
-
+}

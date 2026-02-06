@@ -10,7 +10,6 @@ export default function Dashboard() {
   const { t } = useTranslation();
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-
   const { user, token } = useAuth();
 
   useEffect(() => {
