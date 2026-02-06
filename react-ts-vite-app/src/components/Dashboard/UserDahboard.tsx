@@ -125,14 +125,14 @@ function UserDashboard() {
   return (
     <>
       {" "}
-      <div className="w-auto p-6 bg-[var(--color-brand)]">
-        <h2 className="text-[var(--color-secondary)] text-2xl font-mono uppercase">
+      <div className="w-auto p-6 bg-brand">
+        <h2 className="text-secondary text-2xl font-mono uppercase">
           {t("user_dashboard.title")}
         </h2>
-        <h1 className="text-4xl text-[var(--color-white)] font-bold">
+        <h1 className="text-4xl text-white font-bold">
           {t("user_dashboard.subtitle")}
         </h1>
-        <p className="italic text-[var(--color-white)] opacity-80">
+        <p className="italic text-white opacity-80">
           {t("user_dashboard.description")}
         </p>
       </div>
@@ -190,13 +190,13 @@ function UserDashboard() {
                     </td>
                     <td className="py-3 px-4 action-cell">
                       <button
-                        className="bg-yellow-200 hover:bg-yellow-700 text-black font-bold py-1 px-2 rounded"
+                        className="bg-white hover:bg-slate-200 text-black font-bold py-1 px-2 rounded"
                         onClick={() => promoteToJury(user.id)}
                       >
                         {t("user_dashboard.button.promote_jury")}
                       </button>
                       <button
-                        className="bg-yellow-500 hover:bg-yellow-700 text-black font-bold py-1 px-2 rounded ml-2"
+                        className="bg-secondary hover:bg-indigo-400 text-black font-bold py-1 px-2 rounded ml-2"
                         onClick={() => promoteToAdmin(user.id)}
                       >
                         {t("user_dashboard.button.promote_admin")}

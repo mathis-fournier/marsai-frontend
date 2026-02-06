@@ -171,10 +171,10 @@
     "ia_tools_placeholder": "Midjourney, Runway, Pika...",
     "options_title": "Options",
     "options_subtitle": "Specific production characteristics.",
-    "hybrid_production_label": "Hybrid Production",
-    "hybrid_production_description": "Check if the film mixes AI and live action.",
-    "subs_included_label": "Subtitles Included",
-    "subs_included_description": "Does the video file already contain subtitles?",
+    "isHybrid_label": "Hybrid Production",
+    "isHybrid_description": "Check if the film mixes AI and live action.",
+    "hasSubs_label": "Subtitles Included",
+    "hasSubs_description": "Does the video file already contain subtitles?",
     "cancel_button": "Cancel",
     "save_button": "Save movie",
     "message": {
@@ -211,11 +211,12 @@
     "card": {
       "objective": "OBJECTIVE: {{count}}",
       "films_evaluated": "{{count}} FILMS EVALUATED BY THE JURY",
-      "films_submitted": "{{count}} FILMS SUBMITTED",
+      "films_submitted": "Movies submitted",
       "completed": "{{percentage}}% completed",
-      "active_accounts": "{{count}} ACTIVE DIRECTOR ACCOUNTS",
+      "active_accounts": "Active directors account",
       "today": "+{{count}} today",
-      "participants": "{{count}} SIGNED UP FOR AN EVENT"
+      "participants": "Signed up for an event",
+      "rating_title": "Movies rated by a jury"
     }
   },
   "dashboard_movies": {
