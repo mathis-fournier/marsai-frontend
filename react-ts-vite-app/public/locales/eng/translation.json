@@ -309,6 +309,7 @@
     "page": "Page"
   },
   "movie_details": {
+    "rating": "Rate this movie",
     "title": "Movie Details",
     "loading": "Loading movie details...",
     "error_status": "Error Status: ",
@@ -349,4 +350,4 @@
   },
   "close": "Close"
   }
-}
+

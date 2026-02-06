@@ -97,16 +97,26 @@ function MovieDetails() {
 
 
                 {/* IMAGE DU FILM */}
-                <div className="mt-6">
-                    <div>
+                <div className="mt-6 ">
+                    <div className="flex items-center justify-center">
                         {movieDetails[0].youtube_url ? (
-                            <iframe width="560" height="315" src="https://www.youtube.com/embed/vPY3OEECHPg?si=kDDHS0mPuDuTnpzH" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                            <iframe width="560" height="315" src={movieDetails[0].youtube_url} title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
                         ) : (
                             <div className="w-full h-64 bg-gray-200 flex items-center justify-center rounded-lg">
                                 {t('movie_details.no_image')}
                             </div>
                         )}
                     </div>
+
+
+                    {/* NOTATION */}
+                    <div className="p-10 my-10 flex flex-col items-center justify-center text-white text-2xl">
+                        <h2>0 - 10</h2>
+                        <input className="p-1" min='0' max='10' type="range"></input>
+                        <button className='bg-[var(--color-third)] text-black hover:bg-secondary text-sm md:text-xl p-5 rounded-xl m-auto block' type="submit">{t('movie_details.rating')}</button>
+                    </div>
+
+
 
                     {/* TAGS */}
                     {/* <h2 className="font-semibold text-center text-white text-2xl my-4">Tags</h2> */}
@@ -170,6 +180,9 @@ function MovieDetails() {
                                 </table>
                             </div>
                         </div>
+
+
+
 
                         {/* COLLABORATORS */}
                         <div className="flex flex-col col-span-2">

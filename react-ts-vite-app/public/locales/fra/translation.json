@@ -303,6 +303,7 @@
     "page": "Page"
   },
   "movie_details": {
+    "rating": "Noter ce film",
     "title": "Détails du film",
     "loading": "Chargement des détails du film...",
     "error_status": "Erreur Status: {{status}}",
@@ -343,4 +344,4 @@
   },
   "close": "Fermer"
   }
-}
+
