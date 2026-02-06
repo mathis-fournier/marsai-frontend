@@ -16,7 +16,7 @@ function MovieDetails() {
     const [selectedCollaborator, setSelectedCollaborator] = useState<MovieCollaborator | null>(null);
 
     useEffect(() => {
-        const fetchMovieDetails = async () => {
+        const getMovieDetails = async () => {
             setIsLoading(true);
             try {
                 const response = await fetch(`${import.meta.env.VITE_API_URL}/movies/${id}`);
@@ -31,7 +31,7 @@ function MovieDetails() {
                 setIsLoading(false);
             }
         };
-        const fetchMovieCollaborators = async () => {
+        const getMovieCollaborators = async () => {
             setIsLoading(true);
             try {
                 const response = await fetch(`${import.meta.env.VITE_API_URL}/movies/${id}/collaborators`);
@@ -47,7 +47,7 @@ function MovieDetails() {
             }
         };
 
-        const fetchMovieTags = async () => {
+        const getMovieTags = async () => {
             setIsLoading(true);
             try {
                 const response = await fetch(`${import.meta.env.VITE_API_URL}/movies/${id}/tags`);
@@ -63,9 +63,9 @@ function MovieDetails() {
             }
         };
 
-        fetchMovieDetails();
-        fetchMovieCollaborators();
-        fetchMovieTags();
+        getMovieDetails();
+        getMovieCollaborators();
+        getMovieTags();
     }, [id]);
 
 

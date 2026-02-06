@@ -5,6 +5,7 @@ import UserDashboard from "../components/Dashboard/UserDahboard";
 import { useAuth } from "../context/AuthContext";
 import AccessDenied from "../components/AccessDenied";
 import { useTranslation } from "react-i18next";
+import SubscribersDashboard from "../components/Dashboard/SubscribersDashboard";
 
 export default function Dashboard() {
   const { t } = useTranslation();
@@ -35,6 +36,7 @@ export default function Dashboard() {
 
   return (
     <>
+      <SubscribersDashboard />
       <DashboardGlobal />
       <DashboardMovies movies={data} isLoading={isLoading} />
       <UserDashboard />
