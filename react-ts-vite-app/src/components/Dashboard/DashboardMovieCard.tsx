@@ -6,7 +6,7 @@ export default function DashboardMovieCard({ gridLayout, movie }: any) {
   return (
     <div
       onClick={() => console.log("test")}
-      className={`${gridLayout} p-4 md:p-6 border-b border-[var(--color-border)] hover:bg-[var(--color-brand)] cursor-pointer`}
+      className={`${gridLayout} p-4 md:p-6 border-b border-border hover:bg-brand cursor-pointer`}
     >
       <div className="w-20 md:w-24">
         <img
@@ -16,10 +16,8 @@ export default function DashboardMovieCard({ gridLayout, movie }: any) {
         />
       </div>
 
-      <div className="font-semibold text-[var(--color-white)]">
-        {movie.english_title}
-      </div>
-      <div className="hidden md:block text-[var(--color-white)]">
+      <div className="font-semibold text-white">{movie.english_title}</div>
+      <div className="hidden md:block text-white">
         {t("dashboard_movie_card.author_placeholder")}
       </div>
       <div className="hidden md:block">

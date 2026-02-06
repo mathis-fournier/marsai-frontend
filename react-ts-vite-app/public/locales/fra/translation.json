@@ -208,10 +208,12 @@
     "description": "Analyse détaillée de la progression et des indicateurs de performance",
     "card": {
       "objective": "OBJECTIF : {{count}}",
-      "films_evaluated": "{{count}} FILMS EVALUES PAR LE JURY",
-      "films_submitted": "{{count}} FILMS SOUMIS",
+      "films_evaluated": "Films évalués par le jury",
+      "films_submitted": "Films soumis",
       "completed": "{{percentage}}% complété",
-      "active_accounts": "{{count}} COMPTES REALISATEUR ACTIF",
+      "active_accounts": "Comptes réalisateur actif",
+      "participants": "Inscrits à un événement",
+      "rating_title": "Films notés par le jury",
       "today": "+{{count}} aujourd'hui"
     }
   },
@@ -343,5 +345,4 @@
     "collaborator_details": "Détails"
   },
   "close": "Fermer"
-  }
-
+}
