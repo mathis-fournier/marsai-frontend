@@ -79,12 +79,12 @@ function Festival() {
           </NavLink>
         </div>
         <div className="my-10  bg-brand2 p-1 rounded-2xl">
-          <h2 className="text-2xl font-bold mb-4 text-[var(--color-white)]">
+          <h2 className="text-2xl font-bold mb-4 text-white">
             ▶ {t("festival.objectives.title")}
             <hr />
           </h2>
           <div className="flex flex-col md:flex md:flex-row md:justify-around justify-center items-center gap-5 mt-5">
-            <p className="flex flex-col  w-50 h-50 sm:w-50 sm:h-50 border border-black shadow-lg/50 shadow-white bg-gradient-to-b from-[#e5a50a] to-[#c64600] rounded-4xl justify-center items-center text-center text-xl">
+            <p className="flex flex-col  w-50 h-50 sm:w-50 sm:h-50 border border-black shadow-lg/50 shadow-white bg-linear-to-b from-[#e5a50a] to-[#c64600] rounded-4xl justify-center items-center text-center text-xl">
               🚶‍♂️
               <span className="font-bold text-center text-xl">
                 {t("festival.objectives.cards.human_title")}
@@ -93,7 +93,7 @@ function Festival() {
                 {t("festival.objectives.cards.human_description")}
               </span>
             </p>
-            <p className="flex flex-col  w-50 h-50 sm:w-50 sm:h-50 border border-black shadow-lg/50 shadow-white bg-gradient-to-b from-[#e5a50a] to-[#c64600] rounded-4xl justify-center items-center text-center text-xl">
+            <p className="flex flex-col  w-50 h-50 sm:w-50 sm:h-50 border border-black shadow-lg/50 shadow-white bg-linear-to-b from-[#e5a50a] to-[#c64600] rounded-4xl justify-center items-center text-center text-xl">
               ⚡
               <span className="font-bold text-center text-xl">
                 {t("festival.objectives.cards.creative_challenge_title")}
@@ -102,7 +102,7 @@ function Festival() {
                 {t("festival.objectives.cards.creative_challenge_description")}
               </span>
             </p>
-            <p className="flex flex-col w-50 h-50 sm:w-50 sm:h-50 border border-black shadow-lg/50 shadow-white bg-gradient-to-b from-[#e5a50a] to-[#c64600] rounded-4xl justify-center items-center text-center text-xl">
+            <p className="flex flex-col w-50 h-50 sm:w-50 sm:h-50 border border-black shadow-lg/50 shadow-white bg-linear-to-b from-[#e5a50a] to-[#c64600] rounded-4xl justify-center items-center text-center text-xl">
               🚀
               <span className="font-bold text-center text-xl">
                 {t("festival.objectives.cards.desirable_futures_title")}
@@ -115,7 +115,7 @@ function Festival() {
         </div>
 
         <div className="my-10  bg-brand2 p-1 rounded-2xl">
-          <h2 className="text-2xl font-bold mb-4 text-[var(--color-white)]">
+          <h2 className="text-2xl font-bold mb-4 text-white">
             ▶ {t("festival.format.title")}
             <hr />
           </h2>
@@ -123,16 +123,16 @@ function Festival() {
             {t("festival.format.subtitle")}
           </h2>
           <div className="grid grid-cols-2 md:flex md:flex-row md:justify-around justify-center items-center gap-5 mt-5">
-            <div className="flex flex-col w-35 h-35 sm:w-50 sm:h-50 border border-black shadow-lg/50 shadow-white bg-gradient-to-b from-[#e5a50a] to-[#c64600] rounded-4xl justify-center items-center text-center text-xl">
+            <div className="flex flex-col w-35 h-35 sm:w-50 sm:h-50 border border-black shadow-lg/50 shadow-white bg-linear-to-b from-[#e5a50a] to-[#c64600] rounded-4xl justify-center items-center text-center text-xl">
               📅
               <span className="font-bold text-center text-xl">
                 {t("festival.format.cards.months_title")}
               </span>
-              <div className="text-sm text-[var(--color-black)]">
+              <div className="text-sm text-black">
                 {t("festival.format.cards.months_subtitle")}
               </div>
             </div>
-            <div className="flex flex-col w-35 h-35 sm:w-50 sm:h-50 border border-black shadow-lg/50 shadow-white bg-gradient-to-b from-[#e5a50a] to-[#c64600] rounded-4xl justify-center items-center text-center text-xl">
+            <div className="flex flex-col w-35 h-35 sm:w-50 sm:h-50 border border-black shadow-lg/50 shadow-white bg-linear-to-b from-[#e5a50a] to-[#c64600] rounded-4xl justify-center items-center text-center text-xl">
               🎥
               <span className="font-bold text-center text-xl">
                 {t("festival.format.cards.films_title")}
