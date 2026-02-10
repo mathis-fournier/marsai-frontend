@@ -37,13 +37,12 @@ function SubscribersDashboard() {
         <>
             <div className="w-auto p-6 bg-[var(--color-bg2)]">
                 <h2 className="text-[var(--color-secondary)] text-2xl font-mono">
-                    {t("subscribers_dashboard.title")}
+                    🔳 {t("subscribers_dashboard.title")}
                 </h2>
                 <h1 className="text-4xl text-[var(--color-white)] font-bold">
-                    {t("subscribers_dashboard.description")}
+                    {t("subscribers_dashboard.number", { count: subscribers?.length })}
+                    {/* {t("subscribers_dashboard.description")} */}
                 </h1>
-                <p className="italic text-[var(--color-white)]">
-                    {t("subscribers_dashboard.number", { count: subscribers?.length })}</p>
             </div>
         </>
     );

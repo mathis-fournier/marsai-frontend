@@ -13,6 +13,7 @@ export default function DashboardGlobal() {
   const objective_participants = 40;
   const objective_directors = 40;
   const objective_rating = 25;
+  const [panel, setPanel] = useState<boolean>(false);
 
   useEffect(() => {
     Promise.all([
@@ -50,9 +51,11 @@ export default function DashboardGlobal() {
   return (
     <>
       {/* TITRE */}
-      <div className="cursor-default w-auto p-6 bg-(--color-bg2)">
+      <div className="cursor-default w-auto p-6 bg-(--color-bg2)"
+        onClick={() => setPanel(!panel)}
+      >
         <h2 className="text-secondary text-2xl font-mono">
-          {t("dashboard_global.title")}
+          🔳 {t("dashboard_global.title")}
         </h2>
         <h1 className="text-4xl text-white font-bold">
           {t("dashboard_global.subtitle")}
@@ -62,70 +65,75 @@ export default function DashboardGlobal() {
         </p>
       </div>
 
-      {/* DIV CONTAINER STATCARD */}
-      <div className="grid sm:grid-cols-1 md:grid-cols-2 p-6 gap-6 max-w-full bg-brand">
-        <StatCard
-          icon="https://img.icons8.com/?size=26&id=2998&format=png&color=6366f1"
-          objective={t("dashboard_global.card.objective", {
-            count: moviecount,
-          })}
-          objectivemax={objective_submitted}
-          title={t("dashboard_global.card.films_submitted")}
-          percentageText={t("dashboard_global.card.completed", {
-            percentage: getPercent(moviecount, objective_submitted),
-          })}
-          progressValue={getPercent(moviecount, objective_submitted)}
-        />
 
-        <StatCard
-          icon="https://img.icons8.com/?size=26&id=1074&format=png&color=6366f1"
-          objective={t("dashboard_global.card.objective", {
-            count: participantscount,
-          })}
-          objectivemax={objective_participants}
-          title={t("dashboard_global.card.participants", {
-            count: participantscount,
-          })}
-          percentageText={t("dashboard_global.card.completed", {
-            percentage: getPercent(participantscount, objective_participants),
-          })}
-          progressValue={getPercent(participantscount, objective_participants)}
-        />
 
-        <StatCard
-          icon="https://img.icons8.com/?size=26&id=1074&format=png&color=6366f1"
-          objective={t("dashboard_global.card.objective", {
-            count: ratingcount,
-          })}
-          objectivemax={objective_rating}
-          title={t("dashboard_global.card.rating_title", {
-            count: ratingcount,
-          })}
-          percentageText={t("dashboard_global.card.completed", {
-            percentage: getPercent(ratingcount, objective_rating),
-          })}
-          progressValue={getPercent(ratingcount, objective_rating)}
-        />
 
-        <StatCard
-          icon="https://img.icons8.com/?size=26&id=69088&format=png&color=6366f1"
-          objective={t("dashboard_global.card.objective", {
-            count: directorscount,
-          })}
-          objectivemax={objective_directors}
-          title={t("dashboard_global.card.active_accounts", {
-            count: directorscount,
-          })}
-        >
-          <p>{t("dashboard_global.card.today", { count: 2 })}</p>
-        </StatCard>
+      <div className={`transition-all duration-1350 ease-linear overflow-hidden ${panel ? 'opacity-100' : 'max-h-0 opacity-0'}`}>
+        {/* DIV CONTAINER STATCARD */}
+        <div className="grid sm:grid-cols-1 md:grid-cols-2 p-6 gap-6 max-w-full bg-brand">
+          <StatCard
+            icon="https://img.icons8.com/?size=26&id=2998&format=png&color=6366f1"
+            objective={t("dashboard_global.card.objective", {
+              count: moviecount,
+            })}
+            objectivemax={objective_submitted}
+            title={t("dashboard_global.card.films_submitted")}
+            percentageText={t("dashboard_global.card.completed", {
+              percentage: getPercent(moviecount, objective_submitted),
+            })}
+            progressValue={getPercent(moviecount, objective_submitted)}
+          />
+
+          <StatCard
+            icon="https://img.icons8.com/?size=26&id=1074&format=png&color=6366f1"
+            objective={t("dashboard_global.card.objective", {
+              count: participantscount,
+            })}
+            objectivemax={objective_participants}
+            title={t("dashboard_global.card.participants", {
+              count: participantscount,
+            })}
+            percentageText={t("dashboard_global.card.completed", {
+              percentage: getPercent(participantscount, objective_participants),
+            })}
+            progressValue={getPercent(participantscount, objective_participants)}
+          />
+
+          <StatCard
+            icon="https://img.icons8.com/?size=26&id=1074&format=png&color=6366f1"
+            objective={t("dashboard_global.card.objective", {
+              count: ratingcount,
+            })}
+            objectivemax={objective_rating}
+            title={t("dashboard_global.card.rating_title", {
+              count: ratingcount,
+            })}
+            percentageText={t("dashboard_global.card.completed", {
+              percentage: getPercent(ratingcount, objective_rating),
+            })}
+            progressValue={getPercent(ratingcount, objective_rating)}
+          />
+
+          <StatCard
+            icon="https://img.icons8.com/?size=26&id=69088&format=png&color=6366f1"
+            objective={t("dashboard_global.card.objective", {
+              count: directorscount,
+            })}
+            objectivemax={objective_directors}
+            title={t("dashboard_global.card.active_accounts", {
+              count: directorscount,
+            })}
+          >
+            <p>{t("dashboard_global.card.today", { count: 2 })}</p>
+          </StatCard>
+        </div>
       </div>
 
-      <div className="w-full p-6 pt-0 bg-brand">
+      {/* <div className="w-full p-6 pt-0 bg-brand">
         <StatCard icon="a.png" objective="1" objectivemax={2} title="?">
           <p>test</p>
         </StatCard>
-      </div>
+      </div> */}
     </>
   );
 }

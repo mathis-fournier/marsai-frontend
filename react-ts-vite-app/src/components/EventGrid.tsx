@@ -38,7 +38,7 @@ export default function EventGrid({
       />
 
       {!filtered.length ? (
-        <div className="text-center p-12 text-slate-500">
+        <div className="text-center p-12 text-white">
           {finalEmptyMessage}
         </div>
       ) : (
@@ -47,7 +47,7 @@ export default function EventGrid({
             <div
               key={event.id}
               onClick={() => navigate(`/event/${event.id}`)}
-              className="group cursor-pointer overflow-hidden rounded-xl border border-border bg-brand2 text-white shadow-sm hover:border-hover transition-all"
+              className="group cursor-pointer overflow-hidden rounded-xl border border-white bg-linear-to-bl from-brand2 to-brand text-white shadow-sm hover:border-hover transition-all"
             >
               {event.imageUrl && (
                 <img

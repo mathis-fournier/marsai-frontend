@@ -113,99 +113,111 @@ export default function SubmitMovie() {
     }
   };
   return (
-    <div className="bg-brand2 md:max-w-[75%] mx-auto px-6 my-25 pt-10 md:rounded-4xl shadow-lg mb-10 text-white">
-      <h1 className="text-3xl text-center font-bold text-secondary">
-        {t("submit_movie.page_title")}
-      </h1>
-
-      <form onSubmit={handleSubmit} className="p-10 mx-auto max-w-2xl">
-        <fieldset className="border border-white p-8 rounded-lg space-y-12">
-          <div className="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-            {fields.map((field) => (
-              <FormInput key={field.id} {...field} onChange={handleChange} />
-            ))}
-
-            <div className="sm:col-span-3">
-              <label className="block text-sm font-medium">
-                {t("submit_movie.original_language_label")}
-              </label>
-              <select
-                name="original_language"
-                onChange={handleChange}
-                className="mt-2 block w-full rounded-md bg-white/5 py-1.5 px-3 text-white outline-white/10"
-              >
-                <option value="French">French</option>
-                <option value="English">English</option>
-              </select>
-            </div>
+    <div className="my-20">
+      <form onSubmit={handleSubmit} className="p-25 md:max-w-[75%] mx-auto px-6 my-1 pt-10 sm:rounded-4xl md:shadow-lg/50 md:border-2 sm:border-primary md:shadow-white mb-10">
+        <div className="space-y-12">
+          <div className="text-white">
+            <h1 className="text-2xl text-primary font-sans">
+              <span>SUBMIT YOUR MOVIE
+              </span>
+            </h1>
+            <h2 className="text-base/7 font-semibold text-white">
+              {t('register.title')}</h2>
+            <p className="mt-1 text-sm/6 text-gray-400">
+              {t('register.subtitle')}
+            </p>
           </div>
+          <fieldset className="">
+            <div className="text-white">
+              <div className="sm:grid grid-cols-2 gap-x-6 space-y-5 sm:grid-cols-6">
+                {fields.map((field) => (
+                  <FormInput key={field.id} {...field} onChange={handleChange} />
+                ))}
 
-          <div className="space-y-8">
-            {textAreas.map((area) => (
-              <FormInput
-                key={area.id}
-                {...area}
-                isTextArea={true}
-                onChange={handleChange}
-              />
-            ))}
-            <FormInput
-              id="ia_tools"
-              label={t("submit_movie.ia_tools_label")}
-              onChange={handleChange}
-            />
-          </div>
+                <div className=" my-5 sm:col-span-3">
+                  <label className="block text-sm font-medium">
+                    {t("submit_movie.original_language_label")}
+                  </label>
+                  <select
+                    name="original_language"
+                    onChange={handleChange}
+                    className="mt-2 block w-full rounded-md bg-white/5 py-1.5 px-3 text-white outline-white/10"
+                  >
+                    <option value="French">French</option>
+                    <option value="English">English</option>
+                  </select>
+                </div>
+              </div>
 
-          <div className="mt-2 flex justify-center rounded-lg border border-dashed border-white/25 px-6 py-10">
-            <div className="text-center">
-              <label
-                htmlFor="file"
-                className="cursor-pointer text-indigo-400 hover:text-indigo-300 font-semibold"
-              >
-                <span>{t("submit_movie.upload_file_label")}</span>
-                <input
-                  id="file"
-                  name="file"
-                  type="file"
-                  className="sr-only"
-                  onChange={(e) => setFile(e.target.files?.[0] || null)}
-                />
-              </label>
-              <p className="text-xs text-gray-400 mt-1">
-                {file ? file.name : t("submit_movie.file_types_label")}
-              </p>
-            </div>
-          </div>
-
-          <div className="flex gap-10">
-            {["isHybrid", "hasSubs"].map((name) => (
-              <label
-                key={name}
-                className="flex items-center gap-3 cursor-pointer"
-              >
-                <input
-                  type="checkbox"
-                  name={name}
+              <div className="space-y-5">
+                {textAreas.map((area) => (
+                  <FormInput
+                    key={area.id}
+                    {...area}
+                    isTextArea={true}
+                    onChange={handleChange}
+                  />
+                ))}
+                <FormInput
+                  id="ia_tools"
+                  label={t("submit_movie.ia_tools_label")}
                   onChange={handleChange}
-                  className="size-4 rounded border-white/10 bg-white/5 text-indigo-500"
                 />
-                <span className="text-sm font-medium">
-                  {t(`submit_movie.${name}_label`)}
-                </span>
-              </label>
-            ))}
-          </div>
-          <div className="flex items-center justify-end gap-x-6">
-            {message && <p className="text-sm text-secondary">{message}</p>}
-            <button
-              type="submit"
-              className="rounded-md bg-indigo-500 px-6 py-2 text-sm font-semibold hover:bg-indigo-400 shadow-md"
-            >
-              {t("submit_movie.save_button")}
-            </button>
-          </div>
-        </fieldset>
-      </form>
+              </div>
+
+              <div className="flex justify-center rounded-lg px-6 py-10">
+                <div className="text-center">
+                  <label
+                    htmlFor="file"
+                    className="cursor-pointer font-semibold"
+                  >
+                    <span>{t("submit_movie.upload_file_label")}</span>
+                    <input
+                      id="file"
+                      name="file"
+                      type="file"
+                      className="sr-only"
+                      onChange={(e) => setFile(e.target.files?.[0] || null)}
+                    />
+                  </label>
+                  <p className="text-xs text-gray-400 mt-1">
+                    {file ? file.name : t("submit_movie.file_types_label")}
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex gap-10 justify-center">
+                {["isHybrid", "hasSubs"].map((name) => (
+                  <label
+                    key={name}
+                    className="flex items-center gap-3 cursor-pointer"
+                  >
+                    <input
+                      type="checkbox"
+                      name={name}
+                      onChange={handleChange}
+                      className="size-4 rounded  bg-white/5 text-indigo-500"
+                    />
+                    <span className="text-sm font-medium">
+                      {t(`submit_movie.${name}_label`)}
+                    </span>
+                  </label>
+                ))}
+              </div>
+              <div className="flex p-10 items-center justify-center gap-x-6 ">
+                <button
+                  type="submit"
+                  className="rounded-md hover:animate-pulse bg-primary text-black px-6 py-2 text-lg font-semibold shadow-md"
+                >
+                  {t("submit_movie.save_button")}
+                </button>
+              </div>
+              {message && <p className="text-sm text-primary text-center">{message}</p>}
+            </div >
+          </fieldset>
+        </div>
+      </form >
     </div>
+
   );
 }
