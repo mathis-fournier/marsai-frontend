@@ -12,15 +12,13 @@ export default function MovieDetails() {
   const { id } = useParams();
   const { t } = useTranslation();
 
+  const [note, setNote] = useState<number>(5);
   const [movieDetails, setMovieDetails] = useState<Movie | null>(null);
-  const [movieCollaborators, setMovieCollaborators] = useState<
-    MovieCollaborator[]
-  >([]);
+  const [movieCollaborators, setMovieCollaborators] = useState<MovieCollaborator[]>([]);
   const [movieTags, setMovieTags] = useState<MovieTag[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [selectedCollaborator, setSelectedCollaborator] =
-    useState<MovieCollaborator | null>(null);
+  const [selectedCollaborator, setSelectedCollaborator] = useState<MovieCollaborator | null>(null);
 
   useEffect(() => {
     const fetchAllData = async () => {
@@ -87,163 +85,182 @@ export default function MovieDetails() {
   }
 
   return (
-    <div className="flex justify-center items-center p-6 bg-(--color-background) min-h-screen">
-      <div className="bg-brand2 m-auto p-10 font-bold rounded-2xl w-full max-w-5xl">
-        {/* TITRE DU FILMS */}
+    <>
+      <div className="bg-brand m-auto md:p-10 font-normal rounded-2xl ">
+
+
         <div className="mb-10 text-center">
-          <h1 className="bg-linear-to-r from-secondary to-red-800 bg-clip-text text-transparent text-4xl font-bold">
+          {/* TITRE DU FILMS */}
+          <h1 className="bg-linear-to-t from-yellow-400 to-yellow-600 bg-clip-text text-transparent text-4xl font-bold mb-4">
             {movieDetails.english_title}
           </h1>
-          <h2 className="bg-linear-to-r from-secondary to-red-800 bg-clip-text text-transparent text-2xl mt-2">
+          <p className="text-white">
             {movieDetails.original_title}
-          </h2>
+          </p>
+
         </div>
+
+        {/* TAGS */}
+        <div className="flex flex-wrap gap-4 text-white justify-center">
+          {movieTags.map((tag) => (
+            <span
+              key={tag.id}
+              className="bg-gray-800 border border-third px-3 py-1 rounded-full text-sm"
+            >
+              #{tag.name}
+            </span>
+          ))}
+        </div>
+
 
         {/* VIDEO/IMAGE DU FILM */}
-        <div className="mt-6">
-          <div className="flex items-center justify-center">
-            {movieDetails.youtube_url ? (
-              <iframe
-                className="rounded-xl shadow-lg"
-                width="560"
-                height="315"
-                src={movieDetails.youtube_url}
-                title="YouTube video player"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              ></iframe>
-            ) : (
-              <div className="w-full h-64 bg-gray-200 flex items-center justify-center rounded-lg">
-                {t("movie_details.no_image")}
+        <div className="justify-around items-start bg-(--color-background)">
+
+
+
+          <div className="grid grid-cols-2">
+            <table className="">
+              <div className="p-10 flex">
+                <div className="flex justify-center">
+                  {movieDetails.youtube_url ? (
+                    <iframe
+                      className="rounded-xl shadow-lg w-full"
+                      src={movieDetails.youtube_url}
+                      title="YouTube video player"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    ></iframe>
+                  ) : (
+                    <div className="w-full h-64 bg-gray-200 flex items-center justify-center rounded-lg">
+                      {t("movie_details.no_image")}
+                    </div>
+                  )}
+                </div>
               </div>
-            )}
+              <tbody className="bg-white divide-y ">
+                {[
+                  ["isHybrid", movieDetails.isHybrid ? "Yes" : "No"],
+                  ["original_language", movieDetails.original_language],
+                  ["original_synopsis", movieDetails.original_synopsis],
+                  ["english_synopsis", movieDetails.english_synopsis],
+                  ["submitted_at", movieDetails.submitted_at],
+                  ["duration", movieDetails.duration],
+                  ["creative_process", movieDetails.creative_process],
+                  ["ia_tools", movieDetails.ia_tools],
+                  ["hasSubs", movieDetails.hasSubs ? "Yes" : "No"],
+                  ["status", movieDetails.status],
+                ].map(([key, value]) => (
+                  <tr key={key}>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-bold bg-gray-50">
+                      {t(`movie_details.${key}`)}
+                    </td>
+                    <td className="px-6 py-4 text-sm text-gray-600">
+                      {value}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
+        </div>
 
-          {/* NOTATION */}
-          <div className="p-10 my-10 flex flex-col items-center justify-center text-white text-2xl">
-            <h2>0 - 10</h2>
-            <input
-              className="p-1 my-4 w-64"
-              min="0"
-              max="10"
-              type="range"
-            ></input>
-            <button
-              className="bg-third text-black hover:bg-secondary text-sm md:text-xl px-8 py-3 rounded-xl transition-colors"
-              type="submit"
-            >
-              {t("movie_details.rating")}
-            </button>
-          </div>
+        {/* DETAILS DU FILM */}
+        <div className="flex flex-col md:flex-row justify-center gap-10">
+          <h2 className="text-sm ">
+            <span className="my-10 text-white flex justify-center text-xl">{t("movie_details.title")}</span>
+          </h2>
+          <div>
 
-          {/* TAGS */}
-          <div className="flex flex-wrap gap-4 text-white justify-center mt-6">
-            {movieTags.map((tag) => (
-              <span
-                key={tag.id}
-                className="bg-gray-800 px-3 py-1 rounded-full text-sm"
-              >
-                #{tag.name}
-              </span>
-            ))}
-          </div>
 
-          <div className="grid grid-cols-1 mt-10 gap-8">
-            {/* DETAILS DU FILM */}
-            <div>
-              <h2 className="font-semibold text-center text-white text-2xl my-4">
-                {t("movie_details.title")}
-              </h2>
-              <div className="overflow-hidden rounded-lg">
-                <table className="min-w-full divide-y divide-gray-200">
-                  <tbody className="bg-white divide-y divide-gray-200 text-gray-900">
-                    {[
-                      ["isHybrid", movieDetails.isHybrid ? "Yes" : "No"],
-                      ["original_language", movieDetails.original_language],
-                      ["original_synopsis", movieDetails.original_synopsis],
-                      ["english_synopsis", movieDetails.english_synopsis],
-                      ["submitted_at", movieDetails.submitted_at],
-                      ["duration", movieDetails.duration],
-                      ["creative_process", movieDetails.creative_process],
-                      ["ia_tools", movieDetails.ia_tools],
-                      ["hasSubs", movieDetails.hasSubs ? "Yes" : "No"],
-                      ["status", movieDetails.status],
-                    ].map(([key, value]) => (
-                      <tr key={key}>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm font-bold bg-gray-50">
-                          {t(`movie_details.${key}`)}
-                        </td>
-                        <td className="px-6 py-4 text-sm text-gray-600">
-                          {value}
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-
-            {/* COLLABORATORS */}
-            <div>
-              <h2 className="font-semibold text-center text-2xl text-white my-4">
-                {t("movie_details.collaborators")}
-              </h2>
-              <div className="overflow-x-auto rounded-lg">
-                <table className="min-w-full divide-y divide-gray-200">
-                  <thead className="bg-gray-100">
-                    <tr>
-                      {[
-                        "Firstname",
-                        "Lastname",
-                        "Job",
-                        "Contribution",
-                        "details",
-                      ].map((header) => (
-                        <th
-                          key={header}
-                          className="px-6 py-3 text-left text-xs font-bold text-gray-700 uppercase tracking-wider"
-                        >
-                          {t(`movie_details.collaborator_${header}`)}
-                        </th>
-                      ))}
-                    </tr>
-                  </thead>
-                  <tbody className="bg-white divide-y divide-gray-200">
-                    {movieCollaborators.map((c) => (
-                      <tr key={c.id}>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm">
-                          {c.firstname}
-                        </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm">
-                          {c.lastname}
-                        </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm">
-                          {c.job}
-                        </td>
-                        <td className="px-6 py-4 text-sm">{c.contribution}</td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                          <button
-                            onClick={() => setSelectedCollaborator(c)}
-                            className="text-indigo-600 hover:text-indigo-900 cursor-pointer"
+            <div className="items-center">
+              {/* COLLABORATORS */}
+              <div>
+                <h2 className="font-semibold text-center text-white my-4">
+                  {t("movie_details.collaborators")}
+                </h2>
+                <div className="w-full rounded-lg">
+                  <table className=" divide-y divide-gray-200">
+                    <thead className="bg-gray-100">
+                      <tr>
+                        {[
+                          "Firstname",
+                          "Lastname",
+                          "Job",
+                          "Contribution",
+                          "details",
+                        ].map((header) => (
+                          <th
+                            key={header}
+                            className="py-3 text-left text-xs font-bold text-gray-700 uppercase tracking-wider"
                           >
-                            {t("movie_details.collaborator_details")}
-                          </button>
-                        </td>
+                            {t(`movie_details.collaborator_${header}`)}
+                          </th>
+                        ))}
                       </tr>
-                    ))}
-                  </tbody>
-                </table>
+                    </thead>
+                    <tbody className="bg-white divide-y divide-gray-200">
+                      {movieCollaborators.map((c) => (
+                        <tr key={c.id}>
+                          <td className="py-4 whitespace-nowrap text-sm">
+                            {c.firstname}
+                          </td>
+                          <td className="px-6 py-4 whitespace-nowrap text-sm">
+                            {c.lastname}
+                          </td>
+                          <td className="px-6 py-4 whitespace-nowrap text-sm">
+                            {c.job}
+                          </td>
+                          <td className="px-6 py-4 text-sm">{c.contribution}</td>
+                          <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                            <button
+                              onClick={() => setSelectedCollaborator(c)}
+                              className="text-indigo-600 hover:text-indigo-900 cursor-pointer"
+                            >
+                              {t("movie_details.collaborator_details")}
+                            </button>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
 
+        {/* NOTATION */}
+        <div className="my-25 p-1 md:p-5  w-full md:w-[50%] border-4 border-third m-auto flex flex-col items-center justify-center text-white rounded-2xl shadow-lg/50 shadow-white bg-gradient-to-b from-brand to-brand2">
+          <h2 className="font-semibold  text-center text-2xl text-white my-4">
+            {t("movie_details.jury")}
+          </h2>
+          <label htmlFor="comment">Apprecied ?</label>
+          <textarea
+            id="comment" className="border border-white w-80 2xl:w-100 my-3 p-7 md:p-15 rounded-xl ">Here you can eventually comment this movie</textarea>
+          <h2 className="my-8 text-2xl">{note / 10} / 10</h2>
+          <input
+            className="p-1 w-50 md:w-100"
+            min="0"
+            max="100"
+            step="1"
+            type="range"
+            onChange={((event: any) => setNote(event.target.value))}
+          ></input>
+          <button
+            className="my-14 bg-third text-black hover:opacity-50 text-sm md:text-xl px-8 py-3 rounded-xl transition-colors"
+            type="submit"
+          >
+            {t("movie_details.rating")}
+          </button>
+        </div>
+
+
+      </div>
       {selectedCollaborator && (
         <CollaboratorDetailsModal
           collaborator={selectedCollaborator}
           onClose={() => setSelectedCollaborator(null)}
         />
       )}
-    </div>
+    </>
   );
 }

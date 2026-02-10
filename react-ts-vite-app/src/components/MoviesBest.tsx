@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import type { Movie } from "../types-interfaces/Movie";
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 
 function MoviesBest() {
   const { t } = useTranslation();
@@ -43,39 +44,44 @@ function MoviesBest() {
     );
 
   return (
-    <div className="max-w-4xl mx-auto p-6">
-      <div className="flex flex-col sm:grid sm:grid-cols-2 md:flex-row justify-center items-center gap-6">
+    <div className="w-full md:w-full mx-auto text-center">
+
+      <h2 className="text-3xl p-5 text-primary font-extrabold">SÉLECTION DU FESTIVAL</h2>
+      <div className=" flex flex-col sm:flex-row justify-center items-center gap-6 ">
         {data.map((m) => (
           <div
             key={m.id}
-            className="group overflow-hidden rounded-xl border border-white bg-white shadow-sm transition-all hover:shadow-md"
           >
-            <div className="md:w-110 md:h-60 bg-white flex items-center justify-center">
-              {m.cover_image ? (
-                <img
-                  src={m.cover_image}
-                  alt={m.english_title}
-                  className="h-full w-full object-cover"
-                />
-              ) : (
-                <span className="text-white">
-                  {t("movies_thumbnails.image_placeholder")}
-                </span>
-              )}
+            <div className="text-center p-10 text-3xl md:text-4xl">
+              {/* <p>{m.original_title}</p> */}
+              <p>{m.english_title}</p>
             </div>
+            {m.cover_image ? (
+              <Link to={`/galery/${m.id}`}>
+                {m.cover_image ? (
+                  <div className="md:p-5">
 
-            <div className="p-5">
-              <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-black">
-                {m.english_title}
-              </h3>
-              <p className="mt-2 text-black line-clamp-2 md:text-lg ">
-                {m.english_synopsis || t("movies_thumbnails.no_synopsis")}
-              </p>
-            </div>
+                    <img
+                      src={m.cover_image}
+                      alt={m.english_title}
+                      className=" h-full w-full object-cover"
+                    />
+                  </div>
+                ) : (
+                  <span className="text-gray-500">{t('galery.no_image')}</span>
+                )}
+              </Link>
+            ) : (
+              <span className="text-white">
+                {t("movies_thumbnails.image_placeholder")}
+              </span>
+            )}
+            <p>{m.english_synopsis}</p>
           </div>
         ))}
       </div>
     </div>
+
   );
 }
 

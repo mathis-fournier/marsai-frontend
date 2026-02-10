@@ -7,26 +7,36 @@ function Footer() {
 
     return (
 
-        <div className="bg-[var(--color-brand)] text-white">
-            <div className="p-10 text-center flex flex-col items-center gap-1 md:gap-0 lg:flex-row md:justify-around">
-                <div className="text-left p-4 rounded-4xl">
-                    <NavLink to={"/"}><p className="text-3xl bg-[var(--color-secondary)] p-2 rounded-tr-2xl">MarsAI</p></NavLink>
-                    <p className="my-4 md:text-xl">{t('footer.description')}</p>
-                    <div className='flex justify-around gap-2 mt-15'>
-                        <img className="w-10 md:w-20" src="facebook-logo.png" alt="logo facebook" />
-                        <img className="w-10 md:w-20" src="instagram-logo.png" alt="logo instagram" />
-                        <img className="w-10 md:w-20" src="x-logo.png" alt="logo X" />
-                        <img className="w-10 md:w-20" src="youtube-logo.svg" alt="logo youtube" />
-                    </div>
-                </div>
-                <NewsletterSubscribe />
-            </div>
+        <div className="text-white">
 
-            <div className="p-10 flex flex-col md:flex-row md:justify-around text-left text-xl md:gap-0">
-                <p className="text-sm">{t('footer.legal')}</p>
-                <p className="text-sm">{t('footer.press')}</p>
-                <p className="text-sm">{t('footer.contact')}</p>
-                <p className="text-sm">{t('footer.copyright')}</p>
+
+            <div className="text-center flex items-center lg:flex-row md:justify-around">
+
+                <div className="text-white text-center p-1 my-7 w-full rounded-4xl flex-col">
+                    <hr />
+                    <div className=" text-2xl text-center md:gap-15 flex flex-col justify-center items-center xl:flex-row p-5 md:p-15 md:text-4xl font-extrabold">
+                        <NavLink to={"/"}>
+                            Mobile film Festival<br />
+                            La Plateforme<br />
+                            LYON | GEM
+                        </NavLink>
+                    </div>
+                    <p className='text-sm md:text-2xl justify-center'> {t('footer.description')}</p>
+                    <NewsletterSubscribe />
+                    <div className='md:w-[75%] m-auto flex justify-around my-15'>
+                        <img className="w-15 h-auto md:w-15" src="facebook-logo.png" alt="logo facebook" />
+                        <img className="w-25 h-auto md:w-25" src="instagram-logo.png" alt="logo instagram" />
+                        <img className="w-15 h-auto md:w-15" src="x-logo.png" alt="logo X" />
+                        <img className="w-15 h-auto md:w-15" src="youtube-logo.svg" alt="logo youtube" />
+                    </div>
+                    <div className="pt-0 flex flex-col md:flex-row md:justify-around text-center md:gap-0">
+                        <p className="text-sm md:text-lg">{t('footer.legal')}</p>
+                        <p className="text-sm md:text-lg">{t('footer.press')}</p>
+                        <p className="text-sm md:text-lg">{t('footer.contact')}</p>
+                        <p className="text-sm md:text-lg">{t('footer.copyright')}</p>
+
+                    </div >
+                </div>
             </div>
         </div>
     )

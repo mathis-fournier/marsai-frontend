@@ -35,10 +35,10 @@ export default function Dashboard() {
 
   return (
     <>
-      <SubscribersDashboard />
       <DashboardGlobal />
       <DashboardMovies movies={data} isLoading={isLoading} />
       <UserDashboard />
+      <SubscribersDashboard />
     </>
   );
 }

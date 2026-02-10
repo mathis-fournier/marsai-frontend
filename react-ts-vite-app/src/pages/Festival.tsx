@@ -1,7 +1,6 @@
-import { NavLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import MoviesBest from "../components/MoviesBest";
 import HeroSection from "../components/HeroSection";
+// import HeroSection from "../components/HeroSection";
 
 function Festival() {
   const { t } = useTranslation();
@@ -9,287 +8,152 @@ function Festival() {
   return (
     <>
       <HeroSection />
-      <div className="bg-brand md:max-w-full mx-auto px-6 my-25  shadow-lg/50 shadow-black mb-10">
-        <div className="bg-brand m-auto p-10 font-bold">
-          <div className="flex justify-center mt-5"></div>
-        </div>
-        <div className=" bg-brand p-1">
-          <h2 className="text-2xl text-white font-bold mb-4 my-4">
-            ▶ {t("festival.project.title")}
-            <hr />
-          </h2>
-          <p className="mb-4 my-4 text-white md:text-xl">
-            {t("festival.project.description")}
-          </p>
-          <div className="grid grid-cols-2 md:flex lg:flex-row lg:justify-around justify-center items-center gap-5 mt-5">
-            <p className="flex flex-col w-35 h-35 sm:w-50 sm:h-50 border border-black shadow-lg/50 shadow-white bg-linear-to-b from-[#e5a50a] to-[#c64600] rounded-4xl justify-center items-center text-center text-xl">
-              🎬
-              <span className="font-bold text-center text-xl">
-                {t("festival.project.cards.one_minute_title")}
-              </span>
-              <span className="text-sm p-1">
-                {t("festival.project.cards.one_minute_description")}
-              </span>
-            </p>
-            <p className="flex flex-col w-35 h-35 sm:w-50 sm:h-50 border border-black shadow-lg/50 shadow-white bg-linear-to-b from-[#e5a50a] to-[#c64600] rounded-4xl justify-center items-center text-center text-xl">
-              🎓
-              <span className="font-bold text-center text-xl">
-                {t("festival.project.cards.free_title")}
-              </span>
-              <span className="text-sm p-1">
-                {t("festival.project.cards.free_description")}
-              </span>
-            </p>
-            <p className="flex flex-col w-35 h-35 sm:w-50 sm:h-50 border border-black shadow-lg/50 shadow-white bg-linear-to-b from-[#e5a50a] to-[#c64600] rounded-4xl justify-center items-center text-center text-xl">
-              👨‍🏫
-              <span className="font-bold text-center text-xl">
-                {t("festival.project.cards.for_all_title")}
-              </span>
-              <span className="text-sm p-1">
-                {t("festival.project.cards.for_all_description")}
-              </span>
-            </p>
-            <p className="flex flex-col w-35 h-35 sm:w-50 sm:h-50 border border-black shadow-lg/50 shadow-white bg-linear-to-b from-[#e5a50a] to-[#c64600] rounded-4xl justify-center items-center text-center text-xl">
-              🌍
-              <span className="font-bold text-center text-xl">
-                {t("festival.project.cards.expertise_title")}
-              </span>
-              <span className="text-sm p-1">
-                {t("festival.project.cards.expertise_description")}
-              </span>
-            </p>
+
+      <div id="presentation" className="font-serif w-[95%] md:w-[85%] lg:w-[75%] m-auto mt-10 ">
+        <p className="font-bold font-sans md:p-15 bg-linear-to-t from-yellow-400 to-yellow-600 bg-clip-text text-transparent uppercase mb-20 text-lg md:text-3xl text-center">
+          {t("festival.project.description")}
+        </p>
+
+        <div className="font-sans ">
+          <div className="my-5">
+
+
+            {/* Titre 1 */}
+            <div className="">
+              <h2 className="text-center text-white md:text-4xl font-bold text-2xl">
+                {t("festival.project.title")}
+
+              </h2>
+            </div>
+            <div className="my-8 flex flex-col justify-center items-center gap-9 mb-10 m-auto px-6 rounded-2xl">
+              <div className="flex flex-col m-auto">
+                <span className="text-lg text-center md:text-xl text-white p-1">
+                  {t("festival.objectives.cards.human_description")}
+                </span>
+              </div>
+              <div className="mb-8 grid grid-cols-2 xl:flex xl:flex-row xl:justify-around justify-center items-center gap-5 mt-5">
+                <p className="flex flex-col w-35 h-35 sm:w-50 sm:h-50 border border-white shadow-lg/50 shadow-white bg-linear-to-b from-brand to-brand2 rounded-4xl justify-center items-center text-center text-4xl text-white">
+                  🎬
+                  <span className="font-bold text-center text-2xl">
+                    {t("festival.project.cards.one_minute_title")}
+                  </span>
+                  <span className="p-1 text-xs md:text-lg">
+                    {t("festival.project.cards.one_minute_description")}
+                  </span>
+                </p>
+                <p className="flex flex-col w-35 h-35 sm:w-50 sm:h-50 border border-white shadow-lg/50 shadow-white bg-linear-to-b from-brand to-brand2 rounded-4xl justify-center items-center text-center text-4xl text-white">
+                  🎓
+                  <span className="font-bold text-center text-2xl">
+                    {t("festival.project.cards.free_title")}
+                  </span>
+                  <span className="p-1 text-xs md:text-lg">
+                    {t("festival.project.cards.free_description")}
+                  </span>
+                </p>
+                <p className="flex flex-col w-35 h-35 sm:w-50 sm:h-50 border border-white shadow-lg/50 shadow-white bg-linear-to-b from-brand to-brand2 rounded-4xl justify-center items-center text-center text-4xl text-white">
+                  🖖
+                  <span className="font-bold text-center text-2xl">
+                    {t("festival.project.cards.for_all_title")}
+                  </span>
+                  <span className="p-1 text-xs md:text-lg">
+                    {t("festival.project.cards.for_all_description")}
+                  </span>
+                </p>
+                <p className=" flex flex-col w-35 h-35 sm:w-50 sm:h-50 border border-white shadow-lg/50 shadow-white bg-linear-to-b from-brand to-brand2 rounded-4xl justify-center items-center text-center text-4xl text-white">
+                  🔬
+                  <span className="font-bold text-center text-2xl">
+                    {t("festival.project.cards.expertise_title")}
+                  </span>
+                  <span className="p-1 text-xs md:text-lg">
+                    {t("festival.project.cards.expertise_description")}
+                  </span>
+                </p>
+              </div>
+            </div>
           </div>
-        </div>
-        <div className="my-10 bg-brand2 -1 rounded-2xl">
-          <h2 className="text-2xl font-bold mb-4 text-[var(--color-white)]">
-            ▶ {t("festival.films.title")}
-            <hr />
-          </h2>
-          <p className="text-white  md:text-2xl">
-            {t("festival.films.description")}
-          </p>
-          <h2 className="p-5 text-center text-white text-xl md:text-2xl font-bold mb-4 my-4">
-            {t("festival.films.selection_preview")}
-          </h2>
-          <MoviesBest />
-          <NavLink to={"/galery"}>
-            <h2 className="text-xl text-white bg-[var(--color-secondary)] text-center w-40 flex m-auto p-2 rounded-xl">
-              {t("festival.films.see_all_button")}
+
+          <div className="my-5">
+
+            {/* Titre 2 */}
+            <h2 className="text-center text-white md:text-4xl font-bold text-2xl">
+              {t("festival.objectives.title")}
+
             </h2>
-          </NavLink>
-        </div>
-        <div className="my-10  bg-brand2 p-1 rounded-2xl">
-          <h2 className="text-2xl font-bold mb-4 text-white">
-            ▶ {t("festival.objectives.title")}
-            <hr />
-          </h2>
-          <div className="flex flex-col md:flex md:flex-row md:justify-around justify-center items-center gap-5 mt-5">
-            <p className="flex flex-col  w-50 h-50 sm:w-50 sm:h-50 border border-black shadow-lg/50 shadow-white bg-linear-to-b from-[#e5a50a] to-[#c64600] rounded-4xl justify-center items-center text-center text-xl">
-              🚶‍♂️
-              <span className="font-bold text-center text-xl">
-                {t("festival.objectives.cards.human_title")}
-              </span>
-              <span className="text-sm p-1">
-                {t("festival.objectives.cards.human_description")}
-              </span>
-            </p>
-            <p className="flex flex-col  w-50 h-50 sm:w-50 sm:h-50 border border-black shadow-lg/50 shadow-white bg-linear-to-b from-[#e5a50a] to-[#c64600] rounded-4xl justify-center items-center text-center text-xl">
-              ⚡
-              <span className="font-bold text-center text-xl">
-                {t("festival.objectives.cards.creative_challenge_title")}
-              </span>
-              <span className="text-sm p-1">
+            <div className="my-8 flex flex-col justify-center items-center m-auto px-6 rounded-2xl">
+              <span className="text-lg text-center md:text-xl text-white p-1">
                 {t("festival.objectives.cards.creative_challenge_description")}
               </span>
-            </p>
-            <p className="flex flex-col w-50 h-50 sm:w-50 sm:h-50 border border-black shadow-lg/50 shadow-white bg-linear-to-b from-[#e5a50a] to-[#c64600] rounded-4xl justify-center items-center text-center text-xl">
-              🚀
-              <span className="font-bold text-center text-xl">
-                {t("festival.objectives.cards.desirable_futures_title")}
-              </span>
-              <span className="text-sm p-1">
-                {t("festival.objectives.cards.desirable_futures_description")}
-              </span>
-            </p>
-          </div>
-        </div>
+              <div className="my-8">
+                <div className="flex flex-col md:flex md:flex-row md:justify-center justify-center items-center gap-5 mx-auto ">
+                  <div className="flex flex-col m-auto">
+                    <p className="flex flex-col m-auto my-5 w-35 h-35 sm:w-50 sm:h-50 border shadow-lg/50 shadow-white bg-linear-to-b from-brand to-brand2 rounded-4xl justify-center items-center text-center text-4xl text-white">
+                      ⚡
+                      <span className="font-bold text-center text-2xl">
+                        {t("festival.objectives.cards.creative_challenge_title")}
+                      </span>
+                    </p>
 
-        <div className="my-10  bg-brand2 p-1 rounded-2xl">
-          <h2 className="text-2xl font-bold mb-4 text-white">
-            ▶ {t("festival.format.title")}
-            <hr />
-          </h2>
-          <h2 className="p-5 text-center text-white text-xl md:text-2xl font-bold mb-4 my-4">
-            {t("festival.format.subtitle")}
-          </h2>
-          <div className="grid grid-cols-2 md:flex md:flex-row md:justify-around justify-center items-center gap-5 mt-5">
-            <div className="flex flex-col w-35 h-35 sm:w-50 sm:h-50 border border-black shadow-lg/50 shadow-white bg-linear-to-b from-[#e5a50a] to-[#c64600] rounded-4xl justify-center items-center text-center text-xl">
-              📅
-              <span className="font-bold text-center text-xl">
-                {t("festival.format.cards.months_title")}
-              </span>
-              <div className="text-sm text-black">
-                {t("festival.format.cards.months_subtitle")}
-              </div>
-            </div>
-            <div className="flex flex-col w-35 h-35 sm:w-50 sm:h-50 border border-black shadow-lg/50 shadow-white bg-linear-to-b from-[#e5a50a] to-[#c64600] rounded-4xl justify-center items-center text-center text-xl">
-              🎥
-              <span className="font-bold text-center text-xl">
-                {t("festival.format.cards.films_title")}
-              </span>
-              <div className="text-sm text-[var(--color-black)]">
-                {t("festival.format.cards.films_subtitle")}
-              </div>
-            </div>
-            <div className="flex flex-col w-35 h-35 sm:w-50 sm:h-50 border border-black shadow-lg/50 shadow-white bg-gradient-to-b from-[#e5a50a] to-[#c64600] rounded-4xl justify-center items-center text-center text-xl">
-              🌐
-              <span className="font-bold text-center text-xl">
-                {t("festival.format.cards.web_title")}
-              </span>
-              <div className="text-sm text-[var(--color-black)]">
-                {t("festival.format.cards.web_subtitle")}
-              </div>
-            </div>
-            <div className="flex flex-col w-35 h-35 sm:w-50 sm:h-50 border border-black shadow-lg/50 shadow-white bg-gradient-to-b from-[#e5a50a] to-[#c64600] rounded-4xl justify-center items-center text-center text-xl">
-              🎊
-              <span className="font-bold text-center text-xl">
-                {t("festival.format.cards.festival_title")}
-              </span>
-              <div className="text-sm text-[var(--color-black)]">
-                {t("festival.format.cards.festival_subtitle")}
+                  </div>
+                  <p className="flex flex-col m-auto my-5 w-35 h-35 sm:w-50 sm:h-50 border border-white shadow-lg/50 shadow-white bg-linear-to-b from-brand to-brand2 rounded-4xl justify-center items-center text-center text-4xl text-white">
+                    😄
+                    <span className="font-bold text-center text-2xl">
+                      {t("festival.objectives.cards.human_title")}
+                    </span>
+                  </p>
+                  <div className="flex flex-col m-auto">
+                    <p className="flex flex-col border border-white m-auto my-5 w-35 h-35 sm:w-50 sm:h-50 shadow-lg/50 shadow-white bg-linear-to-b from-brand to-brand2 rounded-4xl justify-center items-center text-center text-4xl text-white">
+                      📡
+                      <span className="font-bold text-center text-2xl">
+                        {t("festival.objectives.cards.desirable_futures_title")}
+                      </span>
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-          <NavLink to={"/submit"}>
-            <h2 className="text-xl my-8 text-white bg-[var(--color-secondary)] text-center w-40 m-auto p-2 rounded-xl">
-              {t("festival.format.participate_button")}
-            </h2>
-          </NavLink>
-        </div>
-        <div className="my-10  bg-brand2 p-1 rounded-2xl">
-          <h2 className="text-2xl font-bold mb-4 text-[var(--color-white)]">
-            ▶ {t("festival.conferences.title")}
-            <hr />
-          </h2>
-          <p className="text-white md:text-xl">
-            {t("festival.conferences.description")}
-          </p>
-          <ul className=" list-none list-inside text-white text-lg md:text-xl my-10 flex flex-col items-center m-auto">
-            <li className="text-left">
-              {t("festival.conferences.list.item1")}
-            </li>
-            <li className="text-left">
-              {t("festival.conferences.list.item2")}
-            </li>
-            <li className="text-left">
-              {t("festival.conferences.list.item3")}
-            </li>
-          </ul>
-          <div className="grid grid-cols-2 md:flex md:flex-rows md:justify-around justify-center items-center gap-5 mt-5">
-            <div className="flex flex-col w-35 h-35 sm:w-50 sm:h-50 border border-black shadow-lg/50 shadow-white bg-gradient-to-b from-[#e5a50a] to-[#c64600] rounded-4xl justify-center items-center text-center text-xl">
-              🎬
-              <span className="font-bold text-center text-xl">
-                {t("festival.conferences.cards.screenings_title")}
-              </span>
-              <div className="text-sm text-[var(--color-black)]"></div>
-              <span className="text-sm">
-                {t("festival.conferences.cards.screenings_description")}
-              </span>
-            </div>
-            <div className="flex flex-col w-35 h-35 sm:w-50 sm:h-50 border border-black shadow-lg/50 shadow-white bg-gradient-to-b from-[#e5a50a] to-[#c64600] rounded-4xl justify-center items-center text-center text-xl">
-              👨‍🏫
-              <span className="font-bold text-center text-xl">
-                {t("festival.conferences.cards.workshops_title")}
-              </span>
-              <div className="text-sm text-[var(--color-black)]"></div>
-              <span className="text-sm">
-                {t("festival.conferences.cards.workshops_description")}
-              </span>
-            </div>
-            <div className="flex flex-col w-70 h-35 sm:w-50 sm:h-50 border border-black shadow-lg/50 shadow-white bg-gradient-to-b from-[#e5a50a] to-[#c64600] rounded-4xl justify-center items-center text-center text-xl">
-              🏆
-              <span className="font-bold text-center text-xl">
-                {t("festival.conferences.cards.awards_title")}
-              </span>
-              <div className="text-sm text-[var(--color-black)]"></div>
-              <span className="text-sm">
-                {t("festival.conferences.cards.awards_description")}
-              </span>
-            </div>
-          </div>
-        </div>
-        <h2 className="text-2xl font-bold mb-4 text-[var(--color-white)]">
-          ▶ {t("festival.night.title")}
-          <hr />
-        </h2>
-        <p className="text-[var(--color-white)] w-full font-bold text-center text-2xl md:text-4xl">
-          {t("festival.night.date")}
-        </p>
-        <p className="text-[var(--color-white)] w-full font-bold text-center text-xl md:text-2xl/24">
-          {t("festival.night.time")}
-        </p>
-        <div className="h-100 md:h-120 bg-img">
-          <div className="flex-col m-auto rounded-2xl border-black box-border shadow-white w-68 md:w-80 p-5 flex justify-start-safe items-center  bg-black/50 h-100 md:h-120">
-            <h2 className="text-white text-3xl font-bold text-center">
-              {t("festival.night.subtitle")}
-            </h2>
-            <p className="text-[var(--color-white)] my-4 w-full text-center text-xl md:text-2xl">
-              {t("festival.night.description")}
-            </p>
-          </div>
-        </div>
-        <NavLink to={"/submit"}>
-          <h2 className="text-lg my-8 text-white bg-[var(--color-secondary)] text-center w-40 m-auto p-2 rounded-xl">
-            {t("festival.night.get_pass_button")}
-          </h2>
-        </NavLink>
 
-        <h2 className="text-2xl font-bold mb-4 text-white p-1">
-          ▶ {t("festival.location.title")}
-          <hr />
-        </h2>
-        <div className="flex flex-col md:flex-row md:justify-around ">
-          <div className="flex flex-col md:flex-rows md:justify-around justify-center p-5 my-10 m-auto w-60 h-60 rounded-2xl border-black shadow-lg/50 shadow-white bg-gradient-to-b from-[#e5a50a] to-[#c64600]">
-            <h3 className="text-2xl text-white">
-              {t("festival.location.cards.platform_title")}
-            </h3>
-            <br />
-            <h3 className="text-xl text-white">
-              {t("festival.location.cards.platform_subtitle")}
-            </h3>
-            <p className="text-sm p-2">
-              {t("festival.location.cards.platform_description")}
-            </p>
-          </div>
-          <div className="flex flex-col justify-center p-5 my-10 m-auto w-60 h-60 bg-gradient-to-b from-[#e5a50a] to-[#c64600] rounded-2xl border-black shadow-lg/50 shadow-white">
-            <h2 className="text-2xl text-white">
-              {t("festival.location.cards.sugars_room_title")}
+          <div className="my-5">
+
+            <h2 className="my-8 text-center text-white md:text-4xl font-bold text-2xl">
+
+              {/* EN CHIFFRES */}
+              {t(" festival.decimals.title")}
+
             </h2>
-            <p className="text-sm p-2">
-              {t("festival.location.cards.sugars_room_description")}
-            </p>
+            <span className="text-lg text-center md:text-xl text-white p-1 flex justify-center">
+              {t("festival.objectives.cards.desirable_futures_description")}
+            </span>
+
+            <div className="flex flex-col md:flex md:flex-row md:justify-center justify-center items-center">
+              <div className="flex flex-col md:flex-row my-8 gap-5 text-center text-white">
+                <p className="w-40 h-40 border border-white sm:w-50 sm:h-50 flex items-center justify-centershadow-lg/50 shadow-white bg-linear-to-b from-brand to-brand2 rounded-4xl text-3xl">
+                  + 250 COUNTRIES
+                  {/* {t("festival.decimals.countries")}*/}
+                </p>
+                <p className="w-40 h-40 border border-white sm:w-50 sm:h-50 flex items-center justify-center shadow-lg/50 shadow-white bg-linear-to-b from-brand to-brand2 rounded-4xl p-4 text-3xl">
+                  + 600 MOVIES
+                  {/* {t("festival.decimals.movies2")} */}
+                </p>
+              </div>
+            </div>
           </div>
-          <div className="flex flex-col justify-center p-5 my-10 m-auto w-60 h-60 bg-gradient-to-b from-[#e5a50a] to-[#c64600] rounded-2xl border-black shadow-lg/50 shadow-white">
-            <h2 className="text-2xl text-white">
-              {t("festival.location.cards.plaza_room_title")}
-            </h2>
-            <p className="text-sm p-2">
-              {t("festival.location.cards.plaza_room_description")}
-            </p>
+
+          <h2 className="text-center text-white md:text-4xl font-bold text-2xl">
+            {t("festival.partners.title")}
+
+          </h2>
+          <div className="text-center p-5 rounded-2xl">
+            <img
+              src="/partners.png"
+              alt="Partenaires Marsai"
+              className="p-10 w-200 m-auto"
+            />
           </div>
         </div>
-
-        <h2 className="text-2xl font-bold mb-4 text-white p-1">
-          ▶ {t("festival.partners.title")}
-          <hr />
-        </h2>
-        <img
-          src="/partners.png"
-          alt="Partenaires Marsai"
-          className="p-10 w-200 m-auto my-10"
-        />
       </div>
-      <img src="/chiffres.png" alt="les chiffres" className="m-auto w-300" />
+
+
     </>
   );
 }

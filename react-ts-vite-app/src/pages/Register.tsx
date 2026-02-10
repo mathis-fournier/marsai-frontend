@@ -52,10 +52,17 @@ function Register() {
             });
     }
     return (
-        <>
-            <form onSubmit={handleSubmit} className="bg-[var(--color-brand2)] p-25 md:max-w-[75%] mx-auto px-6 my-10 pt-10 md:rounded-4xl shadow-lg/50 shadow-black mb-10">
+        <div className='my-20'>
+            <form onSubmit={handleSubmit} className="p-25 md:max-w-[75%] mx-auto px-6 my-1 pt-10 sm:rounded-4xl md:shadow-lg/50 md:border-2 sm:border-primary md:shadow-white mb-10">
                 <div className="space-y-12">
-                    <div className="">
+                    <div className="text-primary text-2xl">
+                        <span className='text-center'>
+                            <h1 className='text-left'>
+
+                                REGISTER AS JURY
+                            </h1>
+
+                        </span>
                         <h2 className="text-base/7 font-semibold text-white">
                             {t('register.title')}</h2>
                         <p className="mt-1 text-sm/6 text-gray-400">
@@ -173,7 +180,7 @@ function Register() {
                     </button>
                 </div>
             </form>
-        </>
+        </div>
     )
 }
 

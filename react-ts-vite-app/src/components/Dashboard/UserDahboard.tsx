@@ -14,6 +14,7 @@ function UserDashboard() {
   const [users, setUsers] = useState<User[]>([]);
   const { token } = useAuth();
   const { t } = useTranslation();
+  const [panel, setPanel] = useState<boolean>(false);
 
   const promoteToJury = async (userId: number) => {
     if (!token) return;
@@ -125,9 +126,11 @@ function UserDashboard() {
   return (
     <>
       {" "}
-      <div className="w-auto p-6 bg-brand">
+      <div className="w-auto p-6 bg-brand"
+        onClick={() => setPanel(!panel)}
+      >
         <h2 className="text-secondary text-2xl font-mono uppercase">
-          {t("user_dashboard.title")}
+          🔳 {t("user_dashboard.title")}
         </h2>
         <h1 className="text-4xl text-white font-bold">
           {t("user_dashboard.subtitle")}
@@ -136,7 +139,7 @@ function UserDashboard() {
           {t("user_dashboard.description")}
         </p>
       </div>
-      <div className="p-6">
+      <div className={`transition-all duration-1350 ease-linear overflow-hidden ${panel ? 'opacity-100' : 'max-h-0 opacity-0'}`}>
         <div className="bg-brand2 rounded-md shadow-lg/50 shadow-black">
           <div className="">
             <table className="min-w-full text-white mb-10 text-center mobile-vertical-table">

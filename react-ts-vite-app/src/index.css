@@ -1,19 +1,29 @@
-@import "tailwindcss";
+@import 'tailwindcss';
+@tailwind utilities;
+@import "@fontsource/noto-sans";
+
+html {
+    @apply bg-linear-to-tr from-brand to-brand2;
+    font-family: "Noto Sans";
+}
+
+.hero {
+  background-position-x: -250px;
+}
+.hero-md {
+    background-position-x: 0px;
+}
 
 @theme {
   --color-brand: #1c222c;
-  --color-primary: #0069a8;
+  --color-primary: #fbbf24;
   --color-secondary: #6366f1;
-  --color-third : #fbbf24;
+  --color-third : #4a234b;
   --color-brand2: #364153;
   --color-border: #2a3240;
   --color-hover: #4f5d75;
   --color-black: #000000;
   --color-white: #bfcad0;
-}
-
-:root {
-  background-color: var(--color-brand);
 }
 
 @media (max-width: 768px) {
