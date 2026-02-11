@@ -1,26 +1,146 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import type { ChangeEvent, FormEvent } from "react";
 import { useTranslation } from "react-i18next";
 import FormInput from "../components/FormInput";
-
-interface MovieFormState {
-  original_title: string;
-  english_title: string;
-  youtube_url: string;
-  duration: number;
-  isHybrid: boolean;
-  original_language: string;
-  original_synopsis: string;
-  english_synopsis: string;
-  creative_process: string;
-  ia_tools: string;
-  hasSubs: boolean;
-}
+import type { MovieCollaboratorFormState, MovieFormState } from "../types-interfaces/Movie"
 
 export default function SubmitMovie() {
-  const { t } = useTranslation();
+  const page1Ref = useRef<HTMLFieldSetElement>(null);
+  const page2Ref = useRef<HTMLFieldSetElement>(null);
+  const page3Ref = useRef<HTMLFieldSetElement>(null);
+  const [containerHeight, setContainerHeight] = useState<number | undefined>(undefined);
+  const [page, setPage] = useState<number>(1);
 
-  const [formData, setFormData] = useState<MovieFormState>({
+  useEffect(() => {
+    let newHeight;
+    if (page === 1) {
+      newHeight = page1Ref.current?.scrollHeight;
+    } else if (page === 2) {
+      newHeight = page2Ref.current?.scrollHeight;
+    } else {
+      newHeight = page3Ref.current?.scrollHeight;
+    }
+    setContainerHeight(newHeight);
+  }, [page]);
+
+  function handlePreviousPage() {
+    if (page > 1) setPage(page - 1);
+    return;
+  }
+
+  function handleNextPage() {
+    if (page < 3) setPage(page + 1);
+    return;
+  }
+
+  const { t } = useTranslation();
+  const [file, setFile] = useState<File | null>(null);
+  const [message, setMessage] = useState<string | null>(null);
+  const [numberCollaborators, setNumberCollaborators] = useState<number>(0);
+
+
+  // PAGE 1 & 3 : Collaborator'S DETAILS
+  const [movieCollaboratorFormData, setMovieCollaboratorFormData] = useState<MovieCollaboratorFormState>({
+    gender: "",
+    firstname: "",
+    lastname: "",
+    email: "",
+    job: "",
+    contribution: "",
+    birthdate: "",
+    country: "",
+    region: "",
+    city: "",
+    address: "",
+    zipcode: "",
+    phone: "",
+    facebook_url: "",
+    instagram_url: "",
+    youtube_url: "",
+    linkedin_url: "",
+    twitter_url: ""
+  });
+  const movieCollaboratorFields = [
+    {
+      id: "firstname",
+      label: t("submit_movie.firstname_label"),
+      placeholder: t("submit_movie.firstname_placeholder"),
+    },
+    {
+      id: "lastname",
+      label: t("submit_movie.lastname_label"),
+      placeholder: t("submit_movie.lastname_placeholder"),
+    },
+    {
+      id: "email",
+      label: t("submit_movie.email_label"),
+      type: "email",
+    },
+    {
+      id: "profession",
+      label: t("submit_movie.profession_label"),
+      placeholder: t("submit_movie.profession_placeholder"),
+    },
+    {
+      id: "contribution",
+      label: t("submit_movie.contribution_label"),
+      placeholder: t("submit_movie.contribution_placeholder"),
+    },
+    {
+      id: "country",
+      label: t("submit_movie.country_label"),
+      placeholder: t("submit_movie.country_placeholder"),
+    },
+    {
+      id: "region",
+      label: t("submit_movie.region_label"),
+      placeholder: t("submit_movie.region_placeholder"),
+    },
+    {
+      id: "city",
+      label: t("submit_movie.city_label"),
+      placeholder: t("submit_movie.city_placeholder"),
+    },
+    {
+      id: "zip",
+      label: t("submit_movie.zip_label"),
+      placeholder: t("submit_movie.zip_placeholder"),
+    },
+    {
+      id: "address",
+      label: t("submit_movie.address_label"),
+      placeholder: t("submit_movie.address_placeholder"),
+    },
+    {
+      id: "phone",
+      label: t("submit_movie.phone_label"),
+      type: "tel",
+    },
+    {
+      id: "facebook",
+      label: t("submit_movie.facebook_label"),
+      type: "url",
+    },
+    {
+      id: "instagram",
+      label: t("submit_movie.instagram_label"),
+      type: "url",
+    },
+    {
+      id: "linkedin",
+      label: t("submit_movie.linkedin_label"),
+      type: "url",
+    },
+    {
+      id: "twitter",
+      label: t("submit_movie.twitter_label"),
+      type: "url",
+    }
+  ];
+
+
+  // PAGE  2 : MOVIE DETAILS
+  const [movieFormData, setMovieFormData] = useState<MovieFormState>({
     original_title: "",
     english_title: "",
     youtube_url: "",
@@ -33,7 +153,8 @@ export default function SubmitMovie() {
     ia_tools: "",
     hasSubs: false,
   });
-  const fields = [
+
+  const movieFormFields = [
     {
       id: "original_title",
       label: t("submit_movie.original_title_label"),
@@ -51,7 +172,7 @@ export default function SubmitMovie() {
     },
     { id: "duration", label: t("submit_movie.duration_label"), type: "number" },
   ];
-  const textAreas = [
+  const movieFormTextAreas = [
     {
       id: "original_synopsis",
       label: t("submit_movie.original_synopsis_label"),
@@ -63,8 +184,7 @@ export default function SubmitMovie() {
     { id: "creative_process", label: t("submit_movie.creative_process_label") },
   ];
 
-  const [file, setFile] = useState<File | null>(null);
-  const [message, setMessage] = useState<string | null>(null);
+
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
@@ -73,26 +193,26 @@ export default function SubmitMovie() {
     const newValue =
       type === "checkbox" ? (e.target as HTMLInputElement).checked : value;
 
-    setFormData((prev) => ({
+    setMovieFormData((prev) => ({
       ...prev,
       [name]: newValue,
     }));
   };
 
+  // Function that handles the final form submit
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setMessage(t("submit_movie.message.sending"));
 
     const data = new FormData();
 
-    Object.entries(formData).forEach(([key, value]) => {
+    Object.entries(movieFormData).forEach(([key, value]) => {
       data.append(key, value.toString());
     });
 
     if (file) {
       data.append("file", file);
     }
-    console.log("URL appelée :", `${import.meta.env.VITE_API_URL}/movies`);
     try {
       const response = await fetch(`${import.meta.env.VITE_API_URL}/movies`, {
         method: "POST",
@@ -112,112 +232,172 @@ export default function SubmitMovie() {
       setMessage(t("submit_movie.message.error", { message: error.message }));
     }
   };
+
   return (
     <div className="my-20">
       <form onSubmit={handleSubmit} className="p-25 md:max-w-[75%] mx-auto px-6 my-1 pt-10 sm:rounded-4xl md:shadow-lg/50 md:border-2 sm:border-primary md:shadow-white mb-10 bg-linear-to-b from-dark to-brand2">
         <div className="space-y-12">
-          <div className="text-white">
-            <h1 className="text-2xl text-primary font-sans">
-              <span>SUBMIT YOUR MOVIE
-              </span>
-            </h1>
-            <h2 className="text-base/7 font-semibold text-white">
-              {t('register.title')}</h2>
-            <p className="mt-1 text-sm/6 text-gray-400">
-              {t('register.subtitle')}
-            </p>
-          </div>
-          <fieldset className="">
-            <div className="text-white">
-              <div className="sm:grid grid-cols-2 gap-x-6 space-y-5 sm:grid-cols-6">
-                {fields.map((field) => (
-                  <FormInput key={field.id} {...field} onChange={handleChange} />
-                ))}
 
-                <div className=" my-5 sm:col-span-3">
-                  <label className="block text-sm font-medium">
-                    {t("submit_movie.original_language_label")}
-                  </label>
-                  <select
-                    name="original_language"
-                    onChange={handleChange}
-                    className="mt-2 block w-full rounded-md bg-white/5 py-1.5 px-3 text-white border border-white"
-                  >
-                    <option value="French">French</option>
-                    <option value="English">English</option>
+          {/* Main Title */}
+          <div className="text-white">
+            <h1 className="text-2xl text-primary font-sans">SUBMIT YOUR MOVIE : {page}/3</h1>
+          </div>
+
+          {/* Form Pages */}
+          <div className="relative transition-height duration-500 ease-in-out" style={{ height: containerHeight }}>
+            {/* Form Page 1 */}
+            <fieldset ref={page1Ref} className={`absolute transition-all duration-500 ease-in-out ${page === 1 ? 'opacity-100 translate-x-0' : 'opacity-0 pointer-events-none ' + (page > 1 ? '-translate-x-full' : 'translate-x-full')}`}>
+              <div className="text-white">
+                <legend className="mb-10 text-2xl">
+                  <h2>{t('submit_movie.personal_informations')}</h2>
+                  <p className="mt-1 text-sm/6 text-gray-400">{t('submit_movie.subtitle')}</p>
+                </legend>
+                <div className="sm:grid grid-cols-2 gap-x-6 space-y-5 sm:grid-cols-6">
+
+
+                  <label htmlFor="gender">t('submit_movie.gender')</label>
+                  <select name="gender" id="gender">
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
                   </select>
+
+                  {movieCollaboratorFields.map((field) => (
+                    <FormInput key={field.id} {...field} onChange={handleChange} />
+
+
+                  ))}
+
+                  <div>
+                    <label htmlFor="numberCollaborators">t('submit_movie.numberOfCollaborators')</label>
+                    <select name="numberCollaborators" id="numberCollaborators" onChange={(e) => setNumberCollaborators(parseInt(e.target.value))}>
+                      {Array.from({ length: 11 }, (_, i) => (
+                        <option key={i} value={i}>{i}</option>
+                      ))}
+                    </select>
+                  </div>
+
+
                 </div>
               </div>
+            </fieldset>
 
-              <div className="space-y-5">
-                {textAreas.map((area) => (
+            {/* Form Page 2 */}
+            <fieldset ref={page2Ref} className={`absolute transition-all duration-500 ease-in-out ${page === 2 ? 'opacity-100 translate-x-0' : 'opacity-0 pointer-events-none ' + (page > 2 ? '-translate-x-full' : 'translate-x-full')}`}>
+              <div className="text-white">
+                <legend className="mb-10 text-2xl">
+                  <h2>{t('submit_movie.title')}</h2>
+                  <p className="mt-1 text-sm/6 text-gray-400">{t('submit_movie.subtitle')}</p>
+                </legend>
+                <div className="sm:grid grid-cols-2 gap-x-6 space-y-5 sm:grid-cols-6">
+                  {movieFormFields.map((field) => (
+                    <FormInput key={field.id} {...field} onChange={handleChange} />
+                  ))}
+
+                  <div className=" my-5 sm:col-span-3">
+                    <label className="block text-sm font-medium">
+                      {t("submit_movie.original_language_label")}
+                    </label>
+                    <select
+                      name="original_language"
+                      onChange={handleChange}
+                      className="mt-2 block w-full rounded-md bg-white/5 py-1.5 px-3 text-white border border-white"
+                    >
+                      <option value="French">French</option>
+                      <option value="English">English</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div className="space-y-5">
+                  {movieFormTextAreas.map((area) => (
+                    <FormInput
+                      key={area.id}
+                      {...area}
+                      isTextArea={true}
+                      onChange={handleChange}
+                    />
+                  ))}
                   <FormInput
-                    key={area.id}
-                    {...area}
-                    isTextArea={true}
+                    id="ia_tools"
+                    label={t("submit_movie.ia_tools_label")}
                     onChange={handleChange}
                   />
-                ))}
-                <FormInput
-                  id="ia_tools"
-                  label={t("submit_movie.ia_tools_label")}
-                  onChange={handleChange}
-                />
-              </div>
+                </div>
 
-              <div className="flex justify-center rounded-lg px-6 py-10">
-                <div className="text-center">
-                  <label
-                    htmlFor="file"
-                    className="cursor-pointer font-semibold"
-                  >
-                    <span>{t("submit_movie.upload_file_label")}</span>
-                    <input
-                      id="file"
-                      name="file"
-                      type="file"
-                      className="sr-only"
-                      onChange={(e) => setFile(e.target.files?.[0] || null)}
-                    />
-                  </label>
-                  <p className="text-xs text-gray-400 mt-1">
-                    {file ? file.name : t("submit_movie.file_types_label")}
-                  </p>
+                <div className="flex justify-center rounded-lg px-6 py-10">
+                  <div className="text-center">
+                    <label
+                      htmlFor="file"
+                      className="cursor-pointer font-semibold"
+                    >
+                      <span>{t("submit_movie.upload_file_label_cover_image")}</span>
+                      <input
+                        id="file"
+                        name="file"
+                        type="file"
+                        className="sr-only"
+                        onChange={(e) => setFile(e.target.files?.[0] || null)}
+                      />
+                    </label>
+                    <p className="text-xs text-gray-400 mt-1">
+                      {file ? file.name : t("submit_movie.file_types_label")}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex gap-10 justify-center">
+                  {["isHybrid", "hasSubs"].map((name) => (
+                    <label
+                      key={name}
+                      className="flex items-center gap-3 cursor-pointer"
+                    >
+                      <input
+                        type="checkbox"
+                        name={name}
+                        onChange={handleChange}
+                        className="size-4 rounded  bg-white/5 text-indigo-500"
+                      />
+                      <span className="text-sm font-medium">
+                        {t(`submit_movie.${name}_label`)}
+                      </span>
+                    </label>
+                  ))}
+                </div>
+                {message && <p className="text-sm text-primary text-center">{message}</p>}
+              </div >
+            </fieldset>
+
+            {/* Form Page 3 */}
+            <fieldset ref={page3Ref} className={`absolute transition-all duration-500 ease-in-out ${page === 3 ? 'opacity-100 translate-x-0' : 'opacity-0 pointer-events-none ' + (page > 3 ? '-translate-x-full' : 'translate-x-full')}`}>
+              <div className="text-white">
+                <legend className="mb-10 text-2xl">
+                  <h2>{t('submit_movie.collaborators_informations')}</h2>
+                  <p className="mt-1 text-sm/6 text-gray-400">{t('submit_movie.subtitle')}</p>
+                </legend>
+                <div className="sm:grid grid-cols-2 gap-x-6 space-y-5 sm:grid-cols-6">
+
                 </div>
               </div>
 
-              <div className="flex gap-10 justify-center">
-                {["isHybrid", "hasSubs"].map((name) => (
-                  <label
-                    key={name}
-                    className="flex items-center gap-3 cursor-pointer"
-                  >
-                    <input
-                      type="checkbox"
-                      name={name}
-                      onChange={handleChange}
-                      className="size-4 rounded  bg-white/5 text-indigo-500"
-                    />
-                    <span className="text-sm font-medium">
-                      {t(`submit_movie.${name}_label`)}
-                    </span>
-                  </label>
-                ))}
-              </div>
+
+              {/* final Submit button */}
               <div className="flex p-10 items-center justify-center gap-x-6 ">
-                <button
-                  type="submit"
-                  className="rounded-md bg-primary px-6 py-2 text-lg font-semibold text-black shadow-md transition-transform duration-300 ease-in-out hover:scale-1.05"
-                >
-                  {t("submit_movie.save_button")}
-                </button>
+                <button type="submit" >
+                  <h2 className="w-full text-lg my-8 cursor-pointer text-white bg-linear-to-t from-secondary hover:bg-brand2 text-center w-40 m-auto p-2 rounded-xl transition-transform duration-300 ease-in-out hover:scale-1.05">
+                    {t("submit_movie.submit-button")}
+                  </h2></button>
               </div>
-              {message && <p className="text-sm text-primary text-center">{message}</p>}
-            </div >
-          </fieldset>
+            </fieldset>
+          </div>
+
+          <div className="flex p-10 items-center justify-center gap-x-6 ">
+            <button type="button" onClick={handlePreviousPage} className={page > 1 ? `rounded-md bg-primary px-6 py-2 text-lg font-semibold text-black shadow-md transition-transform duration-300 ease-in-out hover:scale-1.05` : 'hidden'}>{t("submit_movie.previous-button")}</button>
+            <button type="button" onClick={handleNextPage} className={page < 3 ? `rounded-md bg-primary px-6 py-2 text-lg font-semibold text-black shadow-md transition-transform duration-300 ease-in-out hover:scale-1.05` : 'hidden'}>{t("submit_movie.next-button")}</button>
+          </div>
         </div>
       </form >
-    </div>
 
+    </div >
   );
 }
