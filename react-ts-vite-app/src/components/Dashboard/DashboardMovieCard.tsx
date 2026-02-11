@@ -6,11 +6,11 @@ export default function DashboardMovieCard({ gridLayout, movie }: any) {
   return (
     <div
       onClick={() => console.log("test")}
-      className={`${gridLayout} p-4 md:p-6 border-b border-border hover:bg-brand cursor-pointer`}
+      className={`${gridLayout} p-4 md:p-6 border-b border-border hover:bg-primary/50 cursor-pointer`}
     >
       <div className="w-20 md:w-24">
         <img
-          src="https://picsum.photos/100/60"
+          src={movie.cover_image}
           alt="moviethumbnail"
           className="rounded-md shadow-sm"
         />

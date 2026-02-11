@@ -53,7 +53,7 @@ function Register() {
     }
     return (
         <div className='my-20'>
-            <form onSubmit={handleSubmit} className="p-25 md:max-w-[75%] mx-auto px-6 my-1 pt-10 sm:rounded-4xl md:shadow-lg/50 md:border-2 sm:border-primary md:shadow-white mb-10">
+            <form onSubmit={handleSubmit} className="p-25 md:max-w-[75%] mx-auto px-6 my-1 pt-10 sm:rounded-4xl md:shadow-lg/50 md:border-2 bg-linear-to-b from-dark to-brand2 sm:border-primary md:shadow-white mb-10">
                 <div className="space-y-12">
                     <div className="text-primary text-2xl">
                         <span className='text-center'>
@@ -78,7 +78,7 @@ function Register() {
                                     {t('register.firstname_label')}
                                 </label>
                                 <div className="mt-2">
-                                    <div className="flex items-center rounded-md bg-white/5 pl-3 outline-1 -outline-offset-1 outline-white/10 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-500">
+                                    <div className="border border-white flex items-center rounded-md bg-white/5 pl-3 outline-1 -outline-offset-1 outline-white/10 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-primary">
                                         <input
                                             id="firstname"
                                             type="text"
@@ -99,7 +99,7 @@ function Register() {
                                     {t('register.lastname_label')}
                                 </label>
                                 <div className="mt-2">
-                                    <div className="flex items-center rounded-md bg-white/5 pl-3 outline-1 -outline-offset-1 outline-white/10 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-500">
+                                    <div className="border border-white flex items-center rounded-md bg-white/5 pl-3 outline-1 -outline-offset-1 outline-white/10 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-primary">
                                         <input
                                             id="lastname"
                                             type="text"
@@ -119,7 +119,7 @@ function Register() {
                                     {t('register.email_label')}
                                 </label>
                                 <div className="mt-2">
-                                    <div className="flex items-center rounded-md bg-white/5 pl-3 outline-1 -outline-offset-1 outline-white/10 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-500">
+                                    <div className="border border-white flex items-center rounded-md bg-white/5 pl-3 outline-1 -outline-offset-1 outline-white/10 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-primary">
                                         <input
                                             id="email"
                                             type="email"
@@ -138,15 +138,14 @@ function Register() {
                                 >
                                     {t('register.password_label')}
                                 </label>
-                                <div className="mt-2">
-                                    <input
-                                        id="password"
-                                        type="password"
-                                        name="password"
-                                        className="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6"
-                                        placeholder={t('register.password_placeholder')}
-                                        required
-                                    />
+                                <div className="border border-white flex items-center rounded-md bg-white/5 pl-3 outline-1 -outline-offset-1 outline-white/10 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-primary">                                    <input
+                                    id="password"
+                                    type="password"
+                                    name="password"
+                                    className="block min-w-0 grow bg-transparent py-1.5 pr-3 pl-1 text-base text-white placeholder:text-gray-300 focus:outline-none sm:text-sm/6"
+                                    placeholder={t('register.password_placeholder')}
+                                    required
+                                />
                                 </div>
                             </div>
 
@@ -157,12 +156,12 @@ function Register() {
                                 >
                                     {t('register.confirm_password_label')}
                                 </label>
-                                <div className="mt-2">
+                                <div className="border border-white flex items-center rounded-md bg-white/5 pl-3 outline-1 -outline-offset-1 outline-white/10 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-primary">
                                     <input
                                         id="confirm_password"
                                         type="password"
                                         name="confirm_password"
-                                        className="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6"
+                                        className="block min-w-0 grow bg-transparent py-1.5 pr-3 pl-1 text-base text-white placeholder:text-gray-300 focus:outline-none sm:text-sm/6"
                                         placeholder={t('register.confirm_password_placeholder')}
                                         required
                                     />
@@ -172,11 +171,12 @@ function Register() {
                     </div>
                 </div>
 
-                <div className="p-4 mt-6 flex items-center justify-end gap-x-6">
+                <div className="flex p-10 items-center justify-center gap-x-6 ">
                     <button
                         type="submit"
-                        className="rounded-md bg-[var(--color-secondary)] px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
-                    >{t('register.register_button')}
+                        className="rounded-md bg-primary px-6 py-2 text-lg font-semibold text-black shadow-md transition-transform duration-300 ease-in-out hover:scale-1.05"
+                    >
+                        {t("register.register_button")}
                     </button>
                 </div>
             </form>

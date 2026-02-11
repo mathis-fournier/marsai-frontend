@@ -70,7 +70,7 @@ export default function DashboardGlobal() {
 
       <div className={`transition-all duration-1350 ease-linear overflow-hidden ${panel ? 'opacity-100' : 'max-h-0 opacity-0'}`}>
         {/* DIV CONTAINER STATCARD */}
-        <div className="grid sm:grid-cols-1 md:grid-cols-2 p-6 gap-6 max-w-full bg-brand">
+        <div className="grid sm:grid-cols-1 md:grid-cols-2 p-6 gap-6 max-w-full">
           <StatCard
             icon="https://img.icons8.com/?size=26&id=2998&format=png&color=6366f1"
             objective={t("dashboard_global.card.objective", {

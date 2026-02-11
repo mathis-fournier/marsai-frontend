@@ -2,18 +2,19 @@ import { useState } from "react";
 import DashboardMovieCard from "./DashboardMovieCard";
 import { useTranslation } from "react-i18next";
 
-export default function DashboardMovies({ movies, isLoading }) {
+export default function DashboardMovies({ movies, isLoading }: any): any {
   const { t } = useTranslation();
   const gridLayout = "grid grid-cols-2 md:grid-cols-5 gap-4 items-center";
   const [panel, setPanel] = useState<boolean>(false);
 
   if (isLoading) return <p>{t("dashboard_movies.loading")}</p>;
+
   return (
     <>
       {/* TITRE PAGE */}
       <div
         onClick={() => setPanel(!panel)}
-        className="cursor-pointer w-auto p-6 bg-brand">
+        className="cursor-pointer w-auto p-6">
         <h2 className="text-secondary text-2xl font-mono uppercase">
           🔳 {t("dashboard_movies.title")}
         </h2>
@@ -27,12 +28,12 @@ export default function DashboardMovies({ movies, isLoading }) {
 
       {/* GERER FILMS */}
       <div className={`transition-all duration-1350 ease-linear overflow-hidden ${panel ? 'opacity-100' : 'max-h-0 opacity-0'}`}>
-        <div className="bg-brand2 rounded-xl border border-border shadow-sm overflow-hidden">
+        <div className="rounded-xl border border-border shadow-sm overflow-hidden">
           <div className="p-6 border-b border-slate-100">
             <input
               type="text"
               placeholder={t("dashboard_movies.search_placeholder")}
-              className="border w-full p-2 text-white rounded-md bg-brand focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="border w-full p-2 text-white rounded-md focus:outline-none"
             />
           </div>
 

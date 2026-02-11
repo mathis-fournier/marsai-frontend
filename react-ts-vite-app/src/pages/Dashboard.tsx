@@ -6,11 +6,12 @@ import { useAuth } from "../context/AuthContext";
 import AccessDenied from "../components/AccessDenied";
 import { useTranslation } from "react-i18next";
 import SubscribersDashboard from "../components/Dashboard/SubscribersDashboard";
+import type { Movie } from "../types-interfaces/Movie";
 
 export default function Dashboard() {
   const { t } = useTranslation();
-  const [data, setData] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [data, setData] = useState<Movie[] | undefined>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const { user, token } = useAuth();
 
   useEffect(() => {
@@ -26,6 +27,7 @@ export default function Dashboard() {
       })
       .catch((err) => {
         console.log(err);
+        setIsLoading(false);
       });
   }, []);
 

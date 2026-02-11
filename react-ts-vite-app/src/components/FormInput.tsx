@@ -30,7 +30,7 @@ const FormInput = ({
             rows={3}
             onChange={onChange}
             placeholder={placeholder}
-            className="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-white/50 focus:outline-2 focus:-outline-offset-2 focus:outline-primary sm:text-sm border border-white"
+            className="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white  placeholder:text-white/50 outline-1 -outline-offset-1 outline-white focus:outline-2 focus:-outline-offset-2 focus:outline-primary sm:text-sm border border-white"
             required
           />
         ) : (
