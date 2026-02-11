@@ -126,7 +126,7 @@ function UserDashboard() {
   return (
     <>
       {" "}
-      <div className="w-auto p-6 bg-brand"
+      <div className="w-auto p-6"
         onClick={() => setPanel(!panel)}
       >
         <h2 className="text-secondary text-2xl font-mono uppercase">

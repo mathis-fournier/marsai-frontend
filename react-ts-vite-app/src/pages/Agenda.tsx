@@ -70,7 +70,7 @@ function Agenda() {
       {/* CONFERENCES */}
       <div className="flex justify-center text-white flex-col gap-10 font-semi-bold font-sans">
         <div className="w-full md:w-[75%] m-auto rounded-2xl bg-linear-to-br from-brand2 to-brand border-2 border-white shadow-md/50 shadow-white">
-          <h2 className="flex items-center justify-center px-5 bg-linear-to-t from-yellow-400 to-yellow-600 bg-clip-text text-transparent md:text-2xl font-bold my-8 text-xl"
+          <h2 className="flex items-center justify-center px-5 text-secondary md:text-2xl font-bold my-8 text-xl"
             onClick={toggleConferences}>
 
             <span className={`text-xl md:text-3xl transition-transform duration-500 ease-in-out transform ${showConferences ? 'rotate-90' : 'rotate-0'}`}>
@@ -104,7 +104,7 @@ function Agenda() {
         {/* MARSAI NIGHT */}
         <div className="flex justify-center text-white flex-col gap-10 font-semi-bold font-sans">
           <div className="w-full md:w-[75%] m-auto rounded-2xl bg-linear-to-br from-brand2 to-brand border-2 border-white shadow-md/50 shadow-white">
-            <h2 className="flex items-center px-5 md:text-2xl font-bold my-8 text-xl bg-linear-to-t from-yellow-400 to-yellow-600 bg-clip-text text-transparent"
+            <h2 className="flex items-center px-5 md:text-2xl font-bold my-8 text-xl text-secondary"
               onClick={toggleNight}>
 
               <span className={`text-xl md:text-3xl transition-transform duration-500 ease-in-out transform ${showNight ? 'rotate-90' : 'rotate-0'}`}>

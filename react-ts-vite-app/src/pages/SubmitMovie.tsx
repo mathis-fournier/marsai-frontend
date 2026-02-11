@@ -114,7 +114,7 @@ export default function SubmitMovie() {
   };
   return (
     <div className="my-20">
-      <form onSubmit={handleSubmit} className="p-25 md:max-w-[75%] mx-auto px-6 my-1 pt-10 sm:rounded-4xl md:shadow-lg/50 md:border-2 sm:border-primary md:shadow-white mb-10">
+      <form onSubmit={handleSubmit} className="p-25 md:max-w-[75%] mx-auto px-6 my-1 pt-10 sm:rounded-4xl md:shadow-lg/50 md:border-2 sm:border-primary md:shadow-white mb-10 bg-linear-to-b from-dark to-brand2">
         <div className="space-y-12">
           <div className="text-white">
             <h1 className="text-2xl text-primary font-sans">
@@ -141,7 +141,7 @@ export default function SubmitMovie() {
                   <select
                     name="original_language"
                     onChange={handleChange}
-                    className="mt-2 block w-full rounded-md bg-white/5 py-1.5 px-3 text-white outline-white/10"
+                    className="mt-2 block w-full rounded-md bg-white/5 py-1.5 px-3 text-white border border-white"
                   >
                     <option value="French">French</option>
                     <option value="English">English</option>
@@ -207,7 +207,7 @@ export default function SubmitMovie() {
               <div className="flex p-10 items-center justify-center gap-x-6 ">
                 <button
                   type="submit"
-                  className="rounded-md hover:animate-pulse bg-primary text-black px-6 py-2 text-lg font-semibold shadow-md"
+                  className="rounded-md bg-primary px-6 py-2 text-lg font-semibold text-black shadow-md transition-transform duration-300 ease-in-out hover:scale-1.05"
                 >
                   {t("submit_movie.save_button")}
                 </button>

@@ -10,7 +10,7 @@ export default function HeroSection() {
 
       {/* Hero Section */}
       {/* DESKTOP VERSION */}
-      <div className="hidden sm:flex font-serif w-full h-screen bg-[url(space-desktop.webp)] bg-cover bg-no-repeat flex-col justify-around  items-center">
+      <div className="hidden sm:flex font-serif w-full h-screen bg-[url(space-desktop.webp)] bg-cover bg-no-repeat flex-col justify-around items-center">
         <div className="h-[70%] mask-t-from-70 hover:mask-t-from-100 flex gap-0 text-white flex-col lg:flex-row ">
           <div className="font-serif font-bold">
             <div className="font-sans flex p-2 flex-col items-center md:flex-row mt-10 gap-5 cursor-pointer bg-linear-to-l from-black/25 to-white bg-clip-text text-transparent hover:text-white">

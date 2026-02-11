@@ -31,11 +31,11 @@ function NewsletterSubscribe() {
     return (
         <div className="my-10">
             <form onSubmit={handleSubmit}>
-                <div className="flex flex-col w-[95%] md:w-[50%] lg:w-[35%] m-auto items-center border p-5 md:p-10 rounded-4xl shadow-lg/50 shadow-white/50 bg-linear-to-b from-brand to-brand2 text-white">
+                <div className="flex flex-col w-[95%] md:w-[50%] lg:w-[35%] m-auto items-center border-2 p-5 md:p-10 rounded-4xl shadow-lg/50 shadow-white/50 bg-linear-to-b from-brand to-brand2 text-white">
                     <p className="text-2xl font-bold p-1">{t('newsletter.title')}</p>
                     <div className="w-[75%] md:w-80">
-                        <input name="email" type="email" placeholder={t('newsletter.email_placeholder')} className="p-2 w-full rounded-2xl border my-5" />
-                        <button className="text-black bg-linear-to-b from-yellow-600 to-yellow-200 p-2 w-full rounded-2xl">{t('newsletter.subscribe_button')}</button>
+                        <input name="email" type="email" placeholder={t('newsletter.email_placeholder')} className="p-2 w-full rounded-2xl my-5 outline-2 outline-offset-1 outline-primary" />
+                        <button className="text-black bg-linear-to-b from-yellow-600 to-yellow-200 hover:animate-ping p-2 w-full rounded-2xl ">{t('newsletter.subscribe_button')}</button>
                     </div>
                 </div>
             </form>
