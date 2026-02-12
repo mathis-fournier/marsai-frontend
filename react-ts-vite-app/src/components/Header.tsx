@@ -34,7 +34,7 @@ function Header() {
     <div
     // className="bg-linear-to-b from-brand2 to-brand"
     >
-      <div className={(location.pathname === '/' ? 'absolute z-1 w-full' : 'w-full')}>
+      <div className={(location.pathname === '/' ? 'absolute z-1 w-full bg-black/50' : 'w-full')}>
         <div className="font-sans p-4 text-center text-sm sm:text-sm text-white flex justify-between items-center w-full">
 
 

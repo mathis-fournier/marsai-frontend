@@ -46,7 +46,6 @@ export default function MovieDetails() {
           tagsRes.json(),
         ]);
 
-        // Assuming API returns an array for details based on your movieDetails[0] usage
         setMovieDetails(
           Array.isArray(detailsData) ? detailsData[0] : detailsData,
         );
