@@ -11,11 +11,14 @@ i18n
     supportedLngs: ['eng', 'fra'],
     fallbackLng: 'eng',
     debug: true,
+    ns: ['common', 'Dashboard', 'Festival', 'Galery', 'Login', 'Register', 'SubmitMovie'],
+    defaultNS: 'common',
+    fallbackNS: 'common',
     interpolation: {
-      escapeValue: false, 
+      escapeValue: false,
     },
     backend: {
-      loadPath: '/locales/{{lng}}/translation.json',
+      loadPath: '/locales/{{lng}}/{{ns}}.json',
     },
   });
 

@@ -21,7 +21,7 @@ export default function SubmitMovie() {
     return;
   }
 
-  const { t } = useTranslation();
+  const { t } = useTranslation(['SubmitMovie', 'common']);
   const [file, setFile] = useState<File | null>(null);
   const [message, setMessage] = useState<string | null>(null);
   const [numberCollaborators, setNumberCollaborators] = useState<number>(0);
@@ -51,77 +51,77 @@ export default function SubmitMovie() {
   const movieCollaboratorFields = [
     {
       id: "firstname",
-      label: t("submit_movie.firstname_label"),
-      placeholder: t("submit_movie.firstname_placeholder"),
+      label: t("firstname_label"),
+      placeholder: t("firstname_placeholder"),
     },
     {
       id: "lastname",
-      label: t("submit_movie.lastname_label"),
-      placeholder: t("submit_movie.lastname_placeholder"),
+      label: t("lastname_label"),
+      placeholder: t("lastname_placeholder"),
     },
     {
       id: "email",
-      label: t("submit_movie.email_label"),
+      label: t("email_label"),
       type: "email",
     },
     {
       id: "profession",
-      label: t("submit_movie.profession_label"),
-      placeholder: t("submit_movie.profession_placeholder"),
+      label: t("profession_label"),
+      placeholder: t("profession_placeholder"),
     },
     {
       id: "contribution",
-      label: t("submit_movie.contribution_label"),
-      placeholder: t("submit_movie.contribution_placeholder"),
+      label: t("contribution_label"),
+      placeholder: t("contribution_placeholder"),
     },
     {
       id: "country",
-      label: t("submit_movie.country_label"),
-      placeholder: t("submit_movie.country_placeholder"),
+      label: t("country_label"),
+      placeholder: t("country_placeholder"),
     },
     {
       id: "region",
-      label: t("submit_movie.region_label"),
-      placeholder: t("submit_movie.region_placeholder"),
+      label: t("region_label"),
+      placeholder: t("region_placeholder"),
     },
     {
       id: "city",
-      label: t("submit_movie.city_label"),
-      placeholder: t("submit_movie.city_placeholder"),
+      label: t("city_label"),
+      placeholder: t("city_placeholder"),
     },
     {
       id: "zip",
-      label: t("submit_movie.zip_label"),
-      placeholder: t("submit_movie.zip_placeholder"),
+      label: t("zip_label"),
+      placeholder: t("zip_placeholder"),
     },
     {
       id: "address",
-      label: t("submit_movie.address_label"),
-      placeholder: t("submit_movie.address_placeholder"),
+      label: t("address_label"),
+      placeholder: t("address_placeholder"),
     },
     {
       id: "phone",
-      label: t("submit_movie.phone_label"),
+      label: t("phone_label"),
       type: "tel",
     },
     {
       id: "facebook",
-      label: t("submit_movie.facebook_label"),
+      label: t("facebook_label"),
       type: "url",
     },
     {
       id: "instagram",
-      label: t("submit_movie.instagram_label"),
+      label: t("instagram_label"),
       type: "url",
     },
     {
       id: "linkedin",
-      label: t("submit_movie.linkedin_label"),
+      label: t("linkedin_label"),
       type: "url",
     },
     {
       id: "twitter",
-      label: t("submit_movie.twitter_label"),
+      label: t("twitter_label"),
       type: "url",
     }
   ];
@@ -145,31 +145,31 @@ export default function SubmitMovie() {
   const movieFormFields = [
     {
       id: "original_title",
-      label: t("submit_movie.original_title_label"),
-      placeholder: t("submit_movie.original_title_placeholder"),
+      label: t("original_title_label"),
+      placeholder: t("original_title_placeholder"),
     },
     {
       id: "english_title",
-      label: t("submit_movie.english_title_label"),
-      placeholder: t("submit_movie.english_title_placeholder"),
+      label: t("english_title_label"),
+      placeholder: t("english_title_placeholder"),
     },
     {
       id: "youtube_url",
-      label: t("submit_movie.youtube_url_label"),
+      label: t("youtube_url_label"),
       type: "url",
     },
-    { id: "duration", label: t("submit_movie.duration_label"), type: "number" },
+    { id: "duration", label: t("duration_label"), type: "number" },
   ];
   const movieFormTextAreas = [
     {
       id: "original_synopsis",
-      label: t("submit_movie.original_synopsis_label"),
+      label: t("original_synopsis_label"),
     },
     {
       id: "english_synopsis",
-      label: t("submit_movie.english_synopsis_label"),
+      label: t("english_synopsis_label"),
     },
-    { id: "creative_process", label: t("submit_movie.creative_process_label") },
+    { id: "creative_process", label: t("creative_process_label") },
   ];
 
 
@@ -190,7 +190,7 @@ export default function SubmitMovie() {
   // Function that handles the final form submit
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    setMessage(t("submit_movie.message.sending"));
+    setMessage(t("message.sending"));
 
     const data = new FormData();
 
@@ -209,15 +209,15 @@ export default function SubmitMovie() {
 
       if (!response.ok) {
         throw new Error(
-          t("submit_movie.message.http_error", { status: response.status }),
+          t("message.http_error", { status: response.status }),
         );
       }
 
       const result = await response.json();
-      setMessage(t("submit_movie.message.success", { id: result.id }));
+      setMessage(t("message.success", { id: result.id }));
     } catch (error: any) {
       console.error(error);
-      setMessage(t("submit_movie.message.error", { message: error.message }));
+      setMessage(t("message.error", { message: error.message }));
     }
   };
 
@@ -228,7 +228,7 @@ export default function SubmitMovie() {
 
           {/* Main Title */}
           <div className="text-white">
-            <h1 className="text-2xl text-primary font-sans">SUBMIT YOUR MOVIE : {page}/3</h1>
+            <h1 className="text-2xl text-primary font-sans">{t('page_header', { page: page })}</h1>
           </div>
 
           {/* Form Pages */}
@@ -238,17 +238,17 @@ export default function SubmitMovie() {
           <fieldset className={`${page === 1 ? 'opacity-100' : 'hidden'}`}>
             <div className="text-white">
               <legend className="mb-10 text-2xl">
-                <h2>{t('submit_movie.personal_informations')}</h2>
-                <p className="mt-1 text-sm/6 text-gray-400">{t('submit_movie.subtitle')}</p>
+                <h2>{t('personal_informations')}</h2>
+                <p className="mt-1 text-sm/6 text-gray-400">{t('subtitle')}</p>
               </legend>
               <div className="sm:grid grid-cols-2 gap-x-6 space-y-5 sm:grid-cols-6">
 
 
-                <label htmlFor="gender">t('submit_movie.gender')</label>
+                <label htmlFor="gender">{t('gender')}</label>
                 <select name="gender" id="gender">
-                  <option value="Male">Male</option>
-                  <option value="Female">Female</option>
-                  <option value="Other">Other</option>
+                  <option value="Male">{t('gender_male')}</option>
+                  <option value="Female">{t('gender_female')}</option>
+                  <option value="Other">{t('gender_other')}</option>
                 </select>
 
                 {movieCollaboratorFields.map((field) => (
@@ -258,7 +258,7 @@ export default function SubmitMovie() {
                 ))}
 
                 <div>
-                  <label htmlFor="numberCollaborators">t('submit_movie.numberOfCollaborators')</label>
+                  <label htmlFor="numberCollaborators">{t('numberOfCollaborators')}</label>
                   <select name="numberCollaborators" id="numberCollaborators" onChange={(e) => setNumberCollaborators(parseInt(e.target.value))}>
                     {Array.from({ length: 11 }, (_, i) => (
                       <option key={i} value={i}>{i}</option>
@@ -275,8 +275,8 @@ export default function SubmitMovie() {
           <fieldset className={`${page === 2 ? 'opacity-100' : 'hidden'}`}>
             <div className="text-white">
               <legend className="mb-10 text-2xl">
-                <h2>{t('submit_movie.title')}</h2>
-                <p className="mt-1 text-sm/6 text-gray-400">{t('submit_movie.subtitle')}</p>
+                <h2>{t('title')}</h2>
+                <p className="mt-1 text-sm/6 text-gray-400">{t('subtitle')}</p>
               </legend>
               <div className="sm:grid grid-cols-2 gap-x-6 space-y-5 sm:grid-cols-6">
                 {movieFormFields.map((field) => (
@@ -285,15 +285,15 @@ export default function SubmitMovie() {
 
                 <div className=" my-5 sm:col-span-3">
                   <label className="block text-sm font-medium">
-                    {t("submit_movie.original_language_label")}
+                    {t("original_language_label")}
                   </label>
                   <select
                     name="original_language"
                     onChange={handleChange}
                     className="mt-2 block w-full rounded-md bg-white/5 py-1.5 px-3 text-white border border-white"
                   >
-                    <option value="French">French</option>
-                    <option value="English">English</option>
+                    <option value="French">{t('language_french')}</option>
+                    <option value="English">{t('language_english')}</option>
                   </select>
                 </div>
               </div>
@@ -309,7 +309,7 @@ export default function SubmitMovie() {
                 ))}
                 <FormInput
                   id="ia_tools"
-                  label={t("submit_movie.ia_tools_label")}
+                  label={t("ia_tools_label")}
                   onChange={handleChange}
                 />
               </div>
@@ -320,7 +320,7 @@ export default function SubmitMovie() {
                     htmlFor="file"
                     className="cursor-pointer font-semibold"
                   >
-                    <span>{t("submit_movie.upload_file_label_cover_image")}</span>
+                    <span>{t("upload_file_label_cover_image")}</span>
                     <input
                       id="file"
                       name="file"
@@ -330,7 +330,7 @@ export default function SubmitMovie() {
                     />
                   </label>
                   <p className="text-xs text-gray-400 mt-1">
-                    {file ? file.name : t("submit_movie.file_types_label")}
+                    {file ? file.name : t("file_types_label")}
                   </p>
                 </div>
               </div>
@@ -340,7 +340,7 @@ export default function SubmitMovie() {
                     htmlFor="file"
                     className="cursor-pointer font-semibold"
                   >
-                    <span>{t("submit_movie.upload_file_label_movie_raw")}</span>
+                    <span>{t("upload_file_label_movie_raw")}</span>
                     <input
                       id="file"
                       name="file"
@@ -350,7 +350,7 @@ export default function SubmitMovie() {
                     />
                   </label>
                   <p className="text-xs text-gray-400 mt-1">
-                    {file ? file.name : t("submit_movie.file_types_label")}
+                    {file ? file.name : t("file_types_label")}
                   </p>
                 </div>
               </div>
@@ -367,7 +367,7 @@ export default function SubmitMovie() {
                       className="size-4 rounded  bg-white/5 text-indigo-500"
                     />
                     <span className="text-sm font-medium">
-                      {t(`submit_movie.${name}_label`)}
+                      {t(`${name}_label`)}
                     </span>
                   </label>
                 ))}
@@ -380,21 +380,21 @@ export default function SubmitMovie() {
           <fieldset className={`${page === 3 ? 'opacity-100' : 'hidden'}`}>
             <div className="text-white">
               <legend className="mb-10 text-2xl">
-                <h2>{t('submit_movie.collaborators_informations')}</h2>
-                <p className="mt-1 text-sm/6 text-gray-400">{t('submit_movie.subtitle')}</p>
+                <h2>{t('collaborators_informations')}</h2>
+                <p className="mt-1 text-sm/6 text-gray-400">{t('subtitle')}</p>
               </legend>
-              <h3>You selected {numberCollaborators} collaborators :</h3>
+              <h3>{t('collaborator_count_message', { count: numberCollaborators })}</h3>
               {Array.from({ length: numberCollaborators }, (_, i) => (
                 <div className="my-10">
-                  <h2 className="text-2xl">{t('main.collaborator') + ' : ' + (i + 1)}</h2>
+                  <h2 className="text-2xl">{t('collaborator_with_number', { number: i + 1 })}</h2>
 
                   <div className="sm:grid grid-cols-2 gap-x-6 space-y-5 sm:grid-cols-6">
 
-                    <label htmlFor="gender">t('submit_movie.gender')</label>
+                    <label htmlFor="gender">{t('gender')}</label>
                     <select name="gender" id="gender">
-                      <option value="Male">Male</option>
-                      <option value="Female">Female</option>
-                      <option value="Other">Other</option>
+                      <option value="Male">{t('gender_male')}</option>
+                      <option value="Female">{t('gender_female')}</option>
+                      <option value="Other">{t('gender_other')}</option>
                     </select>
                   </div>
 
@@ -410,13 +410,13 @@ export default function SubmitMovie() {
         </div>
 
         <div className="flex p-10 items-center justify-center gap-x-6 ">
-          <button type="button" onClick={handlePreviousPage} className={page > 1 ? `rounded-md bg-primary px-6 py-2 text-lg font-semibold text-black shadow-md transition-transform duration-300 ease-in-out hover:scale-1.05` : 'hidden'}>{t("submit_movie.previous-button")}</button>
-          <button type="button" onClick={handleNextPage} className={page < 3 ? `rounded-md bg-primary px-6 py-2 text-lg font-semibold text-black shadow-md transition-transform duration-300 ease-in-out hover:scale-1.05` : 'hidden'}>{t("submit_movie.next-button")}</button>
+          <button type="button" onClick={handlePreviousPage} className={page > 1 ? `rounded-md bg-primary px-6 py-2 text-lg font-semibold text-black shadow-md transition-transform duration-300 ease-in-out hover:scale-1.05` : 'hidden'}>{t("previous-button")}</button>
+          <button type="button" onClick={handleNextPage} className={page < 3 ? `rounded-md bg-primary px-6 py-2 text-lg font-semibold text-black shadow-md transition-transform duration-300 ease-in-out hover:scale-1.05` : 'hidden'}>{t("next-button")}</button>
           {/* final Submit button */}
           <div className={`${page === 3 ? 'flex p-10 items-center justify-center gap-x-6' : 'hidden'}`}>
             <button type="submit" >
               <h2 className="w-full text-lg my-8 cursor-pointer text-white bg-linear-to-t from-secondary hover:bg-brand2 text-center w-40 m-auto p-2 rounded-xl transition-transform duration-300 ease-in-out hover:scale-1.05">
-                {t("submit_movie.submit-button")}
+                {t("submit-button")}
               </h2></button>
           </div>
         </div>

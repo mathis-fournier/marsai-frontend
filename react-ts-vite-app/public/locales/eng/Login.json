@@ -1,0 +1,9 @@
+{
+  "title": "Login Information",
+  "email_label": "Email address",
+  "email_placeholder": "Email address...",
+  "password_label": "Password",
+  "password_placeholder": "Password...",
+  "login_button": "Login",
+  "jury_title": "LOGIN AS JURY"
+}

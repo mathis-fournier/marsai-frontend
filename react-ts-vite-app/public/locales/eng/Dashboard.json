@@ -1,0 +1,51 @@
+{
+  "error_status": "Error Status: ",
+  "global": {
+    "title": "ADMIN MANAGEMENT",
+    "subtitle": "OVERVIEW",
+    "description": "Detailed analysis of progress and performance indicators",
+    "card": {
+      "objective": "OBJECTIVE: {{count}}",
+      "films_evaluated": "{{count}} FILMS EVALUATED BY THE JURY",
+      "films_submitted": "Movies submitted",
+      "completed": "{{percentage}}% completed",
+      "active_accounts": "Active directors account",
+      "today": "+{{count}} today",
+      "participants": "Signed up for an event",
+      "rating_title": "Movies rated by a jury"
+    }
+  },
+  "movies": {
+    "loading": "Loading movies...",
+    "title": "Admin Management",
+    "subtitle": "SUBMITTED FILMS",
+    "description": "Manage all submissions and manage features.",
+    "search_placeholder": "Search for a film..."
+  },
+  "movie_card": {
+    "author_placeholder": "author placeholder"
+  },
+  "user": {
+    "title": "User Area",
+    "subtitle": "REGISTERED USER LIST",
+    "description": "Manage all users and their roles.",
+    "table": {
+      "name": "Name",
+      "firstname": "First name",
+      "email": "Email",
+      "role": "Role",
+      "action": "Action",
+      "no_role": "No role assigned"
+    },
+    "button": {
+      "promote_jury": "Jury",
+      "promote_admin": "Admin",
+      "delete": "Delete"
+    }
+  },
+  "subscribers": {
+    "title": "NEWSLETTER'S SUBSCRIBERS",
+    "description": "Here you can see the actual subscribers",
+    "number": "Total amount of subscribers : {{count}}"
+  }
+}
