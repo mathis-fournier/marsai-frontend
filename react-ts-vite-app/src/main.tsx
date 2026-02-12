@@ -16,6 +16,7 @@ import { AuthProvider } from "./context/AuthContext.tsx";
 import Dashboard from "./pages/Dashboard.tsx";
 import Galery from "./pages/Galery.tsx";
 import MovieDetails from "./components/MovieDetails.tsx";
+import AddEvent from "./pages/AddEvent.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -25,13 +26,14 @@ createRoot(document.getElementById("root")!).render(
         <Routes>
           <Route path="/" element={<App />} />
           <Route path="/agenda" element={<Agenda />} />
-          <Route path='/galery' element={<Galery />} />
-          <Route path='/galery/:id' element={<MovieDetails />} />
+          <Route path="/galery" element={<Galery />} />
+          <Route path="/galery/:id" element={<MovieDetails />} />
           <Route path="/submit" element={<SubmitMovie />} />
           <Route path="/event/:id" element={<EventDetails />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/dashboard/add_event" element={<AddEvent />} />
           <Route path="*" element={<NotFound />} />
           {/* 
             <Route path='/jury' element={<JuryMembers />} />
