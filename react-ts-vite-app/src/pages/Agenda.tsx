@@ -22,7 +22,7 @@ function Agenda() {
   }
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/events/all`)
+    fetch(`${import.meta.env.VITE_API_URL}/events/`)
       .then((res) => {
         if (!res.ok)
           throw new Error(t("agenda.error_status", { status: res.status }));
@@ -38,13 +38,9 @@ function Agenda() {
       });
   }, []);
 
-
-
   if (isLoading)
     return (
-      <div className="p-10 text-center text-white">
-        {t("agenda.loading")}
-      </div>
+      <div className="p-10 text-center text-white">{t("agenda.loading")}</div>
     );
   if (error)
     return (
@@ -55,32 +51,30 @@ function Agenda() {
 
   return (
     <>
-
       {/* TITLE */}
       <h1 className="text-4xl md:text-5xl font-extrabold p-5 md:p-15 text-center text-white mb-[3%]">
         {t("agenda.date")}
-        <p className="font-bold ">
-          {t("agenda.location")}
-        </p>
+        <p className="font-bold ">{t("agenda.location")}</p>
       </h1>
-
-
-
 
       {/* CONFERENCES */}
       <div className="flex justify-center text-white flex-col gap-10 font-semi-bold font-sans">
         <div className="w-full md:w-[75%] m-auto rounded-2xl bg-linear-to-br from-brand2 to-brand border-2 border-white shadow-md/50 shadow-white">
-          <h2 className="flex items-center justify-center px-5 text-secondary md:text-2xl font-bold my-8 text-xl"
-            onClick={toggleConferences}>
-
-            <span className={`text-xl md:text-3xl transition-transform duration-500 ease-in-out transform ${showConferences ? 'rotate-90' : 'rotate-0'}`}>
+          <h2
+            className="flex items-center justify-center px-5 text-secondary md:text-2xl font-bold my-8 text-xl"
+            onClick={toggleConferences}
+          >
+            <span
+              className={`text-xl md:text-3xl transition-transform duration-500 ease-in-out transform ${showConferences ? "rotate-90" : "rotate-0"}`}
+            >
               ▶
             </span>
             <span className="grow ml-2">{t("festival.conferences.title")}</span>
           </h2>
-          <div className={`transition-all duration-750 ease-in-out overflow-hidden ${showConferences ? 'max-h-500' : 'max-h-0'}`}>
+          <div
+            className={`transition-all duration-750 ease-in-out overflow-hidden ${showConferences ? "max-h-500" : "max-h-0"}`}
+          >
             <h2 className="font-bold text-xl md:text-3xl text-center text-white underline decoration-secondary decoration-3 my-[2%]">
-
               {t("agenda.program_title")}
             </h2>
             <ul className="p-10 list-disc list-inside text-white text-lg md:text-xl my-10 flex flex-col m-auto">
@@ -104,15 +98,20 @@ function Agenda() {
         {/* MARSAI NIGHT */}
         <div className="flex justify-center text-white flex-col gap-10 font-semi-bold font-sans">
           <div className="w-full md:w-[75%] m-auto rounded-2xl bg-linear-to-br from-brand2 to-brand border-2 border-white shadow-md/50 shadow-white">
-            <h2 className="flex items-center px-5 md:text-2xl font-bold my-8 text-xl text-secondary"
-              onClick={toggleNight}>
-
-              <span className={`text-xl md:text-3xl transition-transform duration-500 ease-in-out transform ${showNight ? 'rotate-90' : 'rotate-0'}`}>
+            <h2
+              className="flex items-center px-5 md:text-2xl font-bold my-8 text-xl text-secondary"
+              onClick={toggleNight}
+            >
+              <span
+                className={`text-xl md:text-3xl transition-transform duration-500 ease-in-out transform ${showNight ? "rotate-90" : "rotate-0"}`}
+              >
                 ▶
               </span>
               <span className="grow ml-2">{t("festival.night.title")}</span>
             </h2>
-            <div className={`transition-all duration-750 ease-in-out overflow-hidden ${showNight ? 'max-h-400' : 'max-h-0'}`}>
+            <div
+              className={`transition-all duration-750 ease-in-out overflow-hidden ${showNight ? "max-h-400" : "max-h-0"}`}
+            >
               <p className="text-[var(--color-white)] w-full font-bold text-center text-2xl md:text-4xl">
                 {t("festival.night.date")}
               </p>
@@ -120,7 +119,7 @@ function Agenda() {
                 <p className="text-[var(--color-white)] w-full font-bold text-center tgext-xl md:text-2xl/24">
                   {t("festival.night.time")}
                 </p>
-                <div >
+                <div>
                   <h2 className="my-20 text-white text-3xl font-bold text-center">
                     {/* {t("festival.night.subtitle")} */}
                     <img className="m-auto" src="/marsai.png" alt="" />
@@ -140,8 +139,7 @@ function Agenda() {
         </div>
 
         {/* LOCATION */}
-        <div
-          className=" text-white rounded-xl text-xl">
+        <div className=" text-white rounded-xl text-xl">
           <div className="w-full md:w-[75%] m-auto p-5 rounded-2xl ">
             {/* <h2 onClick={toggleVenue}
               className="flex text-xl md:text-3xl font-bold mb-4">
@@ -149,8 +147,9 @@ function Agenda() {
               </span>
               <span className="grow ml-2">{t("festival.location.title")}</span>
             </h2> */}
-            <div className={`transition-all duration-750 ease-in-out overflow-hidden `}>
-
+            <div
+              className={`transition-all duration-750 ease-in-out overflow-hidden `}
+            >
               {/* PRESENTATION DES SALLES */}
               <div className="flex flex-col md:flex-row md:justify-around text-center">
                 <div className="flex flex-col md:flex-rows md:justify-around justify-center p-5 my-10 m-auto w-60 h-60 rounded-2xl  border-2 border-white shadow-lg/50 shadow-white bg-linear-to-b from-brand to-brand2">
@@ -187,7 +186,7 @@ function Agenda() {
             </div>
           </div>
         </div>
-      </div >
+      </div>
     </>
   );
 }

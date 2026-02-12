@@ -40,8 +40,11 @@ export default function DashboardEventCard({ gridLayout, event }: any) {
       >
         {event.title}
       </div>
-      <button className="cursor-pointer text-white border" onClick={deleteUser}>
-        delete
+      <button
+        className="cursor-pointer p-2 rounded text-brand bg-red-500 border border-border"
+        onClick={deleteUser}
+      >
+        Delete
       </button>
     </div>
   );
