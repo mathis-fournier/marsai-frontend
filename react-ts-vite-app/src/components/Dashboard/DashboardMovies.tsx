@@ -1,4 +1,4 @@
-import { useState, type ReactEventHandler } from "react";
+import { useState } from "react";
 import DashboardMovieCard from "./DashboardMovieCard";
 import { useTranslation } from "react-i18next";
 import type { Movie } from "../../types-interfaces/Movie";

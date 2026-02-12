@@ -41,13 +41,13 @@ export default function EventDetails() {
   return (
     <>
       <button
-        className="p-3 m-3 border rounded bg-[var(--color-brand2)] border-black text-white shadow-md hover:border-blue-400 hover:shadow-md hover:text-blue-400"
+        className="p-3 m-3 border rounded bg-brand2 border-black text-white shadow-md hover:border-blue-400 hover:shadow-md hover:text-blue-400"
         onClick={back}
       >
         {t("event_details.back_button")}
       </button>
       {data.length > 0 ? (
-        <div className="m-3 w-auto text-center text-white p-6 border border-black rounded-lg bg-[var(--color-brand2)] shadow-sm">
+        <div className="m-3 w-auto text-center text-white p-6 border border-black rounded-lg bg-brand2 shadow-sm">
           <h1 className="text-4xl text-bold underline">{data[0].title}</h1>
           <p>{data[0].description}</p>
           <p>{data[0].duration}h</p>

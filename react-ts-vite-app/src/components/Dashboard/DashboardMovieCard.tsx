@@ -11,7 +11,6 @@ export default function DashboardMovieCard({ gridLayout, movie }: any) {
   async function handleStatus(e: React.ChangeEvent<HTMLSelectElement>) {
     const newStatus = e.target.value;
     setCurrentStatus(newStatus);
-
     try {
       const response = await fetch(
         `${import.meta.env.VITE_API_URL}/admin/movie-status/${movie.id}`,

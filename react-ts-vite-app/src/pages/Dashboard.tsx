@@ -7,6 +7,7 @@ import AccessDenied from "../components/AccessDenied";
 import { useTranslation } from "react-i18next";
 import SubscribersDashboard from "../components/Dashboard/SubscribersDashboard";
 import type { Movie } from "../types-interfaces/Movie";
+import DashboardEvent from "../components/Dashboard/DashboardEvent";
 
 export default function Dashboard() {
   const { t } = useTranslation();
@@ -38,6 +39,7 @@ export default function Dashboard() {
   return (
     <>
       <DashboardGlobal />
+      <DashboardEvent />
       <DashboardMovies movies={data} isLoading={isLoading} />
       <UserDashboard />
       <SubscribersDashboard />
