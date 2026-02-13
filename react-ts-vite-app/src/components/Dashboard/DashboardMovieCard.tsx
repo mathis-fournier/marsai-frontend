@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
 
 export default function DashboardMovieCard({ gridLayout, movie }: any) {
-  const { t } = useTranslation();
+  const { t } = useTranslation('Dashboard');
 
   return (
     <div
@@ -18,7 +18,7 @@ export default function DashboardMovieCard({ gridLayout, movie }: any) {
 
       <div className="font-semibold text-white">{movie.english_title}</div>
       <div className="hidden md:block text-white">
-        {t("dashboard_movie_card.author_placeholder")}
+        {t("movie_card.author_placeholder")}
       </div>
       <div className="hidden md:block">
         {/* label validé / en attente / ect*/}

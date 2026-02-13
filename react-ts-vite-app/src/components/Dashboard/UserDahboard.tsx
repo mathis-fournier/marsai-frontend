@@ -13,7 +13,7 @@ interface User {
 function UserDashboard() {
   const [users, setUsers] = useState<User[]>([]);
   const { token } = useAuth();
-  const { t } = useTranslation();
+  const { t } = useTranslation("Dashboard");
   const [panel, setPanel] = useState<boolean>(false);
 
   const promoteToJury = async (userId: number) => {
@@ -130,13 +130,13 @@ function UserDashboard() {
         onClick={() => setPanel(!panel)}
       >
         <h2 className="text-secondary text-2xl font-mono uppercase">
-          🔳 {t("user_dashboard.title")}
+          🔳 {t("user.title")}
         </h2>
         <h1 className="text-4xl text-white font-bold">
-          {t("user_dashboard.subtitle")}
+          {t("user.subtitle")}
         </h1>
         <p className="italic text-white opacity-80">
-          {t("user_dashboard.description")}
+          {t("user.description")}
         </p>
       </div>
       <div className={`transition-all duration-1350 ease-linear overflow-hidden ${panel ? 'opacity-100' : 'max-h-0 opacity-0'}`}>
@@ -146,19 +146,19 @@ function UserDashboard() {
               <thead className="bg-gray-700">
                 <tr>
                   <th className="py-3 lg:px-4">
-                    {t("user_dashboard.table.name")}
+                    {t("user.table.name")}
                   </th>
                   <th className="py-3 lg:px-4">
-                    {t("user_dashboard.table.firstname")}
+                    {t("user.table.firstname")}
                   </th>
                   <th className="py-3 lg:px-4">
-                    {t("user_dashboard.table.email")}
+                    {t("user.table.email")}
                   </th>
                   <th className="py-3 lg:px-4">
-                    {t("user_dashboard.table.role")}
+                    {t("user.table.role")}
                   </th>
                   <th className="py-3 lg:px-4">
-                    {t("user_dashboard.table.action")}
+                    {t("user.table.action")}
                   </th>
                 </tr>
               </thead>
@@ -167,48 +167,48 @@ function UserDashboard() {
                   <tr key={user.id} className="border-b border-gray-700">
                     <td
                       className="py-3 px-4"
-                      data-label={t("user_dashboard.table.name")}
+                      data-label={t("user.table.name")}
                     >
                       {user.lastname}
                     </td>
                     <td
                       className="py-3 px-4"
-                      data-label={t("user_dashboard.table.firstname")}
+                      data-label={t("user.table.firstname")}
                     >
                       {user.firstname}
                     </td>
                     <td
                       className="py-3 px-4"
-                      data-label={t("user_dashboard.table.email")}
+                      data-label={t("user.table.email")}
                     >
                       {user.email}
                     </td>
                     <td
                       className="py-3 px-4"
-                      data-label={t("user_dashboard.table.role")}
+                      data-label={t("user.table.role")}
                     >
                       {user.role
                         ? user.role
-                        : t("user_dashboard.table.no_role")}
+                        : t("user.table.no_role")}
                     </td>
                     <td className="py-3 px-4 action-cell">
                       <button
                         className="bg-white hover:bg-slate-200 text-black font-bold py-1 px-2 rounded"
                         onClick={() => promoteToJury(user.id)}
                       >
-                        {t("user_dashboard.button.promote_jury")}
+                        {t("user.button.promote_jury")}
                       </button>
                       <button
                         className="bg-secondary hover:bg-indigo-400 text-black font-bold py-1 px-2 rounded ml-2"
                         onClick={() => promoteToAdmin(user.id)}
                       >
-                        {t("user_dashboard.button.promote_admin")}
+                        {t("user.button.promote_admin")}
                       </button>
                       <button
                         className="bg-red-500 hover:bg-red-700 text-black font-bold py-1 px-2 rounded ml-2"
                         onClick={() => deleteUser(user.id)}
                       >
-                        {t("user_dashboard.button.delete")}
+                        {t("user.button.delete")}
                       </button>
                     </td>
                   </tr>

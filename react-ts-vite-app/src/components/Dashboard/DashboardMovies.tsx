@@ -3,11 +3,12 @@ import DashboardMovieCard from "./DashboardMovieCard";
 import { useTranslation } from "react-i18next";
 
 export default function DashboardMovies({ movies, isLoading }: any): any {
-  const { t } = useTranslation();
+
+  const { t } = useTranslation("Dashboard");
   const gridLayout = "grid grid-cols-2 md:grid-cols-5 gap-4 items-center";
   const [panel, setPanel] = useState<boolean>(false);
 
-  if (isLoading) return <p>{t("dashboard_movies.loading")}</p>;
+  if (isLoading) return <p>{t("movies.loading")}</p>;
 
   return (
     <>
@@ -16,13 +17,13 @@ export default function DashboardMovies({ movies, isLoading }: any): any {
         onClick={() => setPanel(!panel)}
         className="cursor-pointer w-auto p-6">
         <h2 className="text-secondary text-2xl font-mono uppercase">
-          🔳 {t("dashboard_movies.title")}
+          🔳 {t("movies.title")}
         </h2>
         <h1 className="text-4xl text-white font-bold">
-          {t("dashboard_movies.subtitle")}
+          {t("movies.subtitle")}
         </h1>
         <p className="italic text-white opacity-80">
-          {t("dashboard_movies.description")}
+          {t("movies.description")}
         </p>
       </div>
 
@@ -32,7 +33,7 @@ export default function DashboardMovies({ movies, isLoading }: any): any {
           <div className="p-6 border-b border-slate-100">
             <input
               type="text"
-              placeholder={t("dashboard_movies.search_placeholder")}
+              placeholder={t("movies.search_placeholder")}
               className="border w-full p-2 text-white rounded-md focus:outline-none"
             />
           </div>
