@@ -126,9 +126,7 @@ function UserDashboard() {
   return (
     <>
       {" "}
-      <div className="w-auto p-6"
-        onClick={() => setPanel(!panel)}
-      >
+      <div className="w-auto p-6" onClick={() => setPanel(!panel)}>
         <h2 className="text-secondary text-2xl font-mono uppercase">
           🔳 {t("user.title")}
         </h2>
@@ -139,7 +137,9 @@ function UserDashboard() {
           {t("user.description")}
         </p>
       </div>
-      <div className={`transition-all duration-1350 ease-linear overflow-hidden ${panel ? 'opacity-100' : 'max-h-0 opacity-0'}`}>
+      <div
+        className={`transition-all duration-1350 ease-linear overflow-hidden ${panel ? "opacity-100" : "max-h-0 opacity-0"}`}
+      >
         <div className="bg-brand2 rounded-md shadow-lg/50 shadow-black">
           <div className="">
             <table className="min-w-full text-white mb-10 text-center mobile-vertical-table">
