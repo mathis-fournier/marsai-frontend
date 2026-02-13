@@ -56,7 +56,7 @@ export default function DashboardMovieCard({ gridLayout, movie }: any) {
       </div>
 
       <div className="hidden md:block text-white">
-        {t("dashboard_movie_card.author_placeholder")}
+        {t("movie_card.author_placeholder")}
       </div>
 
       <div className="hidden md:block">

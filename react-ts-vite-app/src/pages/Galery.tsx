@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import MoviesBest from "../components/MoviesBest";
 
 function Galery() {
-    const { t } = useTranslation(['Galery', 'Festival']);
+    const { t } = useTranslation(['Festival', 'Galery']);
 
     const [movies, setMovies] = useState<Movie[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
@@ -56,7 +56,7 @@ function Galery() {
             <div className="my-10">
                 <div className="w-full sm:w-[80%] shadow-2xl shadow-white/50 flex flex-col justify-center items-center gap-9 border-2 border-primary bg-linear-to-b from-brand2 to-brand mb-10 m-auto px-6 rounded-2xl">
                     <MoviesBest />
-                    <button className="flex m-auto text-lg my-8 cursor-pointer text-white bg-linear-to-t from-secondary hover:bg-brand2 text-center w-40 m-auto p-2 rounded-xl" onClick={() => setPanel(true)}>
+                    <button className="flex text-lg my-8 cursor-pointer justify-center text-white bg-linear-to-t from-secondary hover:bg-brand2 text-center w-40 m-auto p-2 rounded-xl" onClick={() => setPanel(true)}>
                         {t("films.see_all_button")}
                     </button>
                 </div>

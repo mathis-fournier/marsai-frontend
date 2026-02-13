@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import StatCard from "./StatCard";
 
 export default function DashboardGlobal() {
-  const { t } = useTranslation();
+  const { t } = useTranslation("Dashboard");
   const [moviecount, setMoviecount] = useState(0);
   const [participantscount, setParticipantscount] = useState(0);
   const [directorscount, setDirectorscount] = useState(0);
@@ -55,13 +55,13 @@ export default function DashboardGlobal() {
         onClick={() => setPanel(!panel)}
       >
         <h2 className="text-secondary text-2xl font-mono">
-          🔳 {t("dashboard_global.title")}
+          🔳 {t("global.title")}
         </h2>
         <h1 className="text-4xl text-white font-bold">
-          {t("dashboard_global.subtitle")}
+          {t("global.subtitle")}
         </h1>
         <p className="opacity-80 text-white">
-          {t("dashboard_global.description")}
+          {t("global.description")}
         </p>
       </div>
 
@@ -73,12 +73,12 @@ export default function DashboardGlobal() {
         <div className="grid sm:grid-cols-1 md:grid-cols-2 p-6 gap-6 max-w-full">
           <StatCard
             icon="https://img.icons8.com/?size=26&id=2998&format=png&color=6366f1"
-            objective={t("dashboard_global.card.objective", {
+            objective={t("global.card.objective", {
               count: moviecount,
             })}
             objectivemax={objective_submitted}
-            title={t("dashboard_global.card.films_submitted")}
-            percentageText={t("dashboard_global.card.completed", {
+            title={t("global.card.films_submitted")}
+            percentageText={t("global.card.completed", {
               percentage: getPercent(moviecount, objective_submitted),
             })}
             progressValue={getPercent(moviecount, objective_submitted)}
@@ -86,14 +86,14 @@ export default function DashboardGlobal() {
 
           <StatCard
             icon="https://img.icons8.com/?size=26&id=1074&format=png&color=6366f1"
-            objective={t("dashboard_global.card.objective", {
+            objective={t("global.card.objective", {
               count: participantscount,
             })}
             objectivemax={objective_participants}
-            title={t("dashboard_global.card.participants", {
+            title={t("global.card.participants", {
               count: participantscount,
             })}
-            percentageText={t("dashboard_global.card.completed", {
+            percentageText={t("global.card.completed", {
               percentage: getPercent(participantscount, objective_participants),
             })}
             progressValue={getPercent(participantscount, objective_participants)}
@@ -101,14 +101,14 @@ export default function DashboardGlobal() {
 
           <StatCard
             icon="https://img.icons8.com/?size=26&id=1074&format=png&color=6366f1"
-            objective={t("dashboard_global.card.objective", {
+            objective={t("global.card.objective", {
               count: ratingcount,
             })}
             objectivemax={objective_rating}
-            title={t("dashboard_global.card.rating_title", {
+            title={t("global.card.rating_title", {
               count: ratingcount,
             })}
-            percentageText={t("dashboard_global.card.completed", {
+            percentageText={t("global.card.completed", {
               percentage: getPercent(ratingcount, objective_rating),
             })}
             progressValue={getPercent(ratingcount, objective_rating)}
@@ -116,15 +116,15 @@ export default function DashboardGlobal() {
 
           <StatCard
             icon="https://img.icons8.com/?size=26&id=69088&format=png&color=6366f1"
-            objective={t("dashboard_global.card.objective", {
+            objective={t("global.card.objective", {
               count: directorscount,
             })}
             objectivemax={objective_directors}
-            title={t("dashboard_global.card.active_accounts", {
+            title={t("global.card.active_accounts", {
               count: directorscount,
             })}
           >
-            <p>{t("dashboard_global.card.today", { count: 2 })}</p>
+            <p>{t("global.card.today", { count: 2 })}</p>
           </StatCard>
         </div>
       </div>
