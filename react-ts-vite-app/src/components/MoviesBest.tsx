@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
 function MoviesBest() {
-  const { t } = useTranslation();
+  const { t } = useTranslation(['Festival', 'common', 'Galery']);
 
   // Initialisation des états
   const [data, setData] = useState<Movie[]>([]);
@@ -46,7 +46,7 @@ function MoviesBest() {
   return (
     <div className="w-full md:w-full mx-auto text-center">
 
-      <h2 className="text-3xl p-5 text-primary font-extrabold">SÉLECTION DU FESTIVAL</h2>
+      <h2 className="text-3xl p-5 text-primary font-extrabold">{t('films.selection_title')}</h2>
       <div className=" flex flex-col sm:flex-row justify-center items-center gap-6 ">
         {data.map((m) => (
           <div
@@ -68,7 +68,7 @@ function MoviesBest() {
                     />
                   </div>
                 ) : (
-                  <span className="text-gray-500">{t('galery.no_image')}</span>
+                  <span className="text-gray-500">{t('no_image')}</span>
                 )}
               </Link>
             ) : (

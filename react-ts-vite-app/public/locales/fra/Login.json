@@ -1,0 +1,9 @@
+{
+  "title": "Informations de connexion",
+  "email_label": "Adresse e-mail",
+  "email_placeholder": "Adresse e-mail...",
+  "password_label": "Mot de passe",
+  "password_placeholder": "Mot de passe...",
+  "login_button": "Connexion",
+  "jury_title": "CONNEXION EN TANT QUE JURY"
+}

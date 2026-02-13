@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import MoviesBest from "../components/MoviesBest";
 
 function Galery() {
-    const { t } = useTranslation();
+    const { t } = useTranslation(['Galery', 'Festival']);
 
     const [movies, setMovies] = useState<Movie[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
@@ -36,7 +36,7 @@ function Galery() {
     if (isLoading) {
         return (
             <div className="flex justify-center items-center h-screen">
-                <p className="text-white text-xl">{t('galery.loading')}</p>
+                <p className="text-white text-xl">{t('loading')}</p>
             </div>
         );
     }
@@ -44,7 +44,7 @@ function Galery() {
     if (error) {
         return (
             <div className="flex justify-center items-center h-screen">
-                <p className="text-red-500 text-xl">{t('galery.error', { error })}</p>
+                <p className="text-red-500 text-xl">{t('error', { error })}</p>
             </div>
         );
     }
@@ -56,10 +56,8 @@ function Galery() {
             <div className="my-10">
                 <div className="w-full sm:w-[80%] shadow-2xl shadow-white/50 flex flex-col justify-center items-center gap-9 border-2 border-primary bg-linear-to-b from-brand2 to-brand mb-10 m-auto px-6 rounded-2xl">
                     <MoviesBest />
-                    <button className="flex m-auto" onClick={() => setPanel(true)}>
-                        <h2 className="text-lg my-8 cursor-pointer text-white bg-linear-to-t from-secondary hover:bg-brand2 text-center w-40 m-auto p-2 rounded-xl">
-                            {t("festival.films.see_all_button")}
-                        </h2>
+                    <button className="flex m-auto text-lg my-8 cursor-pointer text-white bg-linear-to-t from-secondary hover:bg-brand2 text-center w-40 m-auto p-2 rounded-xl" onClick={() => setPanel(true)}>
+                        {t("films.see_all_button")}
                     </button>
                 </div>
             </div>
@@ -69,7 +67,7 @@ function Galery() {
                 <input
                     id="search"
                     type="text"
-                    placeholder={t('galery.search_placeholder')}
+                    placeholder={t('search_placeholder')}
                     className="my-20 w-full max-w-md mx-auto block p-2 border text-white border-orange-500 rounded-md"
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
@@ -90,13 +88,13 @@ function Galery() {
                                                 className="h-full w-full object-cover"
                                             />
                                         ) : (
-                                            <span className="text-gray-500">{t('galery.no_image')}</span>
+                                            <span className="text-gray-500">{t('no_image')}</span>
                                         )}
                                         <h2 className="text-2xl font-semibold">{movie.english_title}</h2>
                                     </div>
                                     <div className="p-4">
                                         <p className="text-gray-600 mt-2 text-sm my-4 line-clamp-3">
-                                            {movie.english_synopsis || t('galery.no_synopsis')}
+                                            {movie.english_synopsis || t('no_synopsis')}
                                         </p>
                                     </div>
                                 </div>
@@ -109,15 +107,15 @@ function Galery() {
                         onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
                         disabled={currentPage === 1}
                     >
-                        {t('galery.previous')}
+                        {t('previous')}
                     </button>
-                    <span className="text-white">{t('galery.page')} {currentPage}</span>
+                    <span className="text-white">{t('page')} {currentPage}</span>
                     <button
                         className="px-4 py-2 bg-[var(--color-brand)] hover:bg-[var(--color-secondary)] text-white rounded disabled:bg-gray-400"
                         onClick={() => setCurrentPage((prev) => prev + 1)}
                         disabled={movies ? movies.length < 10 : true}
                     >
-                        {t('galery.next')}
+                        {t('next')}
                     </button>
                 </div>
             </div>

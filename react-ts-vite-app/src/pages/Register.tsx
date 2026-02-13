@@ -9,7 +9,7 @@ interface RegisterFormData {
 }
 
 function Register() {
-    const { t } = useTranslation();
+    const { t } = useTranslation('Register');
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -23,7 +23,7 @@ function Register() {
         };
 
         if (formData.password !== formData.confirmPassword) {
-            alert(t('register.alert.password_mismatch'));
+            alert(t('alert.password_mismatch'));
             return;
         }
 
@@ -41,14 +41,14 @@ function Register() {
         })
             .then(response => {
                 if (response.ok) {
-                    alert(t('register.alert.success'));
+                    alert(t('alert.success'));
                 } else {
-                    alert(t('register.alert.error'));
+                    alert(t('alert.error'));
                 }
             })
             .catch(error => {
                 console.error("Erreur réseau :", error);
-                alert(t('register.alert.network_error'));
+                alert(t('alert.network_error'));
             });
     }
     return (
@@ -58,15 +58,14 @@ function Register() {
                     <div className="text-primary text-2xl">
                         <span className='text-center'>
                             <h1 className='text-left'>
-
-                                REGISTER AS JURY
+                                {t('jury_title')}
                             </h1>
 
                         </span>
                         <h2 className="text-base/7 font-semibold text-white">
-                            {t('register.title')}</h2>
+                            {t('title')}</h2>
                         <p className="mt-1 text-sm/6 text-gray-400">
-                            {t('register.subtitle')}
+                            {t('subtitle')}
                         </p>
 
                         <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
@@ -75,7 +74,7 @@ function Register() {
                                     htmlFor="firstname"
                                     className="block text-sm/6 font-medium text-white"
                                 >
-                                    {t('register.firstname_label')}
+                                    {t('firstname_label')}
                                 </label>
                                 <div className="mt-2">
                                     <div className="border border-white flex items-center rounded-md bg-white/5 pl-3 outline-1 -outline-offset-1 outline-white/10 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-primary">
@@ -84,7 +83,7 @@ function Register() {
                                             type="text"
                                             name="firstname"
                                             className="block min-w-0 grow bg-transparent py-1.5 pr-3 pl-1 text-base text-white placeholder:text-gray-300 focus:outline-none sm:text-sm/6"
-                                            placeholder={t('register.firstname_placeholder')}
+                                            placeholder={t('firstname_placeholder')}
                                             required
                                         />
                                     </div>
@@ -96,7 +95,7 @@ function Register() {
                                     htmlFor="lastname"
                                     className="block text-sm/6 font-medium text-white"
                                 >
-                                    {t('register.lastname_label')}
+                                    {t('lastname_label')}
                                 </label>
                                 <div className="mt-2">
                                     <div className="border border-white flex items-center rounded-md bg-white/5 pl-3 outline-1 -outline-offset-1 outline-white/10 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-primary">
@@ -105,7 +104,7 @@ function Register() {
                                             type="text"
                                             name="lastname"
                                             className="block min-w-0 grow bg-transparent py-1.5 pr-3 pl-1 text-base text-white placeholder:text-gray-300 focus:outline-none sm:text-sm/6"
-                                            placeholder={t('register.lastname_placeholder')}
+                                            placeholder={t('lastname_placeholder')}
                                             required
                                         />
                                     </div>
@@ -116,7 +115,7 @@ function Register() {
                                     htmlFor="email"
                                     className="block text-sm/6 font-medium text-white"
                                 >
-                                    {t('register.email_label')}
+                                    {t('email_label')}
                                 </label>
                                 <div className="mt-2">
                                     <div className="border border-white flex items-center rounded-md bg-white/5 pl-3 outline-1 -outline-offset-1 outline-white/10 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-primary">
@@ -125,7 +124,7 @@ function Register() {
                                             type="email"
                                             name="email"
                                             className="block min-w-0 grow bg-transparent py-1.5 pr-3 pl-1 text-base text-white placeholder:text-gray-300 focus:outline-none sm:text-sm/6"
-                                            placeholder={t('register.email_placeholder')}
+                                            placeholder={t('email_placeholder')}
                                             required
                                         />
                                     </div>
@@ -136,14 +135,14 @@ function Register() {
                                     htmlFor="password"
                                     className="block text-sm/6 font-medium text-white"
                                 >
-                                    {t('register.password_label')}
+                                    {t('password_label')}
                                 </label>
                                 <div className="border border-white flex items-center rounded-md bg-white/5 pl-3 outline-1 -outline-offset-1 outline-white/10 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-primary">                                    <input
                                     id="password"
                                     type="password"
                                     name="password"
                                     className="block min-w-0 grow bg-transparent py-1.5 pr-3 pl-1 text-base text-white placeholder:text-gray-300 focus:outline-none sm:text-sm/6"
-                                    placeholder={t('register.password_placeholder')}
+                                    placeholder={t('password_placeholder')}
                                     required
                                 />
                                 </div>
@@ -154,7 +153,7 @@ function Register() {
                                     htmlFor="confirm_password"
                                     className="block text-sm/6 font-medium text-white"
                                 >
-                                    {t('register.confirm_password_label')}
+                                    {t('confirm_password_label')}
                                 </label>
                                 <div className="border border-white flex items-center rounded-md bg-white/5 pl-3 outline-1 -outline-offset-1 outline-white/10 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-primary">
                                     <input
@@ -162,7 +161,7 @@ function Register() {
                                         type="password"
                                         name="confirm_password"
                                         className="block min-w-0 grow bg-transparent py-1.5 pr-3 pl-1 text-base text-white placeholder:text-gray-300 focus:outline-none sm:text-sm/6"
-                                        placeholder={t('register.confirm_password_placeholder')}
+                                        placeholder={t('confirm_password_placeholder')}
                                         required
                                     />
                                 </div>
@@ -176,7 +175,7 @@ function Register() {
                         type="submit"
                         className="rounded-md bg-primary px-6 py-2 text-lg font-semibold text-black shadow-md transition-transform duration-300 ease-in-out hover:scale-1.05"
                     >
-                        {t("register.register_button")}
+                        {t("register_button")}
                     </button>
                 </div>
             </form>

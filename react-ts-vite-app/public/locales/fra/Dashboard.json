@@ -1,0 +1,51 @@
+{
+  "error_status": "Erreur Status: {{status}}",
+  "global": {
+    "title": "ADMINISTRATION",
+    "subtitle": "VUE D'ENSEMBLE",
+    "description": "Analyse détaillée de la progression et des indicateurs de performance",
+    "card": {
+      "objective": "OBJECTIF : {{count}}",
+      "films_evaluated": "Films évalués par le jury",
+      "films_submitted": "Films soumis",
+      "completed": "{{percentage}}% complété",
+      "active_accounts": "Comptes réalisateur actif",
+      "participants": "Inscrits à un événement",
+      "rating_title": "Films notés par le jury",
+      "today": "+{{count}} aujourd'hui"
+    }
+  },
+  "movies": {
+    "loading": "Chargement des films...",
+    "title": "Administration",
+    "subtitle": "FILMS SOUMIS",
+    "description": "Gérez l'intégralité des soumissions et gérez les mises en avant.",
+    "search_placeholder": "Rechercher un film..."
+  },
+  "movie_card": {
+    "author_placeholder": "placeholder auteur"
+  },
+  "user": {
+    "title": "Espace Utilisateur",
+    "subtitle": "LISTE DES UTILISATEURS ENREGISTRÉS",
+    "description": "Gérez tous les utilisateurs et leurs rôles.",
+    "table": {
+      "name": "Nom",
+      "firstname": "Prénom",
+      "email": "Email",
+      "role": "Rôle",
+      "action": "Action",
+      "no_role": "Aucun rôle attribué"
+    },
+    "button": {
+      "promote_jury": "Jury",
+      "promote_admin": "Admin",
+      "delete": "Supprimer"
+    }
+  },
+  "subscribers": {
+    "title": "ABONNÉS À LA NEWSLETTER",
+    "description": "Ici vous pouvez voir les abonnés actuels",
+    "number": "Nombre total d'abonnés : {{count}}"
+  }
+}

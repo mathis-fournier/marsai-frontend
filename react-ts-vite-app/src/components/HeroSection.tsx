@@ -21,7 +21,7 @@ export default function HeroSection() {
                 <p className="text-4xl text-center md:text-5xl font-bold">
                   {t("hero_banner.title_part2")}
                 </p>
-                <p className="mask-r-from-25% text-center text-5xl md:text-7xl font-bold">
+                <p className="text-center text-5xl md:text-7xl font-bold">
                   {t("hero_banner.title_part3")}
                 </p>
               </NavLink>
@@ -54,7 +54,7 @@ export default function HeroSection() {
                 <p className="text-4xl text-center md:text-5xl font-bold">
                   {t("hero_banner.title_part2")}
                 </p>
-                <p className="mask-r-from-20% text-center text-5xl md:text-7xl font-bold">
+                <p className="text-center text-5xl md:text-7xl font-bold">
                   {t("hero_banner.title_part3")}
                 </p>
               </NavLink>

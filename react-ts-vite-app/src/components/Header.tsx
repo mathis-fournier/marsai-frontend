@@ -46,8 +46,8 @@ function Header() {
           </NavLink>
 
 
+          {/* Desktop Navigation */}
           <div ref={navRef} className="text-center text-2xl md:text-4xl md:gap-15 flex flex-col xl:flex-row  p-2 rounded-xl">
-            {/* Desktop Navigation */}
             <div className="hidden font-semi-bold xl:flex xl:flex-row items-center justify-around xl:gap-15 lg:gap-10 md:gap-5 text-left relative">
               <NavLink className={({ isActive }) => (isActive ? "active text-3xl" : "")} to={"/agenda"}>
                 <h2 className="sm:text-md  md:text-lg lg:text-2xl p-2 rounded-lg">
@@ -146,77 +146,87 @@ function Header() {
               />
             </button>
           </div>
-        </div >
-      </div>
-
-      {/* Mobile Navigation (toggled by hamburger) */}
-      <div className={`xl:hidden text-white overflow-hidden transition-all duration-500 ease-in-out ${isOpen ? 'max-h-screen' : 'max-h-0'}`}>
-        <div className="flex flex-col items-start p-5 gap-4">
-          <NavLink to={"/agenda"} onClick={() => setIsOpen(false)}>
-            <h2 className="sm:text-lg lg:text-xl md:text-2xl p-2 rounded-lg">
-              {t("header.agenda")}
-            </h2>
-          </NavLink>
-          <NavLink to={"/galery"} onClick={() => setIsOpen(false)}>
-            <h2 className="sm:text-lg lg:text-xl md:text-2xl p-2 rounded-lg">
-              {t("header.gallery")}
-            </h2>
-          </NavLink>
-          <NavLink to={"/jury"} onClick={() => setIsOpen(false)}>
-            <h2 className="sm:text-lg lg:text-xl md:text-2xl p-2 rounded-lg">
-              {t("header.jury")}
-            </h2>
-          </NavLink>
-          <NavLink to={"/submit"} onClick={() => setIsOpen(false)}>
-            <h2 className="sm:text-lg lg:text-xl md:text-2xl p-2 rounded-lg">
-              {t("header.submit")}
-            </h2>
-          </NavLink>
-          {
-            user && user.role === "JURY" ? (
-              <>
-                <NavLink to={"/jury/me"} onClick={() => setIsOpen(false)}>
-                  <h2 className="sm:text-lg lg:text-xl md:text-2xl p-2 rounded-lg">
-                    {t("header.jurySpace")}
-                  </h2>
-                </NavLink>
-                <button
-                  onClick={() => { logout(); setIsOpen(false); }}
-                  className="sm:text-lg lg:text-3xl md:text-2xl p-2 rounded-lg bg-red-500/45 hover:opacity-75 text-left w-full"
-                >
-                  {t("header.logout")}
-                </button>
-              </>
-            ) : user && user.role === "ADMIN" ? (
-              <>
-                <NavLink to={"/dashboard"} onClick={() => setIsOpen(false)}>
-                  <h2 className="sm:text-lg lg:text-xl md:text-2xl p-2 rounded-lg">
-                    {t("header.adminSpace")}
-                  </h2>
-                </NavLink>
-                <button
-                  onClick={() => { logout(); setIsOpen(false); }}
-                  className="sm:text-lg lg:text-3xl md:text-2xl p-2 rounded-lg bg-red-500/45 hover:opacity-75 text-left w-full"
-                >
-                  {t("header.logout")}
-                </button>
-              </>
-            ) : (
-              <>
-                <NavLink to="/login" onClick={() => setIsOpen(false)}>
-                  <h2 className="sm:text-lg lg:text-xl md:text-2xl p-2 rounded-lg">
-                    {t("header.login")}
-                  </h2>
-                </NavLink>
-                <NavLink to="/register" onClick={() => setIsOpen(false)}>
-                  <h2 className="sm:text-lg lg:text-xl md:text-2xl p-2 rounded-lg">
-                    {t("header.register")}
-                  </h2>
-                </NavLink>
-              </>
-            )
-          }
         </div>
+
+        {/* Mobile Navigation (toggled by hamburger) */}
+        <div className={(location.pathname === '/' ? 'absolute z-1 w-full bg-black/50' : 'w-full')}>
+          <div className={`xl:hidden text-white overflow-hidden transition-all duration-500 ease-in-out ${isOpen ? 'max-h-screen' : 'max-h-0'}`}>
+
+            <div className="flex flex-col items-start p-5 gap-4">
+              <NavLink className={({ isActive }) => (isActive ? "active text-3xl" : "")} to={"/agenda"} onClick={() => setIsOpen(false)}>
+                <h2 className="sm:text-lg lg:text-xl md:text-2xl p-2 rounded-lg">
+                  {t("header.agenda")}
+                </h2>
+              </NavLink>
+              <NavLink className={({ isActive }) => (isActive ? "active text-3xl" : "")} to={"/galery"} onClick={() => setIsOpen(false)}>
+                <h2 className="sm:text-lg lg:text-xl md:text-2xl p-2 rounded-lg">
+                  {t("header.gallery")}
+                </h2>
+              </NavLink>
+              <NavLink className={({ isActive }) => (isActive ? "active text-3xl" : "")} to={"/jury"} onClick={() => setIsOpen(false)}>
+                <h2 className="sm:text-lg lg:text-xl md:text-2xl p-2 rounded-lg">
+                  {t("header.jury")}
+                </h2>
+              </NavLink>
+              <NavLink className={({ isActive }) => (isActive ? "active text-3xl" : "")} to={"/submit"} onClick={() => setIsOpen(false)}>
+                <h2 className="sm:text-lg lg:text-xl md:text-2xl p-2 rounded-lg">
+                  {t("header.submit")}
+                </h2>
+              </NavLink>
+              {
+                user && user.role === "JURY" ? (
+                  <>
+                    <NavLink className={({ isActive }) => (isActive ? "active text-3xl" : "")} to={"/jury/me"} onClick={() => setIsOpen(false)}>
+                      <h2 className="sm:text-lg lg:text-xl md:text-2xl p-2 rounded-lg">
+                        {t("header.jurySpace")}
+                      </h2>
+                    </NavLink>
+                    <button
+                      onClick={() => { logout(); setIsOpen(false); }}
+                      className="sm:text-lg lg:text-3xl md:text-2xl p-2 rounded-lg bg-red-500/45 hover:opacity-75 text-left w-full"
+                    >
+                      {t("header.logout")}
+                    </button>
+                  </>
+                ) : user && user.role === "ADMIN" ? (
+                  <>
+                    <NavLink className={({ isActive }) => (isActive ? "active text-3xl" : "")} to={"/dashboard"} onClick={() => setIsOpen(false)}>
+                      <h2 className="sm:text-lg lg:text-xl md:text-2xl p-2 rounded-lg">
+                        {t("header.adminSpace")}
+                      </h2>
+                    </NavLink>
+                    <button
+                      onClick={() => { logout(); setIsOpen(false); }}
+                      className="sm:text-lg lg:text-3xl md:text-2xl p-2 rounded-lg bg-red-500/45 hover:opacity-75 text-left w-full"
+                    >
+                      {t("header.logout")}
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    <NavLink className={({ isActive }) => (isActive ? "active text-3xl" : "")} to="/login" onClick={() => setIsOpen(false)}>
+                      <h2 className="sm:text-lg lg:text-xl md:text-2xl p-2 rounded-lg">
+                        {t("header.login")}
+                      </h2>
+                    </NavLink>
+                    <NavLink className={({ isActive }) => (isActive ? "active text-3xl" : "")} to="/register" onClick={() => setIsOpen(false)}>
+                      <h2 className="sm:text-lg lg:text-xl md:text-2xl p-2 rounded-lg">
+                        {t("header.register")}
+                      </h2>
+                    </NavLink>
+                  </>
+                )
+              }
+              <div
+                className="absolute bottom-[-7px] h-[2px] bg-yellow-400 transition-all duration-300 ease-in-out"
+                style={underlineStyle}
+              />
+            </div>
+          </div >
+
+        </div >
+
+
       </div >
     </div >
   );

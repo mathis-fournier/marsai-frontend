@@ -8,7 +8,7 @@ interface LoginFormData {
 
 function Login() {
     const { login } = useAuth();
-    const { t } = useTranslation();
+    const { t } = useTranslation(['Login', 'Register']);
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -27,15 +27,14 @@ function Login() {
                     <div className="text-primary text-2xl">
                         <span className='text-center'>
                             <h1 className='text-left'>
-
-                                LOGIN AS JURY
+                                {t('jury_title')}
                             </h1>
 
                         </span>
                         <h2 className="text-base/7 font-semibold text-white">
-                            {t('register.title')}</h2>
+                            {t('title')}</h2>
                         <p className="mt-1 text-sm/6 text-gray-400">
-                            {t('register.subtitle')}
+                            {t('subtitle')}
                         </p>
                         <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                             <div className="sm:col-span-6">
@@ -43,7 +42,7 @@ function Login() {
                                     htmlFor="email"
                                     className="block text-sm/6 font-medium text-white"
                                 >
-                                    {t('login.email_label')}
+                                    {t('email_label')}
                                 </label>
                                 <div className="mt-2">
                                     <div className="border border-white flex items-center rounded-md bg-white/5 pl-3 outline-1 -outline-offset-1 outline-white/10 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-primary">
@@ -52,7 +51,7 @@ function Login() {
                                             type="email"
                                             name="email"
                                             className="block min-w-0 grow bg-transparent py-1.5 pr-3 pl-1 text-base text-white placeholder:text-gray-300 focus:outline-none sm:text-sm/6"
-                                            placeholder={t('login.email_placeholder')}
+                                            placeholder={t('email_placeholder')}
                                             required
                                         />
                                     </div>
@@ -63,7 +62,7 @@ function Login() {
                                     htmlFor="password"
                                     className="block text-sm/6 font-medium text-white"
                                 >
-                                    {t('login.password_label')}
+                                    {t('password_label')}
                                 </label>
                                 <div className="border border-white flex items-center rounded-md bg-white/5 pl-3 outline-1 -outline-offset-1 outline-white/10 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-primary">
                                     <input
@@ -71,7 +70,7 @@ function Login() {
                                         type="password"
                                         name="password"
                                         className="block min-w-0 grow bg-transparent py-1.5 pr-3 pl-1 text-base text-white placeholder:text-gray-300 focus:outline-none sm:text-sm/6"
-                                        placeholder={t('login.password_placeholder')}
+                                        placeholder={t('password_placeholder')}
                                         required
                                     />
                                 </div>
@@ -85,7 +84,7 @@ function Login() {
                         type="submit"
                         className="rounded-md bg-primary px-6 py-2 text-lg font-semibold text-black shadow-md transition-transform duration-300 ease-in-out hover:scale-1.05"
                     >
-                        {t("login.login_button")}
+                        {t("login_button")}
                     </button>
                 </div>
             </form>
