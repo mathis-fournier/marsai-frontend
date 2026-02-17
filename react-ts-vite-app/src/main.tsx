@@ -12,7 +12,7 @@ import NotFound from "./components/NotFound.tsx";
 import Register from "./pages/Register.tsx";
 import Login from "./pages/Login.tsx";
 import "./i18next";
-import { AuthProvider } from "./context/AuthContext.tsx";
+import { AuthProvider } from "./components/Dashboard/context/AuthContext.tsx";
 import Dashboard from "./pages/Dashboard.tsx";
 import Galery from "./pages/Galery.tsx";
 import MovieDetails from "./components/MovieDetails.tsx";

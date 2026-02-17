@@ -2,12 +2,12 @@ import { useEffect, useState } from "react";
 import DashboardGlobal from "../components/Dashboard/DashboardGlobal";
 import DashboardMovies from "../components/Dashboard/DashboardMovies";
 import UserDashboard from "../components/Dashboard/UserDahboard";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../components/Dashboard/context/AuthContext";
 import AccessDenied from "../components/AccessDenied";
 import { useTranslation } from "react-i18next";
-import SubscribersDashboard from "../components/Dashboard/SubscribersDashboard";
 import type { Movie } from "../types-interfaces/Movie";
 import DashboardEvent from "../components/Dashboard/DashboardEvent";
+import NewsletterDashboard from "../components/Dashboard/Newsletter/NewsletterDashboard";
 
 export default function Dashboard() {
   const { t } = useTranslation('Dashboard');
@@ -42,7 +42,7 @@ export default function Dashboard() {
       <DashboardEvent />
       <DashboardMovies movies={data} isLoading={isLoading} />
       <UserDashboard />
-      <SubscribersDashboard />
+      <NewsletterDashboard />
     </>
   );
 }

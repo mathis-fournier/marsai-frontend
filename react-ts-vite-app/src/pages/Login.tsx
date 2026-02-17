@@ -1,4 +1,4 @@
-import { useAuth } from '../context/AuthContext';
+import { useAuth } from '../components/Dashboard/context/AuthContext';
 import { useTranslation } from 'react-i18next';
 
 interface LoginFormData {

@@ -22,7 +22,8 @@
     "email_placeholder": "Your email",
     "subscribe_button": "Subscribe",
     "success_message": "Thank you for subscribing to our newsletter!",
-    "error_message": "An error occurred while subscribing. Please try again later."
+    "error_message": "An error occurred while subscribing. Please try again later.",
+    "error_message_conflict": "Already subscribed !"
   },
   "hero_banner": {
     "title_part1": "IMAGINE",

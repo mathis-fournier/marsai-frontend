@@ -18,11 +18,11 @@ function NewsletterSubscribe() {
             if (response.ok) {
                 alert(t('newsletter.success_message'));
                 form.reset();
-            } else {
-                alert(t('newsletter.error_message'));
+            } else if (response.status === 409) {
+                alert(t('newsletter.error_message_conflict'));
             }
         } catch (error) {
-            alert(t('newsletter.error_message'));
+            alert(t('newsletter.error_message' + error));
         }
 
     }
