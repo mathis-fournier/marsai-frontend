@@ -34,7 +34,7 @@ const NewsletterCreate = () => {
                 });
                 if (response.ok) {
                     alert(t('newsletter.success_message'));
-                    // Assuming NewsletterSend is a function that doesn't return anything and takes no arguments
+                    // Assuming NewsletterSubscribe is a function that doesn't return anything and takes no arguments
                 } else if (response.status === 409) {
                     alert(t('newsletter.error_message_conflict'));
                 }
