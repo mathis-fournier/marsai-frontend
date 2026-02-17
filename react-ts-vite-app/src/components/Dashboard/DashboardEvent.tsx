@@ -10,7 +10,7 @@ export default function DashboardEvent({ isLoading }: any): any {
   const { t } = useTranslation();
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/events/all`)
+    fetch(`${import.meta.env.VITE_API_URL}/events/`)
       .then((res) => res.json())
       .then((data) => setEventList(data))
       .catch((err) => console.error(err));

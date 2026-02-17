@@ -20,7 +20,10 @@
   "newsletter": {
     "title": "Restez connectés",
     "email_placeholder": "Votre email",
-    "subscribe_button": "S'inscrire"
+    "subscribe_button": "S'inscrire",
+    "success_message": "Merci ! À très vite !",
+    "error_message": "Quelque chose s'est mal passé, réessayez plus tard",
+    "error_message_conflict": "Déjà inscrit !"
   },
   "hero_banner": {
     "title_part1": "IMAGINEZ",

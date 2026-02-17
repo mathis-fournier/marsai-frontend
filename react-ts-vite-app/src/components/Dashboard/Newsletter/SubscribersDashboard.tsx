@@ -34,14 +34,11 @@ function SubscribersDashboard() {
     }
     return (
         <>
-            <div className="w-auto p-6 bg-[var(--color-bg2)]">
-                <h2 className="text-[var(--color-secondary)] text-2xl font-mono">
-                    🔳 {t("subscribers.title")}
-                </h2>
-                <h1 className="text-4xl text-[var(--color-white)] font-bold">
+            <div className="w-auto p-6 bg-brand2 rounded-2xl my-8">
+                <h2 className="text-3xl text-white">
                     {t("subscribers.number", { count: subscribers?.length })}
                     {/* {t("subscribers.description")} */}
-                </h1>
+                </h2>
             </div>
         </>
     );

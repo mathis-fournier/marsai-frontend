@@ -11,7 +11,12 @@
   },
   "dependencies": {
     "@fontsource/noto-sans": "^5.2.10",
+    "@tiptap/extension-text": "^3.19.0",
+    "@tiptap/extension-text-style": "^3.19.0",
+    "@tiptap/markdown": "^3.19.0",
+    "@tiptap/pm": "^3.19.0",
     "@tiptap/react": "^3.19.0",
+    "@tiptap/starter-kit": "^3.19.0",
     "i18next": "^25.8.1",
     "i18next-browser-languagedetector": "^8.2.0",
     "i18next-http-backend": "^3.0.2",

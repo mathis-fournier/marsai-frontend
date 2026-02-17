@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../components/Dashboard/context/AuthContext";
 
 // 1. Updated InputGroup to handle props
 const InputGroup = ({

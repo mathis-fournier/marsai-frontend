@@ -1,0 +1,65 @@
+/* Conteneur principal */
+.editor-container {
+  border: 1px solid #ced4da;
+  border-radius: 8px;
+  overflow: hidden;
+  font-family: sans-serif;
+}
+
+/* Barre d'outils */
+.control-group {
+  background-color: #f8f9fa;
+  padding: 8px;
+  border-bottom: 1px solid #ced4da;
+  display: flex;
+  gap: 5px;
+}
+
+.button-group {
+  display: flex;
+  gap: 4px;
+}
+
+/* Style des boutons */
+button {
+  /* background: white; */
+  /* border: 1px solid #dee2e6;
+  border-radius: 4px;
+  padding: 6px 12px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: #495057; */
+}
+
+button:hover:not(:disabled) {
+  /* background-color: #e9ecef; */
+  border-color: #adb5bd;
+}
+
+/* État actif (quand le texte sélectionné est déjà en gras) */
+button.is-active {
+  background-color: #343a40;
+  color: white;
+  border-color: #343a40;
+}
+
+/* État désactivé (quand SetBold ou UnsetBold n'est pas possible) */
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background-color: #f1f3f5;
+}
+
+/* L'éditeur de texte lui-même */
+.tiptap {
+  padding: 15px;
+  min-height: 150px;
+  outline: none;
+}
+
+/* Ta classe personnalisée définie dans Bold.configure */
+.my-custom-class {
+  color: #2b6cb0; /* Un bleu foncé pour bien voir que la classe est appliquée */
+  font-weight: bold;
+}

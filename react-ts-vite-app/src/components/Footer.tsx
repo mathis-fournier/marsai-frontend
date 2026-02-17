@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom'
-import NewsletterSubscribe from './NewsletterSubscribe'
+import NewsletterSubscribe from './Dashboard/Newsletter/NewsletterSubscribe'
 import { useTranslation } from 'react-i18next';
 
 function Footer() {

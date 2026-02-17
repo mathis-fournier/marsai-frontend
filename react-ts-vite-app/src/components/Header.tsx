@@ -1,6 +1,6 @@
 import { NavLink, useLocation } from "react-router-dom";
 import { useState, useRef, useEffect } from "react";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "./Dashboard/context/AuthContext";
 import { useTranslation } from "react-i18next";
 
 function Header() {
