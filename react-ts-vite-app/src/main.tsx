@@ -12,7 +12,7 @@ import NotFound from "./components/NotFound.tsx";
 import Register from "./pages/Register.tsx";
 import Login from "./pages/Login.tsx";
 import "./i18next";
-import { AuthProvider } from "./components/Dashboard/context/AuthContext.tsx";
+import { AuthProvider } from "./context/AuthContext.tsx";
 import Dashboard from "./pages/Dashboard.tsx";
 import Galery from "./pages/Galery.tsx";
 import MovieDetails from "./components/MovieDetails.tsx";
@@ -35,15 +35,6 @@ createRoot(document.getElementById("root")!).render(
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/dashboard/add_event" element={<AddEvent />} />
           <Route path="*" element={<NotFound />} />
-          {/* 
-            <Route path='/jury' element={<JuryMembers />} />
-            <Route path='/jury/me' element={<JuryDashboard />} />
-            <Route path='dashboard/movies' element={<DashboardMovies />} />
-            <Route path='dashboard/jury' element={<DashboardJury />} />
-            <Route path='dashboard/results' element={<DashboardResults />} />
-            <Route path='dashboard/events' element={<DashboardEvents />} />
-            <Route path='dashboard/config' element={<DashboardConfig />} />
-            */}
         </Routes>
         <Footer />
       </AuthProvider>

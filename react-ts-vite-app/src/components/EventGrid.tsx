@@ -1,7 +1,10 @@
 import { useState } from "react";
+// Utilisation du hook useNavigate pour la navigation entre les pages
 import { useNavigate } from "react-router-dom";
+// Utilisation du hook useTranslation pour la traduction des textes
 import { useTranslation } from "react-i18next";
 
+// Définition de l'interface EventItem qui décrit les propriétés d'un événement
 export interface EventItem {
   id: string | number;
   title: string;
@@ -9,66 +12,53 @@ export interface EventItem {
   start_at?: string;
 }
 
+// Définition de l'interface EventGridProps qui décrit les propriétés du composant EventGrid
 interface EventGridProps {
   events?: EventItem[];
   emptyMessage?: string;
 }
 
-export default function EventGrid({
+// Exportation du composant EventGrid par défaut
+function EventGrid({
   events = [],
   emptyMessage,
 }: EventGridProps) {
+  // Utilisation de useTranslation pour obtenir les traductions
   const { t } = useTranslation();
-  const navigate = useNavigate();
+
+  // État local pour stocker la recherche en cours
   const [query, setQuery] = useState("");
 
+  // Filtrage des événements en fonction de la recherche
   const filtered = events.filter((e) =>
     e.title.toLowerCase().includes(query.toLowerCase()),
   );
 
+  // Message d'empty si aucun événement n'est trouvé
   const finalEmptyMessage = emptyMessage || t("event_grid.empty_message");
 
   return (
-    <div className=" mx-auto p-6">
+    <div>
       <input
         type="text"
         placeholder={t("event_grid.search_placeholder")}
-        className="w-full p-3 border border-border text-white rounded-md outline-none focus:ring-2 focus:ring-blue-500 mb-6"
+        value={query}
         onChange={(e) => setQuery(e.target.value)}
       />
-
-      {!filtered.length ? (
-        <div className="text-center p-12 text-white">
-          {finalEmptyMessage}
-        </div>
-      ) : (
-        <div className="grid grid-cols-1 gap-6">
+      {filtered.length > 0 ? (
+        <ul>
           {filtered.map((event) => (
-            <div
-              key={event.id}
-              onClick={() => navigate(`/event/${event.id}`)}
-              className="group cursor-pointer overflow-hidden rounded-xl border border-white bg-linear-to-bl from-brand2 to-brand text-white shadow-sm hover:border-hover transition-all"
-            >
-              {event.imageUrl && (
-                <img
-                  src={event.imageUrl}
-                  className="h-48 w-full object-cover group-hover:scale-105 transition-transform"
-                />
-              )}
-              <div className="p-5">
-                <h3 className="text-lg font-bold group-hover:text-secondary">
-                  {event.title}
-                </h3>
-                <p className="mt-2 text-(--color-text)">
-                  {event.start_at
-                    ? new Date(event.start_at).toLocaleDateString("fr-FR")
-                    : t("event_grid.no_date")}
-                </p>
-              </div>
-            </div>
+            <li key={event.id}>
+              <img src={event.imageUrl} alt={event.title} />
+              <h3>{event.title}</h3>
+              <p>{event.start_at}</p>
+            </li>
           ))}
-        </div>
+        </ul>
+      ) : (
+        <p>{finalEmptyMessage}</p>
       )}
     </div>
   );
 }
+export default EventGrid;

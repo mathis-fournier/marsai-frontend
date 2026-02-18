@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useAuth } from "./context/AuthContext";
+import { useAuth } from "../../context/AuthContext";
 import { useTranslation } from "react-i18next";
 
 interface User {

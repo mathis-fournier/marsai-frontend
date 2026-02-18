@@ -1,34 +1,45 @@
 import { NavLink, useLocation } from "react-router-dom";
 import { useState, useRef, useEffect } from "react";
-import { useAuth } from "./Dashboard/context/AuthContext";
+import { useAuth } from "../context/AuthContext";
 import { useTranslation } from "react-i18next";
 
 function Header() {
+  // État pour gérer l'ouverture et la fermeture du menu
   const [isOpen, setIsOpen] = useState(false);
+  // Utilisation du contexte d'authentification
   const { user, logout } = useAuth();
+  // Utilisation de la traduction avec react-i18next
   const { t, i18n } = useTranslation();
+  // Référence pour le menu de navigation
   const navRef = useRef<HTMLDivElement>(null);
+  // État pour gérer l'underline du lien actif
   const [underlineStyle, setUnderlineStyle] = useState({ left: 0, width: 0 });
+  // Utilisation de useLocation pour obtenir l'emplacement actuel
   const location = useLocation();
 
   useEffect(() => {
     if (navRef.current) {
+      // Recherche du lien actif dans le menu de navigation
       const activeLink = navRef.current.querySelector<HTMLAnchorElement>('.active');
       if (activeLink) {
+        // Calcul des positions et largeur de l'underline
         const { offsetLeft, offsetWidth } = activeLink;
         setUnderlineStyle({
           left: offsetLeft,
           width: offsetWidth,
         });
       } else {
-        setUnderlineStyle({ width: 0, left: 0 }); // Corrected here
+        // Réinitialisation de l'underline si aucun lien actif n'est trouvé
+        setUnderlineStyle({ width: 0, left: 0 });
       }
     }
   }, [location]);
 
+  // Fonction pour changer la langue
   const changeLanguage = (lng: string) => {
     i18n.changeLanguage(lng);
   };
+
 
   return (
     <div

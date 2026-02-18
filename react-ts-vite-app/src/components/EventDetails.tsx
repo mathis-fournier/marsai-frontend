@@ -7,11 +7,11 @@ interface Event {
   description: string;
   duration: number;
   location: string;
-  status: string; // This is likely what's missing!
+  status: string;
   start_at: string;
 }
 
-export default function EventDetails() {
+function EventDetails() {
   const { id } = useParams();
   const [data, setData] = useState<Event[]>([]);
   const { t } = useTranslation();
@@ -61,3 +61,5 @@ export default function EventDetails() {
     </>
   );
 }
+
+export default EventDetails;

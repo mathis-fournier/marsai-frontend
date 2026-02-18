@@ -5,10 +5,6 @@ import FormInput from "../components/FormInput";
 import type { MovieCollaboratorFormState, MovieFormState } from "../types-interfaces/Movie"
 
 export default function SubmitMovie() {
-  const page1Ref = useRef<HTMLFieldSetElement>(null);
-  const page2Ref = useRef<HTMLFieldSetElement>(null);
-  const page3Ref = useRef<HTMLFieldSetElement>(null);
-  const [containerHeight, setContainerHeight] = useState<number | undefined>(undefined);
   const [page, setPage] = useState<number>(1);
 
   function handlePreviousPage() {
@@ -26,108 +22,111 @@ export default function SubmitMovie() {
   const [message, setMessage] = useState<string | null>(null);
   const [numberCollaborators, setNumberCollaborators] = useState<number>(0);
 
-
-  // PAGE 1 & 3 : Collaborator'S DETAILS
+  // PAGE 1 : INFORMATIONS GÉNÉRALES
+  // État pour stocker les données des collaborateurs du film
   const [movieCollaboratorFormData, setMovieCollaboratorFormData] = useState<MovieCollaboratorFormState>({
     gender: "",
-    firstname: "",
-    lastname: "",
-    email: "",
-    job: "",
-    contribution: "",
-    birthdate: "",
-    country: "",
-    region: "",
-    city: "",
-    address: "",
-    zipcode: "",
-    phone: "",
-    facebook_url: "",
-    instagram_url: "",
-    youtube_url: "",
-    linkedin_url: "",
-    twitter_url: ""
+    firstname: "", // Prénom
+    lastname: "", // Nom de famille
+    email: "", // Email
+    job: "", // Profession
+    contribution: "", // Contribution
+    birthdate: "", // Date de naissance
+    country: "", // Pays
+    region: "", // Région
+    city: "", // Ville
+    address: "", // Adresse
+    zipcode: "", // Code postal
+    phone: "", // Téléphone
+    facebook_url: "", // URL Facebook
+    instagram_url: "", // URL Instagram
+    youtube_url: "", // URL YouTube
+    linkedin_url: "", // URL LinkedIn
+    twitter_url: "" // URL Twitter
   });
+
+  // Tableau des champs pour les détails des collaborateurs
   const movieCollaboratorFields = [
     {
       id: "firstname",
-      label: t("firstname_label"),
-      placeholder: t("firstname_placeholder"),
+      label: t("firstname_label"), // Étiquette du prénom
+      placeholder: t("firstname_placeholder"), // Placeholder du prénom
     },
     {
       id: "lastname",
-      label: t("lastname_label"),
-      placeholder: t("lastname_placeholder"),
+      label: t("lastname_label"), // Étiquette du nom de famille
+      placeholder: t("lastname_placeholder"), // Placeholder du nom de famille
     },
     {
       id: "email",
-      label: t("email_label"),
-      type: "email",
+      label: t("email_label"), // Étiquette de l'email
+      type: "email", // Type d'entrée : email
     },
     {
       id: "profession",
-      label: t("profession_label"),
-      placeholder: t("profession_placeholder"),
+      label: t("profession_label"), // Étiquette de la profession
+      placeholder: t("profession_placeholder"), // Placeholder de la profession
     },
     {
       id: "contribution",
-      label: t("contribution_label"),
-      placeholder: t("contribution_placeholder"),
+      label: t("contribution_label"), // Étiquette de la contribution
+      placeholder: t("contribution_placeholder"), // Placeholder de la contribution
     },
     {
       id: "country",
-      label: t("country_label"),
-      placeholder: t("country_placeholder"),
+      label: t("country_label"), // Étiquette du pays
+      placeholder: t("country_placeholder"), // Placeholder du pays
     },
     {
       id: "region",
-      label: t("region_label"),
-      placeholder: t("region_placeholder"),
+      label: t("region_label"), // Étiquette de la région
+      placeholder: t("region_placeholder"), // Placeholder de la région
     },
     {
       id: "city",
-      label: t("city_label"),
-      placeholder: t("city_placeholder"),
+      label: t("city_label"), // Étiquette de la ville
+      placeholder: t("city_placeholder"), // Placeholder de la ville
     },
     {
       id: "zip",
-      label: t("zip_label"),
-      placeholder: t("zip_placeholder"),
+      label: t("zip_label"), // Étiquette du code postal
+      placeholder: t("zip_placeholder"), // Placeholder du code postal
     },
     {
       id: "address",
-      label: t("address_label"),
-      placeholder: t("address_placeholder"),
+      label: t("address_label"), // Étiquette de l'adresse
+      placeholder: t("address_placeholder"), // Placeholder de l'adresse
     },
     {
       id: "phone",
-      label: t("phone_label"),
-      type: "tel",
+      label: t("phone_label"), // Étiquette du téléphone
+      type: "tel", // Type d'entrée : téléphone
     },
     {
       id: "facebook",
-      label: t("facebook_label"),
-      type: "url",
+      label: t("facebook_label"), // Étiquette de Facebook
+      type: "url", // Type d'entrée : URL
     },
     {
       id: "instagram",
-      label: t("instagram_label"),
-      type: "url",
+      label: t("instagram_label"), // Étiquette d'Instagram
+      type: "url", // Type d'entrée : URL
     },
     {
       id: "linkedin",
-      label: t("linkedin_label"),
-      type: "url",
+      label: t("linkedin_label"), // Étiquette de LinkedIn
+      type: "url", // Type d'entrée : URL
     },
     {
       id: "twitter",
-      label: t("twitter_label"),
-      type: "url",
+      label: t("twitter_label"), // Étiquette de Twitter
+      type: "url", // Type d'entrée : URL
     }
   ];
 
 
-  // PAGE  2 : MOVIE DETAILS
+
+  // PAGE 2 : DÉTAILS DU FILM
   const [movieFormData, setMovieFormData] = useState<MovieFormState>({
     original_title: "",
     english_title: "",
@@ -142,6 +141,7 @@ export default function SubmitMovie() {
     hasSubs: false,
   });
 
+  // Définition des champs du formulaire pour les détails du film
   const movieFormFields = [
     {
       id: "original_title",
@@ -160,6 +160,8 @@ export default function SubmitMovie() {
     },
     { id: "duration", label: t("duration_label"), type: "number" },
   ];
+
+  // Définition des zones de texte pour les détails du film
   const movieFormTextAreas = [
     {
       id: "original_synopsis",
@@ -173,7 +175,7 @@ export default function SubmitMovie() {
   ];
 
 
-
+  // Gestion des changements dans les champs du formulaire
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
   ) => {
@@ -187,7 +189,8 @@ export default function SubmitMovie() {
     }));
   };
 
-  // Function that handles the final form submit
+
+  // Fonction qui gère la soumission finale du formulaire
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setMessage(t("message.sending"));
@@ -231,8 +234,8 @@ export default function SubmitMovie() {
             <h1 className="text-2xl text-primary font-sans">{t('page_header', { page: page })}</h1>
           </div>
 
-          {/* Form Pages */}
 
+          {/* Form Pages */}
 
           {/* Form Page 1 */}
           <fieldset className={`${page === 1 ? 'opacity-100' : 'hidden'}`}>
@@ -241,32 +244,20 @@ export default function SubmitMovie() {
                 <h2>{t('personal_informations')}</h2>
                 <p className="mt-1 text-sm/6 text-gray-400">{t('subtitle')}</p>
               </legend>
-              <div className="sm:grid grid-cols-2 gap-x-6 space-y-5 sm:grid-cols-6">
-
-
+              <div className="flex flex-col my-5">
                 <label htmlFor="gender">{t('gender')}</label>
-                <select name="gender" id="gender">
+                <select className="border border-white p-1.5 rounded-lg mt-2" name="gender" id="gender">
                   <option value="Male">{t('gender_male')}</option>
                   <option value="Female">{t('gender_female')}</option>
                   <option value="Other">{t('gender_other')}</option>
                 </select>
+              </div>
 
+
+              <div className="sm:grid grid-cols-2 gap-x-6 space-y-5 sm:grid-cols-6">
                 {movieCollaboratorFields.map((field) => (
                   <FormInput key={field.id} {...field} onChange={handleChange} />
-
-
                 ))}
-
-                <div>
-                  <label htmlFor="numberCollaborators">{t('numberOfCollaborators')}</label>
-                  <select name="numberCollaborators" id="numberCollaborators" onChange={(e) => setNumberCollaborators(parseInt(e.target.value))}>
-                    {Array.from({ length: 11 }, (_, i) => (
-                      <option key={i} value={i}>{i}</option>
-                    ))}
-                  </select>
-                </div>
-
-
               </div>
             </div>
           </fieldset>
@@ -383,25 +374,32 @@ export default function SubmitMovie() {
                 <h2>{t('collaborators_informations')}</h2>
                 <p className="mt-1 text-sm/6 text-gray-400">{t('subtitle')}</p>
               </legend>
-              <h3>{t('collaborator_count_message', { count: numberCollaborators })}</h3>
+
+              <div className="flex flex-col my-5">
+                <label htmlFor="numberCollaborators">{t('numberOfCollaborators')}</label>
+                <select className="border border-white p-1.5 my-5 rounded-lg" name="numberCollaborators" id="numberCollaborators" onChange={(e) => setNumberCollaborators(parseInt(e.target.value))}>
+                  {Array.from({ length: 11 }, (_, i) => (
+                    <option key={i} value={i}>{i}</option>
+                  ))}
+                </select>
+              </div>
+
+              {/* <h3>{t('collaborator_count_message', { count: numberCollaborators })}</h3> */}
+
+
               {Array.from({ length: numberCollaborators }, (_, i) => (
                 <div className="my-10">
                   <h2 className="text-2xl">{t('collaborator_with_number', { number: i + 1 })}</h2>
-
-                  <div className="sm:grid grid-cols-2 gap-x-6 space-y-5 sm:grid-cols-6">
-
+                  <div className="flex flex-col my-5 ">
                     <label htmlFor="gender">{t('gender')}</label>
-                    <select name="gender" id="gender">
+                    <select name="gender" id="gender" className="border border-white p-1.5 rounded-lg">
                       <option value="Male">{t('gender_male')}</option>
                       <option value="Female">{t('gender_female')}</option>
                       <option value="Other">{t('gender_other')}</option>
                     </select>
                   </div>
-
                   {movieCollaboratorFields.map((field) => (
                     <FormInput key={field.id} {...field} onChange={handleChange} />
-
-
                   ))}
                 </div>
               ))}

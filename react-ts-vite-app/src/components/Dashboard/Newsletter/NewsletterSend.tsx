@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import type Newsletter from '../../../types-interfaces/Newsletter';
 import { useTranslation } from 'react-i18next';
-import { useAuth } from '../context/AuthContext';
+import { useAuth } from '../../../context/AuthContext';
 
 function NewsletterSend() {
 
