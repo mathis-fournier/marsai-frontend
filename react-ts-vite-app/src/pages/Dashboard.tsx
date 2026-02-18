@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import DashboardGlobal from "../components/Dashboard/DashboardGlobal";
 import DashboardMovies from "../components/Dashboard/DashboardMovies";
 import UserDashboard from "../components/Dashboard/UserDahboard";
-import { useAuth } from "../components/Dashboard/context/AuthContext";
+import { useAuth } from "../context/AuthContext";
 import AccessDenied from "../components/AccessDenied";
 import { useTranslation } from "react-i18next";
 import type { Movie } from "../types-interfaces/Movie";

@@ -1,7 +1,6 @@
 import { useState } from "react";
-import { useAuth } from "../components/Dashboard/context/AuthContext";
+import { useAuth } from "../context/AuthContext";
 
-// 1. Updated InputGroup to handle props
 const InputGroup = ({
   id,
   label,
@@ -18,15 +17,17 @@ const InputGroup = ({
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }) => (
   <div className="flex-1 flex flex-col gap-1">
+    {/* Champ d'entrée avec des classes pour le style */}
     <input
       id={id}
-      name={id} // Required for the handleChange function
+      name={id}
       type={type}
       value={value}
       onChange={onChange}
       placeholder={placeholder}
       className="w-full p-2 text-white bg-brand2 border border-border rounded-md focus:border-brand outline-none transition-all"
     />
+    {/* Étiquette associée au champ d'entrée */}
     <label htmlFor={id} className="text-xs text-red-500 opacity-80 ml-1">
       {label}
     </label>
@@ -34,8 +35,11 @@ const InputGroup = ({
 );
 
 export default function AddEvent() {
+
+  // Importation du hook d'authentification
   const { token } = useAuth();
 
+  // Initialisation des données du formulaire avec useState
   const [formData, setFormData] = useState({
     title: "",
     description: "",
@@ -48,7 +52,7 @@ export default function AddEvent() {
     published_at: "",
   });
 
-  // 2. Dynamic change handler
+  // Gestionnaire de changement dynamique pour les champs du formulaire
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value, type } = e.target;
     setFormData((prev) => ({
@@ -57,6 +61,7 @@ export default function AddEvent() {
     }));
   };
 
+  // Fonction pour envoyer les données du formulaire à l'API
   async function sendData(e: React.FormEvent) {
     e.preventDefault();
     try {
@@ -74,10 +79,10 @@ export default function AddEvent() {
       if (response.ok) {
         alert("Évènement ajouté !");
       } else {
-        console.error("Failed to add event:", response);
+        console.error("Échec de l'ajout de l'évènement :", response);
       }
     } catch (error) {
-      console.error("Error adding event:", error);
+      console.error("Erreur lors de l'ajout de l'évènement :", error);
     }
   }
 

@@ -9,10 +9,14 @@ interface RegisterFormData {
 }
 
 function Register() {
+    // Utilisation de la fonction useTranslation pour accéder aux traductions
     const { t } = useTranslation('Register');
 
+    // Gestionnaire d'événement pour soumettre le formulaire
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
+        event.preventDefault(); // Empêche le comportement par défaut de la soumission du formulaire
+
+        // Récupération des éléments du formulaire
         const form = event.currentTarget;
         const formData: RegisterFormData = {
             email: (form.elements.namedItem("email") as HTMLInputElement).value,
@@ -22,11 +26,13 @@ function Register() {
             lastname: (form.elements.namedItem("lastname") as HTMLInputElement).value,
         };
 
+        // Vérification si le mot de passe et la confirmation du mot de passe correspondent
         if (formData.password !== formData.confirmPassword) {
-            alert(t('alert.password_mismatch'));
+            alert(t('alert.password_mismatch')); // Affiche une alerte en cas de non-correspondance
             return;
         }
 
+        // Envoi des données au serveur via une requête POST
         fetch(import.meta.env.VITE_API_URL + "/auth/register", {
             method: 'POST',
             headers: {
@@ -40,15 +46,15 @@ function Register() {
             })
         })
             .then(response => {
-                if (response.ok) {
-                    alert(t('alert.success'));
+                if (response.ok) { // Vérification si la réponse est OK
+                    alert(t('alert.success')); // Affiche une alerte de succès
                 } else {
-                    alert(t('alert.error'));
+                    alert(t('alert.error')); // Affiche une alerte d'erreur
                 }
             })
             .catch(error => {
-                console.error("Erreur réseau :", error);
-                alert(t('alert.network_error'));
+                console.error("Erreur réseau :", error); // Enregistre l'erreur dans la console
+                alert(t('alert.network_error')); // Affiche une alerte pour les erreurs de réseau
             });
     }
     return (

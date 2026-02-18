@@ -3,10 +3,17 @@ import { useTranslation } from "react-i18next";
 import type { Movie } from "../types-interfaces/Movie";
 import { Link } from "react-router-dom";
 import MoviesBest from "../components/MoviesBest";
+import Tags from "../components/Tags";
 
+/**
+ * Composant principal de la galerie de films.
+ * Il gère l'affichage, le chargement, les erreurs, la recherche et la pagination des films.
+ */
 function Galery() {
+    // Utilisation du hook de traduction pour la langue
     const { t } = useTranslation(['Festival', 'Galery']);
 
+    // Gestion de l'état : liste des films, numéro de page, terme de recherche, chargement, erreur et panneau ouvert
     const [movies, setMovies] = useState<Movie[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [searchTerm, setSearchTerm] = useState("");
@@ -15,11 +22,15 @@ function Galery() {
     const [panel, setPanel] = useState<boolean>(false);
 
 
+    /**
+     * Effet de bord pour récupérer les films depuis l'API lors du chargement initial ou du changement de page.
+     * Utilise les variables d'environnement pour l'URL de l'API.
+     */
     useEffect(() => {
         fetch(`${import.meta.env.VITE_API_URL}/movies?limit=10&page=${currentPage * 10 - 10}`)
             .then(response => {
                 if (!response.ok) {
-                    throw new Error("Failed to fetch movies");
+                    throw new Error("Échec de la récupération des films");
                 }
                 return response.json();
             })
@@ -33,6 +44,7 @@ function Galery() {
             });
     }, [currentPage]);
 
+    // État de chargement : affiche un message pendant le chargement
     if (isLoading) {
         return (
             <div className="flex justify-center items-center h-screen">
@@ -41,6 +53,7 @@ function Galery() {
         );
     }
 
+    // État d'erreur : affiche un message d'erreur en cas d'échec
     if (error) {
         return (
             <div className="flex justify-center items-center h-screen">
@@ -56,14 +69,13 @@ function Galery() {
             <div className="my-10">
                 <div className="w-full sm:w-[80%] shadow-2xl shadow-white/50 flex flex-col justify-center items-center gap-9 border-2 border-primary bg-linear-to-b from-brand2 to-brand mb-10 m-auto px-6 rounded-2xl">
                     <MoviesBest />
-                    <button className="flex text-lg my-8 cursor-pointer justify-center text-white bg-linear-to-t from-secondary hover:bg-brand2 text-center w-40 m-auto p-2 rounded-xl" onClick={() => setPanel(true)}>
-                        {t("films.see_all_button")}
-                    </button>
                 </div>
+                <a href="#all-movies" className="flex text-lg my-8 cursor-pointer justify-center text-white bg-linear-to-t from-secondary hover:bg-brand2 text-center w-40 m-auto p-2 rounded-xl" onClick={() => setPanel(true)}>
+                    {t("films.see_all_button")}
+                </a>
             </div>
 
-            <div className={`transition-all duration-1350 ease-linear overflow-hidden ${panel ? 'opacity-100' : 'max-h-0 opacity-0'}`}>
-
+            <div id="all-movies" className={`transition-all duration-1350 ease-linear overflow-hidden ${panel ? 'opacity-100' : 'max-h-0 opacity-0'}`}>
                 <input
                     id="search"
                     type="text"
@@ -72,6 +84,7 @@ function Galery() {
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                 />
+                <Tags />
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-6">
                     {movies
                         .filter((movie: any) =>
