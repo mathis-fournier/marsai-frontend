@@ -15,12 +15,9 @@
   --color-white: #bfcad0;
 }
 html {
+  font-family: "Noto Sans";
+    scroll-behavior: smooth;
     @apply bg-linear-to-t from-brand2 to-dark;
-    font-family: "Noto Sans";
-}
-
-.hero {
-  background-position-x: -350px;
 }
 
 

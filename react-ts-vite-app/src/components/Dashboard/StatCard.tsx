@@ -18,15 +18,15 @@ export default function StatCard({
   children,
 }: StatCardProps) {
   return (
-    <div className="CARD DASHBOARD border border-border rounded-md p-6 bg-brand2 hover:border hover:border-secondary flex flex-col justify-between cursor-pointer">
-      <div className="flex pb-2">
-        <img className="rounded-md p-1" src={icon} alt="icon" />
-        <p className="bg-brand font-bold text-xs ml-auto text-white p-2 rounded-full">
+    <div className="CARD DASHBOARD border border-white rounded-md p-6 bg-dark hover:border hover:border-primary flex flex-col justify-between cursor-pointer">
+      <div className="flex pb-2 text-6xl justify-center items-center">
+        {icon}
+        <p className="bg-primary text-black font-bold text-sm ml-auto  p-7 rounded-full">
           {objective + "/" + objectivemax}
         </p>
       </div>
       <div>
-        <p className="font-semibold text-white">{title}</p>
+        <p className="font-semibold text-white text-lg">{title}</p>
       </div>
       <div className="mt-6 text-white">
         {/* POUR LES CARDS FULL W */}

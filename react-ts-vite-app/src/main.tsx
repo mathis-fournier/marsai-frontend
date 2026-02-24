@@ -8,15 +8,15 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Agenda from "./pages/Agenda.tsx";
 import SubmitMovie from "./pages/SubmitMovie.tsx";
 import EventDetails from "./components/EventDetails.tsx";
-import NotFound from "./components/NotFound.tsx";
-import Register from "./pages/Register.tsx";
+import NotFound from "./pages/NotFound.tsx";
+import Register from "./components/Dashboard/Register.tsx";
 import Login from "./pages/Login.tsx";
 import "./i18next";
 import { AuthProvider } from "./context/AuthContext.tsx";
 import Dashboard from "./pages/Dashboard.tsx";
-import Galery from "./pages/Galery.tsx";
 import MovieDetails from "./components/MovieDetails.tsx";
 import AddEvent from "./pages/AddEvent.tsx";
+import Galery from "./pages/Movies.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -26,8 +26,8 @@ createRoot(document.getElementById("root")!).render(
         <Routes>
           <Route path="/" element={<App />} />
           <Route path="/agenda" element={<Agenda />} />
-          <Route path="/galery" element={<Galery />} />
-          <Route path="/galery/:id" element={<MovieDetails />} />
+          <Route path="/movies" element={<Galery />} />
+          <Route path="/movies/:id" element={<MovieDetails />} />
           <Route path="/submit" element={<SubmitMovie />} />
           <Route path="/event/:id" element={<EventDetails />} />
           <Route path="/register" element={<Register />} />

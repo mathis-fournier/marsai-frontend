@@ -225,187 +225,185 @@ export default function SubmitMovie() {
   };
 
   return (
-    <div className="my-20">
-      <form onSubmit={handleSubmit} className="p-25 md:max-w-[75%] mx-auto px-6 my-1 pt-10 sm:rounded-4xl md:shadow-lg/50 md:border-2 sm:border-primary md:shadow-white mb-10 bg-linear-to-b from-dark to-brand2">
-        <div className="space-y-12">
+    <div style={{ backgroundImage: `url(${import.meta.env.VITE_HERO_IMG_SUBMIT})` }} className="bg-cover bg-no-repeat p-35">
+      <form onSubmit={handleSubmit} className="bg-black/50 md:max-w-[75%] mx-auto px-6 pt-10 sm:rounded-4xl md:shadow-lg/50 md:border-2 sm:border-primary md:shadow-white mb-10">
 
-          {/* Main Title */}
+        {/* Main Title */}
+        <div className="text-white">
+          <h1 className="text-2xl text-primary font-sans">{t('page_header', { page: page })}</h1>
+        </div>
+
+
+        {/* Form Pages */}
+
+        {/* Form Page 1 */}
+        <fieldset className={`${page === 1 ? 'opacity-100' : 'hidden'}`}>
           <div className="text-white">
-            <h1 className="text-2xl text-primary font-sans">{t('page_header', { page: page })}</h1>
+            <legend className="mb-10 text-2xl">
+              <h2>{t('personal_informations')}</h2>
+              <p className="mt-1 text-sm/6 text-gray-400">{t('subtitle')}</p>
+            </legend>
+            <div className="flex flex-col my-5">
+              <label htmlFor="gender">{t('gender')}</label>
+              <select className="border border-white p-1.5 rounded-lg mt-2" name="gender" id="gender">
+                <option value="Male">{t('gender_male')}</option>
+                <option value="Female">{t('gender_female')}</option>
+                <option value="Other">{t('gender_other')}</option>
+              </select>
+            </div>
+
+
+            <div className="sm:grid grid-cols-2 gap-x-6 space-y-5 sm:grid-cols-6">
+              {movieCollaboratorFields.map((field) => (
+                <FormInput key={field.id} {...field} onChange={handleChange} />
+              ))}
+            </div>
           </div>
+        </fieldset>
 
+        {/* Form Page 2 */}
+        <fieldset className={`${page === 2 ? 'opacity-100' : 'hidden'}`}>
+          <div className="text-white">
+            <legend className="mb-10 text-2xl">
+              <h2>{t('title')}</h2>
+              <p className="mt-1 text-sm/6 text-gray-400">{t('subtitle')}</p>
+            </legend>
+            <div className="sm:grid grid-cols-2 gap-x-6 space-y-5 sm:grid-cols-6">
+              {movieFormFields.map((field) => (
+                <FormInput key={field.id} {...field} onChange={handleChange} />
+              ))}
 
-          {/* Form Pages */}
-
-          {/* Form Page 1 */}
-          <fieldset className={`${page === 1 ? 'opacity-100' : 'hidden'}`}>
-            <div className="text-white">
-              <legend className="mb-10 text-2xl">
-                <h2>{t('personal_informations')}</h2>
-                <p className="mt-1 text-sm/6 text-gray-400">{t('subtitle')}</p>
-              </legend>
-              <div className="flex flex-col my-5">
-                <label htmlFor="gender">{t('gender')}</label>
-                <select className="border border-white p-1.5 rounded-lg mt-2" name="gender" id="gender">
-                  <option value="Male">{t('gender_male')}</option>
-                  <option value="Female">{t('gender_female')}</option>
-                  <option value="Other">{t('gender_other')}</option>
+              <div className=" my-5 sm:col-span-3">
+                <label className="block text-sm font-medium">
+                  {t("original_language_label")}
+                </label>
+                <select
+                  name="original_language"
+                  onChange={handleChange}
+                  className="mt-2 block w-full rounded-md bg-white/5 py-1.5 px-3 text-white border border-white"
+                >
+                  <option value="French">{t('language_french')}</option>
+                  <option value="English">{t('language_english')}</option>
                 </select>
               </div>
+            </div>
+
+            <div className="space-y-5">
+              {movieFormTextAreas.map((area) => (
+                <FormInput
+                  key={area.id}
+                  {...area}
+                  isTextArea={true}
+                  onChange={handleChange}
+                />
+              ))}
+              <FormInput
+                id="ia_tools"
+                label={t("ia_tools_label")}
+                onChange={handleChange}
+              />
+            </div>
+
+            <div className="flex justify-center rounded-lg px-6 py-10">
+              <div className="text-center">
+                <label
+                  htmlFor="file"
+                  className="cursor-pointer font-semibold"
+                >
+                  <span>{t("upload_file_label_cover_image")}</span>
+                  <input
+                    id="file"
+                    name="file"
+                    type="file"
+                    className="sr-only"
+                    onChange={(e) => setFile(e.target.files?.[0] || null)}
+                  />
+                </label>
+                <p className="text-xs text-gray-400 mt-1">
+                  {file ? file.name : t("file_types_label")}
+                </p>
+              </div>
+            </div>
+            <div className="flex justify-center rounded-lg px-6 py-10">
+              <div className="text-center">
+                <label
+                  htmlFor="file"
+                  className="cursor-pointer font-semibold"
+                >
+                  <span>{t("upload_file_label_movie_raw")}</span>
+                  <input
+                    id="file"
+                    name="file"
+                    type="file"
+                    className="sr-only"
+                    onChange={(e) => setFile(e.target.files?.[0] || null)}
+                  />
+                </label>
+                <p className="text-xs text-gray-400 mt-1">
+                  {file ? file.name : t("file_types_label")}
+                </p>
+              </div>
+            </div>
+            <div className="flex gap-10 justify-center">
+              {["isHybrid", "hasSubs"].map((name) => (
+                <label
+                  key={name}
+                  className="flex items-center gap-3 cursor-pointer"
+                >
+                  <input
+                    type="checkbox"
+                    name={name}
+                    onChange={handleChange}
+                    className="size-4 rounded  bg-white/5 text-indigo-500"
+                  />
+                  <span className="text-sm font-medium">
+                    {t(`${name}_label`)}
+                  </span>
+                </label>
+              ))}
+            </div>
+            {message && <p className="text-sm text-primary text-center">{message}</p>}
+          </div >
+        </fieldset>
+
+        {/* Form Page 3 */}
+        <fieldset className={`${page === 3 ? 'opacity-100' : 'hidden'}`}>
+          <div className="text-white">
+            <legend className="mb-10 text-2xl">
+              <h2>{t('collaborators_informations')}</h2>
+              <p className="mt-1 text-sm/6 text-gray-400">{t('subtitle')}</p>
+            </legend>
+
+            <div className="flex flex-col my-5">
+              <label htmlFor="numberCollaborators">{t('numberOfCollaborators')}</label>
+              <select className="border border-white p-1.5 my-5 rounded-lg" name="numberCollaborators" id="numberCollaborators" onChange={(e) => setNumberCollaborators(parseInt(e.target.value))}>
+                {Array.from({ length: 11 }, (_, i) => (
+                  <option key={i} value={i}>{i}</option>
+                ))}
+              </select>
+            </div>
+
+            {/* <h3>{t('collaborator_count_message', { count: numberCollaborators })}</h3> */}
 
 
-              <div className="sm:grid grid-cols-2 gap-x-6 space-y-5 sm:grid-cols-6">
+            {Array.from({ length: numberCollaborators }, (_, i) => (
+              <div className="my-10">
+                <h2 className="text-2xl">{t('collaborator_with_number', { number: i + 1 })}</h2>
+                <div className="flex flex-col my-5 ">
+                  <label htmlFor="gender">{t('gender')}</label>
+                  <select name="gender" id="gender" className="border border-white p-1.5 rounded-lg">
+                    <option value="Male">{t('gender_male')}</option>
+                    <option value="Female">{t('gender_female')}</option>
+                    <option value="Other">{t('gender_other')}</option>
+                  </select>
+                </div>
                 {movieCollaboratorFields.map((field) => (
                   <FormInput key={field.id} {...field} onChange={handleChange} />
                 ))}
               </div>
-            </div>
-          </fieldset>
-
-          {/* Form Page 2 */}
-          <fieldset className={`${page === 2 ? 'opacity-100' : 'hidden'}`}>
-            <div className="text-white">
-              <legend className="mb-10 text-2xl">
-                <h2>{t('title')}</h2>
-                <p className="mt-1 text-sm/6 text-gray-400">{t('subtitle')}</p>
-              </legend>
-              <div className="sm:grid grid-cols-2 gap-x-6 space-y-5 sm:grid-cols-6">
-                {movieFormFields.map((field) => (
-                  <FormInput key={field.id} {...field} onChange={handleChange} />
-                ))}
-
-                <div className=" my-5 sm:col-span-3">
-                  <label className="block text-sm font-medium">
-                    {t("original_language_label")}
-                  </label>
-                  <select
-                    name="original_language"
-                    onChange={handleChange}
-                    className="mt-2 block w-full rounded-md bg-white/5 py-1.5 px-3 text-white border border-white"
-                  >
-                    <option value="French">{t('language_french')}</option>
-                    <option value="English">{t('language_english')}</option>
-                  </select>
-                </div>
-              </div>
-
-              <div className="space-y-5">
-                {movieFormTextAreas.map((area) => (
-                  <FormInput
-                    key={area.id}
-                    {...area}
-                    isTextArea={true}
-                    onChange={handleChange}
-                  />
-                ))}
-                <FormInput
-                  id="ia_tools"
-                  label={t("ia_tools_label")}
-                  onChange={handleChange}
-                />
-              </div>
-
-              <div className="flex justify-center rounded-lg px-6 py-10">
-                <div className="text-center">
-                  <label
-                    htmlFor="file"
-                    className="cursor-pointer font-semibold"
-                  >
-                    <span>{t("upload_file_label_cover_image")}</span>
-                    <input
-                      id="file"
-                      name="file"
-                      type="file"
-                      className="sr-only"
-                      onChange={(e) => setFile(e.target.files?.[0] || null)}
-                    />
-                  </label>
-                  <p className="text-xs text-gray-400 mt-1">
-                    {file ? file.name : t("file_types_label")}
-                  </p>
-                </div>
-              </div>
-              <div className="flex justify-center rounded-lg px-6 py-10">
-                <div className="text-center">
-                  <label
-                    htmlFor="file"
-                    className="cursor-pointer font-semibold"
-                  >
-                    <span>{t("upload_file_label_movie_raw")}</span>
-                    <input
-                      id="file"
-                      name="file"
-                      type="file"
-                      className="sr-only"
-                      onChange={(e) => setFile(e.target.files?.[0] || null)}
-                    />
-                  </label>
-                  <p className="text-xs text-gray-400 mt-1">
-                    {file ? file.name : t("file_types_label")}
-                  </p>
-                </div>
-              </div>
-              <div className="flex gap-10 justify-center">
-                {["isHybrid", "hasSubs"].map((name) => (
-                  <label
-                    key={name}
-                    className="flex items-center gap-3 cursor-pointer"
-                  >
-                    <input
-                      type="checkbox"
-                      name={name}
-                      onChange={handleChange}
-                      className="size-4 rounded  bg-white/5 text-indigo-500"
-                    />
-                    <span className="text-sm font-medium">
-                      {t(`${name}_label`)}
-                    </span>
-                  </label>
-                ))}
-              </div>
-              {message && <p className="text-sm text-primary text-center">{message}</p>}
-            </div >
-          </fieldset>
-
-          {/* Form Page 3 */}
-          <fieldset className={`${page === 3 ? 'opacity-100' : 'hidden'}`}>
-            <div className="text-white">
-              <legend className="mb-10 text-2xl">
-                <h2>{t('collaborators_informations')}</h2>
-                <p className="mt-1 text-sm/6 text-gray-400">{t('subtitle')}</p>
-              </legend>
-
-              <div className="flex flex-col my-5">
-                <label htmlFor="numberCollaborators">{t('numberOfCollaborators')}</label>
-                <select className="border border-white p-1.5 my-5 rounded-lg" name="numberCollaborators" id="numberCollaborators" onChange={(e) => setNumberCollaborators(parseInt(e.target.value))}>
-                  {Array.from({ length: 11 }, (_, i) => (
-                    <option key={i} value={i}>{i}</option>
-                  ))}
-                </select>
-              </div>
-
-              {/* <h3>{t('collaborator_count_message', { count: numberCollaborators })}</h3> */}
-
-
-              {Array.from({ length: numberCollaborators }, (_, i) => (
-                <div className="my-10">
-                  <h2 className="text-2xl">{t('collaborator_with_number', { number: i + 1 })}</h2>
-                  <div className="flex flex-col my-5 ">
-                    <label htmlFor="gender">{t('gender')}</label>
-                    <select name="gender" id="gender" className="border border-white p-1.5 rounded-lg">
-                      <option value="Male">{t('gender_male')}</option>
-                      <option value="Female">{t('gender_female')}</option>
-                      <option value="Other">{t('gender_other')}</option>
-                    </select>
-                  </div>
-                  {movieCollaboratorFields.map((field) => (
-                    <FormInput key={field.id} {...field} onChange={handleChange} />
-                  ))}
-                </div>
-              ))}
-            </div>
-          </fieldset>
-        </div>
+            ))}
+          </div>
+        </fieldset>
 
         <div className="flex p-10 items-center justify-center gap-x-6 ">
           <button type="button" onClick={handlePreviousPage} className={page > 1 ? `rounded-md bg-primary px-6 py-2 text-lg font-semibold text-black shadow-md transition-transform duration-300 ease-in-out hover:scale-1.05` : 'hidden'}>{t("previous-button")}</button>
@@ -417,8 +415,9 @@ export default function SubmitMovie() {
                 {t("submit-button")}
               </h2></button>
           </div>
-        </div>
+        </div >
       </form >
     </div>
+
   );
 }

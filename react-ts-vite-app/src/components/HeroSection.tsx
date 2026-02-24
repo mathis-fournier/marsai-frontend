@@ -11,9 +11,9 @@ export default function HeroSection() {
       {/* Hero Section */}
       {/* DESKTOP VERSION */}
       <div className={`hidden sm:flex font-serif w-full h-screen bg-cover bg-no-repeat flex-col justify-around items-center`} style={{ backgroundImage: `url(${import.meta.env.VITE_HERO_IMG})` }}>
-        <div className="my-50 h-[70%] mask-t-from-70 hover:mask-t-from-100 flex gap-0 text-black flex-col lg:flex-row ">
-          <div className="font-serif font-bold">
-            <div className="font-sans flex p-2 flex-col items-center md:flex-row mt-10 gap-5 cursor-pointer bg-linear-to-l from-black to-brand bg-clip-text text-transparent hover:text-black">
+        <div className="ml-10 h-[70%] mask-t-from-100 flex gap-0 text-black flex-col lg:flex-row ">
+          <div className="my-40 font-serif font-bold">
+            <div className="font-sans flex p-2 flex-col items-center md:flex-row mt-10 gap-5 cursor-pointer bg-linear-to-b from-gray to-black bg-clip-text text-transparent">
               <NavLink to={"/submit"}>
                 <p className="text-center text-6xl md:text-8xl font-bold">
                   {t("hero_banner.title_part1")}
@@ -28,19 +28,16 @@ export default function HeroSection() {
               {/* <h2 className="text-black text-center my-7 bg-linear-to-t from-third to-secondary/50 bg-sky-100/75 text-xl space-y-2 mask-y-to-100 w-40 m-auto p-2 rounded-xl">
                 {t("festival.format.participate_button")}
                 </h2> */}
-              <a
-                href={'#presentation'}
-                className="text-lg my-8 text-white bg-linear-to-t from-secondary hover:bg-brand2 text-center w-40 m-auto p-2 rounded-xl">
-                En savoir plus
-              </a>
             </div>
+            {/* <a
+              href={'#presentation'}
+              className="text-lg text-white font-sans bg-linear-to-t from-secondary hover:bg-brand2 text-center w-40 m-auto p-2 rounded-xl">
+              En savoir plus
+            </a> */}
 
           </div >
         </div >
       </div>
-
-
-
       {/* Hero Section */}
       {/* MOBILE VERSION */}
       <div className={`flex sm:hidden font-serif w-full h-screen bg-cover hero bg-no-repeat flex-col justify-around  items-center`} style={{ backgroundImage: `url(${import.meta.env.VITE_HERO_IMG})` }}>

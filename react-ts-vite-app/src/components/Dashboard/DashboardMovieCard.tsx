@@ -34,8 +34,6 @@ export default function DashboardMovieCard({ gridLayout, movie }: any) {
     }
   }
 
-  console.log(movie);
-
   return (
     <div
       className={`${gridLayout} p-4 md:p-6 border-b border-border hover:bg-brand`}
@@ -60,7 +58,7 @@ export default function DashboardMovieCard({ gridLayout, movie }: any) {
       </div>
 
       <div className="hidden md:block">
-        {/* label validé / en attente / ect*/}
+        {/* Status */}
         <select
           className="text-white cursor-pointer"
           onChange={handleStatus}
