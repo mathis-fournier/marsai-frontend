@@ -3,17 +3,16 @@ import { useTranslation } from "react-i18next";
 import StatCard from "./StatCard";
 
 export default function DashboardGlobal() {
-  const { t } = useTranslation("Dashboard");
+  const { t } = useTranslation("Festival, Dashboard");
   const [moviecount, setMoviecount] = useState(0);
   const [participantscount, setParticipantscount] = useState(0);
   const [directorscount, setDirectorscount] = useState(0);
   const [ratingcount, setRatingcount] = useState(0);
   const [error, setError] = useState("");
-  const objective_submitted = 60;
-  const objective_participants = 40;
-  const objective_directors = 40;
-  const objective_rating = 25;
-  const [panel, setPanel] = useState<boolean>(false);
+  const objective_submitted = 600;
+  const objective_participants = 3000;
+  const objective_countries = 120;
+  const objective_concurrents = 50;
 
   useEffect(() => {
     Promise.all([
@@ -50,42 +49,45 @@ export default function DashboardGlobal() {
     ((value / total) * 100).toFixed(2);
   return (
     <>
-      {/* TITRE */}
-      <div className="cursor-default w-auto p-6 bg-(--color-bg2)"
-        onClick={() => setPanel(!panel)}
-      >
-        <h2 className="text-secondary text-2xl font-mono">
-          🔳 {t("global.title")}
-        </h2>
-        <h1 className="text-4xl text-white font-bold">
-          {t("global.subtitle")}
-        </h1>
-        <p className="opacity-80 text-white">
-          {t("global.description")}
-        </p>
-      </div>
+      <div className={`transition-all duration-1350 ease-linear overflow-hidden`}>
+        <section>
+          {/* DIV CONTAINER STATCARD */}
+          <div className="grid sm:grid-cols-1 md:grid-cols-2 p-6 gap-6 max-w-full">
+            <StatCard
+              icon="🎥"
+              objective={t("global.card.objective", {
+                count: moviecount,
+              })}
+              objectivemax={objective_submitted}
+              title={t("global.card.films_submitted")}
+              percentageText={t("global.card.completed", {
+                percentage: getPercent(moviecount, objective_submitted),
+              })}
+              progressValue={getPercent(moviecount, objective_submitted)}
+            />
 
-
-
-
-      <div className={`transition-all duration-1350 ease-linear overflow-hidden ${panel ? 'opacity-100' : 'max-h-0 opacity-0'}`}>
-        {/* DIV CONTAINER STATCARD */}
+            <StatCard
+              icon="🎞️"
+              objective={t("global.card.objective", {
+                count: directorscount,
+              })}
+              objectivemax={objective_concurrents}
+              title={t("global.card.concurrents_title", {
+                count: directorscount,
+              })}
+            >
+              <p>{t("global.card.today", { count: 2 })}</p>
+            </StatCard>
+          </div>
+        </section>
+        <span className="text-lg text-center md:text-xl text-white p-1 flex justify-center">
+          {t("objectives.cards.desirable_futures_description")}
+        </span>
+      </div >
+      <div className={`transition-all duration-1350 ease-linear overflow-hidden`}>
         <div className="grid sm:grid-cols-1 md:grid-cols-2 p-6 gap-6 max-w-full">
           <StatCard
-            icon="https://img.icons8.com/?size=26&id=2998&format=png&color=6366f1"
-            objective={t("global.card.objective", {
-              count: moviecount,
-            })}
-            objectivemax={objective_submitted}
-            title={t("global.card.films_submitted")}
-            percentageText={t("global.card.completed", {
-              percentage: getPercent(moviecount, objective_submitted),
-            })}
-            progressValue={getPercent(moviecount, objective_submitted)}
-          />
-
-          <StatCard
-            icon="https://img.icons8.com/?size=26&id=1074&format=png&color=6366f1"
+            icon="👤"
             objective={t("global.card.objective", {
               count: participantscount,
             })}
@@ -100,40 +102,23 @@ export default function DashboardGlobal() {
           />
 
           <StatCard
-            icon="https://img.icons8.com/?size=26&id=1074&format=png&color=6366f1"
+            icon="🏳️"
             objective={t("global.card.objective", {
               count: ratingcount,
             })}
-            objectivemax={objective_rating}
-            title={t("global.card.rating_title", {
+            objectivemax={objective_countries}
+            title={t("global.card.countries_title", {
               count: ratingcount,
             })}
             percentageText={t("global.card.completed", {
-              percentage: getPercent(ratingcount, objective_rating),
+              percentage: getPercent(ratingcount, objective_countries),
             })}
-            progressValue={getPercent(ratingcount, objective_rating)}
+            progressValue={getPercent(ratingcount, objective_countries)}
           />
-
-          <StatCard
-            icon="https://img.icons8.com/?size=26&id=69088&format=png&color=6366f1"
-            objective={t("global.card.objective", {
-              count: directorscount,
-            })}
-            objectivemax={objective_directors}
-            title={t("global.card.active_accounts", {
-              count: directorscount,
-            })}
-          >
-            <p>{t("global.card.today", { count: 2 })}</p>
-          </StatCard>
         </div>
-      </div>
 
-      {/* <div className="w-full p-6 pt-0 bg-brand">
-        <StatCard icon="a.png" objective="1" objectivemax={2} title="?">
-          <p>test</p>
-        </StatCard>
-      </div> */}
+      </div >
+
     </>
   );
 }

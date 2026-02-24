@@ -45,7 +45,7 @@ function Header() {
     <div
     // className="bg-linear-to-b from-brand2 to-brand"
     >
-      <div className={(location.pathname === '/' ? 'absolute z-1 w-full bg-black/50' : 'w-full')}>
+      <div className={('relative z-1 w-full bg-black/50')}>
         <div className="font-sans p-4 text-center text-sm sm:text-sm text-white flex justify-between items-center w-full">
 
 
@@ -65,7 +65,7 @@ function Header() {
                   {t("header.agenda")}
                 </h2>
               </NavLink>
-              <NavLink className={({ isActive }) => (isActive ? "active text-3xl" : "")} to={"/galery"}>
+              <NavLink className={({ isActive }) => (isActive ? "active text-3xl" : "")} to={"/movies"}>
                 <h2 className="sm:text-md  md:text-lg lg:text-2xl p-2 rounded-lg">
                   {t("header.gallery")}
                 </h2>
@@ -82,11 +82,11 @@ function Header() {
               </NavLink>
               {user && user.role === "JURY" ? (
                 <>
-                  <NavLink className={({ isActive }) => (isActive ? "active text-3xl" : "")} to={"/jury/me"}>
+                  {/* <NavLink className={({ isActive }) => (isActive ? "active text-3xl" : "")} to={"/jury/me"}>
                     <h2 className="sm:text-md  md:text-lg lg:text-2xl p-2 rounded-lg">
                       {t("header.jurySpace")}
                     </h2>
-                  </NavLink>
+                  </NavLink> */}
                   <button
                     onClick={logout}
                     className="sm:text-lg lg:text-3xl md:text-4xl p-1 text-white rounded-lg bg-red-500 opacity-50 hover:opacity-100 ">
@@ -118,11 +118,11 @@ function Header() {
                       {t("header.login")}
                     </h2>
                   </NavLink>
-                  <NavLink className={({ isActive }) => (isActive ? "active text-3xl" : "")} to={"/register"}>
+                  {/* <NavLink className={({ isActive }) => (isActive ? "active text-3xl" : "")} to={"/register"}>
                     <h2 className="sm:text-md  md:text-lg lg:text-2xl p-2 rounded-lg">
                       {t("header.register")}
                     </h2>
-                  </NavLink>
+                  </NavLink> */}
                 </>
               )}
               <div
@@ -169,7 +169,7 @@ function Header() {
                   {t("header.agenda")}
                 </h2>
               </NavLink>
-              <NavLink className={({ isActive }) => (isActive ? "active text-3xl" : "")} to={"/galery"} onClick={() => setIsOpen(false)}>
+              <NavLink className={({ isActive }) => (isActive ? "active text-3xl" : "")} to={"/movies"} onClick={() => setIsOpen(false)}>
                 <h2 className="sm:text-lg lg:text-xl md:text-2xl p-2 rounded-lg">
                   {t("header.gallery")}
                 </h2>
@@ -187,11 +187,11 @@ function Header() {
               {
                 user && user.role === "JURY" ? (
                   <>
-                    <NavLink className={({ isActive }) => (isActive ? "active text-3xl" : "")} to={"/jury/me"} onClick={() => setIsOpen(false)}>
+                    {/* <NavLink className={({ isActive }) => (isActive ? "active text-3xl" : "")} to={"/jury/me"} onClick={() => setIsOpen(false)}>
                       <h2 className="sm:text-lg lg:text-xl md:text-2xl p-2 rounded-lg">
                         {t("header.jurySpace")}
                       </h2>
-                    </NavLink>
+                    </NavLink> */}
                     <button
                       onClick={() => { logout(); setIsOpen(false); }}
                       className="sm:text-lg lg:text-3xl md:text-2xl p-2 rounded-lg bg-red-500/45 hover:opacity-75 text-left w-full"
@@ -220,11 +220,11 @@ function Header() {
                         {t("header.login")}
                       </h2>
                     </NavLink>
-                    <NavLink className={({ isActive }) => (isActive ? "active text-3xl" : "")} to="/register" onClick={() => setIsOpen(false)}>
+                    {/* <NavLink className={({ isActive }) => (isActive ? "active text-3xl" : "")} to="/register" onClick={() => setIsOpen(false)}>
                       <h2 className="sm:text-lg lg:text-xl md:text-2xl p-2 rounded-lg">
                         {t("header.register")}
                       </h2>
-                    </NavLink>
+                    </NavLink> */}
                   </>
                 )
               }

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 
 export default function DashboardEventCard({ gridLayout, event }: any) {
-  const { t } = useTranslation();
+  // const { t } = useTranslation();
   const { token } = useAuth();
   const navigate = useNavigate();
 

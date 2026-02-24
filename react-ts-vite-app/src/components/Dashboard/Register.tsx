@@ -58,21 +58,21 @@ function Register() {
             });
     }
     return (
-        <div className='my-20'>
-            <form onSubmit={handleSubmit} className="p-25 md:max-w-[75%] mx-auto px-6 my-1 pt-10 sm:rounded-4xl md:shadow-lg/50 md:border-2 bg-linear-to-b from-dark to-brand2 sm:border-primary md:shadow-white mb-10">
+        <div className=''>
+
+            <form onSubmit={handleSubmit} className="p-2 md:max-w-[75%] mx-auto px-6 pt-10 sm:rounded-4xl md:shadow-lg/50 md:border-2 bg-linear-to-b from-dark to-brand2 sm:border-primary md:shadow-white mb-10">
                 <div className="space-y-12">
                     <div className="text-primary text-2xl">
                         <span className='text-center'>
                             <h1 className='text-left'>
-                                {t('jury_title')}
+                                {t('title')}
                             </h1>
 
                         </span>
-                        <h2 className="text-base/7 font-semibold text-white">
-                            {t('title')}</h2>
-                        <p className="mt-1 text-sm/6 text-gray-400">
+                        <h2 className="text-base/7 font-semibold text-white">Par default l'utilisateur créé n'aura pas de rôle prédéfini</h2>
+                        {/* <p className="mt-1 text-sm/6 text-gray-400">
                             {t('subtitle')}
-                        </p>
+                        </p> */}
 
                         <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                             <div className="sm:col-span-3">

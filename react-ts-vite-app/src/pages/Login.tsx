@@ -7,35 +7,36 @@ interface LoginFormData {
 }
 
 function Login() {
+    // Importation des hooks useAuth et useTranslation depuis les bibliothèques respectives
     const { login } = useAuth();
     const { t } = useTranslation(['Login', 'Register']);
 
+    // Définition de la fonction handleSubmit qui gère la soumission du formulaire
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-        const form = event.currentTarget;
-        const formData: LoginFormData = {
-            email: (form.elements.namedItem("email") as HTMLInputElement).value,
-            password: (form.elements.namedItem("password") as HTMLInputElement).value,
+        event.preventDefault(); // Empêche le comportement par défaut de la soumission du formulaire
+
+        const form = event.currentTarget; // Récupération de l'élément formulaire courant
+        const formData: LoginFormData = { // Création d'un objet formData avec les données du formulaire
+            email: (form.elements.namedItem("email") as HTMLInputElement).value, // Récupération de la valeur de l'email
+            password: (form.elements.namedItem("password") as HTMLInputElement).value, // Récupération de la valeur du mot de passe
         };
-        await login(formData);
+
+        await login(formData); // Appel de la fonction login avec les données du formulaire
     };
 
     return (
-        <div className='my-20'>
-            <form onSubmit={handleSubmit} className="p-25 md:max-w-[75%] mx-auto px-6 my-1 pt-10 sm:rounded-4xl md:shadow-lg/50 md:border-2 bg-linear-to-b from-dark to-brand2 sm:border-primary md:shadow-white mb-10">
-                <div className="space-y-12">
+        <div className='my-50'>
+            <form onSubmit={handleSubmit} className="p-2 md:max-w-[75%] mx-auto px-6 my-1 pt-10 sm:rounded-4xl md:shadow-lg/50 md:border-2 bg-linear-to-b from-dark to-brand2 sm:border-primary md:shadow-white mb-10">
+                <div>
                     <div className="text-primary text-2xl">
                         <span className='text-center'>
                             <h1 className='text-left'>
-                                {t('jury_title')}
+                                {t('Login.title')}
                             </h1>
 
                         </span>
                         <h2 className="text-base/7 font-semibold text-white">
                             {t('title')}</h2>
-                        <p className="mt-1 text-sm/6 text-gray-400">
-                            {t('subtitle')}
-                        </p>
                         <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                             <div className="sm:col-span-6">
                                 <label
@@ -79,7 +80,7 @@ function Login() {
                     </div>
                 </div>
 
-                <div className="flex p-10 items-center justify-center gap-x-6 ">
+                <div className="flex my-5  items-center justify-center gap-x-6 ">
                     <button
                         type="submit"
                         className="rounded-md bg-primary px-6 py-2 text-lg font-semibold text-black shadow-md transition-transform duration-300 ease-in-out hover:scale-1.05"
@@ -87,8 +88,8 @@ function Login() {
                         {t("login_button")}
                     </button>
                 </div>
-            </form>
-        </div>
+            </form >
+        </div >
     )
 }
 

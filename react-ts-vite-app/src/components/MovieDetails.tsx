@@ -27,6 +27,7 @@ export default function MovieDetails() {
       try {
         const baseUrl = import.meta.env.VITE_API_URL; // URL de base de l'API
 
+
         // Fetching all data in parallel (téléchargement en parallèle)
         const [detailsRes, collaboratorsRes, tagsRes] = await Promise.all([
           fetch(`${baseUrl}/movies/${id}`),
@@ -57,7 +58,6 @@ export default function MovieDetails() {
         setIsLoading(false); // Fin du chargement
       }
     };
-
     if (id) {
       fetchAllData();
     }
@@ -86,7 +86,7 @@ export default function MovieDetails() {
   return (
     <>
       {/* Détails du film */}
-      <div className="m-auto md:p-10 font-normal rounded-2xl">
+      <div className="m-auto p-20 md:p-30 font-normal rounded-2xl">
         <div className="mb-10 text-center">
           {/* TITRE DU FILMS */}
           <h1 className="bg-linear-to-t from-yellow-400 to-yellow-600 bg-clip-text text-transparent text-4xl font-bold mb-4">
@@ -155,60 +155,60 @@ export default function MovieDetails() {
               </tbody>
             </table>
           </div>
-        </div>
-      </div>
 
-      <div className="items-center">
-        {/* COLLABORATORS */}
-        <div>
-          <h2 className="font-semibold text-center text-white my-4">
-            {t("movie_details.collaborators")}
-          </h2>
-          <div className="w-full rounded-lg">
-            <table className=" divide-y divide-gray-200">
-              <thead className="bg-gray-100">
-                <tr>
-                  {[
-                    "Firstname",
-                    "Lastname",
-                    "Job",
-                    "Contribution",
-                    "details",
-                  ].map((header) => (
-                    <th
-                      key={header}
-                      className="py-3 text-left text-xs font-bold text-gray-700 uppercase tracking-wider"
-                    >
-                      {t(`movie_details.collaborator_${header}`)}
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody className="bg-white divide-y divide-gray-200">
-                {movieCollaborators.map((c) => (
-                  <tr key={c.id}>
-                    <td className="py-4 whitespace-nowrap text-sm">
-                      {c.firstname}
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm">
-                      {c.lastname}
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm">
-                      {c.job}
-                    </td>
-                    <td className="px-6 py-4 text-sm">{c.contribution}</td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                      <button
-                        onClick={() => setSelectedCollaborator(c)}
-                        className="text-indigo-600 hover:text-indigo-900 cursor-pointer"
-                      >
-                        {t("movie_details.collaborator_details")}
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+          <div className="items-center justify-center">
+            {/* COLLABORATORS */}
+            <div>
+              <h2 className="font-semibold text-center text-white my-4">
+                {t("movie_details.collaborators")}
+              </h2>
+              <div className="w-full rounded-lg">
+                <table className="m-auto divide-y divide-gray-200">
+                  <thead className="bg-gray-100">
+                    <tr>
+                      {[
+                        "Firstname",
+                        "Lastname",
+                        "Job",
+                        "Contribution",
+                        "details",
+                      ].map((header) => (
+                        <th
+                          key={header}
+                          className="py-4 text-left text-xs font-bold text-gray-700 uppercase tracking-wider"
+                        >
+                          {t(`_${header}`)}
+                        </th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody className="bg-white divide-y divide-gray-200">
+                    {movieCollaborators.map((c) => (
+                      <tr key={c.id}>
+                        <td className="py-6 whitespace-nowrap text-sm">
+                          {c.firstname}
+                        </td>
+                        <td className="px-8 py-6 whitespace-nowrap text-sm">
+                          {c.lastname}
+                        </td>
+                        <td className="px-8 py-6 whitespace-nowrap text-sm">
+                          {c.job}
+                        </td>
+                        <td className="px-8 py-6 text-sm">{c.contribution}</td>
+                        <td className="px-8 py-6 whitespace-nowrap text-sm font-medium">
+                          <button
+                            onClick={() => setSelectedCollaborator(c)}
+                            className="text-indigo-600 hover:text-indigo-900 cursor-pointer"
+                          >
+                            {t("movie_details.collaborator_details")}
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
           </div>
         </div>
       </div >
