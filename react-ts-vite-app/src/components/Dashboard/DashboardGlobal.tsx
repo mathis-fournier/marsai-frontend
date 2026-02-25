@@ -18,7 +18,7 @@ export default function DashboardGlobal() {
     Promise.all([
       fetch(`${import.meta.env.VITE_API_URL}/movies/count`),
       fetch(`${import.meta.env.VITE_API_URL}/jury/rating/count`),
-      fetch(`${import.meta.env.VITE_API_URL}/movies/directors/count`),
+      // fetch(`${import.meta.env.VITE_API_URL}/movies/directors/count`),
       fetch(`${import.meta.env.VITE_API_URL}/events/stats/count`),
     ])
       .then((responses) => {
@@ -30,19 +30,19 @@ export default function DashboardGlobal() {
         }
         return Promise.all(responses.map((res) => res.json()));
       })
-      .then(([movieData, ratingData, directorData, participantData]) => {
+      .then(([movieData, ratingData, participantData]) => {
         setMoviecount(movieData.total);
         setRatingcount(ratingData.total);
-        setDirectorscount(directorData.total);
+        // setDirectorscount(directorData.total);
         setParticipantscount(participantData.total);
       })
       .catch((err) => {
-        setError(err);
+        setError(err.message);
       });
   }, []);
 
   if (error) {
-    return <h1>{error}</h1>;
+    return <h1>{t("global.error", { message: error })}</h1>;
   }
 
   const getPercent = (value: number, total: number) =>
@@ -65,7 +65,7 @@ export default function DashboardGlobal() {
               })}
               progressValue={getPercent(moviecount, objective_submitted)}
             />
-
+            {/* 
             <StatCard
               icon="🎞️"
               objective={t("global.card.objective", {
@@ -77,7 +77,7 @@ export default function DashboardGlobal() {
               })}
             >
               <p>{t("global.card.today", { count: 2 })}</p>
-            </StatCard>
+            </StatCard> */}
           </div>
         </section>
         <span className="text-lg text-center md:text-xl text-white p-1 flex justify-center">
