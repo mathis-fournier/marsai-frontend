@@ -81,7 +81,7 @@ function MoviesFullAI() {
             selectedTag ? setCurrentPage(1) : null;
             const url = selectedTag && selectedTag.id !== 0
                 ? `${import.meta.env.VITE_API_URL}/movies?type=fullAI&tag=${selectedTag.id}&limit=${moviesPerPage}&page=${currentPage}`
-                : `${import.meta.env.VITE_API_URL}/movies?category=fullAI`;
+                : `${import.meta.env.VITE_API_URL}/movies?type=fullAI&limit=${moviesPerPage}&page=${currentPage}`;
 
             try {
                 const response = await fetch(url);
@@ -92,7 +92,6 @@ function MoviesFullAI() {
                         : "Échec de la récupération des movies sans filtres");
                 }
                 const data = await response.json();
-                console.log("Fetched Movies:", data); // Ajoutez ce log pour vérifier les données retournées
                 setMovies(data);
             } catch (err: any) {
                 setError(err.message);

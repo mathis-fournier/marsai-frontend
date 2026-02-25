@@ -6,13 +6,16 @@ import type {
 } from "../types-interfaces/Movie"; // Importation des types et interfaces de Movie
 import { useEffect, useState } from "react"; // Hooks React pour gestion de l'état et d'effets
 import { useParams } from "react-router-dom"; // Hook pour récupérer les paramètres de la route
-import CollaboratorDetailsModal from "./CollaboratorDetailsModal"; // Importation du composant CollaboratorDetailsModal
+import CollaboratorDetailsModal from "../components/CollaboratorDetailsModal"; // Importation du composant CollaboratorDetailsModal
+import { useAuth } from "../context/AuthContext";
 
 export default function MovieDetails() {
   const { id } = useParams(); // Extraction de l'ID du film à partir des paramètres de la route
   const { t } = useTranslation(); // Initialisation de la traduction avec i18next
-
+  const { user, token } = useAuth();
+  console.log(user);
   const [note, setNote] = useState<number>(5); // État pour stocker la note du film
+  const [comment, setComment] = useState<string>(''); // État pour stocker la note du film
   const [movieDetails, setMovieDetails] = useState<Movie | null>(null); // État pour stocker les détails du film
   const [movieCollaborators, setMovieCollaborators] = useState<MovieCollaborator[]>([]); // État pour stocker les collaborateurs du film
   const [movieTags, setMovieTags] = useState<MovieTag[]>([]); // État pour stocker les tags du film
@@ -20,6 +23,36 @@ export default function MovieDetails() {
   const [error, setError] = useState<string | null>(null); // État pour stocker les erreurs
   const [selectedCollaborator, setSelectedCollaborator] = useState<MovieCollaborator | null>(null); // État pour stocker le collaborateur sélectionné
 
+  async function handleSubmit(e: React.FormEvent
+  ) {
+    if (user && user.role === 'JURY') {
+      setIsLoading(true); // Début du chargement
+      setError(null); // Réinitialisation de l'erreur
+      e.preventDefault();
+      try {
+        const response = await fetch(
+          `${import.meta.env.VITE_API_URL}/movies/${id}/ratings`,
+          {
+            method: "POST",
+            body: JSON.stringify({ note: note, comment: comment ?? '', user_id: user.id, movie_id: id }),
+            headers: {
+              Authorization: `Bearer ${token}`,
+              "Content-Type": "application/json",
+            },
+          },
+        );
+        if (response.ok) {
+          alert("Note ajoutée !");
+        } else {
+          console.error("Échec de l'ajout de note :", response);
+        }
+      } catch (error) {
+        console.error("Erreur lors de l'ajout de note :", error);
+      } finally {
+        setIsLoading(false); // Fin du chargement
+      }
+    }
+  };
   useEffect(() => {
     const fetchAllData = async () => {
       setIsLoading(true); // Début du chargement
@@ -58,9 +91,8 @@ export default function MovieDetails() {
         setIsLoading(false); // Fin du chargement
       }
     };
-    if (id) {
-      fetchAllData();
-    }
+
+    fetchAllData();
   }, [id, t]);
 
   // Si le film est en cours de chargement, affichez un message de chargement
@@ -156,92 +188,104 @@ export default function MovieDetails() {
             </table>
           </div>
 
-          <div className="items-center justify-center">
-            {/* COLLABORATORS */}
-            <div>
-              <h2 className="font-semibold text-center text-white my-4">
-                {t("movie_details.collaborators")}
-              </h2>
-              <div className="w-full rounded-lg">
-                <table className="m-auto divide-y divide-gray-200">
-                  <thead className="bg-gray-100">
-                    <tr>
-                      {[
-                        "Firstname",
-                        "Lastname",
-                        "Job",
-                        "Contribution",
-                        "details",
-                      ].map((header) => (
-                        <th
-                          key={header}
-                          className="py-4 text-left text-xs font-bold text-gray-700 uppercase tracking-wider"
-                        >
-                          {t(`_${header}`)}
-                        </th>
-                      ))}
-                    </tr>
-                  </thead>
-                  <tbody className="bg-white divide-y divide-gray-200">
-                    {movieCollaborators.map((c) => (
-                      <tr key={c.id}>
-                        <td className="py-6 whitespace-nowrap text-sm">
-                          {c.firstname}
-                        </td>
-                        <td className="px-8 py-6 whitespace-nowrap text-sm">
-                          {c.lastname}
-                        </td>
-                        <td className="px-8 py-6 whitespace-nowrap text-sm">
-                          {c.job}
-                        </td>
-                        <td className="px-8 py-6 text-sm">{c.contribution}</td>
-                        <td className="px-8 py-6 whitespace-nowrap text-sm font-medium">
-                          <button
-                            onClick={() => setSelectedCollaborator(c)}
-                            className="text-indigo-600 hover:text-indigo-900 cursor-pointer"
+          {token && user && user.role === "ADMIN" ?
+            <div className="items-center justify-center">
+              {/* COLLABORATORS */}
+              <div>
+                <h2 className="font-semibold text-center text-white my-4">
+                  {t("movie_details.collaborators")}
+                </h2>
+                <div className="w-full rounded-lg">
+                  <table className="m-auto divide-y divide-gray-200">
+                    <thead className="bg-gray-100">
+                      <tr>
+                        {[
+                          "Firstname",
+                          "Lastname",
+                          "Job",
+                          "Contribution",
+                          "details",
+                        ].map((header) => (
+                          <th
+                            key={header}
+                            className="py-4 text-left text-xs font-bold text-gray-700 uppercase tracking-wider"
                           >
-                            {t("movie_details.collaborator_details")}
-                          </button>
-                        </td>
+                            {t(`_${header}`)}
+                          </th>
+                        ))}
                       </tr>
-                    ))}
-                  </tbody>
-                </table>
+                    </thead>
+                    <tbody className="bg-white divide-y divide-gray-200">
+                      {movieCollaborators.map((c) => (
+                        <tr key={c.id}>
+                          <td className="py-6 whitespace-nowrap text-sm">
+                            {c.firstname}
+                          </td>
+                          <td className="px-8 py-6 whitespace-nowrap text-sm">
+                            {c.lastname}
+                          </td>
+                          <td className="px-8 py-6 whitespace-nowrap text-sm">
+                            {c.job}
+                          </td>
+                          <td className="px-8 py-6 text-sm">{c.contribution}</td>
+                          <td className="px-8 py-6 whitespace-nowrap text-sm font-medium">
+                            <button
+                              onClick={() => setSelectedCollaborator(c)}
+                              className="text-indigo-600 hover:text-indigo-900 cursor-pointer"
+                            >
+                              {t("movie_details.collaborator_details")}
+                            </button>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
               </div>
-            </div>
-          </div>
+            </div> : null}
         </div>
       </div >
+
       {/* NOTATION */}
-      < div className="my-25 p-1 md:p-5  w-full md:w-[50%] border-4 border-primary m-auto flex flex-col items-center justify-center text-white rounded-2xl shadow-lg/50 shadow-white bg-gradient-to-b from-brand to-brand2" >
-        <h2 className="font-semibold  text-center text-2xl text-white my-4">
-          {t("movie_details.jury")}
-        </h2>
-        <label htmlFor="comment">Apprecied ?</label>
-        <textarea
-          id="comment" className="border border-white w-80 2xl:w-100 my-3 p-7 md:p-15 rounded-xl ">Here you can eventually comment this movie</textarea>
-        <h2 className="my-8 text-2xl">{note} / 10</h2>
-        <input
-          className="p-1 w-50 md:w-100"
-          min="0"
-          max="10"
-          step="1"
-          type="range"
-          onChange={((event: any) => setNote(event.target.value))}
-        ></input>
-        <button
-          className="my-14 bg-primary text-black hover:opacity-50 text-sm md:text-xl px-8 py-3 rounded-xl transition-colors"
-          type="submit"
-        >
-          {t("movie_details.rating")}
-        </button>
-      </div >
-      {selectedCollaborator && (
-        <CollaboratorDetailsModal
-          collaborator={selectedCollaborator}
-          onClose={() => setSelectedCollaborator(null)}
-        />
-      )
+      {token && user && user.role === "JURY" ?
+        <form action="">
+          < div className="my-25 p-1 md:p-5  w-full md:w-[50%] border-4 border-primary m-auto flex flex-col items-center justify-center text-white rounded-2xl shadow-lg/50 shadow-white bg-gradient-to-b from-brand to-brand2" >
+            <h2 className="font-semibold text-center text-2xl text-white my-4">
+              {t("movie_details.jury")}
+            </h2>
+            <label htmlFor="comment">Apprecied ?</label>
+            <textarea
+              onChange={(e) => setComment(e.target.value)}
+              id="comment" className="border border-white w-80 2xl:w-100 my-3 p-7 md:p-15 rounded-xl ">Here you can eventually comment this movie</textarea>
+            <h2 className="my-8 text-2xl">{note} / 10</h2>
+            <input
+              className="p-1 w-50 md:w-100"
+              min="0"
+              max="10"
+              step="1"
+              type="range"
+              onChange={((event: any) => setNote(event.target.value))}
+            ></input>
+            <button
+              onClick={handleSubmit}
+              className="my-14 bg-primary text-black hover:opacity-50 text-sm md:text-xl px-8 py-3 rounded-xl transition-colors"
+              type="submit"
+            >
+              {t("movie_details.rating")}
+            </button>
+          </div>
+        </form> : null
+      }
+
+
+
+      {
+        selectedCollaborator && (
+          <CollaboratorDetailsModal
+            collaborator={selectedCollaborator}
+            onClose={() => setSelectedCollaborator(null)}
+          />
+        )
       }
     </>
   );

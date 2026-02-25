@@ -3,15 +3,19 @@ import type { Movie, MovieTag } from '../types-interfaces/Movie';
 import Tags from './Tags';
 import { useTranslation } from 'react-i18next';
 import MovieThumbnail from './MovieThumbnail';
+import { useAuth } from '../context/AuthContext';
 
 function MoviesAll() {
     // Utilisation du hook de traduction pour la langue
     const { t } = useTranslation(['Festival', 'Galery']);
 
+    const [type, setType] = useState<string>('');
+    const [status, setStatus] = useState<string>('');
+
     // État pour stocker la requête de recherche
     const [query, setQuery] = useState<string>('');
     // Etat pour montrer/cacher la liste de tous les films
-    const [showAllMovies, setShowAllMovies] = useState<boolean>(false);
+    const [showAllMovies, setShowAllMovies] = useState<boolean>(true);
 
     // État pour stocker le total des films récupérés
     const [totalMovies, setTotalMovies] = useState<number>(0);
@@ -39,21 +43,6 @@ function MoviesAll() {
     }
     //  Fonction asynchrone pour récupérer tous les tags depuis l'API
     useEffect(() => {
-        async function fetchMoviesCount() {
-            setLoading(true); // Définir le chargement à true
-            try {
-                const response = await fetch(`${import.meta.env.VITE_API_URL}/movies/count`);
-                if (!response.ok) {
-                    throw new Error("Erreur lors de fetchAllTags");
-                }
-                const data = await response.json();
-                setTotalMovies(data.total); // Mettre à jour le total
-            } catch (err: any) {
-                setError(err.message || "Erreur lors du fetchAllTags");
-            } finally {
-                setLoading(false);
-            }
-        }
         async function fetchAllTags(): Promise<MovieTag[] | undefined> {
             setLoading(true); // Définir le chargement à true
             try {
@@ -70,18 +59,35 @@ function MoviesAll() {
                 setLoading(false);
             }
         }
+        async function fetchMoviesCount(): Promise<number | undefined> {
+            setLoading(true); // Définir le chargement à true
+            try {
+                const response = await fetch(`${import.meta.env.VITE_API_URL}/movies/count`);
+                if (!response.ok) {
+                    throw new Error("Erreur lors de fetchMoviesCount");
+                }
+                const data = await response.json();
+                setTotalMovies(data.total); // Mettre à jour les tags
+                return data;
+            } catch (err: any) {
+                setError(err.message || "Erreur lors du fetchMovieCount");
+            } finally {
+                setLoading(false);
+            }
+        }
         fetchAllTags();
         fetchMoviesCount();
+
     }, []);
 
     // Fonction asyncchrone pour récupérer les films depuis l'API lors du chargement initial ou du changement de page.
     useEffect(() => {
         async function fetchSelectedMovies() {
             setLoading(true);
-            selectedTag ? setCurrentPage(1) : null;
-            const url = selectedTag && selectedTag.id !== 0
-                ? `${import.meta.env.VITE_API_URL}/movies?tag=${selectedTag.id}&limit=${moviesPerPage}&page=${currentPage}`
-                : `${import.meta.env.VITE_API_URL}/movies?limit=${moviesPerPage}&page=${currentPage}`;
+            let url = `${import.meta.env.VITE_API_URL}/movies?limit=${moviesPerPage}&page=${currentPage}`;
+            if (type) url += `&type=${type}`;
+            if (status !== '') url += `&category=${status}`;
+            if (selectedTag && selectedTag.id !== 0) url += `&tag=${selectedTag.id}`;
 
             try {
                 const response = await fetch(url);
@@ -100,7 +106,7 @@ function MoviesAll() {
             }
         }
         fetchSelectedMovies();
-    }, [currentPage, selectedTag, moviesPerPage]);
+    }, [currentPage, selectedTag, moviesPerPage, status, type]);
 
 
     // Gestion du changement de page
@@ -122,17 +128,7 @@ function MoviesAll() {
     }
     return (
         <div>
-
-
-
-            {/* TITLE BAR */}
-            <h2 className="flex items-center justify-center px-5 text-secondary md:text-2xl font-bold my-8 text-xl" onClick={toggleAllMovies}>
-                <span className={`text-xl md:text-3xl transition-transform duration-500 ease-in-out transform ${showAllMovies ? 'rotate-90' : 'rotate-0'}`}>▶</span>
-                <span className="grow ml-2">{'Tous le films soumis' + " : " + totalMovies + " films"}</span>
-            </h2>
-            <div className={`transition-all duration-750 ease-in-out overflow-hidden ${showAllMovies ? 'max-h-500' : 'max-h-0'}`}>
-
-
+            <div className={`transition-all duration-750 ease-in-out overflow-hidden ${showAllMovies ? 'max-h-1500' : 'max-h-0'}`}>
                 {/* ALL MOVIES DASHBOARD */}
                 <div className="flex flex-col items-center text-white">
                     {/* CONTROLS  */}
@@ -147,6 +143,21 @@ function MoviesAll() {
                             className="border my-10  w-full p-2 text-white rounded-md focus:outline-none"
                             onChange={(e) => setQuery(e.target.value)}
                         />
+
+                        <label htmlFor="type">Type</label>
+                        <select name="type" onChange={(e) => { setType(e.target.value), setCurrentPage(1) }}>
+                            <option value="">Tous</option>
+                            <option value="hybrid">Hybride</option>
+                            <option value="fullAI">Full AI</option>
+                        </select>
+
+                        <label htmlFor="status">Status</label>
+                        <select name="status" onChange={(e) => { setStatus(e.target.value), setCurrentPage(1) }}>
+                            <option value="">Tous</option>
+                            <option value="pending">Pending</option>
+                            <option value="selection">Accepted</option>
+                            <option value="rejected">Cancelled</option>
+                        </select>
                     </div>
 
                     {/* FILMS */}
@@ -196,6 +207,7 @@ function MoviesAll() {
                         <option value="8">8 résultats par page</option>
                         <option value="12">12 résultats par page</option>
                         <option value="16">16 résultats par page</option>
+                        <option value="20">20 résultats par page</option>
                     </select>
 
                 </div>

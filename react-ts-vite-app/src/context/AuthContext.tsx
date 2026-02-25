@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 // Interfaces définies :
 // - User : contient les données de l'utilisateur (email, firstname, lastname, role)
 interface User {
+    id: number,
     email: string;
     firstname: string;
     lastname: string;
@@ -89,16 +90,15 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
                 body: JSON.stringify(formData)
             });
 
+            console.log(token);
             // Vérifier si la réponse est OK (statut 200-299)
             if (response.ok) {
                 const data = await response.json();
-
                 // 1. Sauvegarder le token dans localStorage et mettre à jour l'état
                 localStorage.setItem('token', data.token);
                 setToken(data.token);
                 setUser(data.user);
                 alert("Connexion réussie !");
-
                 // 2. Rediriger en fonction du rôle de l'utilisateur
                 if (data.user.role.includes('ADMIN')) {
                     navigate('/dashboard');

@@ -74,9 +74,6 @@ function MoviesSelection() {
         ? `${import.meta.env.VITE_API_URL}/movies?category=selection&tag=${selectedTag.id}&limit=${moviesPerPage}&page=${currentPage}`
         : `${import.meta.env.VITE_API_URL}/movies?category=selection&limit=${moviesPerPage}&page=${currentPage}`;
 
-      console.log('Generated URL:', url);
-
-      // ... existing code ...
       try {
         const res = await fetch(url);
         if (!res.ok) throw new Error(t("movies_thumbnails.error_status", { status: res.status })); // Traduction de l'erreur si la réponse n'est pas OK

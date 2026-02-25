@@ -14,7 +14,7 @@ import Login from "./pages/Login.tsx";
 import "./i18next";
 import { AuthProvider } from "./context/AuthContext.tsx";
 import Dashboard from "./pages/Dashboard.tsx";
-import MovieDetails from "./components/MovieDetails.tsx";
+import MovieDetails from "./pages/MovieDetails.tsx";
 import AddEvent from "./pages/AddEvent.tsx";
 import Galery from "./pages/Movies.tsx";
 
