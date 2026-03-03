@@ -225,7 +225,7 @@ export default function SubmitMovie() {
   };
 
   return (
-    <div style={{ backgroundImage: `url(${import.meta.env.VITE_HERO_IMG_SUBMIT})` }} className="bg-cover bg-no-repeat p-35">
+    <div style={{ backgroundImage: `url(${import.meta.env.VITE_HERO_IMG_SUBMIT})` }} className="bg-cover bg-no-repeat pt-30 pb-30">
       <form onSubmit={handleSubmit} className="bg-black/50 md:max-w-[75%] mx-auto px-6 pt-10 sm:rounded-4xl md:shadow-lg/50 md:border-2 sm:border-primary md:shadow-white mb-10">
 
         {/* Main Title */}

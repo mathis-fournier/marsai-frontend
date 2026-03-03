@@ -64,11 +64,11 @@ function MoviesBest() {
     <div className="w-full md:w-full mx-auto text-center">
       <h2 className="flex items-center justify-start px-5 text-secondary md:text-2xl font-bold my-8 text-xl" onClick={toggleBest}>
         <span className={`text-xl md:text-3xl transition-transform duration-500 ease-in-out transform ${showBest ? 'rotate-90' : 'rotate-0'}`}>▶</span>
-        <span className="p-3">Les mieux notés</span>
+        <span className="p-3">{t('best_rated', { ns: 'Galery' })}</span>
       </h2>
       <div className={`text-3xl text-white transition-all duration-750 ease-in-out overflow-hidden ${showBest ? 'max-h-500' : 'max-h-0'}`}>
         <button onClick={handleMinus} className="p-5 ">-</button>
-        Les {moviesPerPage} premiers
+        {t('best_n_first', { ns: 'Galery', count: moviesPerPage })}
         <button onClick={handlePlus} className="p-5 ">+</button>
         <div className=" flex flex-col sm:flex-row justify-center items-center gap-6 ">
           {movies && movies.map((m) => (

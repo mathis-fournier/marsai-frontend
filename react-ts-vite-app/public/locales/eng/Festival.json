@@ -108,7 +108,10 @@
       "error_status": "Error Status: ",
       "back_button": "Back",
       "start_at": "Start at: {{date}}",
-      "unavailable": "Event unavailable"
+      "unavailable": "Event unavailable",
+      "booking_success": "Reservation confirmed!",
+      "booking_error_conflict": "You have already booked a seat for this event.",
+      "booking_error": "An error occurred during reservation: {{error}}"
     },
     "workshop": {
       "loading": "Loading...",

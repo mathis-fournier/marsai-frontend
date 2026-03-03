@@ -21,7 +21,7 @@ export default function StatCard({
     <div className="CARD DASHBOARD border border-white rounded-md p-6 bg-dark hover:border hover:border-primary flex flex-col justify-between cursor-pointer">
       <div className="flex pb-2 text-6xl justify-center items-center">
         {icon}
-        <p className="bg-primary text-black font-bold text-sm ml-auto  p-7 rounded-full">
+        <p className="bg-primary text-black font-bold text-xl ml-auto  p-7 rounded-full">
           {objective + "/" + objectivemax}
         </p>
       </div>

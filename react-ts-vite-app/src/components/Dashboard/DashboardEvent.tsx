@@ -7,7 +7,7 @@ export default function DashboardEvent({ isLoading }: any): any {
   const [eventList, setEventList] = useState<any[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [panel, setPanel] = useState<boolean>(false);
-  const { t } = useTranslation();
+  const { t } = useTranslation("Dashboard");
 
   useEffect(() => {
     fetch(`${import.meta.env.VITE_API_URL}/events/`)
@@ -27,7 +27,7 @@ export default function DashboardEvent({ isLoading }: any): any {
     navigate("/dashboard/add_event");
   }
 
-  if (isLoading) return <p>{t("dashboard_events.loading")}</p>;
+  if (isLoading) return <p>{t("events.loading")}</p>;
 
   return (
     <>
@@ -36,13 +36,13 @@ export default function DashboardEvent({ isLoading }: any): any {
         className="cursor-pointer w-auto p-6"
       >
         <h2 className="text-secondary text-2xl font-mono uppercase">
-          🔳 {t("dashboard_event.title")}
+          🔳 {t("events.title")}
         </h2>
         <h1 className="text-4xl text-white font-bold">
-          {t("dashboard_event.subtitle")}
+          {t("events.subtitle")}
         </h1>
         <p className="italic text-white opacity-80">
-          {t("dashboard_event.description")}
+          {t("events.description")}
         </p>
       </div>
 
@@ -55,14 +55,14 @@ export default function DashboardEvent({ isLoading }: any): any {
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder={t("dashboard_movies.search_placeholder")}
+              placeholder={t("events.search_placeholder")}
               className="border w-full p-2 text-white bg-slate-800 rounded-md focus:outline-none"
             />
             <button
               className="cursor-pointer bg-secondary hover:bg-hover text-white font-bold py-2 px-4 rounded"
               onClick={handleAddEvent}
             >
-              {t("dashboard_event.addbutton")}
+              {t("events.add_button")}
             </button>
           </div>
 

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useAuth } from "../context/AuthContext";
+import { useTranslation } from "react-i18next";
 
 const InputGroup = ({
   id,
@@ -38,6 +39,7 @@ export default function AddEvent() {
 
   // Importation du hook d'authentification
   const { token } = useAuth();
+  const { t } = useTranslation("Dashboard");
 
   // Initialisation des données du formulaire avec useState
   const [formData, setFormData] = useState({
@@ -69,15 +71,15 @@ export default function AddEvent() {
         `${import.meta.env.VITE_API_URL}/admin/event`,
         {
           method: "POST",
-          body: JSON.stringify(formData),
           headers: {
             Authorization: `Bearer ${token}`,
             "Content-Type": "application/json",
           },
+          body: JSON.stringify(formData),
         },
       );
       if (response.ok) {
-        alert("Évènement ajouté !");
+        alert(t("events.success_message"));
       } else {
         console.error("Échec de l'ajout de l'évènement :", response);
       }
@@ -93,15 +95,15 @@ export default function AddEvent() {
         <div className="flex flex-col md:flex-row gap-4 w-full">
           <InputGroup
             id="title"
-            placeholder="Title"
-            label="Titre requis"
+            placeholder={t("events.title_placeholder")}
+            label={t("events.title_label")}
             value={formData.title}
             onChange={handleChange}
           />
           <InputGroup
             id="description"
-            placeholder="Description"
-            label="Description requise"
+            placeholder={t("events.description_placeholder")}
+            label={t("events.description_label")}
             value={formData.description}
             onChange={handleChange}
           />
@@ -111,15 +113,15 @@ export default function AddEvent() {
         <div className="flex flex-col md:flex-row gap-4 w-full">
           <InputGroup
             id="status"
-            placeholder="Status (ex: Completed)"
-            label="Statut requis"
+            placeholder={t("events.status_placeholder")}
+            label={t("events.status_label")}
             value={formData.status}
             onChange={handleChange}
           />
           <InputGroup
             id="location"
-            placeholder="Location"
-            label="Lieu requis"
+            placeholder={t("events.location_placeholder")}
+            label={t("events.location_label")}
             value={formData.location}
             onChange={handleChange}
           />
@@ -129,16 +131,16 @@ export default function AddEvent() {
         <div className="flex flex-col md:flex-row gap-4 w-full">
           <InputGroup
             id="start_at"
-            placeholder="10-10-2000"
-            label="Date de début"
+            placeholder={t("events.start_at_placeholder")}
+            label={t("events.start_at_label")}
             value={formData.start_at}
             onChange={handleChange}
           />
           <InputGroup
             id="duration"
             type="number"
-            placeholder="Duration (minutes)"
-            label="Nombre requis"
+            placeholder={t("events.duration_placeholder")}
+            label={t("events.duration_label")}
             value={formData.duration}
             onChange={handleChange}
           />
@@ -148,22 +150,22 @@ export default function AddEvent() {
         <div className="flex flex-col md:flex-row gap-4 w-full">
           <InputGroup
             id="created_at"
-            placeholder="Created At (10-10-2000)"
-            label="Date de création"
+            placeholder={t("events.created_at_placeholder")}
+            label={t("events.created_at_label")}
             value={formData.created_at}
             onChange={handleChange}
           />
           <InputGroup
             id="updated_at"
-            placeholder="Updated At (10-10-2000)"
-            label="Date de mise à jour"
+            placeholder={t("events.updated_at_placeholder")}
+            label={t("events.updated_at_label")}
             value={formData.updated_at}
             onChange={handleChange}
           />
           <InputGroup
             id="published_at"
-            placeholder="Published At (10-10-2000)"
-            label="Date de publication"
+            placeholder={t("events.published_at_placeholder")}
+            label={t("events.published_at_label")}
             value={formData.published_at}
             onChange={handleChange}
           />
@@ -173,7 +175,7 @@ export default function AddEvent() {
           type="submit"
           className="bg-brand p-2 rounded-md font-bold hover:brightness-110 transition-all text-white"
         >
-          Ajouter l'évènement
+          {t("events.add_button")}
         </button>
       </form>
     </div>

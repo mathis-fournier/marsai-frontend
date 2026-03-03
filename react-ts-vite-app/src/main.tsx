@@ -15,7 +15,7 @@ import "./i18next";
 import { AuthProvider } from "./context/AuthContext.tsx";
 import Dashboard from "./pages/Dashboard.tsx";
 import MovieDetails from "./pages/MovieDetails.tsx";
-import AddEvent from "./pages/AddEvent.tsx";
+import AddEvent from "./components/AddEvent.tsx";
 import Galery from "./pages/Movies.tsx";
 
 createRoot(document.getElementById("root")!).render(
@@ -26,10 +26,10 @@ createRoot(document.getElementById("root")!).render(
         <Routes>
           <Route path="/" element={<App />} />
           <Route path="/agenda" element={<Agenda />} />
+          <Route path="/event/:id" element={<EventDetails />} />
           <Route path="/movies" element={<Galery />} />
           <Route path="/movies/:id" element={<MovieDetails />} />
           <Route path="/submit" element={<SubmitMovie />} />
-          <Route path="/event/:id" element={<EventDetails />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/dashboard" element={<Dashboard />} />

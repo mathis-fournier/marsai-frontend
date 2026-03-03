@@ -11,7 +11,7 @@ import { useAuth } from "../context/AuthContext";
 
 export default function MovieDetails() {
   const { id } = useParams(); // Extraction de l'ID du film à partir des paramètres de la route
-  const { t } = useTranslation(); // Initialisation de la traduction avec i18next
+  const { t } = useTranslation(['Galery', 'common']); // Initialisation de la traduction avec i18next
   const { user, token } = useAuth();
   console.log(user);
   const [note, setNote] = useState<number>(5); // État pour stocker la note du film
@@ -42,7 +42,7 @@ export default function MovieDetails() {
           },
         );
         if (response.ok) {
-          alert("Note ajoutée !");
+          alert(t('movie_details.rating_added_success', { ns: 'Galery' }));
         } else {
           console.error("Échec de l'ajout de note :", response);
         }
@@ -70,7 +70,7 @@ export default function MovieDetails() {
 
         if (!detailsRes.ok || !collaboratorsRes.ok || !tagsRes.ok) {
           throw new Error(
-            t("movie_details.error_status", { status: "API Error" }),
+            t("movie_details.error_status", { ns: 'Galery', status: "API Error" }),
           );
         }
 
@@ -99,7 +99,7 @@ export default function MovieDetails() {
   if (isLoading) {
     return (
       <div className="flex justify-center items-center min-h-screen">
-        {t("loading")}
+        {t("loading.generic", { ns: 'common' })}
       </div>
     );
   }
@@ -107,13 +107,13 @@ export default function MovieDetails() {
   if (error) {
     return (
       <div className="text-red-500 text-center p-10">
-        {t("error", { error })}
+        {t("errors.generic", { ns: 'common' })}: {error}
       </div>
     );
   }
   // Si les détails du film ne sont pas disponibles, affichez un message indiquant qu'il n'y a pas de données
   if (!movieDetails) {
-    return <div className="text-center p-10">{t("movie_details.no_data")}</div>;
+    return <div className="text-center p-10">{t("movie_details.no_data", { ns: 'Galery' })}</div>;
   }
   return (
     <>
@@ -152,19 +152,19 @@ export default function MovieDetails() {
               ></iframe>
             ) : (
               <div className="w-full h-64 bg-gray-200 flex items-center justify-center rounded-lg">
-                {t("movie_details.no_image")}
+                {t("movie_details.no_image", { ns: 'Galery' })}
               </div>
             )}
           </div>
           <div className="flex flex-col justify-center">
             {/* DETAILS DU FILM */}
             <h2 className="text-sm ">
-              <span className="my-10 text-white flex justify-center text-xl">{t("movie_details.title")}</span>
+              <span className="my-10 text-white flex justify-center text-xl">{t("movie_details.title", { ns: 'Galery' })}</span>
             </h2>
             <table className="">
               <tbody className="bg-white divide-y ">
                 {[
-                  ["isHybrid", movieDetails.isHybrid ? "Yes" : "No"],
+                  ["isHybrid", movieDetails.isHybrid ? t('yes', { ns: 'common' }) : t('no', { ns: 'common' })],
                   ["original_language", movieDetails.original_language],
                   ["original_synopsis", movieDetails.original_synopsis],
                   ["english_synopsis", movieDetails.english_synopsis],
@@ -172,12 +172,12 @@ export default function MovieDetails() {
                   ["duration", movieDetails.duration],
                   ["creative_process", movieDetails.creative_process],
                   ["ia_tools", movieDetails.ia_tools],
-                  ["hasSubs", movieDetails.hasSubs ? "Yes" : "No"],
+                  ["hasSubs", movieDetails.hasSubs ? t('yes', { ns: 'common' }) : t('no', { ns: 'common' })],
                   ["status", movieDetails.status],
                 ].map(([key, value]) => (
                   <tr key={key}>
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-bold bg-gray-50">
-                      {t(`movie_details.${key}`)}
+                      {t(`movie_details.${key}`, { ns: 'Galery' })}
                     </td>
                     <td className="px-6 py-4 text-sm text-gray-600">
                       {value}
@@ -193,7 +193,7 @@ export default function MovieDetails() {
               {/* COLLABORATORS */}
               <div>
                 <h2 className="font-semibold text-center text-white my-4">
-                  {t("movie_details.collaborators")}
+                  {t("movie_details.collaborators", { ns: 'Galery' })}
                 </h2>
                 <div className="w-full rounded-lg">
                   <table className="m-auto divide-y divide-gray-200">
@@ -210,7 +210,7 @@ export default function MovieDetails() {
                             key={header}
                             className="py-4 text-left text-xs font-bold text-gray-700 uppercase tracking-wider"
                           >
-                            {t(`_${header}`)}
+                            {t(`movie_details.collaborator_${header}`, { ns: 'Galery' })}
                           </th>
                         ))}
                       </tr>
@@ -233,7 +233,7 @@ export default function MovieDetails() {
                               onClick={() => setSelectedCollaborator(c)}
                               className="text-indigo-600 hover:text-indigo-900 cursor-pointer"
                             >
-                              {t("movie_details.collaborator_details")}
+                              {t("movie_details.collaborator_details", { ns: 'Galery' })}
                             </button>
                           </td>
                         </tr>
@@ -251,12 +251,13 @@ export default function MovieDetails() {
         <form action="">
           < div className="my-25 p-1 md:p-5  w-full md:w-[50%] border-4 border-primary m-auto flex flex-col items-center justify-center text-white rounded-2xl shadow-lg/50 shadow-white bg-gradient-to-b from-brand to-brand2" >
             <h2 className="font-semibold text-center text-2xl text-white my-4">
-              {t("movie_details.jury")}
+              {t("movie_details.jury", { ns: 'Galery' })}
             </h2>
-            <label htmlFor="comment">Apprecied ?</label>
+            <label htmlFor="comment">{t("movie_details.apprecied", { ns: 'Galery' })}</label>
             <textarea
               onChange={(e) => setComment(e.target.value)}
-              id="comment" className="border border-white w-80 2xl:w-100 my-3 p-7 md:p-15 rounded-xl ">Here you can eventually comment this movie</textarea>
+              placeholder={t("movie_details.comment_placeholder", { ns: 'Galery' })}
+              id="comment" className="border border-white w-80 2xl:w-100 my-3 p-7 md:p-15 rounded-xl "></textarea>
             <h2 className="my-8 text-2xl">{note} / 10</h2>
             <input
               className="p-1 w-50 md:w-100"
@@ -271,11 +272,12 @@ export default function MovieDetails() {
               className="my-14 bg-primary text-black hover:opacity-50 text-sm md:text-xl px-8 py-3 rounded-xl transition-colors"
               type="submit"
             >
-              {t("movie_details.rating")}
+              {t("movie_details.add_rating_button", { ns: 'Galery' })}
             </button>
           </div>
         </form> : null
       }
+
 
 
 

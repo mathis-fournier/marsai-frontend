@@ -26,7 +26,7 @@ function MoviesRejected() {
     const fetchInitialData = async () => {
       try {
         const res = await fetch(`${import.meta.env.VITE_API_URL}/movies?category=rejected`);
-        if (!res.ok) throw new Error(t("movies_thumbnails.error_status", { status: res.status }));
+        if (!res.ok) throw new Error(t("movies_thumbnails.error_status", { ns: 'common', status: res.status }));
         const data = await res.json();
         setTotalMovies(data.length); // Mise à jour des données avec les films récupérés
       } catch (err: any) {
@@ -58,17 +58,17 @@ function MoviesRejected() {
     fetchMovies();
   }, [moviesPerPage, currentPage]);
 
-  if (!totalMovies || totalMovies === 0) return <><h2 className="text-3xl text-primary">Retrouvez ici la Rejected Pool</h2>No Movie left : {totalMovies} movies found</>;
+  if (!totalMovies || totalMovies === 0) return <><h2 className="text-3xl text-primary">{t('rejected_pool', { ns: 'Galery' })}</h2>{t('no_movies_left', { ns: 'Galery' })} : {t('total_films', { ns: 'Galery', count: totalMovies })}</>;
   if (isLoading)
     return (
       <div className="p-10 text-center text-black">
-        {t("movies_thumbnails.loading")}
+        {t("loading.generic", { ns: 'common' })}
       </div>
     );
   if (error)
     return (
       <div className="p-10 text-center text-black">
-        {t("movies_thumbnails.error", { error: error })}
+        {t("errors.generic", { ns: 'common' })}: {error}
       </div>
     );
 
@@ -77,7 +77,7 @@ function MoviesRejected() {
       <>
         <h2 className="flex items-center justify-start px-5 text-secondary md:text-2xl font-bold my-8 text-xl" onClick={toggleRejected}>
           <span className={`text-xl md:text-3xl transition-transform duration-500 ease-in-out transform ${showRejected ? 'rotate-90' : 'rotate-0'}`}>▶</span>
-          <span className="p-3">Films rejetés : {totalMovies} films</span>
+          <span className="p-3">{t('rejected_pool', { ns: 'Galery' })} : {t('total_films', { ns: 'Galery', count: totalMovies })}</span>
         </h2>
         <div className={`transition-all duration-750 ease-in-out overflow-hidden ${showRejected ? 'max-h-500' : 'max-h-0'}`}>
           <div className="">

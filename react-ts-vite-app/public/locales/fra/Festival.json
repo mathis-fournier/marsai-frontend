@@ -108,7 +108,10 @@
       "error_status": "Erreur Status: {{status}}",
       "back_button": "Retour",
       "start_at": "Commence à : {{date}}",
-      "unavailable": "Événement indisponible"
+      "unavailable": "Événement indisponible",
+      "booking_success": "Réservation confirmée !",
+      "booking_error_conflict": "Vous avez déjà réservé une place pour cet événement.",
+      "booking_error": "Une erreur est survenue lors de la réservation : {{error}}"
     },
     "workshop": {
       "loading": "Chargement...",

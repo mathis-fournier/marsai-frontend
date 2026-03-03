@@ -114,7 +114,7 @@ function MoviesAll() {
     if (loading) {
         return (
             <div className="flex justify-center items-center h-screen">
-                <p className="text-white text-xl">{t('loading')}</p>
+                <p className="text-white text-xl">{t('loading.generic', { ns: 'common' })}</p>
             </div>
         );
     }
@@ -122,7 +122,7 @@ function MoviesAll() {
     if (error) {
         return (
             <div className="flex justify-center items-center h-screen">
-                <p className="text-red-500 text-xl">{t('error', { error })}</p>
+                <p className="text-red-500 text-xl">{t('errors.generic', { ns: 'common' })}</p>
             </div>
         );
     }
@@ -139,24 +139,24 @@ function MoviesAll() {
                         {/* SEARCH BAR */}
                         <input
                             type="text"
-                            placeholder={t("movies.search_placeholder")}
+                            placeholder={t("search_placeholder", { ns: 'Galery' })}
                             className="border my-10  w-full p-2 text-white rounded-md focus:outline-none"
                             onChange={(e) => setQuery(e.target.value)}
                         />
 
-                        <label htmlFor="type">Type</label>
+                        <label htmlFor="type">{t('status.type', { ns: 'common' })}</label>
                         <select name="type" onChange={(e) => { setType(e.target.value), setCurrentPage(1) }}>
-                            <option value="">Tous</option>
-                            <option value="hybrid">Hybride</option>
-                            <option value="fullAI">Full AI</option>
+                            <option value="">{t('status.all', { ns: 'common' })}</option>
+                            <option value="hybrid">{t('status.hybrid', { ns: 'common' })}</option>
+                            <option value="fullAI">{t('status.full_ai', { ns: 'common' })}</option>
                         </select>
 
-                        <label htmlFor="status">Status</label>
+                        <label htmlFor="status">{t('movie_details.status', { ns: 'Galery' })}</label>
                         <select name="status" onChange={(e) => { setStatus(e.target.value), setCurrentPage(1) }}>
-                            <option value="">Tous</option>
-                            <option value="pending">Pending</option>
-                            <option value="selection">Accepted</option>
-                            <option value="rejected">Cancelled</option>
+                            <option value="">{t('status.all', { ns: 'common' })}</option>
+                            <option value="pending">{t('status.pending', { ns: 'common' })}</option>
+                            <option value="selection">{t('status.accepted', { ns: 'common' })}</option>
+                            <option value="rejected">{t('status.cancelled', { ns: 'common' })}</option>
                         </select>
                     </div>
 
@@ -183,15 +183,15 @@ function MoviesAll() {
                             disabled={currentPage === 1}
                             className="px-4 py-2 bg-blue-500 text-white rounded mr-2"
                         >
-                            {t('previous')}
+                            {t('pagination.previous', { ns: 'common' })}
                         </button>
-                        <p>Page {currentPage}</p>
+                        <p>{t('pagination.page', { ns: 'common', count: currentPage })}</p>
                         <button
                             disabled={(totalMovies <= (currentPage * moviesPerPage))}
                             onClick={() => setCurrentPage(currentPage + 1)}
                             className="px-4 py-2 bg-blue-500 text-white rounded"
                         >
-                            {t('next')}
+                            {t('pagination.next', { ns: 'common' })}
                         </button>
                     </div>
 
@@ -203,11 +203,11 @@ function MoviesAll() {
                     }}
                         name="moviesPerPage" id=""
                         className="my-4">
-                        <option value="4">4 résultats par page</option>
-                        <option value="8">8 résultats par page</option>
-                        <option value="12">12 résultats par page</option>
-                        <option value="16">16 résultats par page</option>
-                        <option value="20">20 résultats par page</option>
+                        <option value="4">{t('pagination.results_per_page', { count: 4, ns: 'common' })}</option>
+                        <option value="8">{t('pagination.results_per_page', { count: 8, ns: 'common' })}</option>
+                        <option value="12">{t('pagination.results_per_page', { count: 12, ns: 'common' })}</option>
+                        <option value="16">{t('pagination.results_per_page', { count: 16, ns: 'common' })}</option>
+                        <option value="20">{t('pagination.results_per_page', { count: 20, ns: 'common' })}</option>
                     </select>
 
                 </div>

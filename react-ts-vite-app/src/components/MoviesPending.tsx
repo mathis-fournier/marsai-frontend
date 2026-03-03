@@ -25,7 +25,7 @@ function MoviesPending() {
     const fetchData = async () => {
       try {
         const res = await fetch(`${import.meta.env.VITE_API_URL}/movies?category=pending&limit=${moviesPerPage}&page=${currentPage}`); // Appel à l'API pour récupérer les meilleurs films
-        if (!res.ok) throw new Error(t("movies_thumbnails.error_status", { status: res.status })); // Traduction de l'erreur si la réponse n'est pas OK
+        if (!res.ok) throw new Error(t("movies_thumbnails.error_status", { ns: 'common', status: res.status })); // Traduction de l'erreur si la réponse n'est pas OK
         const data = await res.json();
         setData(data); // Mise à jour des données avec les films récupérés
         setTotalMovies(data.length);
@@ -39,17 +39,17 @@ function MoviesPending() {
 
     fetchData();
   }, []);
-  if (!totalMovies || totalMovies === 0) return <><h2 className="text-3xl text-primary">Retrouvez ici la Pending Pool</h2>No Movie left : {totalMovies} movies found</>;
+  if (!totalMovies || totalMovies === 0) return <><h2 className="text-3xl text-primary">{t('pending_pool', { ns: 'Galery' })}</h2>{t('no_movies_left', { ns: 'Galery' })} : {t('total_films', { ns: 'Galery', count: totalMovies })}</>;
   if (isLoading)
     return (
       <div className="p-10 text-center text-black">
-        {t("movies_thumbnails.loading")}
+        {t("loading.generic", { ns: 'common' })}
       </div>
     );
   if (error)
     return (
       <div className="p-10 text-center text-black">
-        {t("movies_thumbnails.error", { error: error })}z
+        {t("errors.generic", { ns: 'common' })}: {error}
       </div>
     );
 
@@ -57,7 +57,7 @@ function MoviesPending() {
     <>
       <h2 className="flex items-center justify-start px-5 text-secondary md:text-2xl font-bold my-8 text-xl" onClick={togglePending}>
         <span className={`text-xl md:text-3xl transition-transform duration-500 ease-in-out transform ${showPending ? 'rotate-90' : 'rotate-0'}`}>▶</span>
-        <span className="p-3">En attente de validation : {totalMovies} films</span>
+        <span className="p-3">{t('pending_pool', { ns: 'Galery' })} : {t('total_films', { ns: 'Galery', count: totalMovies })}</span>
       </h2>
       <div className={`transition-all duration-750 ease-in-out overflow-hidden ${showPending ? 'max-h-500' : 'max-h-0'}`}>
         <div className="">

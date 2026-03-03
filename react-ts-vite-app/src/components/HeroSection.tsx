@@ -58,7 +58,7 @@ export default function HeroSection() {
               <a
                 href={'#presentation'}
                 className="text-lg my-8 text-white bg-linear-to-t from-secondary hover:bg-brand2 text-center w-40 m-auto p-2 rounded-xl">
-                En savoir plus
+                {t("hero_banner.learn_more_button")}
               </a>
             </div>
 
