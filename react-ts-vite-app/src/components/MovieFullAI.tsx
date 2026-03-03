@@ -107,7 +107,7 @@ function MoviesFullAI() {
     if (loading) {
         return (
             <div className="flex justify-center items-center h-screen">
-                <p className="text-white text-xl">{t('loading')}</p>
+                <p className="text-white text-xl">{t('loading.generic', { ns: 'common' })}</p>
             </div>
         );
     }
@@ -115,7 +115,7 @@ function MoviesFullAI() {
     if (error) {
         return (
             <div className="flex justify-center items-center h-screen">
-                <p className="text-red-500 text-xl">{t('error', { error })}</p>
+                <p className="text-red-500 text-xl">{t('errors.generic', { ns: 'common' })}</p>
             </div>
         );
     }
@@ -127,7 +127,7 @@ function MoviesFullAI() {
             {/* TITLE BAR */}
             <h2 className="flex items-center justify-center px-5 text-secondary md:text-2xl font-bold my-8 text-xl" onClick={toggleAllMovies}>
                 <span className={`text-xl md:text-3xl transition-transform duration-500 ease-in-out transform ${showAllMovies ? 'rotate-90' : 'rotate-0'}`}>▶</span>
-                <span className="grow ml-2">{'Tous les films FULL AI : ' + totalMovies + " films"}</span>
+                <span className="grow ml-2">{t('full_ai_title', { ns: 'Galery' }) + " : " + t('total_films', { ns: 'Galery', count: totalMovies })}</span>
             </h2>
             <div className={`transition-all duration-750 ease-in-out overflow-hidden ${showAllMovies ? 'max-h-500' : 'max-h-0'}`}>
 
@@ -142,7 +142,7 @@ function MoviesFullAI() {
                         {/* SEARCH BAR */}
                         <input
                             type="text"
-                            placeholder={t("movies.search_placeholder")}
+                            placeholder={t("search_placeholder", { ns: 'Galery' })}
                             className="border my-10  w-full p-2 text-white rounded-md focus:outline-none"
                             onChange={(e) => setQuery(e.target.value)}
                         />
@@ -171,15 +171,15 @@ function MoviesFullAI() {
                             disabled={currentPage === 1}
                             className="px-4 py-2 bg-blue-500 text-white rounded mr-2"
                         >
-                            {t('previous')}
+                            {t('pagination.previous', { ns: 'common' })}
                         </button>
-                        <p>Page {currentPage}</p>
+                        <p>{t('pagination.page', { ns: 'common', count: currentPage })}</p>
                         <button
                             disabled={(totalMovies <= (currentPage * moviesPerPage))}
                             onClick={() => setCurrentPage(currentPage + 1)}
                             className="px-4 py-2 bg-blue-500 text-white rounded"
                         >
-                            {t('next')}
+                            {t('pagination.next', { ns: 'common' })}
                         </button>
                     </div>
 
@@ -191,10 +191,10 @@ function MoviesFullAI() {
                     }}
                         name="moviesPerPage" id=""
                         className="my-4">
-                        <option value="4">4 résultats par page</option>
-                        <option value="8">8 résultats par page</option>
-                        <option value="12">12 résultats par page</option>
-                        <option value="16">16 résultats par page</option>
+                        <option value="4">{t('pagination.results_per_page', { count: 4, ns: 'common' })}</option>
+                        <option value="8">{t('pagination.results_per_page', { count: 8, ns: 'common' })}</option>
+                        <option value="12">{t('pagination.results_per_page', { count: 12, ns: 'common' })}</option>
+                        <option value="16">{t('pagination.results_per_page', { count: 16, ns: 'common' })}</option>
                     </select>
 
                 </div>

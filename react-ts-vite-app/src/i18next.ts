@@ -19,6 +19,7 @@ i18n
       "Login",
       "Register",
       "SubmitMovie",
+      "Movies",
     ],
     defaultNS: "common",
     fallbackNS: "common",

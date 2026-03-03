@@ -19,8 +19,6 @@ html {
     scroll-behavior: smooth;
     @apply bg-linear-to-t from-brand2 to-dark;
 }
-
-
 @media (max-width: 768px) {
   .mobile-vertical-table thead {
     display: none;

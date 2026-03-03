@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function DashboardMovieCard({ gridLayout, movie }: any) {
-  const { t } = useTranslation();
+  const { t } = useTranslation(["Dashboard", "common"]);
   const { token } = useAuth();
   const [currentStatus, setCurrentStatus] = useState(movie.status);
   const navigate = useNavigate();
@@ -66,9 +66,9 @@ export default function DashboardMovieCard({ gridLayout, movie }: any) {
           name=""
           id="select-status"
         >
-          <option value="Accepted">Accepted</option>
-          <option value="Cancelled">Cancelled</option>
-          <option value="Pending">Pending</option>
+          <option value="Accepted">{t("status.accepted", { ns: "common" })}</option>
+          <option value="Cancelled">{t("status.cancelled", { ns: "common" })}</option>
+          <option value="Pending">{t("status.pending", { ns: "common" })}</option>
         </select>
       </div>
 

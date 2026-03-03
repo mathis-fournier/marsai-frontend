@@ -22,7 +22,7 @@ function NewsletterDashboard() {
                     {t("newsletters.subtitle")}
                 </h1>
                 <p className="italic text-white opacity-80">
-                    Create & Send newsletters
+                    {t("newsletters.description")}
                 </p>
             </div>
 
@@ -36,7 +36,7 @@ function NewsletterDashboard() {
                 <SubscribersDashboard />
                 <div className="bg-brand2 p-4 rounded-2xl border-2 shadow-lg shadow-white border-white">
                     <div className='flex flex-col md:flex-rows justify-between '>
-                        <h2 className="text-3xl my-4 text-white">Send a specific Newsletter to all actual subscribers</h2>
+                        <h2 className="text-3xl my-4 text-white">{t("newsletters.send_to_subscribers")}</h2>
                         {/* <p className="italic text-white opacity-80">Please select an existing newsletter to send it to the contacts</p> */}
                         <NewsletterSend />
                     </div>

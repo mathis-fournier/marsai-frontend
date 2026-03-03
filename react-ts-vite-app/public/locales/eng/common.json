@@ -60,5 +60,47 @@
   },
   "main": {
     "collaborator": "Collaborator"
-  }
+  },
+  "pagination": {
+    "results_per_page": "{{count}} results per page",
+    "page": "Page {{count}}",
+    "previous": "Previous",
+    "next": "Next"
+  },
+  "status": {
+    "all": "All",
+    "pending": "Pending",
+    "accepted": "Accepted",
+    "cancelled": "Cancelled",
+    "rejected": "Rejected",
+    "hybrid": "Hybrid",
+    "full_ai": "Full AI",
+    "type": "Type"
+  },
+  "actions": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "add": "Add",
+    "book_seat": "Book my seat"
+  },
+  "form": {
+    "firstname": "Firstname",
+    "lastname": "Lastname",
+    "email": "Email",
+    "object": "Object",
+    "message": "Message"
+  },
+  "errors": {
+    "generic": "An error occurred",
+    "loading_tags": "Error loading tags",
+    "loading_movies": "Error loading movies"
+  },
+  "loading": {
+    "generic": "Loading...",
+    "tags": "Loading tags..."
+  },
+  "yes": "Yes",
+  "no": "No"
 }

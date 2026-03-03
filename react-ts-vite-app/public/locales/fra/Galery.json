@@ -9,6 +9,15 @@
   "previous": "Précédent",
   "next": "Suivant",
   "page": "Page",
+  "best_rated": "LES MIEUX NOTÉS",
+  "hybrid_title": "FILMS HYBRIDES",
+  "full_ai_title": "FILMS FULL AI",
+  "selection_title": "CONCURRENTS SÉLECTIONNÉS",
+  "pending_pool": "FILMS EN ATTENTE",
+  "rejected_pool": "FILMS REJETÉS",
+  "total_films": "{{count}} films",
+  "no_movies_left": "Plus aucun film",
+  "best_n_first": "Les {{count}} premiers",
   "movie_details": {
     "rating": "Noter ce film",
     "title": "Détails du film",
@@ -47,6 +56,12 @@
     "collaborator_Instagram": "Instagram",
     "collaborator_LinkedIn": "LinkedIn",
     "collaborator_X": "X",
-    "collaborator_details": "Détails"
+    "collaborator_details": "Détails",
+    "apprecied": "Avez-vous apprécié ?",
+    "comment_label": "Commentaire",
+    "comment_placeholder": "Ici vous pouvez éventuellement commenter ce film",
+    "add_rating_button": "Ajouter une note",
+    "rating_added_success": "Note ajoutée !",
+    "no_image": "Aucune image disponible"
   }
 }

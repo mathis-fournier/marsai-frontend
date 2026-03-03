@@ -1,12 +1,14 @@
 import { Link } from 'react-router-dom'
 import type { Movie, MovieTag } from '../types-interfaces/Movie'
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
 function MovieThumbnail({ movie }: { movie: Movie }) {
 
     const [tags, setTags] = useState<MovieTag[]>([]);
     const [error, setError] = useState<Error | null>(null);
     const [loading, setLoading] = useState<boolean>(false);
+    const { t } = useTranslation('common');
     const baseUrl = import.meta.env.VITE_API_URL;
     useEffect(() => {
         const fetchTags = async () => {
@@ -17,17 +19,16 @@ function MovieThumbnail({ movie }: { movie: Movie }) {
                 const data = await response.json();
                 setTags(data);
             } catch (err: any) {
-                throw new Error("Erreur lors de fetch movie Tags");
                 setError(err);
             } finally {
                 setLoading(false);
             }
-            fetchTags();
         }
-    }, []);
+        fetchTags();
+    }, [movie.id, baseUrl]);
 
-    if (error) return <>Erreur de chargement des tags</>
-    if (loading) return <>Chargement des tags</>
+    if (error) return <>{t('errors.loading_tags')}</>
+    if (loading) return <>{t('loading.tags')}</>
     return (
         <div>
             <Link to={`/movies/${movie.id}`} key={movie.id} className="block">
@@ -40,13 +41,13 @@ function MovieThumbnail({ movie }: { movie: Movie }) {
                                 className="h-full w-full object-cover"
                             />
                         ) : (
-                            <span className="text-gray-500">No image</span>
+                            <span className="text-gray-500">{t('movies_thumbnails.image_placeholder')}</span>
                         )}
                     </div>
                     <div className="p-4">
                         <h2 className="text-2xl text-black font-semibold">{movie.english_title}</h2>
                         <p className="text-gray-600 mt-2 text-sm my-4 line-clamp-3">
-                            {movie.english_synopsis || 'no_synopsis'}
+                            {movie.english_synopsis || t('movies_thumbnails.no_synopsis')}
                         </p>
                     </div>
                 </div>

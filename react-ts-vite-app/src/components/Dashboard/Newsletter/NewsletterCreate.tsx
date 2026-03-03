@@ -57,17 +57,17 @@ const NewsletterCreate = () => {
     };
 
     // Rendu conditionnel en cas d'erreur d'initialisation (optionnel, mais bon pour la sécurité)
-    if (!editorRef) return <div>Error</div>;
+    if (!editorRef) return <div>{t('errors.generic', { ns: 'common' })}</div>;
 
     return (
         <>
             <div className="text-white flex">
-                <h2 className="text-3xl my-10">Create a Newsletter</h2>
+                <h2 className="text-3xl my-10">{t('newsletter.create_title')}</h2>
             </div>
             {/* Formulaire principal */}
             <form className='flex flex-col md:flex-row justify-between items-center'>
                 <div className='flex gap-10 my-8 items-center'>
-                    <label htmlFor="object" className='text-2xl text-primary'>Object</label>
+                    <label htmlFor="object" className='text-2xl text-primary'>{t('newsletter.object_label')}</label>
                     {/* Input pour la saisie de l'objet */}
                     <input
                         onChange={(e) => handleChange(e)}
@@ -77,14 +77,14 @@ const NewsletterCreate = () => {
                     />
                 </div>
                 {/* Bouton de soumission visible uniquement sur écrans larges */}
-                <button className="bg-primary p-4 text-black rounded-2xl hidden md:flex" onClick={(e) => handleSubmit(e)} type="submit">Save</button>
+                <button className="bg-primary p-4 text-black rounded-2xl hidden md:flex" onClick={(e) => handleSubmit(e)} type="submit">{t('newsletter.save_button')}</button>
             </form>
             {/* Zone d'édition */}
             <div className="editor">
                 {/* Rendu du composant TipTap, transmis via la prop ref */}
                 <TipTap ref={editorRef} />
                 {/* Bouton de soumission mobile visible uniquement sur petits écrans */}
-                <button className="bg-primary p-4 my-8 text-black rounded-2xl md:hidden flex m-auto" onClick={(e) => handleSubmit(e)} type="submit">Save</button>
+                <button className="bg-primary p-4 my-8 text-black rounded-2xl md:hidden flex m-auto" onClick={(e) => handleSubmit(e)} type="submit">{t('newsletter.save_button')}</button>
             </div>
         </>
     );

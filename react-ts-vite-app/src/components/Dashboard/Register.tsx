@@ -10,7 +10,7 @@ interface RegisterFormData {
 
 function Register() {
     // Utilisation de la fonction useTranslation pour accéder aux traductions
-    const { t } = useTranslation('Register');
+    const { t } = useTranslation(['Register', 'Dashboard']);
 
     // Gestionnaire d'événement pour soumettre le formulaire
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -69,7 +69,7 @@ function Register() {
                             </h1>
 
                         </span>
-                        <h2 className="text-base/7 font-semibold text-white">Par default l'utilisateur créé n'aura pas de rôle prédéfini</h2>
+                        <h2 className="text-base/7 font-semibold text-white">{t('register.default_role_notice', { ns: 'Dashboard' })}</h2>
                         {/* <p className="mt-1 text-sm/6 text-gray-400">
                             {t('subtitle')}
                         </p> */}

@@ -18,7 +18,7 @@ function MoviesSelection() {
   const [query, setQuery] = useState<string>(''); // État pour stocker la requête de recherche
   const [allTags, setAllTags] = useState<MovieTag[]>([]); // État pour stocker tous les tags des films
   const [selectedTag, setSelectedTag] = useState<MovieTag | null>(null); // État pour stocker le tag sélectionné
-  const [moviesPerPage, setMoviesPerPage] = useState<number>(4); // État pour gérer la pagination des films
+  const [moviesPerPage, setMoviesPerPage] = useState<number>(16); // État pour gérer la pagination des films
   const [currentPage, setCurrentPage] = useState<number>(1); // État pour gérer la pagination des films
 
 
@@ -93,14 +93,14 @@ function MoviesSelection() {
   if (isLoading)
     return (
       <div className="p-10 text-center text-black">
-        {t("movies_thumbnails.loading")}
+        {t("loading.generic", { ns: 'common' })}
       </div>
     );
 
   if (error)
     return (
       <div className="p-10 text-center text-black">
-        {t("movies_thumbnails.error", { error: error })}
+        {t("errors.generic", { ns: 'common' })}
       </div>
     );
 
@@ -110,7 +110,7 @@ function MoviesSelection() {
         <div className="w-full md:w-full mx-auto text-center">
           <h2 className="flex items-center justify-start px-5 text-secondary md:text-2xl font-bold my-8 text-xl" onClick={toggleSelection}>
             <span className={`text-xl md:text-3xl transition-transform duration-500 ease-in-out transform ${showSelection ? 'rotate-90' : 'rotate-0'}`}>▶</span>
-            <span className="p-3">Les concurrents sélectionnés: {totalMovies} films</span>
+            <span className="p-3">{t('selection_title', { ns: 'Galery' })} : {t('total_films', { ns: 'Galery', count: totalMovies })}</span>
           </h2>
           <div className={`transition-all duration-750 ease-in-out overflow-hidden ${showSelection ? 'max-h-500' : 'max-h-0'}`}>
             {/* ALL MOVIES DASHBOARD */}
@@ -123,7 +123,7 @@ function MoviesSelection() {
                 {/* SEARCH BAR */}
                 <input
                   type="text"
-                  placeholder={t("movies.search_placeholder")}
+                  placeholder={t("search_placeholder", { ns: 'Galery' })}
                   className="border my-10  w-full p-2 text-white rounded-md focus:outline-none"
                   onChange={(e) => setQuery(e.target.value)}
                 />
@@ -149,15 +149,15 @@ function MoviesSelection() {
                     disabled={currentPage === 1}
                     className="px-4 py-2 bg-blue-500 text-white rounded mr-2"
                   >
-                    {t('previous')}
+                    {t('pagination.previous', { ns: 'common' })}
                   </button>
-                  <p>Page {currentPage}</p>
+                  <p>{t('pagination.page', { ns: 'common', count: currentPage })}</p>
                   <button
                     disabled={(totalMovies <= (currentPage * moviesPerPage))}
                     onClick={() => setCurrentPage(currentPage + 1)}
                     className="px-4 py-2 bg-blue-500 text-white rounded"
                   >
-                    {t('next')}
+                    {t('pagination.next', { ns: 'common' })}
                   </button>
                 </div>
 
@@ -169,10 +169,11 @@ function MoviesSelection() {
                 }}
                   name="moviesPerPage" id=""
                   className="my-4">
-                  <option value="4">4 résultats par page</option>
-                  <option value="8">8 résultats par page</option>
-                  <option value="12">12 résultats par page</option>
-                  <option value="16">16 résultats par page</option>
+                  <option value="4">{t('pagination.results_per_page', { count: 4, ns: 'common' })}</option>
+                  <option value="8">{t('pagination.results_per_page', { count: 8, ns: 'common' })}</option>
+                  <option value="12">{t('pagination.results_per_page', { count: 12, ns: 'common' })}</option>
+                  <option value="16">{t('pagination.results_per_page', { count: 16, ns: 'common' })}</option>
+                  <option value="20">{t('pagination.results_per_page', { count: 20, ns: 'common' })}</option>
                 </select>
               </div>
 

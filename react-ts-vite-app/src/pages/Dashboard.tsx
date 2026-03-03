@@ -27,17 +27,10 @@ export default function Dashboard() {
     <>
       <div className="qwenflex flex-col">
         {/* EN CHIFFRES */}
-        <div className="">
 
-          <h2 className="my-8 text-center text-white md:text-4xl font-bold text-2xl">
+        {/* Composant global du tableau de bord */}
+        <DashboardGlobal />
 
-            {t("decimals.title")}
-
-          </h2>
-          {/* Composant global du tableau de bord */}
-          <DashboardGlobal />
-
-        </div>
         {/* Composant pour l'événement du tableau de bord */}
         <DashboardEvent />
         {/* Composant pour inscrire des jury */}

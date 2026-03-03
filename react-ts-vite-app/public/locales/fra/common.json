@@ -60,5 +60,47 @@
   },
   "main": {
     "collaborator": "Collaborateur"
+  },
+  "pagination": {
+    "results_per_page": "{{count}} résultats par page",
+    "page": "Page {{count}}",
+    "previous": "Précédent",
+    "next": "Suivant"
+  },
+  "status": {
+    "all": "Tous",
+    "pending": "En attente",
+    "accepted": "Accepté",
+    "cancelled": "Annulé",
+    "rejected": "Rejeté",
+    "hybrid": "Hybride",
+    "full_ai": "Full AI",
+    "type": "Type"
+  },
+  "actions": {
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "delete": "Supprimer",
+    "edit": "Modifier",
+    "add": "Ajouter",
+    "book_seat": "Réserver ma place"
+  },
+  "form": {
+    "firstname": "Prénom",
+    "lastname": "Nom",
+    "email": "Email",
+    "object": "Objet",
+    "message": "Message"
+  },
+  "errors": {
+    "generic": "Une erreur est survenue",
+    "loading_tags": "Erreur lors du chargement des tags",
+    "loading_movies": "Erreur lors du chargement des films"
+  },
+  "loading": {
+    "generic": "Chargement...",
+    "tags": "Chargement des tags..."
+  },
+  "yes": "Oui",
+  "no": "Non"
   }
-}
